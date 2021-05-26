@@ -1,4 +1,4 @@
-# Chart.js for Vue 2 and Vue 3
+# 📊 Chart.js for Vue 2 and Vue 3
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -11,13 +11,15 @@
 [npm-total-downloads-src]: https://img.shields.io/npm/dt/vue-chart-3.svg
 [npm-downloads-href]: https://www.npmjs.com/package/vue-chart-3
 
-This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-chartjs) for Chart.js 3, but written with [vue-demi](https://github.com/vueuse/vue-demi) and Vue Composition API and Typescript in mind.
+This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-chartjs) for Chart.js 3, but written in Typescript with [vue-demi](https://github.com/vueuse/vue-demi) and Vue Composition API.
 
 # Compatibility
 
 - Chart.js >= 3
 - Compatible with Vue 2 with `@vue/composition-api` installed and registered
 - Compatible with Vue 3
+
+---
 
 It's recommended to use this with [Volar](https://github.com/johnsoncodehk/volar) on VSCode for better props types check
 
