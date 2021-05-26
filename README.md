@@ -65,7 +65,7 @@ Exemple with static data
 ```
 
 ```ts
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 import { Doughnut } from 'vue-chart-3';
 
 export default defineComponent({
@@ -102,7 +102,7 @@ Exemple with reactive data
 
 ```ts
 import { shuffle } from 'lodash';
-import { computed, defineComponent, ref } from '@vue/composition-api';
+import { computed, defineComponent, ref } from 'vue';
 import { Doughnut } from 'vue-chart-3';
 
 export default defineComponent({
