@@ -1,5 +1,16 @@
 # Chart.js for Vue 2 and Vue 3
 
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![npm downloads][npm-total-downloads-src]][npm-downloads-href]
+<img src='https://img.shields.io/npm/l/vue-chart-3.svg'>
+
+[npm-version-src]: https://img.shields.io/npm/v/vue-chart-3.svg
+[npm-version-href]: https://www.npmjs.com/package/vue-chart-3
+[npm-downloads-src]: https://img.shields.io/npm/dm/vue-chart-3.svg
+[npm-total-downloads-src]: https://img.shields.io/npm/dt/vue-chart-3.svg
+[npm-downloads-href]: https://www.npmjs.com/package/vue-chart-3
+
 This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-chartjs) for Chart.js 3, but written with [vue-demi](https://github.com/vueuse/vue-demi) and Vue Composition API and Typescript in mind.
 
 # Compatibility
@@ -12,7 +23,7 @@ It's recommended to use this with [Volar](https://github.com/johnsoncodehk/volar
 
 # Demo
 
-[CodeSandbox](https://codesandbox.io/s/demo-vue-chart-3-ugynm?file=/src/App.vue)
+[CodeSandbox demo](https://codesandbox.io/s/demo-vue-chart-3-ugynm?file=/src/App.vue)
 
 # Installation
 
@@ -49,10 +60,7 @@ Exemple with static data
 
 ```vue
 <template>
-  <div>
-    <Doughnut :data="testData" />
-    <button @click='suffleData'><button>
-  </div>
+  <Doughnut :data="testData" />
 </template>
 ```
 
