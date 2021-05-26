@@ -10,6 +10,10 @@ This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-c
 
 It's recommended to use this with [Volar](https://github.com/johnsoncodehk/volar) on VSCode for better props types check
 
+# Demo
+
+[CodeSandbox](https://codesandbox.io/s/demo-vue-chart-3-ugynm?file=/src/App.vue)
+
 # Installation
 
 ```bash
@@ -23,7 +27,7 @@ yarn add vue-chart-3
 Chart.js 3 is now tree-shakable, so on your app, don't forgot to register the components you want
 
 ```ts
-import { Chart, LineController, LineElement } from `chart.js`;
+import { Chart, LineController, LineElement } from 'chart.js';
 
 Chart.register(LineController, LineElement);
 ```
@@ -31,7 +35,7 @@ Chart.register(LineController, LineElement);
 Or if you want all components
 
 ```ts
-import { Chart, registerables } from `chart.js`;
+import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
 ```
@@ -83,7 +87,7 @@ Exemple with reactive data
 <template>
   <div>
     <Doughnut :data="testData" />
-    <button @click='suffleData'>Shuffle<button>
+    <button @click="suffleData">Shuffle</button>
   </div>
 </template>
 ```

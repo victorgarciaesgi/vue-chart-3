@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",
@@ -45,9 +45,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/victorgarciaesgi/vue-chartjs-3.git"
+    "url": "git+https://github.com/victorgarciaesgi/vue-chart-3.git"
   },
-  "homepage": "https://github.com/victorgarciaesgi/vue-chartjs-3#readme",
+  "homepage": "https://github.com/victorgarciaesgi/vue-chart-3#readme",
   "scripts": {
     "clean": "rimraf dist && rimraf types",
     "compile": "tsc --pretty",
