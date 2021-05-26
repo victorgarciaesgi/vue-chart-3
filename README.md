@@ -1,19 +1,21 @@
-# Vue - Chart.js 3
+# Chart.js for Vue 2 and Vue 3
 
-This package is basicaly a port of [vue-chartjs](https://github.com/apertureless/vue-chartjs) for Chart.js 3, but written with [vue-demi](https://github.com/vueuse/vue-demi) with Vue Composition API and Typescript in mind.
+This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-chartjs) for Chart.js 3, but written with [vue-demi](https://github.com/vueuse/vue-demi) and Vue Composition API and Typescript in mind.
 
-> Compatible with Vue 2 with `@vue/composition-api` installed and registered
+# Compatibility
 
-> Compatible with Vue 3 without anything to add
+- Chart.js >= 3
+- Compatible with Vue 2 with `@vue/composition-api` installed and registered
+- Compatible with Vue 3
 
 It's recommended to use this with [Volar](https://github.com/johnsoncodehk/volar) on VSCode for better props types check
 
 # Installation
 
 ```bash
-npm i vue-chartjs-3
+npm i vue-chart-3
 #or
-yarn add vue-chartjs-3
+yarn add vue-chart-3
 ```
 
 # Usage
@@ -52,7 +54,7 @@ Exemple with static data
 
 ```ts
 import { defineComponent } from '@vue/composition-api';
-import { Doughnut } from 'vue-chartjs-3';
+import { Doughnut } from 'vue-chart-3';
 
 export default defineComponent({
   name: 'Home',
@@ -89,7 +91,7 @@ Exemple with reactive data
 ```ts
 import { shuffle } from 'lodash';
 import { computed, defineComponent, ref } from '@vue/composition-api';
-import { Doughnut } from 'vue-chartjs-3';
+import { Doughnut } from 'vue-chart-3';
 
 export default defineComponent({
   name: 'Home',
