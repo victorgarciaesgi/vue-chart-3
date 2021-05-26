@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2018",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": false,
+    "strictNullChecks": true,
+    "strict": true,
+    "pretty": true,
+    "sourceMap": false,
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "declarationDir": "./types",
+    "baseUrl": ".",
+    "declaration": true,
+    "outDir": "./dist",
+    "types": ["node"],
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

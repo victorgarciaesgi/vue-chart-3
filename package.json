@@ -1,0 +1,58 @@
+{
+  "name": "vue-chartjs-3",
+  "version": "0.1.0",
+  "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
+  "keywords": [
+    "vue chartjs 3",
+    "chartjs 3",
+    "vue chartjs",
+    "chartjs vue",
+    "chartjs 3 vue"
+  ],
+  "author": {
+    "name": "Victor Garcia",
+    "url": "https://github.com/victorgarciaesgi"
+  },
+  "files": [
+    "dist",
+    "types"
+  ],
+  "main": "dist/index.js",
+  "typings": "types/index.d.ts",
+  "license": "MIT",
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.9",
+    "vue": "^2.0.0 || >=3.0.0-rc.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.170",
+    "@types/node": "^15.3.1",
+    "@vue/composition-api": "^1.0.0-rc.9",
+    "@vue/runtime-dom": "^3.0.11",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.2.4",
+    "vue": "^2.6.12"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "chart.js": "^3.3.0",
+    "lodash": "latest",
+    "vue-demi": "^0.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorgarciaesgi/vue-chartjs-3.git"
+  },
+  "homepage": "https://github.com/victorgarciaesgi/vue-chartjs-3#readme",
+  "scripts": {
+    "clean": "rimraf dist && rimraf types",
+    "compile": "tsc --pretty",
+    "dev": "tsc --pretty --watch",
+    "build": "yarn run clean && yarn run compile",
+    "prepublish": "yarn build"
+  }
+}
