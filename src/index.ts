@@ -18,4 +18,5 @@ export default {
   Radar,
   Bubble,
   Scatter,
+  defineChartComponent,
 };
