@@ -1,7 +1,8 @@
 import { Chart, ChartData, ChartOptions, ChartType, Plugin, ChartDataset } from 'chart.js';
 import { ref, defineComponent, PropType, onMounted, h, onBeforeUnmount, watch } from 'vue-demi';
 import { CSSProperties } from '@vue/runtime-dom';
-import { startCase, camelCase } from 'lodash';
+import startCase from 'lodash/startCase';
+import camelCase from 'lodash/camelCase';
 
 export type StyleValue = string | CSSProperties | Array<StyleValue>;
 
