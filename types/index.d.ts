@@ -1,3 +1,4 @@
+export { defineChartComponent } from './components';
 export declare const Bar: import("vue").ComponentOptions<import("vue").default, import("@vue/composition-api").ShallowUnwrapRef<import("@vue/composition-api").Data> & import("@vue/composition-api").Data, {}, {}, {
     chartId: {
         default: string;

@@ -1,5 +1,7 @@
 import { defineChartComponent } from './components';
 
+export { defineChartComponent } from './components';
+
 export const Bar = defineChartComponent('bar-chart', 'bar');
 export const Doughnut = defineChartComponent('doughnut-chart', 'doughnut');
 export const Line = defineChartComponent('line-chart', 'line');
