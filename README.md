@@ -139,6 +139,7 @@ You can use `defineChartComponent` to create ChartJs plugins components
 Exemple:
 
 ```ts
+import { defineChartComponent } from 'vue-chart-3';
 import { MatrixController, MatrixElement } from 'chartjs-chart-matrix';
 
 Chart.register(MatrixController, MatrixElement);
