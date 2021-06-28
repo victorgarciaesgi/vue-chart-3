@@ -135,7 +135,7 @@ export declare const Doughnut: import("vue").ComponentOptions<import("vue").defa
     height: number;
     cssClasses: string;
 }, true>);
-export declare const Line: import("vue").ComponentOptions<import("vue").default, import("@vue/composition-api").ShallowUnwrapRef<import("@vue/composition-api").Data> & import("@vue/composition-api").Data, {}, {}, {
+export declare const LineChart: import("vue").ComponentOptions<import("vue").default, import("@vue/composition-api").ShallowUnwrapRef<import("@vue/composition-api").Data> & import("@vue/composition-api").Data, {}, {}, {
     chartId: {
         default: string;
         type: StringConstructor;
@@ -680,7 +680,7 @@ declare const _default: {
         height: number;
         cssClasses: string;
     }, true>);
-    Line: import("vue").ComponentOptions<import("vue").default, import("@vue/composition-api").ShallowUnwrapRef<import("@vue/composition-api").Data> & import("@vue/composition-api").Data, {}, {}, {
+    LineChart: import("vue").ComponentOptions<import("vue").default, import("@vue/composition-api").ShallowUnwrapRef<import("@vue/composition-api").Data> & import("@vue/composition-api").Data, {}, {}, {
         chartId: {
             default: string;
             type: StringConstructor;
