@@ -37,58 +37,37 @@ yarn add vue-chart-3
 
 # Usage
 
-Chart.js 3 is now tree-shakable, so on your app, don't forgot to register the components you want
-
-```ts
-import { Chart, LineController, LineElement } from 'chart.js';
-
-Chart.register(LineController, LineElement);
-```
-
-Or if you want all components
-
-```ts
-import { Chart, registerables } from 'chart.js';
-
-Chart.register(...registerables);
-```
-
-At the difference of vue-chartjs, now there is no need to re-create each component with mixins and reactive props etc..
-Thanks to Vue Composition Api, all of this is possible just by importing the corresponding component
-
----
-
-# Events emitted by all components
-
-| Event           | Payload       |
-| --------------- | ------------- |
-| 'chart:render'  | chartInstance |
-| 'chart:update'  | chartInstance |
-| 'chart:destroy' | chartInstance |
-| 'labels:update' | -             |
-
-Exemple with static data
+Example with static data
 
 ```vue
 <template>
-  <Doughnut :data="testData" />
+  <DoughnutChart :data="testData" />
 </template>
 ```
 
 ```ts
-import { defineComponent } from 'vue';
-import { Doughnut } from 'vue-chart-3';
+import { defineComponent } from "vue";
+import { Chart, DoughnutController, ArcElement, Tooltip } from 'chart.js'
+import { Doughnut as DoughnutChart } from 'vue-chart-3'
+
+Chart.register(DoughnutController, ArcElement, Tooltip)
 
 export default defineComponent({
-  name: 'Home',
-  components: { Doughnut },
+  name: "Home",
+  components: { DoughnutChart },
   setup() {
     const testData = {
-      labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
+      labels: ["Paris", "Nîmes", "Toulon", "Perpignan", "Autre"],
       datasets: [
         {
           data: [30, 40, 60, 70, 5],
-          backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
+          backgroundColor: [
+            "#77CEFF",
+            "#0079AF",
+            "#123E6B",
+            "#97B0C4",
+            "#A5C8ED",
+          ],
         },
       ],
     };
@@ -100,104 +79,69 @@ export default defineComponent({
 
 ---
 
-Accessing Canvas Ref and ChartIntance
-
-```vue
-<template>
-  <Doughnut ref="doughtnutRef" :data="testData" />
-</template>
-```
-
-```ts
-import { shuffle } from 'lodash';
-import { computed, defineComponent, ref, onMounted } from 'vue';
-import { Doughnut } from 'vue-chart-3';
-
-export default defineComponent({
-  name: 'Home',
-  components: { Doughnut },
-  setup() {
-    const doughtnutRef = ref();
-    // ....
-    onMounted(() => {
-      console.log(doughtnutRef.value.chartInstance);
-      console.log(doughtnutRef.value.canvasRef);
-    });
-
-    return { shuffleData, testData, doughtnutRef };
-  },
-});
-```
-
----
-
-## Exemple with reactive data and options
+Example with reactive data
 
 ```vue
 <template>
   <div>
-    <Doughnut :data="testData" :options="options" />
-    <button @click="shuffleData">Shuffle</button>
+    <DoughnutChart :data="testData" />
+    <button @click="suffleData">Shuffle</button>
   </div>
 </template>
 ```
 
 ```ts
+<script lang="ts">
 import { shuffle } from 'lodash';
-import { computed, defineComponent, ref } from 'vue';
-import { Doughnut } from 'vue-chart-3';
+import { defineComponent, computed, ref } from 'vue'
+import { Chart, DoughnutController, ArcElement, Tooltip } from 'chart.js'
+import { Doughnut as DoughnutChart } from 'vue-chart-3'
+
+Chart.register(DoughnutController, ArcElement, Tooltip)
 
 export default defineComponent({
-  name: 'Home',
-  components: { Doughnut },
+  components: { DoughnutChart },
   setup() {
-    const dataValues = ref([30, 40, 60, 70, 5]);
-
-    const options = ref<ChartOptions<'doughnut'>>({
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-        },
-        title: {
-          display: true,
-          text: 'Chart.js Doughnut Chart',
-        },
-      },
-    });
+    const dataValues = ref([30, 40, 60, 70, 5])
 
     const testData = computed(() => ({
       labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
       datasets: [
         {
           data: dataValues.value,
-          backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
+          backgroundColor: [
+            '#77CEFF',
+            '#0079AF',
+            '#123E6B',
+            '#97B0C4',
+            '#A5C8ED',
+          ],
         },
       ],
-    }));
+    }))
 
     function shuffleData() {
-      dataValues.value = shuffle(dataValues.value);
+      dataValues.value = shuffle(dataValues.value)
     }
 
-    return { shuffleData, testData, options };
+    return { shuffleData, testData }
   },
-});
+})
 ```
 
 # Supporting plugins
 
 You can use `defineChartComponent` to create ChartJs plugins components
 
-Exemple:
+Example:
 
 ```ts
-import { defineChartComponent } from 'vue-chart-3';
-import { MatrixController, MatrixElement } from 'chartjs-chart-matrix';
+import { defineChartComponent } from "vue-chart-3";
+import { MatrixController, MatrixElement } from "chartjs-chart-matrix";
 
 Chart.register(MatrixController, MatrixElement);
 
-const Matrix = defineChartComponent('MatrixChart', 'matrix');
+const Matrix = defineChartComponent("MatrixChart", "matrix");
 // You can now use this component anywhere
 ```
 
@@ -205,14 +149,14 @@ If you are using Typescript, you have to augment the interface `ChartTypeRegistr
 
 The plugins for Chart.js are usually typed, but if they aren't you can do it manually
 
-(Exemple taken from [chartjs-chart-matrix](https://github.com/kurkle/chartjs-chart-matrix/blob/next/types/index.esm.d.ts))
+(Example taken from [chartjs-chart-matrix](https://github.com/kurkle/chartjs-chart-matrix/blob/next/types/index.esm.d.ts))
 
 ```ts
-declare module 'chart.js' {
+declare module "chart.js" {
   export interface ChartTypeRegistry {
     matrix: {
-      chartOptions: CoreChartOptions<'matrix'>;
-      datasetOptions: MatrixControllerDatasetOptions<'matrix'>;
+      chartOptions: CoreChartOptions<"matrix">;
+      datasetOptions: MatrixControllerDatasetOptions<"matrix">;
       defaultDataPoint: MatrixDataPoint;
       parsedDataType: MatrixDataPoint;
       scales: never;
@@ -220,3 +164,44 @@ declare module 'chart.js' {
   }
 }
 ```
+
+# Important notes
+
+## Using with Vue 3 or Vue 2
+
+This package works with version 2.x and 3.x of Vue.
+
+- Vue 3 works out-of-the-box
+- Vue 2 requires `@vue/composition-api` package to also be installed, to provide Vue 3's [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html) features like `ref, defineComponent, computed, reactive`. 
+
+```js
+// Vue 3
+import { defineComponent, computed, ref } from 'vue' 
+
+// Vue 2
+import { defineComponent, computed, ref } from '@vue/composition-api' 
+```
+
+## Chart.js (v3)
+
+Chart.js v3 is now tree-shakable, so make sure to import and register the chart components you need. See [Chart.js API](https://www.chartjs.org/docs/master/api/) for all available imports.
+
+[Learn more about Chart.js tree-shaking](https://www.chartjs.org/docs/master/getting-started/integration.html#bundlers-webpack-rollup-etc)
+
+For example, if you want to create a Doughnut chart and tree-shake the unused other components, it might look like this:
+
+```ts
+import { Chart, DoughnutController, ArcElement, Tooltip } from "chart.js";
+
+Chart.register(DoughnutController, ArcElement, Tooltip);
+```
+
+Or if you want all components of Chart.js (but lose the benefits of tree-shaking), use this:
+
+```ts
+import { Chart, registerables } from "chart.js";
+
+Chart.register(...registerables);
+```
+
+Unlike `vue-chartjs`, there is no need to re-create each component with mixins and reactive props, etc. with this package. Thanks to `@vue/composition-api`, all of this is possible just by importing the corresponding component.
