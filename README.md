@@ -59,7 +59,7 @@ Chart.register(...registerables);
 
 Unlike `vue-chartjs`, there is no need to re-create each component with mixins and reactive props, etc. with this package. Thanks to `@vue/composition-api`, all of this is possible just by importing the corresponding component.
 
-(Thanks to @nwittwer for upgraded notes)
+(Thanks to [@nwittwer](https://github.com/nwittwer) for upgraded notes)
 
 # Demo
 
