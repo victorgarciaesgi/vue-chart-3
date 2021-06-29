@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",

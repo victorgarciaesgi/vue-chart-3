@@ -131,7 +131,7 @@ export default defineComponent({
 
 ---
 
-Exemple with reactive data
+## Exemple with reactive data and options
 
 ```vue
 <template>

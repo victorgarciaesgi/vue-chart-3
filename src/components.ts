@@ -42,7 +42,14 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       //- Watchers
 
       watch(() => props.data, watchHandler, { deep: true });
-
+      watch(
+        () => props.options,
+        () => {
+          chartInstance?.update();
+          emit('chart:update', chartInstance);
+        },
+        { deep: true }
+      );
       //- Functions
 
       /** Picked from vue-chartjs */
