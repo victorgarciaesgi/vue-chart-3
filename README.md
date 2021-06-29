@@ -91,13 +91,44 @@ export default defineComponent({
 
 ---
 
+Accessing Canvas Ref and ChartIntance
+
+```vue
+<template>
+  <Doughnut ref="doughtnutRef" :data="testData" />
+</template>
+```
+
+```ts
+import { shuffle } from 'lodash';
+import { computed, defineComponent, ref, onMounted } from 'vue';
+import { Doughnut } from 'vue-chart-3';
+
+export default defineComponent({
+  name: 'Home',
+  components: { Doughnut },
+  setup() {
+    const doughtnutRef = ref();
+    // ....
+    onMounted(() => {
+      console.log(doughtnutRef.value.chartInstance);
+      console.log(doughtnutRef.value.canvasRef);
+    });
+
+    return { shuffleData, testData, doughtnutRef };
+  },
+});
+```
+
+---
+
 Exemple with reactive data
 
 ```vue
 <template>
   <div>
     <Doughnut :data="testData" />
-    <button @click="suffleData">Shuffle</button>
+    <button @click="shuffleData">Shuffle</button>
   </div>
 </template>
 ```

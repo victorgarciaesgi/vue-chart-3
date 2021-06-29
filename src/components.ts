@@ -27,9 +27,9 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     },
     emits: {
       'labels:update': () => true,
-      'chart:update': () => true,
-      'chart:destroy': () => true,
-      'chart:render': () => true,
+      'chart:update': (chartInstance: Chart) => true,
+      'chart:destroy': (chartInstance: Chart) => true,
+      'chart:render': (chartInstance: Chart) => true,
     },
     setup(props, { emit }) {
       //- Template refs
@@ -101,22 +101,20 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
               emit('labels:update');
             }
             chart.update();
-            emit('chart:update');
+            emit('chart:update', chartInstance);
           } else {
             if (chart) {
               chart.destroy();
-              emit('chart:destroy');
+              emit('chart:destroy', chartInstance);
             }
             renderChart();
-            emit('chart:render');
           }
         } else {
           if (chartInstance) {
             chartInstance.destroy();
-            emit('chart:destroy');
+            emit('chart:destroy', chartInstance);
           }
           renderChart();
-          emit('chart:render');
         }
       }
 
@@ -128,6 +126,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
             options: props.options as any, // Types won't work with props type
             plugins: props.plugins,
           });
+          emit('chart:render', chartInstance);
         } else {
           console.error(
             `Error on component ${componentName}, canvas cannot be rendered. Check if the render appends server-side`
