@@ -142,7 +142,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       //- Hooks
 
-      onMounted(() => renderChart());
+      onMounted(renderChart);
 
       onBeforeUnmount(() => {
         if (chartInstance) {
