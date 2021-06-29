@@ -37,7 +37,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       //- Data
 
-      let chartInstance: Chart | null = null;
+      let chartInstance: Chart<TType> | null = null;
 
       //- Watchers
 
@@ -82,7 +82,6 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
               // Remove outdated key-value pairs
               deletionKeys.forEach((deletionKey) => {
                 if (chart?.data.datasets[i]) {
-                  const test = chart.data.datasets[i][deletionKey as keyof ChartDataset];
                   delete chart.data.datasets[i][deletionKey as keyof ChartDataset];
                 }
               });
@@ -123,7 +122,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
           chartInstance = new Chart(canvasRef.value, {
             data: props.data,
             type: chartType,
-            options: props.options as any, // Types won't work with props type
+            options: props.options as ChartOptions<TType>, // Types won't work with props type
             plugins: props.plugins,
           });
           emit('chart:render', chartInstance);

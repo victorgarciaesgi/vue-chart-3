@@ -58,6 +58,15 @@ Thanks to Vue Composition Api, all of this is possible just by importing the cor
 
 ---
 
+# Events emitted by all components
+
+| Event           | Payload       |
+| --------------- | ------------- |
+| 'chart:render'  | chartInstance |
+| 'chart:update'  | chartInstance |
+| 'chart:destroy' | chartInstance |
+| 'labels:update' | -             |
+
 Exemple with static data
 
 ```vue
@@ -127,7 +136,7 @@ Exemple with reactive data
 ```vue
 <template>
   <div>
-    <Doughnut :data="testData" />
+    <Doughnut :data="testData" :options="options" />
     <button @click="shuffleData">Shuffle</button>
   </div>
 </template>
@@ -144,6 +153,19 @@ export default defineComponent({
   setup() {
     const dataValues = ref([30, 40, 60, 70, 5]);
 
+    const options = ref<ChartOptions<'doughnut'>>({
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Doughnut Chart',
+        },
+      },
+    });
+
     const testData = computed(() => ({
       labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
       datasets: [
@@ -158,7 +180,7 @@ export default defineComponent({
       dataValues.value = shuffle(dataValues.value);
     }
 
-    return { shuffleData, testData };
+    return { shuffleData, testData, options };
   },
 });
 ```
