@@ -1,30 +1,46 @@
 import { Chart, ChartData, ChartOptions, ChartType, Plugin, ChartDataset } from 'chart.js';
-import { ref, defineComponent, PropType, onMounted, h, onBeforeUnmount, watch } from 'vue-demi';
+import {
+  ref,
+  defineComponent,
+  PropType,
+  onMounted,
+  h,
+  onBeforeUnmount,
+  watch,
+  Ref,
+} from 'vue-demi';
 import { CSSProperties } from '@vue/runtime-dom';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
+import { VueProxy } from './vueproxy.types';
+import { DefaultData } from 'vue/types/options';
 
 export type StyleValue = string | CSSProperties | Array<StyleValue>;
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
+type ComponentData = { canvasRef: Ref<HTMLCanvasElement> };
+
 export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartId: string,
   chartType: TType
 ) => {
+  const propsDefs = {
+    chartId: { default: chartId, type: String },
+    width: { default: 400, type: Number },
+    height: { default: 400, type: Number },
+    cssClasses: { type: String, default: '' },
+    styles: { type: Object as PropType<StyleValue> },
+    plugins: { type: Array as PropType<Plugin[]>, default: () => [] },
+    data: { type: Object as PropType<ChartData<TType>>, required: true },
+    options: { type: Object as PropType<ChartOptions<TType>> },
+  } as const;
+
   const componentName = pascalCase(chartType);
-  return defineComponent({
+
+  const componentDef = defineComponent({
     name: componentName,
-    props: {
-      chartId: { default: chartId, type: String },
-      width: { default: 400, type: Number },
-      height: { default: 400, type: Number },
-      cssClasses: { type: String, default: '' },
-      styles: { type: Object as PropType<StyleValue> },
-      plugins: { type: Array as PropType<Plugin[]>, default: () => [] },
-      data: { type: Object as PropType<ChartData<TType>>, required: true },
-      options: { type: Object as PropType<ChartOptions<TType>> },
-    },
+    props: propsDefs,
     emits: {
       'labels:update': () => true,
       'chart:update': (chartInstance: Chart) => true,
@@ -142,7 +158,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       //- Hooks
 
-      onMounted(() => renderChart());
+      onMounted(renderChart);
 
       onBeforeUnmount(() => {
         if (chartInstance) {
@@ -150,7 +166,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         }
       });
 
-      return { canvasRef, chartInstance };
+      return { canvasRef };
     },
     render() {
       return h(
@@ -172,4 +188,10 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       );
     },
   });
+
+  return componentDef as VueProxy<
+    typeof propsDefs,
+    ComponentData & DefaultData<Vue>,
+    ComponentData & DefaultData<Vue>
+  >;
 };

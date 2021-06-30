@@ -13,20 +13,6 @@
 
 This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-chartjs) for Chart.js 3, but written in Typescript with [vue-demi](https://github.com/vueuse/vue-demi) and Vue Composition API.
 
-# Compatibility
-
-- Chart.js >= 3
-- Compatible with Vue 2 with `@vue/composition-api` installed and registered
-- Compatible with Vue 3
-
----
-
-It's recommended to use this with [Volar](https://github.com/johnsoncodehk/volar) on VSCode for better props types check
-
-# Demo
-
-[CodeSandbox demo](https://codesandbox.io/s/demo-vue-chart-3-ugynm?file=/src/App.vue)
-
 # Installation
 
 ```bash
@@ -35,22 +21,73 @@ npm i vue-chart-3
 yarn add vue-chart-3
 ```
 
-# Usage
+# Important notes
 
-Example with static data
+## Using with Vue 3 or Vue 2
+
+This package works with version 2.x and 3.x of Vue.
+
+- Vue 3 works out-of-the-box
+- Vue 2 requires `@vue/composition-api` package to also be installed, to provide Vue 3's [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html) features like `ref, defineComponent, computed, reactive`.
+
+```js
+// Vue 3
+import { defineComponent, computed, ref } from 'vue';
+// Vue 2
+import { defineComponent, computed, ref } from '@vue/composition-api';
+```
+
+## Chart.js (v3)
+
+Chart.js v3 is now tree-shakable, so make sure to import and register the chart components you need. See [Chart.js API](https://www.chartjs.org/docs/master/api/) for all available imports.
+
+[Learn more about Chart.js tree-shaking](https://www.chartjs.org/docs/master/getting-started/integration.html#bundlers-webpack-rollup-etc)
+
+For example, if you want to create a Doughnut chart and tree-shake the unused other components, it might look like this:
+
+```ts
+import { Chart, DoughnutController, ArcElement, Tooltip } from 'chart.js';
+Chart.register(DoughnutController, ArcElement, Tooltip);
+```
+
+Or if you want all components of Chart.js (but lose the benefits of tree-shaking), use this:
+
+```ts
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
+```
+
+Unlike `vue-chartjs`, there is no need to re-create each component with mixins and reactive props, etc. with this package. Thanks to `@vue/composition-api`, all of this is possible just by importing the corresponding component.
+
+(Thanks to [@nwittwer](https://github.com/nwittwer) for upgraded notes)
+
+# Demo
+
+[CodeSandbox demo](https://codesandbox.io/s/demo-vue-chart-3-ugynm?file=/src/App.vue)
+
+# Usage and docs
+
+## Events emitted by all components
+
+| Event           | Payload       |
+| --------------- | ------------- |
+| 'chart:render'  | chartInstance |
+| 'chart:update'  | chartInstance |
+| 'chart:destroy' | chartInstance |
+| 'labels:update' | -             |
+
+---
+
+## Exemple with static data
 
 ```vue
 <template>
   <DoughnutChart :data="testData" />
 </template>
-```
 
-```ts
-import { defineComponent } from "vue";
-import { Chart, DoughnutController, ArcElement, Tooltip } from 'chart.js'
-import { Doughnut as DoughnutChart } from 'vue-chart-3'
-
-Chart.register(DoughnutController, ArcElement, Tooltip)
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { Doughnut } from 'vue-chart-3';
 
 export default defineComponent({
   name: "Home",
@@ -75,58 +112,107 @@ export default defineComponent({
     return { testData };
   },
 });
+</script>
 ```
 
 ---
 
-Example with reactive data
+Accessing Canvas Ref and ChartInstance
+
+```vue
+<template>
+  <Doughnut
+    ref="doughtnutRef"
+    :data="testData"
+    @chart:render="handleChartRender"
+    @chart:update="handleChartRender"
+  />
+</template>
+
+<script lang="ts">
+import { shuffle } from 'lodash';
+import { computed, defineComponent, ref, onMounted } from 'vue';
+import { Doughnut } from 'vue-chart-3';
+
+export default defineComponent({
+  name: 'Home',
+  components: { Doughnut },
+  setup() {
+    const doughtnutRef = ref<typeof Doughnut>();
+    // ....
+    onMounted(() => {
+      // chartInstance not accessible until another version due to Vue 3 bugs with Chart.js
+      console.log(doughtnutRef.value.canvasRef);
+    });
+
+    function handleChartRender(chart: Chart<'doughnut'>) {
+      console.log(chart);
+    }
+
+    return { shuffleData, testData, doughtnutRef, handleChartRender };
+  },
+});
+</script>
+```
+
+---
+
+## Exemple with reactive data, options, events and tree shaking
 
 ```vue
 <template>
   <div>
-    <DoughnutChart :data="testData" />
-    <button @click="suffleData">Shuffle</button>
+    <DoughnutChart ref="doughnutRef" :data="testData" :options="options" />
+    <button @click="shuffleData">Shuffle</button>
   </div>
 </template>
-```
 
-```ts
 <script lang="ts">
 import { shuffle } from 'lodash';
-import { defineComponent, computed, ref } from 'vue'
-import { Chart, DoughnutController, ArcElement, Tooltip } from 'chart.js'
-import { Doughnut as DoughnutChart } from 'vue-chart-3'
+import { computed, defineComponent, ref } from 'vue';
+import { Doughnut } from 'vue-chart-3';
+import { Chart, DoughnutController, ArcElement, Tooltip, ChartData, ChartOptions } from 'chart.js';
 
-Chart.register(DoughnutController, ArcElement, Tooltip)
+Chart.register(DoughnutController, ArcElement, Tooltip);
 
 export default defineComponent({
-  components: { DoughnutChart },
+  name: 'Home',
+  components: { DoughnutChart: Doughnut },
   setup() {
-    const dataValues = ref([30, 40, 60, 70, 5])
+    const data = ref([30, 40, 60, 70, 5]);
+    const doughnutRef = ref<typeof Doughnut>();
 
-    const testData = computed(() => ({
+    const options = ref<ChartOptions<'doughnut'>>({
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Doughnut Chart',
+        },
+      },
+    });
+
+    const testData = computed<ChartData<'doughnut'>>(() => ({
       labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
       datasets: [
         {
-          data: dataValues.value,
-          backgroundColor: [
-            '#77CEFF',
-            '#0079AF',
-            '#123E6B',
-            '#97B0C4',
-            '#A5C8ED',
-          ],
+          data: data.value,
+          backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
         },
       ],
     }))
 
     function shuffleData() {
-      dataValues.value = shuffle(dataValues.value)
+      data.value = shuffle(data.value);
     }
 
-    return { shuffleData, testData }
+    return { testData, shuffleData, doughnutRef, options };
   },
-})
+});
+</script>
 ```
 
 # Supporting plugins
