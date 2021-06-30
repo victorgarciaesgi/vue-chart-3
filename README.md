@@ -115,7 +115,12 @@ Accessing Canvas Ref and ChartInstance
 
 ```vue
 <template>
-  <Doughnut ref="doughtnutRef" :data="testData" />
+  <Doughnut
+    ref="doughtnutRef"
+    :data="testData"
+    @chart:render="handleChartRender"
+    @chart:update="handleChartRender"
+  />
 </template>
 
 <script lang="ts">
@@ -127,14 +132,18 @@ export default defineComponent({
   name: 'Home',
   components: { Doughnut },
   setup() {
-    const doughtnutRef = ref();
+    const doughtnutRef = ref<typeof Doughnut>();
     // ....
     onMounted(() => {
-      console.log(doughtnutRef.value.chartInstance);
+      // chartInstance not accessible until another version due to Vue 3 bugs with Chart.js
       console.log(doughtnutRef.value.canvasRef);
     });
 
-    return { shuffleData, testData, doughtnutRef };
+    function handleChartRender(chart: Chart<'doughnut'>) {
+      console.log(chart);
+    }
+
+    return { shuffleData, testData, doughtnutRef, handleChartRender };
   },
 });
 </script>
@@ -147,12 +156,7 @@ export default defineComponent({
 ```vue
 <template>
   <div>
-    <DoughnutChart
-      ref="doughnutRef"
-      :data="testData"
-      :options="options"
-      @chart:render="handleChartRender"
-    />
+    <DoughnutChart ref="doughnutRef" :data="testData" :options="options" />
     <button @click="shuffleData">Shuffle</button>
   </div>
 </template>
@@ -195,15 +199,11 @@ export default defineComponent({
       ],
     }));
 
-    function handleChartRender(chart: Chart<'doughnut'>) {
-      console.log(chart);
-    }
-
     function shuffleData() {
       data.value = shuffle(data.value);
     }
 
-    return { testData, shuffleData, doughnutRef, options, handleChartRender };
+    return { testData, shuffleData, doughnutRef, options };
   },
 });
 </script>
