@@ -13,6 +13,7 @@ import type { CSSProperties, DefineComponent } from '@vue/runtime-dom';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
 import type { DefaultData } from 'vue/types/options';
+import { VueProxy } from './vueproxy.types';
 
 export type StyleValue = string | CSSProperties | Array<StyleValue>;
 
@@ -190,14 +191,9 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     },
   }) as any;
 
-  return componentDef as DefineComponent<
+  return componentDef as VueProxy<
     typeof propsDefs,
     ComponentData & DefaultData<Vue>,
-    any,
-    any,
-    any,
-    any,
-    any,
-    typeof emitsDefs
+    ComponentData & DefaultData<Vue>
   >;
 };
