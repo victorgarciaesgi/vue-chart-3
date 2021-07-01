@@ -36,19 +36,17 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     options: { type: Object as PropType<ChartOptions<TType>> },
   } as const;
 
-  const emitsDefs = {
-    'labels:update': () => true,
-    'chart:update': (chartInstance: Chart<TType>) => true,
-    'chart:destroy': (chartInstance: Chart<TType>) => true,
-    'chart:render': (chartInstance: Chart<TType>) => true,
-  } as const;
-
   const componentName = pascalCase(chartType);
 
   const componentDef = defineComponent({
     name: componentName,
     props: propsDefs,
-    emits: emitsDefs,
+    emits: {
+      'labels:update': () => true,
+      'chart:update': (chartInstance: Chart<TType>) => true,
+      'chart:destroy': (chartInstance: Chart<TType>) => true,
+      'chart:render': (chartInstance: Chart<TType>) => true,
+    },
     setup(props, { emit }) {
       //- Template refs
       const canvasRef = ref<HTMLCanvasElement>();
