@@ -9,11 +9,10 @@ import {
   watch,
   Ref,
 } from 'vue-demi';
-import { CSSProperties } from '@vue/runtime-dom';
+import type { CSSProperties, DefineComponent } from '@vue/runtime-dom';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
-import { VueProxy } from './vueproxy.types';
-import { DefaultData } from 'vue/types/options';
+import type { DefaultData } from 'vue/types/options';
 
 export type StyleValue = string | CSSProperties | Array<StyleValue>;
 
@@ -36,17 +35,19 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     options: { type: Object as PropType<ChartOptions<TType>> },
   } as const;
 
+  const emitsDefs = {
+    'labels:update': () => true,
+    'chart:update': (chartInstance: Chart<TType>) => true,
+    'chart:destroy': (chartInstance: Chart<TType>) => true,
+    'chart:render': (chartInstance: Chart<TType>) => true,
+  } as const;
+
   const componentName = pascalCase(chartType);
 
   const componentDef = defineComponent({
     name: componentName,
     props: propsDefs,
-    emits: {
-      'labels:update': () => true,
-      'chart:update': (chartInstance: Chart) => true,
-      'chart:destroy': (chartInstance: Chart) => true,
-      'chart:render': (chartInstance: Chart) => true,
-    },
+    emits: emitsDefs,
     setup(props, { emit }) {
       //- Template refs
       const canvasRef = ref<HTMLCanvasElement>();
@@ -187,11 +188,16 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         ]
       );
     },
-  });
+  }) as any;
 
-  return componentDef as VueProxy<
+  return componentDef as DefineComponent<
     typeof propsDefs,
     ComponentData & DefaultData<Vue>,
-    ComponentData & DefaultData<Vue>
+    any,
+    any,
+    any,
+    any,
+    any,
+    typeof emitsDefs
   >;
 };

@@ -19,6 +19,8 @@ This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-c
 npm i vue-chart-3
 #or
 yarn add vue-chart-3
+#or
+pnpm i vue-chart-3
 ```
 
 # Important notes
