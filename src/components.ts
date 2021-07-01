@@ -38,7 +38,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
   const componentName = pascalCase(chartType);
 
-  const componentDef = defineComponent({
+  return defineComponent({
     name: componentName,
     props: propsDefs,
     emits: {
@@ -187,11 +187,11 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         ]
       );
     },
-  }) as any;
+  });
 
-  return componentDef as VueProxy<
-    typeof propsDefs,
-    ComponentData & DefaultData<Vue>,
-    ComponentData & DefaultData<Vue>
-  >;
+  // return componentDef as VueProxy<
+  //   typeof propsDefs,
+  //   ComponentData & DefaultData<Vue>,
+  //   ComponentData & DefaultData<Vue>
+  // >;
 };
