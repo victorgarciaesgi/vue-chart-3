@@ -2,23 +2,23 @@ import { defineChartComponent } from './components';
 
 export { defineChartComponent } from './components';
 
-export const Bar = defineChartComponent('bar-chart', 'bar');
-export const Doughnut = defineChartComponent('doughnut-chart', 'doughnut');
-export const LineChart = defineChartComponent('line-chart', 'line');
-export const Pie = defineChartComponent('pie-chart', 'pie');
-export const PolarArea = defineChartComponent('polar-chart', 'polarArea');
-export const Radar = defineChartComponent('radar-chart', 'radar');
-export const Bubble = defineChartComponent('bubble-chart', 'bubble');
-export const Scatter = defineChartComponent('scatter-chart', 'scatter');
+export const BarChart = defineChartComponent('bar-chart', 'bar');
+export const DoughnutChart = defineChartComponent('doughnut-chart', 'doughnut');
+export const LineChartChart = defineChartComponent('line-chart', 'line');
+export const PieChart = defineChartComponent('pie-chart', 'pie');
+export const PolarAreaChart = defineChartComponent('polar-chart', 'polarArea');
+export const RadarChart = defineChartComponent('radar-chart', 'radar');
+export const BubbleChart = defineChartComponent('bubble-chart', 'bubble');
+export const ScatterChart = defineChartComponent('scatter-chart', 'scatter');
 
 export default {
-  Bar,
-  Doughnut,
-  LineChart,
-  Pie,
-  PolarArea,
-  Radar,
-  Bubble,
-  Scatter,
+  BarChart,
+  DoughnutChart,
+  LineChartChart,
+  PieChart,
+  PolarAreaChart,
+  RadarChart,
+  BubbleChart,
+  ScatterChart,
   defineChartComponent,
 };

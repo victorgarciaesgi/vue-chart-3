@@ -9,11 +9,9 @@ import {
   watch,
   Ref,
 } from 'vue-demi';
-import type { CSSProperties, DefineComponent } from '@vue/runtime-dom';
+import type { CSSProperties } from '@vue/runtime-dom';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
-import type { DefaultData } from 'vue/types/options';
-import { VueProxy } from './vueproxy.types';
 
 export type StyleValue = string | CSSProperties | Array<StyleValue>;
 
@@ -34,6 +32,10 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     plugins: { type: Array as PropType<Plugin[]>, default: () => [] },
     data: { type: Object as PropType<ChartData<TType>>, required: true },
     options: { type: Object as PropType<ChartOptions<TType>> },
+    onLabelsUpdate: { type: Function as PropType<() => void> },
+    onChartUpdate: { type: Function as PropType<(chartInstance: Chart<TType>) => void> },
+    onChartDestroy: { type: Function as PropType<() => void> },
+    onChartRender: { type: Function as PropType<(chartInstance: Chart<TType>) => void> },
   } as const;
 
   const componentName = pascalCase(chartType);
@@ -45,7 +47,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       'labels:update': () => true,
       'chart:update': (chartInstance: Chart<TType>) => true,
       'chart:destroy': (chartInstance: Chart<TType>) => true,
-      'chart:render': (chartInstance: Chart<TType>) => true,
+      'chart:render': () => true,
     },
     setup(props, { emit }) {
       //- Template refs
@@ -120,21 +122,21 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
             if (newData.hasOwnProperty('labels')) {
               chart.data.labels = newData.labels;
-              emit('labels:update');
+              handleLabelsUpdate();
             }
             chart.update();
-            emit('chart:update', chartInstance);
+            handleChartUpdate();
           } else {
             if (chart) {
               chart.destroy();
-              emit('chart:destroy', chartInstance);
+              handleChartDestroy();
             }
             renderChart();
           }
         } else {
           if (chartInstance) {
             chartInstance.destroy();
-            emit('chart:destroy', chartInstance);
+            handleChartDestroy();
           }
           renderChart();
         }
@@ -148,12 +150,36 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
             options: props.options as ChartOptions<TType>, // Types won't work with props type
             plugins: props.plugins,
           });
-          emit('chart:render', chartInstance);
+          handleChartRender();
         } else {
           console.error(
             `Error on component ${componentName}, canvas cannot be rendered. Check if the render appends server-side`
           );
         }
+      }
+
+      function handleLabelsUpdate() {
+        emit('labels:update');
+        props.onLabelsUpdate?.();
+      }
+
+      function handleChartRender() {
+        if (chartInstance) {
+          emit('chart:render');
+          props.onChartRender?.(chartInstance);
+        }
+      }
+
+      function handleChartUpdate() {
+        if (chartInstance) {
+          emit('chart:render');
+          props.onChartRender?.(chartInstance);
+        }
+      }
+
+      function handleChartDestroy() {
+        emit('chart:destroy');
+        props.onChartDestroy?.();
       }
 
       //- Hooks
@@ -166,7 +192,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         }
       });
 
-      return { canvasRef };
+      return { canvasRef } as const;
     },
     render() {
       return h(

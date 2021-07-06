@@ -69,13 +69,28 @@ Unlike `vue-chartjs`, there is no need to re-create each component with mixins a
 
 # Usage and docs
 
+## All components props
+
+| Prop             | Type                           | Default |
+| ---------------- | ------------------------------ | ------- |
+| 'data'           | ChartJs.ChartData              |
+| 'options'        | ChartJs.ChartOptions           |
+| 'plugins'        | ChartJs.Plugin[]               |
+| 'cssClasses'     | string                         |
+| 'width'          | number                         | 400     |
+| 'height'         | number                         | 400     |
+| 'onChartRender'  | (chartInstance: Chart) => void |
+| 'onChartUpdate'  | (chartInstance: Chart) => void |
+| 'onChartDestroy' | () => void                     |
+| 'onLabelsUpdate' | () => void                     |
+
 ## Events emitted by all components
 
 | Event           | Payload       |
 | --------------- | ------------- |
 | 'chart:render'  | chartInstance |
 | 'chart:update'  | chartInstance |
-| 'chart:destroy' | chartInstance |
+| 'chart:destroy' | -             |
 | 'labels:update' | -             |
 
 ---
@@ -84,16 +99,16 @@ Unlike `vue-chartjs`, there is no need to re-create each component with mixins a
 
 ```vue
 <template>
-  <Doughnut :data="testData" />
+  <DoughnutChart :data="testData" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Doughnut } from 'vue-chart-3';
+import { DoughnutChart } from 'vue-chart-3';
 
 export default defineComponent({
   name: 'Home',
-  components: { Doughnut },
+  components: { DoughnutChart },
   setup() {
     const testData = {
       labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
@@ -117,7 +132,7 @@ Accessing Canvas Ref and ChartInstance
 
 ```vue
 <template>
-  <Doughnut
+  <DoughnutChart
     ref="doughtnutRef"
     :data="testData"
     @chart:render="handleChartRender"
@@ -128,13 +143,13 @@ Accessing Canvas Ref and ChartInstance
 <script lang="ts">
 import { shuffle } from 'lodash';
 import { computed, defineComponent, ref, onMounted } from 'vue';
-import { Doughnut } from 'vue-chart-3';
+import { DoughnutChart } from 'vue-chart-3';
 
 export default defineComponent({
   name: 'Home',
-  components: { Doughnut },
+  components: { DoughnutChart },
   setup() {
-    const doughtnutRef = ref<typeof Doughnut>();
+    const doughtnutRef = ref();
     // ....
     onMounted(() => {
       // chartInstance not accessible until another version due to Vue 3 bugs with Chart.js
