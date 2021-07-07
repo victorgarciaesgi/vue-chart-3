@@ -165,14 +165,14 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       function handleChartRender() {
         if (chartInstance) {
-          emit('chart:render');
+          emit('chart:render', chartInstance);
           props.onChartRender?.(chartInstance);
         }
       }
 
       function handleChartUpdate() {
         if (chartInstance) {
-          emit('chart:render');
+          emit('chart:render', chartInstance);
           props.onChartRender?.(chartInstance);
         }
       }
