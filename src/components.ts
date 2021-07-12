@@ -203,11 +203,9 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         },
         [
           h('canvas', {
-            attrs: {
-              id: this.chartId,
-              width: this.width,
-              height: this.height,
-            },
+            id: this.chartId,
+            width: this.width,
+            height: this.height,
             ref: 'canvasRef',
           }),
         ]
