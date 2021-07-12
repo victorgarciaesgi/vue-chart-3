@@ -8,6 +8,8 @@ import {
   onBeforeUnmount,
   watch,
   Ref,
+  isVue2,
+  isVue3,
 } from 'vue-demi';
 import type { CSSProperties } from '@vue/runtime-dom';
 import startCase from 'lodash/startCase';
@@ -206,11 +208,18 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         },
         [
           h('canvas', {
-            attrs: {
+            ...(isVue2 && {
+              attrs: {
+                id: this.chartId,
+                width: this.width,
+                height: this.height,
+              },
+            }),
+            ...(isVue3 && {
               id: this.chartId,
               width: this.width,
               height: this.height,
-            },
+            }),
             ref: 'canvasRef',
           }),
         ]
