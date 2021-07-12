@@ -11,11 +11,11 @@ import {
   isVue2,
   isVue3,
 } from 'vue-demi';
-import type { CSSProperties } from '@vue/runtime-dom';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
+import * as CSS from 'csstype';
 
-export type StyleValue = string | CSSProperties | Array<StyleValue>;
+export type StyleValue = string | CSS.Properties | Array<StyleValue>;
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 

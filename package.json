@@ -1,15 +1,17 @@
 {
   "name": "vue-chart-3",
-  "version": "0.3.5",
+  "version": "0.3.7",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",
+    "vue chart.js 3",
     "chartjs 3",
     "vue chartjs",
     "chartjs vue",
     "chartjs 3 vue",
     "chartjs vue3",
-    "chartjs vue 3"
+    "chartjs vue 3",
+    "vue chart.js"
   ],
   "author": {
     "name": "Victor Garcia",
@@ -24,7 +26,6 @@
   "license": "MIT",
   "peerDependencies": {
     "@vue/composition-api": "^1.0.0-rc.9",
-    "@vue/runtime-dom": "> 3.1.0",
     "chart.js": "^3.1.0",
     "vue": "^2.0.0 || >=3.0.0-rc.0"
   },
@@ -45,6 +46,7 @@
     "vue": "^2.6.14"
   },
   "dependencies": {
+    "csstype": "latest",
     "lodash": "latest",
     "vue-demi": "^0.10.1"
   },

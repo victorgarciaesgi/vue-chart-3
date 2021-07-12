@@ -1,7 +1,7 @@
 import { Chart, ChartData, Plugin } from 'chart.js';
 import { PropType } from 'vue-demi';
-import type { CSSProperties } from '@vue/runtime-dom';
-export declare type StyleValue = string | CSSProperties | Array<StyleValue>;
+import * as CSS from 'csstype';
+export declare type StyleValue = string | CSS.Properties | Array<StyleValue>;
 export declare const defineChartComponent: <TType extends keyof import("chart.js").ChartTypeRegistry = keyof import("chart.js").ChartTypeRegistry>(chartId: string, chartType: TType) => import("vue").ComponentOptions<import("vue").default, import("@vue/composition-api").ShallowUnwrapRef<import("@vue/composition-api").Data> & import("@vue/composition-api").Data, {}, {}, {
     readonly chartId: {
         readonly default: string;
