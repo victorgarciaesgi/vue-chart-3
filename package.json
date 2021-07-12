@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "0.3.2",
+  "version": "0.3.4",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",
@@ -24,28 +24,29 @@
   "license": "MIT",
   "peerDependencies": {
     "@vue/composition-api": "^1.0.0-rc.9",
+    "@vue/runtime-dom": "> 3.1.0",
     "chart.js": "^3.1.0",
     "vue": "^2.0.0 || >=3.0.0-rc.0"
-  },
-  "devDependencies": {
-    "@types/chart.js": "^2.9.32",
-    "@types/lodash": "^4.14.170",
-    "@types/node": "^15.12.5",
-    "@vue/composition-api": "^1.0.0-rc.12",
-    "@vue/runtime-dom": "^3.1.2",
-    "chart.js": "^3.4.0",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.3.4",
-    "vue": "^2.6.13"
   },
   "peerDependenciesMeta": {
     "@vue/composition-api": {
       "optional": true
     }
   },
+  "devDependencies": {
+    "@types/chart.js": "^2.9.34",
+    "@types/lodash": "^4.14.171",
+    "@types/node": "^15.12.5",
+    "@vue/composition-api": "^1.0.0-rc.13",
+    "@vue/runtime-dom": "^3.1.4",
+    "chart.js": "^3.4.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.3.5",
+    "vue": "^2.6.14"
+  },
   "dependencies": {
     "lodash": "latest",
-    "vue-demi": "^0.9.1"
+    "vue-demi": "^0.10.1"
   },
   "repository": {
     "type": "git",

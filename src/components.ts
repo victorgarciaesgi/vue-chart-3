@@ -198,7 +198,10 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       return h(
         'div',
         {
-          style: this.styles as any,
+          style: {
+            maxWidth: '100%',
+            ...(this.styles as any),
+          },
           class: this.cssClasses,
         },
         [
