@@ -1,65 +1,17 @@
 {
-  "name": "vue-chart-3",
-  "version": "0.3.7",
-  "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
-  "keywords": [
-    "vue chartjs 3",
-    "vue chart.js 3",
-    "chartjs 3",
-    "vue chartjs",
-    "chartjs vue",
-    "chartjs 3 vue",
-    "chartjs vue3",
-    "chartjs vue 3",
-    "vue chart.js"
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "author": {
-    "name": "Victor Garcia",
-    "url": "https://github.com/victorgarciaesgi"
-  },
-  "files": [
-    "dist",
-    "types"
-  ],
-  "main": "dist/index.js",
-  "typings": "types/index.d.ts",
-  "license": "MIT",
-  "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.9",
-    "chart.js": "^3.1.0",
-    "vue": "^2.0.0 || >=3.0.0-rc.0"
-  },
-  "peerDependenciesMeta": {
-    "@vue/composition-api": {
-      "optional": true
-    }
+  "scripts": {
+    "clean": "cd ./packages/vue-chart-3/ && rimraf dist && rimraf types",
+    "compile": "cd ./packages/vue-chart-3/ && tsc -p ./tsconfig.json --pretty",
+    "dev": "cd ./packages/vue-chart-3/ && tsc -p ./tsconfig.json --pretty --watch",
+    "build": "yarn run clean && yarn run compile",
+    "debug:vue2": "cd packages/test/vue2 && yarn serve",
+    "deploy": "lerna run build && lerna publish --skip-git"
   },
   "devDependencies": {
-    "@types/chart.js": "^2.9.34",
-    "@types/lodash": "^4.14.171",
-    "@types/node": "^15.12.5",
-    "@vue/composition-api": "^1.0.0-rc.13",
-    "@vue/runtime-dom": "^3.1.4",
-    "chart.js": "^3.4.1",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.3.5",
-    "vue": "^2.6.14"
-  },
-  "dependencies": {
-    "csstype": "latest",
-    "lodash": "latest",
-    "vue-demi": "^0.10.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/victorgarciaesgi/vue-chart-3.git"
-  },
-  "homepage": "https://github.com/victorgarciaesgi/vue-chart-3#readme",
-  "scripts": {
-    "clean": "rimraf dist && rimraf types",
-    "compile": "tsc --pretty",
-    "dev": "tsc --pretty --watch",
-    "build": "yarn run clean && yarn run compile",
-    "prepublish": "yarn build"
+    "lerna": "^4.0.0"
   }
 }

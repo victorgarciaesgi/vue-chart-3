@@ -1,0 +1,47 @@
+{
+  "name": "vue2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@vue/composition-api": "^1.0.0",
+    "chart.js": "^3.4.1",
+    "core-js": "^3.6.5",
+    "lodash": "^4.17.21",
+    "vue": "^2.6.11",
+    "vue-chart-3": "^0.3.7"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/runtime-dom": "^3.1.4",
+    "babel-eslint": "^10.1.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^7.30.0",
+    "eslint-plugin-vue": "^7.13.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

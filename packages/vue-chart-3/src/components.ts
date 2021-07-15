@@ -10,16 +10,20 @@ import {
   Ref,
   isVue2,
   isVue3,
+  install,
+  getCurrentInstance,
 } from 'vue-demi';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
 import * as CSS from 'csstype';
 
+install();
+
 export type StyleValue = string | CSS.Properties | Array<StyleValue>;
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
-type ComponentData = { canvasRef: Ref<HTMLCanvasElement> };
+type ComponentData = { canvasRef: Ref<HTMLCanvasElement | undefined>; renderChart: () => void };
 
 export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartId: string,
@@ -51,7 +55,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       'chart:destroy': (chartInstance: Chart<TType>) => true,
       'chart:render': () => true,
     },
-    setup(props, { emit }) {
+    setup(props, { emit }): ComponentData {
       //- Template refs
       const canvasRef = ref<HTMLCanvasElement>();
 
@@ -62,15 +66,17 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       //- Watchers
 
       watch(() => props.data, watchHandler, { deep: true });
-      // watch(
-      //   () => props.options,
-      //   () => {
-      //     chartInstance?.update();
-      //     emit('chart:update', chartInstance);
-      //   },
-      //   { deep: true }
-      // );
-      //- Functions
+      watch(
+        () => props.options,
+        () => {
+          if (chartInstance && props.options) {
+            chartInstance.options = props.options as any;
+          }
+          chartInstance?.update();
+          emit('chart:update', chartInstance);
+        },
+        { deep: true }
+      );
 
       /** Picked from vue-chartjs */
       function watchHandler(newData: ChartData, oldData: ChartData) {
@@ -186,6 +192,10 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       //- Hooks
 
+      console.log('ok');
+
+      const vm = getCurrentInstance();
+
       onMounted(renderChart);
 
       onBeforeUnmount(() => {
@@ -194,7 +204,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         }
       });
 
-      return { canvasRef } as const;
+      return { canvasRef, renderChart };
     },
     render() {
       return h(
