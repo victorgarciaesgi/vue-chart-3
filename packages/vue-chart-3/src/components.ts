@@ -56,14 +56,9 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       'chart:render': () => true,
     },
     setup(props, { emit }): ComponentData {
-      //- Template refs
       const canvasRef = ref<HTMLCanvasElement>();
 
-      //- Data
-
       let chartInstance: Chart<TType> | null = null;
-
-      //- Watchers
 
       watch(() => props.data, watchHandler, { deep: true });
       watch(
@@ -73,7 +68,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
             chartInstance.options = props.options as any;
           }
           chartInstance?.update();
-          emit('chart:update', chartInstance);
+          handleChartUpdate();
         },
         { deep: true }
       );
@@ -191,10 +186,6 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       }
 
       //- Hooks
-
-      console.log('ok');
-
-      const vm = getCurrentInstance();
 
       onMounted(renderChart);
 
