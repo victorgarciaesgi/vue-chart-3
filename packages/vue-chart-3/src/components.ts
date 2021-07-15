@@ -1,7 +1,6 @@
 import { Chart, ChartData, ChartOptions, ChartType, Plugin, ChartDataset } from 'chart.js';
 import {
   ref,
-  defineComponent,
   PropType,
   onMounted,
   h,
@@ -11,15 +10,14 @@ import {
   isVue2,
   isVue3,
   install,
-  getCurrentInstance,
+  defineComponent,
 } from 'vue-demi';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
-import * as CSS from 'csstype';
+import type { DefineComponent } from '@vue/runtime-core';
+import { StyleValue, VueProxy } from './vueproxy.types';
 
 install();
-
-export type StyleValue = string | CSS.Properties | Array<StyleValue>;
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
@@ -36,7 +34,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     cssClasses: { type: String, default: '' },
     styles: { type: Object as PropType<StyleValue> },
     plugins: { type: Array as PropType<Plugin[]>, default: () => [] },
-    data: { type: Object as PropType<ChartData<TType>>, required: true },
+    chartData: { type: Object as PropType<ChartData<TType>>, required: true },
     options: { type: Object as PropType<ChartOptions<TType>> },
     onLabelsUpdate: { type: Function as PropType<() => void> },
     onChartUpdate: { type: Function as PropType<(chartInstance: Chart<TType>) => void> },
@@ -60,7 +58,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       let chartInstance: Chart<TType> | null = null;
 
-      watch(() => props.data, watchHandler, { deep: true });
+      watch(() => props.chartData, watchHandler, { deep: true });
       watch(
         () => props.options,
         () => {
@@ -148,7 +146,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       function renderChart() {
         if (canvasRef.value) {
           chartInstance = new Chart(canvasRef.value, {
-            data: props.data,
+            data: props.chartData,
             type: chartType,
             options: props.options as ChartOptions<TType>, // Types won't work with props type
             plugins: props.plugins,
@@ -226,5 +224,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         ]
       );
     },
-  });
+  }) as unknown as
+    | DefineComponent<typeof propsDefs, ComponentData>
+    | VueProxy<typeof propsDefs, ComponentData>;
 };

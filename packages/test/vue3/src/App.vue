@@ -1,26 +1,35 @@
 <template>
   <div id="app" style="width: 400px">
     <button @click="shuffleData">Shuffle</button>
-    <BarChart :width="400" ref="doughnutRef" :data="testData" :options="options" />
+    <DoughnutChart :width="400" ref="doughnutRef" :chartData="testData" />
   </div>
 </template>
 
-<script>
-import { Chart, registerables } from 'chart.js';
-import { BarChart } from './dist';
+<script lang="ts">
+import { Chart, ChartData, registerables } from 'chart.js';
+import {
+  DoughnutChart,
+  ExtractComponentData,
+  ExtractComponentProps,
+} from '../../../vue-chart-3/src/index';
 import { ref, computed, defineComponent } from 'vue';
 import { shuffle } from 'lodash';
+import Test from './components/test.vue';
 
 Chart.register(...registerables);
 
 export default defineComponent({
   name: 'App',
+  props: {
+    test: { type: String },
+  },
   components: {
-    BarChart,
+    DoughnutChart,
+    Test,
   },
   setup() {
     const data = ref([30, 40, 60, 70, 5]);
-    const doughnutRef = ref();
+    const doughnutRef = ref<ExtractComponentData<typeof DoughnutChart>>();
     const legendTop = ref(true);
 
     const options = computed(() => ({
@@ -41,7 +50,7 @@ export default defineComponent({
       },
     }));
 
-    const testData = computed(() => ({
+    const testData = computed<ChartData<'doughnut'>>(() => ({
       labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
       datasets: [
         {
@@ -51,12 +60,16 @@ export default defineComponent({
       ],
     }));
 
+    function handleChartRender() {
+      doughnutRef.value.canvasRef;
+    }
+
     function shuffleData() {
       data.value = shuffle(data.value);
       legendTop.value = !legendTop.value;
     }
 
-    return { data, testData, shuffleData, doughnutRef, options };
+    return { data, testData, shuffleData, doughnutRef, options, handleChartRender };
   },
 });
 </script>
