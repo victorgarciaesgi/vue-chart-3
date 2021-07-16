@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.1 (2021-07-16)
+
+- Fixed component names taking chartId instead of chartType
+
 # 0.4.0 (2021-07-16)
 
 # Breaking changes

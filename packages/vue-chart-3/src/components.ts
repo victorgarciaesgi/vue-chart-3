@@ -43,7 +43,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     onChartRender: { type: Function as PropType<(chartInstance: Chart<TType>) => void> },
   } as const;
 
-  const componentName = pascalCase(chartType);
+  const componentName = pascalCase(chartId);
 
   return defineComponent({
     name: componentName,
