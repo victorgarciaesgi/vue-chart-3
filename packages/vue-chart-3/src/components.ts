@@ -22,12 +22,14 @@ install();
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
 type ComponentData = { canvasRef: Ref<HTMLCanvasElement | undefined>; renderChart: () => void };
+type BetterChartOptions<TType extends ChartType> = {} & ObjectConstructor & ChartOptions<TType>;
 
 export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartId: string,
   chartType: TType
 ) => {
   const propsDefs = {
+    options: { type: Object as PropType<ChartOptions<TType>>, required: false },
     chartId: { default: chartId, type: String },
     width: { default: 400, type: Number },
     height: { default: 400, type: Number },
@@ -35,7 +37,6 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     styles: { type: Object as PropType<StyleValue> },
     plugins: { type: Array as PropType<Plugin[]>, default: () => [] },
     chartData: { type: Object as PropType<ChartData<TType>>, required: true },
-    options: { type: Object as PropType<ChartOptions<TType>> },
     onLabelsUpdate: { type: Function as PropType<() => void> },
     onChartUpdate: { type: Function as PropType<(chartInstance: Chart<TType>) => void> },
     onChartDestroy: { type: Function as PropType<() => void> },
@@ -224,7 +225,5 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         ]
       );
     },
-  }) as unknown as
-    | DefineComponent<typeof propsDefs, ComponentData>
-    | VueProxy<typeof propsDefs, ComponentData>;
+  }) as unknown as VueProxy<typeof propsDefs, ComponentData>;
 };

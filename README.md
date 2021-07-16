@@ -32,13 +32,6 @@ This package works with version 2.x and 3.x of Vue.
 - Vue 3 works out-of-the-box
 - Vue 2 requires `@vue/composition-api` package to also be installed, to provide Vue 3's [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html) features like `ref, defineComponent, computed, reactive`.
 
-```js
-// Vue 3
-import { defineComponent, computed, ref } from 'vue';
-// Vue 2
-import { defineComponent, computed, ref } from '@vue/composition-api';
-```
-
 ## Chart.js (v3)
 
 Chart.js v3 is now tree-shakable, so make sure to import and register the chart components you need. See [Chart.js API](https://www.chartjs.org/docs/master/api/) for all available imports.
@@ -73,8 +66,8 @@ Unlike `vue-chartjs`, there is no need to re-create each component with mixins a
 
 | Prop             | Type                           | Default |
 | ---------------- | ------------------------------ | ------- |
-| 'data'           | ChartJs.ChartData              |
-| 'options'        | ChartJs.ChartOptions           |
+| 'chartData'      | ChartJs.ChartData<TType>       |
+| 'options'        | ChartJs.ChartOptions<TType>    |
 | 'plugins'        | ChartJs.Plugin[]               |
 | 'cssClasses'     | string                         |
 | 'width'          | number                         | 400     |
@@ -86,12 +79,12 @@ Unlike `vue-chartjs`, there is no need to re-create each component with mixins a
 
 ## Events emitted by all components
 
-| Event           | Payload       |
-| --------------- | ------------- |
-| 'chart:render'  | chartInstance |
-| 'chart:update'  | chartInstance |
-| 'chart:destroy' | -             |
-| 'labels:update' | -             |
+| Event           | Payload              |
+| --------------- | -------------------- |
+| 'chart:render'  | chartInstance: Chart |
+| 'chart:update'  | chartInstance: Chart |
+| 'chart:destroy' | -                    |
+| 'labels:update' | -                    |
 
 ---
 
@@ -99,7 +92,7 @@ Unlike `vue-chartjs`, there is no need to re-create each component with mixins a
 
 ```vue
 <template>
-  <DoughnutChart :data="testData" />
+  <DoughnutChart :chartData="testData" />
 </template>
 
 <script lang="ts">
@@ -134,7 +127,7 @@ Accessing Canvas Ref and ChartInstance
 <template>
   <DoughnutChart
     ref="doughtnutRef"
-    :data="testData"
+    :chartData="testData"
     @chart:render="handleChartRender"
     @chart:update="handleChartRender"
   />
@@ -173,7 +166,7 @@ export default defineComponent({
 ```vue
 <template>
   <div>
-    <DoughnutChart ref="doughnutRef" :data="testData" :options="options" />
+    <DoughnutChart ref="doughnutRef" :chartData="testData" :options="options" />
     <button @click="shuffleData">Shuffle</button>
   </div>
 </template>
@@ -181,17 +174,17 @@ export default defineComponent({
 <script lang="ts">
 import { shuffle } from 'lodash';
 import { computed, defineComponent, ref } from 'vue';
-import { Doughnut } from 'vue-chart-3';
+import { DoughnutChart, ExtractComponentData } from 'vue-chart-3';
 import { Chart, DoughnutController, ArcElement, Tooltip, ChartData, ChartOptions } from 'chart.js';
 
 Chart.register(DoughnutController, ArcElement, Tooltip);
 
 export default defineComponent({
   name: 'Home',
-  components: { DoughnutChart: Doughnut },
+  components: { DoughnutChart },
   setup() {
     const data = ref([30, 40, 60, 70, 5]);
-    const doughnutRef = ref<typeof Doughnut>();
+    const doughnutRef = ref<ExtractComponentData<typeof DoughnutChart>>();
 
     const options = ref<ChartOptions<'doughnut'>>({
       responsive: true,
@@ -224,6 +217,35 @@ export default defineComponent({
   },
 });
 </script>
+```
+
+## Helper types for Typescripts users
+
+### `ExtractComponentData<T>`
+
+This component is useful if you want to access the Chart component ref.
+
+Ex:
+
+```ts
+setup() {
+  const doughtnutRef = ref<ExtractComponentData<typeof DoughtnutChart>>()
+}
+```
+
+### `ExtractComponentProps<T>`
+
+This type will extracts prop types from the component if you want to type your `v-bind`.
+
+Ex:
+
+```ts
+setup() {
+  const barChartProps = computed<ExtractComponentProps<typeof BarChart>>(() => ({
+    chartData: {...},
+    options: {}
+  }))
+}
 ```
 
 # Supporting plugins

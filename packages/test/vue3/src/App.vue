@@ -1,17 +1,13 @@
 <template>
   <div id="app" style="width: 400px">
     <button @click="shuffleData">Shuffle</button>
-    <DoughnutChart :width="400" ref="doughnutRef" :chartData="testData" />
+    <DoughnutChart :width="400" ref="doughnutRef" :chartData="testData" :options="options" />
   </div>
 </template>
 
 <script lang="ts">
-import { Chart, ChartData, registerables } from 'chart.js';
-import {
-  DoughnutChart,
-  ExtractComponentData,
-  ExtractComponentProps,
-} from '../../../vue-chart-3/src/index';
+import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
+import { DoughnutChart, ExtractComponentData } from '../../../vue-chart-3/src/index';
 import { ref, computed, defineComponent } from 'vue';
 import { shuffle } from 'lodash';
 import Test from './components/test.vue';
@@ -25,14 +21,13 @@ export default defineComponent({
   },
   components: {
     DoughnutChart,
-    Test,
   },
   setup() {
     const data = ref([30, 40, 60, 70, 5]);
     const doughnutRef = ref<ExtractComponentData<typeof DoughnutChart>>();
     const legendTop = ref(true);
 
-    const options = computed(() => ({
+    const options = computed<ChartOptions>(() => ({
       scales: {
         myScale: {
           type: 'logarithmic',
