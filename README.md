@@ -1,4 +1,4 @@
-# 📊 Chart.js for Vue 2 and Vue 3
+# 📊 Chart.js 3 for Vue 2 and Vue 3
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
