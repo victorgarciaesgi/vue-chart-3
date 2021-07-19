@@ -4,7 +4,6 @@
       <button @click="shuffleData">Shuffle</button>
       <BarChart :width="400" ref="doughnutRef" :chart-data="testData" :options="options" />
     </div>
-    <Options />
   </div>
 </template>
 
@@ -13,7 +12,6 @@ import { Chart, registerables } from 'chart.js';
 import { BarChart } from './dist';
 import { ref, computed, defineComponent } from '@vue/composition-api';
 import { shuffle } from 'lodash';
-import Options from './components/options_api.vue';
 
 Chart.register(...registerables);
 
@@ -21,7 +19,6 @@ export default defineComponent({
   name: 'App',
   components: {
     BarChart,
-    Options,
   },
   setup() {
     const data = ref([30, 40, 60, 70, 5]);
