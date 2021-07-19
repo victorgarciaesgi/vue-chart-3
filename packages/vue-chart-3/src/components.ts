@@ -14,6 +14,7 @@ import {
 } from 'vue-demi';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
+import deepEqual from 'deep-equal';
 import type { DefineComponent } from '@vue/runtime-core';
 import { StyleValue, VueProxy } from './vueproxy.types';
 
@@ -59,15 +60,22 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       let chartInstance: Chart<TType> | null = null;
 
+      const previousOptions = ref<ChartOptions>({});
+
       watch(() => props.chartData, watchHandler, { deep: true });
       watch(
         () => props.options,
         () => {
-          if (chartInstance && props.options) {
+          if (
+            chartInstance &&
+            props.options &&
+            !deepEqual(chartInstance.options, previousOptions.value)
+          ) {
             chartInstance.options = props.options as any;
+            previousOptions.value = props.options as any;
+            chartInstance?.update();
+            handleChartUpdate();
           }
-          chartInstance?.update();
-          handleChartUpdate();
         },
         { deep: true }
       );

@@ -4,14 +4,18 @@
     "packages/*"
   ],
   "scripts": {
-    "clean": "cd ./packages/vue-chart-3/ && rimraf dist && rimraf types",
-    "compile": "cd ./packages/vue-chart-3/ && tsc -p ./tsconfig.json --pretty",
-    "dev": "cd ./packages/vue-chart-3/ && tsc -p ./tsconfig.json --pretty --watch",
+    "clean": "cd ./packages/vue-chart-3/ && yarn run clean",
+    "compile": "cd ./packages/vue-chart-3/ && yarn run compile",
+    "dev": "cd ./packages/vue-chart-3/ && yarn run dev",
     "build": "yarn run clean && yarn run compile",
     "debug:vue2": "cd packages/test/vue2 && yarn serve",
+    "debug:vue3": "cd packages/test/vue3 && yarn serve",
     "deploy": "lerna run build && lerna publish --skip-git"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "vue-chart-3": "^0.4.1"
   }
 }
