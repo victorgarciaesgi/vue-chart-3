@@ -28,7 +28,7 @@ export default defineComponent({
     const doughnutRef = ref();
     const legendTop = ref(true);
 
-    const options = computed({
+    const options = ref({
       scales: {
         myScale: {
           type: 'logarithmic',

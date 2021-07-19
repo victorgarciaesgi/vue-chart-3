@@ -6,11 +6,10 @@
 </template>
 
 <script lang="ts">
-import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
+import { Chart, ChartData, registerables } from 'chart.js';
 import { DoughnutChart, ExtractComponentData } from './dist';
 import { ref, computed, defineComponent } from 'vue';
 import { shuffle } from 'lodash';
-import Test from './components/test.vue';
 
 Chart.register(...registerables);
 
@@ -27,7 +26,7 @@ export default defineComponent({
     const doughnutRef = ref<ExtractComponentData<typeof DoughnutChart>>();
     const legendTop = ref(true);
 
-    const options = computed<ChartOptions>(() => ({
+    const options = ref({
       scales: {
         myScale: {
           type: 'logarithmic',
@@ -43,7 +42,7 @@ export default defineComponent({
           text: 'Chart.js Doughnut Chart',
         },
       },
-    }));
+    });
 
     const testData = computed<ChartData<'doughnut'>>(() => ({
       labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],

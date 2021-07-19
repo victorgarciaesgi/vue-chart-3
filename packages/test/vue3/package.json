@@ -33,5 +33,23 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parser": "vue-eslint-parser",
+    "parserOptions": {
+      "parser": "@typescript-eslint/parser",
+      "extraFileExtensions": [
+        ".vue"
+      ]
+    },
+    "rules": {}
+  }
 }

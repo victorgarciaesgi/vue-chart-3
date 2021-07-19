@@ -15,8 +15,8 @@ import {
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
 import deepEqual from 'deep-equal';
-import type { DefineComponent } from '@vue/runtime-core';
 import { StyleValue, VueProxy } from './vueproxy.types';
+import { cloneDeep } from 'lodash';
 
 install();
 
@@ -71,8 +71,8 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
             props.options &&
             !deepEqual(chartInstance.options, previousOptions.value)
           ) {
-            chartInstance.options = props.options as any;
-            previousOptions.value = props.options as any;
+            chartInstance.options = cloneDeep(props.options) as any;
+            previousOptions.value = cloneDeep(props.options) as any;
             chartInstance?.update();
             handleChartUpdate();
           }
@@ -157,7 +157,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
           chartInstance = new Chart(canvasRef.value, {
             data: props.chartData,
             type: chartType,
-            options: props.options as ChartOptions<TType>, // Types won't work with props type
+            options: cloneDeep(props.options) as ChartOptions<TType>, // Types won't work with props type
             plugins: props.plugins,
           });
           handleChartRender();
