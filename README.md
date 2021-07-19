@@ -56,6 +56,25 @@ Unlike `vue-chartjs`, there is no need to re-create each component with mixins a
 
 (Thanks to [@nwittwer](https://github.com/nwittwer) for upgraded notes)
 
+# Usage with Nuxt SSR
+
+- Create a plugin in `<srcDir>/plugins/chartjs.js`
+
+```js
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
+```
+
+- Then register it in your `nuxt.config.[js|ts]`
+
+```js
+export default {
+  plugins: [{ src: '~/plugins/chartjs.js', ssr: false }],
+};
+```
+
+Just it case, wrap your component inside `client-only`.
+
 # Demos
 
 - Vue 3: [CodeSandbox demo Vue 3](https://codesandbox.io/s/demo-vue-chart-3-ugynm?file=/src/App.vue)
