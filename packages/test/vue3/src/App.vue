@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
-import { DoughnutChart, ExtractComponentData } from '../../../vue-chart-3/src/index';
+import { DoughnutChart, ExtractComponentData } from './dist';
 import { ref, computed, defineComponent } from 'vue';
 import { shuffle } from 'lodash';
 import Test from './components/test.vue';
