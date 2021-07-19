@@ -15,8 +15,8 @@ import {
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
 import cloneDeep from 'lodash/cloneDeep';
+import isEqual from 'lodash/isEqual';
 
-import deepEqual from 'deep-equal';
 import { StyleValue, VueProxy } from './vueproxy.types';
 
 install();
@@ -70,7 +70,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
           if (
             chartInstance &&
             props.options &&
-            !deepEqual(chartInstance.options, previousOptions.value)
+            !isEqual(chartInstance.options, previousOptions.value)
           ) {
             chartInstance.options = cloneDeep(props.options) as any;
             previousOptions.value = cloneDeep(props.options) as any;
