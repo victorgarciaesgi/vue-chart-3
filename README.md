@@ -58,39 +58,8 @@ Unlike `vue-chartjs`, there is no need to re-create each component with mixins a
 
 # Demos
 
-Vue 3: [CodeSandbox demo Vue 3](https://codesandbox.io/s/demo-vue-chart-3-ugynm?file=/src/App.vue)
-Vue 2: [CodeSandbox demo Vue 2](https://codesandbox.io/s/demo-vue-chart-3-vue-2-0g0je)
-
-# ⚠️ Warning ⚠️
-
-For some reason I still can't debug, using the `scales` property on `options` will crash your tab if your options is `data` or is a `ref`. It will only work if `options` is a computed property.
-
-It has to be related to the `watch` on the options but this is still in investigation.
-
-```ts
-data: () => ({
-  options: {
-    scales: {}, // Boom -> crash tab
-  },
-});
-// or
-const options = ref({
-  scales: {}, // Crash
-});
-```
-
-```ts
-computed: {
-  options: {
-    scales: {
-    } // Works!!
-  }
-}
-// or
-const options = computed(() => ({
-  scales: {}, // works!
-}));
-```
+- Vue 3: [CodeSandbox demo Vue 3](https://codesandbox.io/s/demo-vue-chart-3-ugynm?file=/src/App.vue)
+- Vue 2: [CodeSandbox demo Vue 2](https://codesandbox.io/s/demo-vue-chart-3-vue-2-0g0je)
 
 # Usage and docs
 

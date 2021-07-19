@@ -14,9 +14,10 @@ import {
 } from 'vue-demi';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
+import cloneDeep from 'lodash/cloneDeep';
+
 import deepEqual from 'deep-equal';
 import { StyleValue, VueProxy } from './vueproxy.types';
-import { cloneDeep } from 'lodash';
 
 install();
 
