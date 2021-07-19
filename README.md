@@ -59,7 +59,7 @@ Unlike `vue-chartjs`, there is no need to re-create each component with mixins a
 # Demos
 
 - Vue 3: [CodeSandbox demo Vue 3](https://codesandbox.io/s/demo-vue-chart-3-ugynm?file=/src/App.vue)
-- Vue 2: [CodeSandbox demo Vue 2](https://codesandbox.io/s/demo-vue-chart-3-vue-2-0g0je)
+- Vue 2: [CodeSandbox demo Vue 2](https://codesandbox.io/s/vue-chart-3-vue-2-mrtej)
 
 # Usage and docs
 

@@ -27,18 +27,16 @@ export default defineComponent({
           },
         ],
       },
-    };
-  },
-  computed: {
-    options: {
-      scales: {},
-      plugins: {
-        title: {
-          display: true,
-          text: 'Chart.js Doughnut Chart',
+      options: {
+        scales: {},
+        plugins: {
+          title: {
+            display: true,
+            text: 'Chart.js Doughnut Chart',
+          },
         },
       },
-    },
+    };
   },
 });
 </script>
