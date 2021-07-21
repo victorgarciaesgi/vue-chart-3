@@ -16,6 +16,12 @@
     "chartjs vue 3",
     "vue chart.js"
   ],
+  "scripts": {
+    "clean": "rimraf dist && rimraf types",
+    "compile": "tsc --pretty && cp -r ./dist ../../debug/vue2/src && cp -r ./dist ../../debug/vue3/src",
+    "dev": "tsc --pretty --watch",
+    "build": "yarn run clean && yarn run compile "
+  },
   "author": {
     "name": "Victor Garcia",
     "url": "https://github.com/victorgarciaesgi"
@@ -60,11 +66,5 @@
     "url": "git+https://github.com/victorgarciaesgi/vue-chart-3.git"
   },
   "homepage": "https://github.com/victorgarciaesgi/vue-chart-3#readme",
-  "scripts": {
-    "clean": "rimraf dist && rimraf types",
-    "compile": "tsc --pretty && cp -r ./dist ../test/vue2/src",
-    "dev": "tsc --pretty --watch",
-    "build": "yarn run clean && yarn run compile "
-  },
   "gitHead": "a4bfebae9b7ab6a1275a59d1874ab8a70f68f1c9"
 }

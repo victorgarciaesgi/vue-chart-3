@@ -8,14 +8,30 @@
     "compile": "cd ./packages/vue-chart-3/ && yarn run compile",
     "dev": "cd ./packages/vue-chart-3/ && yarn run dev",
     "build": "yarn run clean && yarn run compile",
-    "debug:vue2": "cd packages/test/vue2 && yarn serve",
-    "debug:vue3": "cd packages/test/vue3 && yarn serve",
-    "deploy": "lerna run build && lerna publish --skip-git"
+    "debug:vue2": "cd debug/vue2 && yarn serve",
+    "debug:vue3": "cd debug/vue3 && yarn serve",
+    "deploy": "lerna run build && lerna publish --skip-git",
+    "test": "jest"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
-  },
-  "dependencies": {
-    "vue-chart-3": "^0.4.1"
+    "@testing-library/vue": "^5.8.1",
+    "@types/jest": "^26.0.24",
+    "@vue/test-utils": "^1.2.1",
+    "canvas": "^2.8.0",
+    "chart.js": "^3.4.1",
+    "chartjs-test-utils": "^0.3.0",
+    "jasmine-core": "^3.8.0",
+    "jest": "^27.0.6",
+    "karma": "^6.3.4",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.3",
+    "karma-jasmine": "^4.0.1",
+    "karma-typescript": "^5.5.1",
+    "lerna": "^4.0.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "ts-jest": "^27.0.3",
+    "vue": "2.6.14",
+    "vue-chart-3": "^0.4.1",
+    "vue-template-compiler": "^2.6.14"
   }
 }

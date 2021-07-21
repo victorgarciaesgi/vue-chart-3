@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2018",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": false,
+    "strictNullChecks": true,
+    "strict": true,
+    "pretty": true,
+    "sourceMap": false,
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "types": ["node", "jest"],
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  "include": ["tests/**/*.ts", "packages/vue-chart-3/**/*.ts"],
+  "exclude": ["node_modules"]
+}
