@@ -11,7 +11,7 @@
     "debug:vue2": "cd debug/vue2 && yarn serve",
     "debug:vue3": "cd debug/vue3 && yarn serve",
     "deploy": "lerna run build && lerna publish --skip-git",
-    "test": "jest"
+    "test": "karma start"
   },
   "devDependencies": {
     "@testing-library/vue": "^5.8.1",
