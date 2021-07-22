@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "0.5.0-alpha.2",
+  "version": "0.5.0-alpha.3",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "workspaces": [
     "test/*"
@@ -59,8 +59,8 @@
   "dependencies": {
     "csstype": "latest",
     "lodash": "latest",
-    "vue-demi": "^0.10.1",
-    "nanoid": "^3.1.23"
+    "nanoid": "^3.1.23",
+    "vue-demi": "^0.10.1"
   },
   "repository": {
     "type": "git",
