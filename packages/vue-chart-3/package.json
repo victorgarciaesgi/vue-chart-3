@@ -59,7 +59,8 @@
   "dependencies": {
     "csstype": "latest",
     "lodash": "latest",
-    "vue-demi": "^0.10.1"
+    "vue-demi": "^0.10.1",
+    "nanoid": "^3.1.23"
   },
   "repository": {
     "type": "git",

@@ -7275,6 +7275,11 @@ nanoid@^2.1.0:
   resolved "https://registry.npmjs.org/nanoid/-/nanoid-2.1.11.tgz"
   integrity sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==
 
+nanoid@^3.1.23:
+  version "3.1.23"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.23.tgz#f744086ce7c2bc47ee0a8472574d5c78e4183a81"
+  integrity sha512-FiB0kzdP0FFVGDKlRLEQ1BgDzU87dy5NnzjeW9YZNt+/c3+q82EQDUwniSAUxp/F0gFNI1ZhKU1FqYsMuqZVnw==
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://registry.npmjs.org/nanomatch/-/nanomatch-1.2.13.tgz"
@@ -10042,6 +10047,15 @@ void-elements@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/void-elements/-/void-elements-2.0.1.tgz"
   integrity sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=
+
+vue-chart-3@^0.4.1:
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-0.4.7.tgz#3d950735a25882e135d68909faedac48ee4d6f9c"
+  integrity sha512-SKB7CkQvLmZpOiwLpjT7bWfUzDEVEgDTCjfa+UWuyQ0oDpn8m4gdGOMyzO5eyLbGX8C0mzUtyZbEohk4TrQr1w==
+  dependencies:
+    csstype latest
+    lodash latest
+    vue-demi "^0.10.1"
 
 vue-codemod@^0.0.5:
   version "0.0.5"

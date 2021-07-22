@@ -14,11 +14,11 @@ declare type ChartHookReturnType<TType extends ChartType> = {
 };
 export declare const useDoughnutChart: (params: {
     chartData: MaybeRef<ChartData<"doughnut", number[], unknown>>;
-    options?: MaybeRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"doughnut"> & import("chart.js").ElementChartOptions<"doughnut"> & import("chart.js").PluginChartOptions<"doughnut"> & import("chart.js").DatasetChartOptions<"doughnut"> & import("chart.js").ScaleChartOptions<"doughnut"> & import("chart.js").DoughnutControllerChartOptions>> | undefined;
+    options?: import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"doughnut"> & import("chart.js").ElementChartOptions<"doughnut"> & import("chart.js").PluginChartOptions<"doughnut"> & import("chart.js").DatasetChartOptions<"doughnut"> & import("chart.js").ScaleChartOptions<"doughnut"> & import("chart.js").DoughnutControllerChartOptions> | Ref<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"doughnut"> & import("chart.js").ElementChartOptions<"doughnut"> & import("chart.js").PluginChartOptions<"doughnut"> & import("chart.js").DatasetChartOptions<"doughnut"> & import("chart.js").ScaleChartOptions<"doughnut"> & import("chart.js").DoughnutControllerChartOptions>> | import("@vue/composition-api").ComputedRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"doughnut"> & import("chart.js").ElementChartOptions<"doughnut"> & import("chart.js").PluginChartOptions<"doughnut"> & import("chart.js").DatasetChartOptions<"doughnut"> & import("chart.js").ScaleChartOptions<"doughnut"> & import("chart.js").DoughnutControllerChartOptions>> | undefined;
     width?: number | undefined;
     height?: number | undefined;
     cssClasses?: string | undefined;
-    styles?: StyleValue | undefined;
+    styles?: string | import("@vue/runtime-dom").CSSProperties | StyleValue[] | undefined;
     plugins?: Plugin[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"doughnut", number[], unknown>) => void) | undefined;
@@ -27,11 +27,11 @@ export declare const useDoughnutChart: (params: {
 }) => ChartHookReturnType<"doughnut">;
 export declare const useBarChart: (params: {
     chartData: MaybeRef<ChartData<"bar", number[], unknown>>;
-    options?: MaybeRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"bar"> & import("chart.js").ElementChartOptions<"bar"> & import("chart.js").PluginChartOptions<"bar"> & import("chart.js").DatasetChartOptions<"bar"> & import("chart.js").ScaleChartOptions<"bar"> & import("chart.js").BarControllerChartOptions>> | undefined;
+    options?: import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"bar"> & import("chart.js").ElementChartOptions<"bar"> & import("chart.js").PluginChartOptions<"bar"> & import("chart.js").DatasetChartOptions<"bar"> & import("chart.js").ScaleChartOptions<"bar"> & import("chart.js").BarControllerChartOptions> | Ref<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"bar"> & import("chart.js").ElementChartOptions<"bar"> & import("chart.js").PluginChartOptions<"bar"> & import("chart.js").DatasetChartOptions<"bar"> & import("chart.js").ScaleChartOptions<"bar"> & import("chart.js").BarControllerChartOptions>> | import("@vue/composition-api").ComputedRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"bar"> & import("chart.js").ElementChartOptions<"bar"> & import("chart.js").PluginChartOptions<"bar"> & import("chart.js").DatasetChartOptions<"bar"> & import("chart.js").ScaleChartOptions<"bar"> & import("chart.js").BarControllerChartOptions>> | undefined;
     width?: number | undefined;
     height?: number | undefined;
     cssClasses?: string | undefined;
-    styles?: StyleValue | undefined;
+    styles?: string | import("@vue/runtime-dom").CSSProperties | StyleValue[] | undefined;
     plugins?: Plugin[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"bar", number[], unknown>) => void) | undefined;
@@ -40,11 +40,11 @@ export declare const useBarChart: (params: {
 }) => ChartHookReturnType<"bar">;
 export declare const useLineChart: (params: {
     chartData: MaybeRef<ChartData<"line", (number | import("chart.js").ScatterDataPoint | null)[], unknown>>;
-    options?: MaybeRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"line"> & import("chart.js").ElementChartOptions<"line"> & import("chart.js").PluginChartOptions<"line"> & import("chart.js").DatasetChartOptions<"line"> & import("chart.js").ScaleChartOptions<"line"> & import("chart.js").LineControllerChartOptions>> | undefined;
+    options?: import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"line"> & import("chart.js").ElementChartOptions<"line"> & import("chart.js").PluginChartOptions<"line"> & import("chart.js").DatasetChartOptions<"line"> & import("chart.js").ScaleChartOptions<"line"> & import("chart.js").LineControllerChartOptions> | Ref<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"line"> & import("chart.js").ElementChartOptions<"line"> & import("chart.js").PluginChartOptions<"line"> & import("chart.js").DatasetChartOptions<"line"> & import("chart.js").ScaleChartOptions<"line"> & import("chart.js").LineControllerChartOptions>> | import("@vue/composition-api").ComputedRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"line"> & import("chart.js").ElementChartOptions<"line"> & import("chart.js").PluginChartOptions<"line"> & import("chart.js").DatasetChartOptions<"line"> & import("chart.js").ScaleChartOptions<"line"> & import("chart.js").LineControllerChartOptions>> | undefined;
     width?: number | undefined;
     height?: number | undefined;
     cssClasses?: string | undefined;
-    styles?: StyleValue | undefined;
+    styles?: string | import("@vue/runtime-dom").CSSProperties | StyleValue[] | undefined;
     plugins?: Plugin[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"line", (number | import("chart.js").ScatterDataPoint | null)[], unknown>) => void) | undefined;
@@ -53,11 +53,11 @@ export declare const useLineChart: (params: {
 }) => ChartHookReturnType<"line">;
 export declare const usePieChart: (params: {
     chartData: MaybeRef<ChartData<"pie", number[], unknown>>;
-    options?: MaybeRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"pie"> & import("chart.js").ElementChartOptions<"pie"> & import("chart.js").PluginChartOptions<"pie"> & import("chart.js").DatasetChartOptions<"pie"> & import("chart.js").ScaleChartOptions<"pie"> & import("chart.js").DoughnutControllerChartOptions>> | undefined;
+    options?: import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"pie"> & import("chart.js").ElementChartOptions<"pie"> & import("chart.js").PluginChartOptions<"pie"> & import("chart.js").DatasetChartOptions<"pie"> & import("chart.js").ScaleChartOptions<"pie"> & import("chart.js").DoughnutControllerChartOptions> | Ref<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"pie"> & import("chart.js").ElementChartOptions<"pie"> & import("chart.js").PluginChartOptions<"pie"> & import("chart.js").DatasetChartOptions<"pie"> & import("chart.js").ScaleChartOptions<"pie"> & import("chart.js").DoughnutControllerChartOptions>> | import("@vue/composition-api").ComputedRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"pie"> & import("chart.js").ElementChartOptions<"pie"> & import("chart.js").PluginChartOptions<"pie"> & import("chart.js").DatasetChartOptions<"pie"> & import("chart.js").ScaleChartOptions<"pie"> & import("chart.js").DoughnutControllerChartOptions>> | undefined;
     width?: number | undefined;
     height?: number | undefined;
     cssClasses?: string | undefined;
-    styles?: StyleValue | undefined;
+    styles?: string | import("@vue/runtime-dom").CSSProperties | StyleValue[] | undefined;
     plugins?: Plugin[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"pie", number[], unknown>) => void) | undefined;
@@ -66,11 +66,11 @@ export declare const usePieChart: (params: {
 }) => ChartHookReturnType<"pie">;
 export declare const usePolarAreaChart: (params: {
     chartData: MaybeRef<ChartData<"polarArea", number[], unknown>>;
-    options?: MaybeRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"polarArea"> & import("chart.js").ElementChartOptions<"polarArea"> & import("chart.js").PluginChartOptions<"polarArea"> & import("chart.js").DatasetChartOptions<"polarArea"> & import("chart.js").ScaleChartOptions<"polarArea"> & import("chart.js").PolarAreaControllerChartOptions>> | undefined;
+    options?: import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"polarArea"> & import("chart.js").ElementChartOptions<"polarArea"> & import("chart.js").PluginChartOptions<"polarArea"> & import("chart.js").DatasetChartOptions<"polarArea"> & import("chart.js").ScaleChartOptions<"polarArea"> & import("chart.js").PolarAreaControllerChartOptions> | Ref<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"polarArea"> & import("chart.js").ElementChartOptions<"polarArea"> & import("chart.js").PluginChartOptions<"polarArea"> & import("chart.js").DatasetChartOptions<"polarArea"> & import("chart.js").ScaleChartOptions<"polarArea"> & import("chart.js").PolarAreaControllerChartOptions>> | import("@vue/composition-api").ComputedRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"polarArea"> & import("chart.js").ElementChartOptions<"polarArea"> & import("chart.js").PluginChartOptions<"polarArea"> & import("chart.js").DatasetChartOptions<"polarArea"> & import("chart.js").ScaleChartOptions<"polarArea"> & import("chart.js").PolarAreaControllerChartOptions>> | undefined;
     width?: number | undefined;
     height?: number | undefined;
     cssClasses?: string | undefined;
-    styles?: StyleValue | undefined;
+    styles?: string | import("@vue/runtime-dom").CSSProperties | StyleValue[] | undefined;
     plugins?: Plugin[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"polarArea", number[], unknown>) => void) | undefined;
@@ -79,11 +79,11 @@ export declare const usePolarAreaChart: (params: {
 }) => ChartHookReturnType<"polarArea">;
 export declare const useRadarChart: (params: {
     chartData: MaybeRef<ChartData<"radar", (number | null)[], unknown>>;
-    options?: MaybeRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"radar"> & import("chart.js").ElementChartOptions<"radar"> & import("chart.js").PluginChartOptions<"radar"> & import("chart.js").DatasetChartOptions<"radar"> & import("chart.js").ScaleChartOptions<"radar"> & import("chart.js").LineControllerChartOptions>> | undefined;
+    options?: import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"radar"> & import("chart.js").ElementChartOptions<"radar"> & import("chart.js").PluginChartOptions<"radar"> & import("chart.js").DatasetChartOptions<"radar"> & import("chart.js").ScaleChartOptions<"radar"> & import("chart.js").LineControllerChartOptions> | Ref<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"radar"> & import("chart.js").ElementChartOptions<"radar"> & import("chart.js").PluginChartOptions<"radar"> & import("chart.js").DatasetChartOptions<"radar"> & import("chart.js").ScaleChartOptions<"radar"> & import("chart.js").LineControllerChartOptions>> | import("@vue/composition-api").ComputedRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"radar"> & import("chart.js").ElementChartOptions<"radar"> & import("chart.js").PluginChartOptions<"radar"> & import("chart.js").DatasetChartOptions<"radar"> & import("chart.js").ScaleChartOptions<"radar"> & import("chart.js").LineControllerChartOptions>> | undefined;
     width?: number | undefined;
     height?: number | undefined;
     cssClasses?: string | undefined;
-    styles?: StyleValue | undefined;
+    styles?: string | import("@vue/runtime-dom").CSSProperties | StyleValue[] | undefined;
     plugins?: Plugin[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"radar", (number | null)[], unknown>) => void) | undefined;
@@ -92,11 +92,11 @@ export declare const useRadarChart: (params: {
 }) => ChartHookReturnType<"radar">;
 export declare const useBubbleChart: (params: {
     chartData: MaybeRef<ChartData<"bubble", import("chart.js").BubbleDataPoint[], unknown>>;
-    options?: MaybeRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"bubble"> & import("chart.js").ElementChartOptions<"bubble"> & import("chart.js").PluginChartOptions<"bubble"> & import("chart.js").DatasetChartOptions<"bubble"> & import("chart.js").ScaleChartOptions<"bubble">>> | undefined;
+    options?: import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"bubble"> & import("chart.js").ElementChartOptions<"bubble"> & import("chart.js").PluginChartOptions<"bubble"> & import("chart.js").DatasetChartOptions<"bubble"> & import("chart.js").ScaleChartOptions<"bubble">> | Ref<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"bubble"> & import("chart.js").ElementChartOptions<"bubble"> & import("chart.js").PluginChartOptions<"bubble"> & import("chart.js").DatasetChartOptions<"bubble"> & import("chart.js").ScaleChartOptions<"bubble">>> | import("@vue/composition-api").ComputedRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"bubble"> & import("chart.js").ElementChartOptions<"bubble"> & import("chart.js").PluginChartOptions<"bubble"> & import("chart.js").DatasetChartOptions<"bubble"> & import("chart.js").ScaleChartOptions<"bubble">>> | undefined;
     width?: number | undefined;
     height?: number | undefined;
     cssClasses?: string | undefined;
-    styles?: StyleValue | undefined;
+    styles?: string | import("@vue/runtime-dom").CSSProperties | StyleValue[] | undefined;
     plugins?: Plugin[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"bubble", import("chart.js").BubbleDataPoint[], unknown>) => void) | undefined;
@@ -105,11 +105,11 @@ export declare const useBubbleChart: (params: {
 }) => ChartHookReturnType<"bubble">;
 export declare const useScatterChart: (params: {
     chartData: MaybeRef<ChartData<"scatter", (number | import("chart.js").ScatterDataPoint | null)[], unknown>>;
-    options?: MaybeRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"scatter"> & import("chart.js").ElementChartOptions<"scatter"> & import("chart.js").PluginChartOptions<"scatter"> & import("chart.js").DatasetChartOptions<"scatter"> & import("chart.js").ScaleChartOptions<"scatter"> & import("chart.js").LineControllerChartOptions>> | undefined;
+    options?: import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"scatter"> & import("chart.js").ElementChartOptions<"scatter"> & import("chart.js").PluginChartOptions<"scatter"> & import("chart.js").DatasetChartOptions<"scatter"> & import("chart.js").ScaleChartOptions<"scatter"> & import("chart.js").LineControllerChartOptions> | Ref<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"scatter"> & import("chart.js").ElementChartOptions<"scatter"> & import("chart.js").PluginChartOptions<"scatter"> & import("chart.js").DatasetChartOptions<"scatter"> & import("chart.js").ScaleChartOptions<"scatter"> & import("chart.js").LineControllerChartOptions>> | import("@vue/composition-api").ComputedRef<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"scatter"> & import("chart.js").ElementChartOptions<"scatter"> & import("chart.js").PluginChartOptions<"scatter"> & import("chart.js").DatasetChartOptions<"scatter"> & import("chart.js").ScaleChartOptions<"scatter"> & import("chart.js").LineControllerChartOptions>> | undefined;
     width?: number | undefined;
     height?: number | undefined;
     cssClasses?: string | undefined;
-    styles?: StyleValue | undefined;
+    styles?: string | import("@vue/runtime-dom").CSSProperties | StyleValue[] | undefined;
     plugins?: Plugin[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"scatter", (number | import("chart.js").ScatterDataPoint | null)[], unknown>) => void) | undefined;

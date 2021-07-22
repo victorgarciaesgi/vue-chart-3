@@ -18,6 +18,8 @@ import camelCase from 'lodash/camelCase';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 
+import { nanoid } from 'nanoid';
+
 import type { StyleValue, VueProxy } from './vueproxy.types';
 import { ChartPropsOptions } from './types';
 
@@ -29,6 +31,7 @@ export type ComponentData<T extends ChartType> = {
   canvasRef: Ref<HTMLCanvasElement | undefined>;
   renderChart: () => void;
   chartInstance: Chart<T> | null;
+  canvasId: string;
 };
 
 export const defineChartComponent = <TType extends ChartType = ChartType>(
@@ -51,6 +54,8 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
   };
 
   const componentName = pascalCase(chartId);
+
+  const canvasId = `${chartId}-${nanoid(6)}`;
 
   return defineComponent({
     name: componentName,
@@ -205,7 +210,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         }
       });
 
-      return { canvasRef, renderChart, chartInstance };
+      return { canvasRef, renderChart, chartInstance, canvasId };
     },
     render() {
       return h(
@@ -221,13 +226,13 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
           h('canvas', {
             ...(isVue2 && {
               attrs: {
-                id: this.chartId,
+                id: this.canvasId,
                 width: this.width,
                 height: this.height,
               },
             }),
             ...(isVue3 && {
-              id: this.chartId,
+              id: this.canvasId,
               width: this.width,
               height: this.height,
             }),
