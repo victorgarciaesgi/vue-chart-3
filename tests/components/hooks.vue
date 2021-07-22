@@ -7,18 +7,12 @@
 
 <script>
 import { Chart, registerables } from 'chart.js';
-import { BarChart } from './dist';
-import { useBarChart } from './dist/hooks.js';
+import { BarChart } from '../../packages/vue-chart-3/src';
 import { ref, computed, defineComponent } from '@vue/composition-api';
 import { shuffle } from 'lodash';
 
-Chart.register(...registerables);
-
 export default defineComponent({
-  name: 'App',
-  props: {
-    test: { type: String },
-  },
+  name: 'TestHooks',
   components: {
     BarChart,
   },
@@ -55,18 +49,7 @@ export default defineComponent({
       console.log(chartInstance.value);
     }
 
-    return { data, shuffleData, barChartProps };
+    return { data, shuffleData, barChartProps, chartInstance };
   },
 });
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

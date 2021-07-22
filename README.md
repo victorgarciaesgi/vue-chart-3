@@ -82,6 +82,17 @@ Just it case, wrap your component inside `client-only`.
 
 # Usage and docs
 
+## Available components
+
+- BarChart
+- DoughnutChart
+- LineChart
+- PieChart
+- PolarAreaChart
+- RadarChart
+- BubbleChart
+- ScatterChart
+
 ## All components props
 
 | Prop             | Type                           | Default |

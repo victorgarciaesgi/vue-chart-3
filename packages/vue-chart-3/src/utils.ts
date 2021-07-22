@@ -5,9 +5,11 @@ import type {
   ComponentPublicInstance,
 } from '@vue/runtime-core';
 import * as CSS from 'csstype';
-import { ComputedOptions, MethodOptions } from 'vue-demi';
+import { ComputedOptions, ComputedRef, MethodOptions, Ref } from 'vue-demi';
 
 export type StyleValue = string | CSS.Properties | Array<StyleValue>;
+
+export type MaybeRef<T> = T | Ref<T> | ComputedRef<T>;
 
 type ComponentPublicInstanceConstructor<
   T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>,

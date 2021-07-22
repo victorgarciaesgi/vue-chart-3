@@ -18,13 +18,13 @@ import camelCase from 'lodash/camelCase';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 
-import { StyleValue, VueProxy } from './vueproxy.types';
+import type { StyleValue, VueProxy } from './vueproxy.types';
 
 install();
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
-type ComponentData<T extends ChartType> = {
+export type ComponentData<T extends ChartType> = {
   canvasRef: Ref<HTMLCanvasElement | undefined>;
   renderChart: () => void;
   chartInstance: Chart<T> | null;

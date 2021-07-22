@@ -1,7 +1,8 @@
 import type { ComponentOptions, ShallowUnwrapRef, ComponentPublicInstance } from '@vue/runtime-core';
 import * as CSS from 'csstype';
-import { ComputedOptions, MethodOptions } from 'vue-demi';
+import { ComputedOptions, ComputedRef, MethodOptions, Ref } from 'vue-demi';
 export declare type StyleValue = string | CSS.Properties | Array<StyleValue>;
+export declare type MaybeRef<T> = T | Ref<T> | ComputedRef<T>;
 declare type ComponentPublicInstanceConstructor<T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>, Props = any, RawBindings = any, D = any, C extends ComputedOptions = ComputedOptions, M extends MethodOptions = MethodOptions> = {
     __isFragment?: never;
     __isTeleport?: never;
