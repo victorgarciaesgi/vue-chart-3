@@ -1,7 +1,8 @@
 import { Chart, ChartData, ChartType } from 'chart.js';
 import { Ref } from 'vue-demi';
 import { ComponentData } from './components';
-import { ChartPropsOptions, ExtractComponentData, ExtractComponentProps, MaybeRef } from './utils';
+import { ChartPropsOptions } from './types';
+import { ExtractComponentData, ExtractComponentProps, MaybeRef } from './utils';
 import { StyleValue, VueProxy } from './vueproxy.types';
 declare type DumbTypescript = 0;
 declare type ChartHookReturnType<TType extends ChartType> = {

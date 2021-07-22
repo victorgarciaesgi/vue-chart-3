@@ -1,7 +1,8 @@
 import { Chart, ChartData, ChartOptions, ChartType } from 'chart.js';
 import { computed, reactive, Ref, ref, toRefs, unref } from 'vue-demi';
 import { ComponentData } from './components';
-import { ChartPropsOptions, ExtractComponentData, ExtractComponentProps, MaybeRef } from './utils';
+import { ChartPropsOptions } from './types';
+import { ExtractComponentData, ExtractComponentProps, MaybeRef } from './utils';
 import { StyleValue, VueProxy } from './vueproxy.types';
 
 type DumbTypescript = 0;

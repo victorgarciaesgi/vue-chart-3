@@ -19,6 +19,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 
 import type { StyleValue, VueProxy } from './vueproxy.types';
+import { ChartPropsOptions } from './types';
 
 install();
 
@@ -34,7 +35,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartId: string,
   chartType: TType
 ) => {
-  const propsDefs = {
+  const propsDefs: ChartPropsOptions<TType> = {
     options: { type: Object as PropType<ChartOptions<TType>>, required: false },
     chartId: { default: chartId, type: String },
     width: { default: 400, type: Number },
@@ -47,7 +48,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     onChartUpdate: { type: Function as PropType<(chartInstance: Chart<TType>) => void> },
     onChartDestroy: { type: Function as PropType<() => void> },
     onChartRender: { type: Function as PropType<(chartInstance: Chart<TType>) => void> },
-  } as const;
+  };
 
   const componentName = pascalCase(chartId);
 
