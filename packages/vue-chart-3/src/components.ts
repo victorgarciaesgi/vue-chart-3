@@ -55,8 +55,6 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
   const componentName = pascalCase(chartId);
 
-  const canvasId = `${chartId}-${nanoid(6)}`;
-
   return defineComponent({
     name: componentName,
     props: propsDefs,
@@ -68,6 +66,8 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     },
     setup(props, { emit }) {
       const canvasRef = ref<HTMLCanvasElement>();
+
+      const canvasId = `${chartId}-${nanoid(6)}`;
 
       let chartInstance = shallowRef<Chart<TType> | null>(null);
 
