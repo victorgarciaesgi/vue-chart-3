@@ -1,5 +1,6 @@
 export { defineChartComponent } from './components';
 export { ExtractComponentData, ExtractComponentProps } from './utils';
+export * from './hooks';
 export declare const BarChart: import("./vueproxy.types").VueProxy<{
     readonly options: {
         readonly type: import("@vue/composition-api").PropType<import("chart.js/types/utils")._DeepPartialObject<import("chart.js").CoreChartOptions<"bar"> & import("chart.js").ElementChartOptions<"bar"> & import("chart.js").PluginChartOptions<"bar"> & import("chart.js").DatasetChartOptions<"bar"> & import("chart.js").ScaleChartOptions<"bar"> & import("chart.js").BarControllerChartOptions>>;
