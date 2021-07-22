@@ -10,7 +10,7 @@
     "build": "yarn run clean && yarn run compile",
     "debug:vue2": "cd debug/vue2 && yarn serve",
     "debug:vue3": "cd debug/vue3 && yarn serve",
-    "deploy": "lerna run build && lerna publish --skip-git",
+    "deploy": "lerna run build && lerna publish",
     "test": "karma start"
   },
   "devDependencies": {

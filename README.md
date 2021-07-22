@@ -97,6 +97,14 @@ Just it case, wrap your component inside `client-only`.
 | 'onChartDestroy' | () => void                     |
 | 'onLabelsUpdate' | () => void                     |
 
+## Data accessible by reference
+
+| Prop            | Type              |
+| --------------- | ----------------- |
+| 'chartInstance' | Chart<TType>      |
+| 'canvasRef'     | HtmlCanvasElement |
+| 'renderChart'   | () => void        |
+
 ## Events emitted by all components
 
 | Event           | Payload              |
@@ -145,30 +153,26 @@ Accessing Canvas Ref and ChartInstance
 
 ```vue
 <template>
-  <DoughnutChart
-    ref="doughtnutRef"
-    :chartData="testData"
-    @chart:render="handleChartRender"
-    @chart:update="handleChartRender"
-  />
+  <DoughnutChart ref="doughtnutRef" :chartData="testData" @chart:render="handleChartRender" />
 </template>
 
 <script lang="ts">
 import { shuffle } from 'lodash';
 import { computed, defineComponent, ref, onMounted } from 'vue';
-import { DoughnutChart } from 'vue-chart-3';
+import { DoughnutChart, ExtractComponentData } from 'vue-chart-3';
 
 export default defineComponent({
   name: 'Home',
   components: { DoughnutChart },
   setup() {
-    const doughtnutRef = ref();
+    const doughtnutRef = ref<ExtractComponentData<typeof DoughnutChart>>();
     // ....
     onMounted(() => {
-      // chartInstance not accessible until another version due to Vue 3 bugs with Chart.js
-      console.log(doughtnutRef.value.canvasRef);
+      console.log(doughtnutRef.value.chartInstance);
+      doughtnutRef.value.chartInstance.toBase64Image();
     });
 
+    // Chart instance is accessible on events too
     function handleChartRender(chart: Chart<'doughnut'>) {
       console.log(chart);
     }
@@ -250,6 +254,10 @@ Ex:
 ```ts
 setup() {
   const doughtnutRef = ref<ExtractComponentData<typeof DoughtnutChart>>()
+
+  foo() {
+    doughtnutRef.value?.chartInstance.toBase64Image();
+  }
 }
 ```
 

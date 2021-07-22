@@ -16,7 +16,7 @@ class ResizeObserver {
 
 window.ResizeObserver = ResizeObserver as any;
 
-describe('Vue 2 - Doughtnut', () => {
+describe('Vue 2 - Doughtnut chart', () => {
   const { vm } = mount(DoughnutChart, {
     propsData: {
       chartData: {
