@@ -1,5 +1,5 @@
 import { Chart, ChartData, ChartOptions, ChartType } from 'chart.js';
-import { computed, reactive, Ref, ref, toRefs, unref } from 'vue-demi';
+import { computed, reactive, Ref, ref, shallowRef, toRefs, unref } from 'vue-demi';
 import { ComponentData } from './components';
 import { ChartPropsOptions } from './types';
 import { ExtractComponentData, ExtractComponentProps, MaybeRef } from './utils';
@@ -33,7 +33,7 @@ const defineChartHook = <TType extends ChartType = ChartType>(chartType: TType) 
     onChartRender?: (chartInstance: Chart<TType>) => void;
   }): ChartHookReturnType<TType> => {
     const chartComponentRef = ref<ExtractComponentData<VueProxy<any, ComponentData<TType>>>>();
-    const chartInstance: Ref<Chart<TType> | null> = ref(null);
+    const chartInstance: Ref<Chart<TType> | null> = shallowRef(null);
 
     const chartState = reactive({
       [`${chartType}ChartRef`]: chartComponentRef,

@@ -18,7 +18,8 @@ import camelCase from 'lodash/camelCase';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 
-import { nanoid } from 'nanoid';
+// Weird bug with karma importing cjs files
+const { nanoid } = require('nanoid/index');
 
 import type { StyleValue, VueProxy } from './vueproxy.types';
 import { ChartPropsOptions } from './types';

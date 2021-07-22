@@ -10,6 +10,9 @@ module.exports = function (config) {
     },
     karmaTypescriptConfig: {
       tsconfig: './tsconfig.json',
+      bundlerOptions: {
+        transforms: [require('karma-typescript-es6-transform')()],
+      },
     },
     reporters: ['progress', 'coverage', 'karma-typescript'],
     port: 9876,
@@ -19,5 +22,8 @@ module.exports = function (config) {
     browsers: ['ChromeHeadless'],
     singleRun: true,
     concurrency: Infinity,
+    esm: {
+      nodeResolve: true,
+    },
   });
 };

@@ -46,7 +46,7 @@ export default defineComponent({
 
     const { barChartProps, chartInstance } = useBarChart({
       chartData: testData,
-      options: options,
+      options,
     });
 
     function shuffleData() {
@@ -55,7 +55,7 @@ export default defineComponent({
       console.log(chartInstance.value);
     }
 
-    return { data, shuffleData, barChartProps };
+    return { data, shuffleData, barChartProps, options, testData };
   },
 });
 </script>
