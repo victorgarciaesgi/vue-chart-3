@@ -55,6 +55,6 @@ describe('Vue 2 - Doughtnut', () => {
   });
   it('should have chartInstance variable instance of Chart.js', () => {
     expect(vm).toBeDefined();
-    // expect(vm).toBeInstanceOf(Chart);
+    expect(vm.$data.chartInstance).toBeInstanceOf(Chart);
   });
 });

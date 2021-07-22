@@ -61,6 +61,7 @@ export default defineComponent({
     function shuffleData() {
       data.value = shuffle(data.value);
       legendTop.value = !legendTop.value;
+      console.log(doughnutRef.value.chartInstance);
     }
 
     return { data, testData, shuffleData, doughnutRef, options, handleChartRender };

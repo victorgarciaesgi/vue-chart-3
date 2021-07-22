@@ -1,9 +1,10 @@
-import { Chart, ChartData, Plugin } from 'chart.js';
+import { Chart, ChartData, ChartType, Plugin } from 'chart.js';
 import { PropType, Ref } from 'vue-demi';
 import { StyleValue, VueProxy } from './vueproxy.types';
-declare type ComponentData = {
+declare type ComponentData<T extends ChartType> = {
     canvasRef: Ref<HTMLCanvasElement | undefined>;
     renderChart: () => void;
+    chartInstance: Chart<T> | null;
 };
 export declare const defineChartComponent: <TType extends "bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar" = "bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar">(chartId: string, chartType: TType) => VueProxy<{
     readonly options: {
@@ -49,5 +50,5 @@ export declare const defineChartComponent: <TType extends "bar" | "line" | "scat
     readonly onChartRender: {
         readonly type: PropType<(chartInstance: Chart<TType, import("chart.js").ChartTypeRegistry[TType]["defaultDataPoint"][], unknown>) => void>;
     };
-}, ComponentData, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
+}, ComponentData<TType>, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
 export {};

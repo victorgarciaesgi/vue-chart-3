@@ -11,6 +11,7 @@ import {
   isVue3,
   install,
   defineComponent,
+  shallowRef,
 } from 'vue-demi';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
@@ -23,8 +24,11 @@ install();
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
-type ComponentData = { canvasRef: Ref<HTMLCanvasElement | undefined>; renderChart: () => void };
-type BetterChartOptions<TType extends ChartType> = {} & ObjectConstructor & ChartOptions<TType>;
+type ComponentData<T extends ChartType> = {
+  canvasRef: Ref<HTMLCanvasElement | undefined>;
+  renderChart: () => void;
+  chartInstance: Chart<T> | null;
+};
 
 export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartId: string,
@@ -56,25 +60,22 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       'chart:destroy': (chartInstance: Chart<TType>) => true,
       'chart:render': () => true,
     },
-    setup(props, { emit }): ComponentData {
+    setup(props, { emit }) {
       const canvasRef = ref<HTMLCanvasElement>();
 
-      let chartInstance: Chart<TType> | null = null;
-
-      const previousOptions = ref<ChartOptions>({});
+      let chartInstance = shallowRef<Chart<TType> | null>(null);
 
       watch(() => props.chartData, watchHandler, { deep: true });
       watch(
         () => props.options,
-        () => {
+        (newOptions, oldOptions) => {
           if (
-            chartInstance &&
-            props.options &&
-            !isEqual(chartInstance.options, previousOptions.value)
+            chartInstance.value &&
+            newOptions &&
+            !isEqual(chartInstance.value.options, oldOptions)
           ) {
-            chartInstance.options = cloneDeep(props.options) as any;
-            previousOptions.value = cloneDeep(props.options) as any;
-            chartInstance?.update();
+            chartInstance.value.options = cloneDeep(newOptions) as any;
+            oldOptions = cloneDeep(newOptions) as any;
             handleChartUpdate();
           }
         },
@@ -84,7 +85,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       /** Picked from vue-chartjs */
       function watchHandler(newData: ChartData, oldData: ChartData) {
         if (oldData) {
-          let chart = chartInstance;
+          let chart = chartInstance.value;
 
           // Get new and old DataSet Labels
           let newDatasetLabels = newData.datasets.map((dataset) => {
@@ -135,18 +136,16 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
               chart.data.labels = newData.labels;
               handleLabelsUpdate();
             }
-            chart.update();
+
             handleChartUpdate();
           } else {
             if (chart) {
-              chart.destroy();
               handleChartDestroy();
             }
             renderChart();
           }
         } else {
-          if (chartInstance) {
-            chartInstance.destroy();
+          if (chartInstance.value) {
             handleChartDestroy();
           }
           renderChart();
@@ -155,7 +154,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       function renderChart() {
         if (canvasRef.value) {
-          chartInstance = new Chart(canvasRef.value, {
+          chartInstance.value = new Chart(canvasRef.value, {
             data: props.chartData,
             type: chartType,
             options: cloneDeep(props.options) as ChartOptions<TType>, // Types won't work with props type
@@ -175,20 +174,22 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       }
 
       function handleChartRender() {
-        if (chartInstance) {
-          emit('chart:render', chartInstance);
-          props.onChartRender?.(chartInstance);
+        if (chartInstance.value) {
+          emit('chart:render', chartInstance.value);
+          props.onChartRender?.(chartInstance.value);
         }
       }
 
       function handleChartUpdate() {
-        if (chartInstance) {
-          emit('chart:render', chartInstance);
-          props.onChartRender?.(chartInstance);
+        if (chartInstance.value) {
+          chartInstance.value.update();
+          emit('chart:render', chartInstance.value);
+          props.onChartRender?.(chartInstance.value);
         }
       }
 
       function handleChartDestroy() {
+        chartInstance.value?.destroy();
         emit('chart:destroy');
         props.onChartDestroy?.();
       }
@@ -198,12 +199,12 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       onMounted(renderChart);
 
       onBeforeUnmount(() => {
-        if (chartInstance) {
-          chartInstance.destroy();
+        if (chartInstance.value) {
+          chartInstance.value?.destroy();
         }
       });
 
-      return { canvasRef, renderChart };
+      return { canvasRef, renderChart, chartInstance };
     },
     render() {
       return h(
@@ -234,5 +235,5 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         ]
       );
     },
-  }) as unknown as VueProxy<typeof propsDefs, ComponentData>;
+  }) as unknown as VueProxy<typeof propsDefs, ComponentData<TType>>;
 };

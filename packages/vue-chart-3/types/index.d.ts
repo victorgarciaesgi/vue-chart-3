@@ -47,6 +47,7 @@ export declare const BarChart: import("./vueproxy.types").VueProxy<{
 }, {
     canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
     renderChart: () => void;
+    chartInstance: import("chart.js").Chart<"bar", number[], unknown> | null;
 }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
 export declare const DoughnutChart: import("./vueproxy.types").VueProxy<{
     readonly options: {
@@ -95,6 +96,7 @@ export declare const DoughnutChart: import("./vueproxy.types").VueProxy<{
 }, {
     canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
     renderChart: () => void;
+    chartInstance: import("chart.js").Chart<"doughnut", number[], unknown> | null;
 }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
 export declare const LineChart: import("./vueproxy.types").VueProxy<{
     readonly options: {
@@ -143,6 +145,7 @@ export declare const LineChart: import("./vueproxy.types").VueProxy<{
 }, {
     canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
     renderChart: () => void;
+    chartInstance: import("chart.js").Chart<"line", (number | import("chart.js").ScatterDataPoint | null)[], unknown> | null;
 }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
 export declare const PieChart: import("./vueproxy.types").VueProxy<{
     readonly options: {
@@ -191,6 +194,7 @@ export declare const PieChart: import("./vueproxy.types").VueProxy<{
 }, {
     canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
     renderChart: () => void;
+    chartInstance: import("chart.js").Chart<"pie", number[], unknown> | null;
 }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
 export declare const PolarAreaChart: import("./vueproxy.types").VueProxy<{
     readonly options: {
@@ -239,6 +243,7 @@ export declare const PolarAreaChart: import("./vueproxy.types").VueProxy<{
 }, {
     canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
     renderChart: () => void;
+    chartInstance: import("chart.js").Chart<"polarArea", number[], unknown> | null;
 }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
 export declare const RadarChart: import("./vueproxy.types").VueProxy<{
     readonly options: {
@@ -287,6 +292,7 @@ export declare const RadarChart: import("./vueproxy.types").VueProxy<{
 }, {
     canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
     renderChart: () => void;
+    chartInstance: import("chart.js").Chart<"radar", (number | null)[], unknown> | null;
 }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
 export declare const BubbleChart: import("./vueproxy.types").VueProxy<{
     readonly options: {
@@ -335,6 +341,7 @@ export declare const BubbleChart: import("./vueproxy.types").VueProxy<{
 }, {
     canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
     renderChart: () => void;
+    chartInstance: import("chart.js").Chart<"bubble", import("chart.js").BubbleDataPoint[], unknown> | null;
 }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
 export declare const ScatterChart: import("./vueproxy.types").VueProxy<{
     readonly options: {
@@ -383,6 +390,7 @@ export declare const ScatterChart: import("./vueproxy.types").VueProxy<{
 }, {
     canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
     renderChart: () => void;
+    chartInstance: import("chart.js").Chart<"scatter", (number | import("chart.js").ScatterDataPoint | null)[], unknown> | null;
 }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
 declare const _default: {
     BarChart: import("./vueproxy.types").VueProxy<{
@@ -432,6 +440,7 @@ declare const _default: {
     }, {
         canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
         renderChart: () => void;
+        chartInstance: import("chart.js").Chart<"bar", number[], unknown> | null;
     }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
     DoughnutChart: import("./vueproxy.types").VueProxy<{
         readonly options: {
@@ -480,6 +489,7 @@ declare const _default: {
     }, {
         canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
         renderChart: () => void;
+        chartInstance: import("chart.js").Chart<"doughnut", number[], unknown> | null;
     }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
     LineChart: import("./vueproxy.types").VueProxy<{
         readonly options: {
@@ -528,6 +538,7 @@ declare const _default: {
     }, {
         canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
         renderChart: () => void;
+        chartInstance: import("chart.js").Chart<"line", (number | import("chart.js").ScatterDataPoint | null)[], unknown> | null;
     }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
     PieChart: import("./vueproxy.types").VueProxy<{
         readonly options: {
@@ -576,6 +587,7 @@ declare const _default: {
     }, {
         canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
         renderChart: () => void;
+        chartInstance: import("chart.js").Chart<"pie", number[], unknown> | null;
     }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
     PolarAreaChart: import("./vueproxy.types").VueProxy<{
         readonly options: {
@@ -624,6 +636,7 @@ declare const _default: {
     }, {
         canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
         renderChart: () => void;
+        chartInstance: import("chart.js").Chart<"polarArea", number[], unknown> | null;
     }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
     RadarChart: import("./vueproxy.types").VueProxy<{
         readonly options: {
@@ -672,6 +685,7 @@ declare const _default: {
     }, {
         canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
         renderChart: () => void;
+        chartInstance: import("chart.js").Chart<"radar", (number | null)[], unknown> | null;
     }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
     BubbleChart: import("./vueproxy.types").VueProxy<{
         readonly options: {
@@ -720,6 +734,7 @@ declare const _default: {
     }, {
         canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
         renderChart: () => void;
+        chartInstance: import("chart.js").Chart<"bubble", import("chart.js").BubbleDataPoint[], unknown> | null;
     }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
     ScatterChart: import("./vueproxy.types").VueProxy<{
         readonly options: {
@@ -768,6 +783,7 @@ declare const _default: {
     }, {
         canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
         renderChart: () => void;
+        chartInstance: import("chart.js").Chart<"scatter", (number | import("chart.js").ScatterDataPoint | null)[], unknown> | null;
     }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
     defineChartComponent: <TType extends "bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar" = "bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar">(chartId: string, chartType: TType) => import("./vueproxy.types").VueProxy<{
         readonly options: {
@@ -816,6 +832,7 @@ declare const _default: {
     }, {
         canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
         renderChart: () => void;
+        chartInstance: import("chart.js").Chart<TType, import("chart.js").ChartTypeRegistry[TType]["defaultDataPoint"][], unknown> | null;
     }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
 };
 export default _default;
