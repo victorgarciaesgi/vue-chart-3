@@ -89,12 +89,12 @@ const TestHooksComponent = defineComponent({
       ],
     }));
 
-    const { barChartProps, chartInstance } = useBarChart({
+    const { barChartProps, barChartRef } = useBarChart({
       chartData: testData,
       options: options,
     });
 
-    return { data, barChartProps, chartInstance };
+    return { data, barChartProps, barChartRef };
   },
 });
 
@@ -110,9 +110,9 @@ describe('Vue 2 - with hooks', () => {
   it('should have canvas registered', () => {
     expect(canvas).toBeDefined();
   });
-  it('should have chartInstance variable instance of Chart.js', () => {
+  it('should have barChartRef variable instance of Vue', () => {
     expect(vm).toBeDefined();
-    expect(vm.$data.chartInstance).toBeInstanceOf(Chart);
+    expect(vm.$data.barChartRef).toBeInstanceOf(Vue);
   });
   it('should not have any console errors', () => {
     expect(console.error).not.toHaveBeenCalled();

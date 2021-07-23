@@ -8681,10 +8681,10 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vue-chart-3@^0.3.8:
-  version "0.3.8"
-  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-0.3.8.tgz#1fa4593b80e795cdcf94fbfcc02ab9d99a141917"
-  integrity sha512-38UxIIJb4dtNILu1wlzmZs8E4mzcDL1Rn+dEDribQ1hR++ZB3bziaHL1Jsefl9H6fEu0kA0MwhU3WCIiZ+bpDA==
+vue-chart-3@^0.4.8:
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-0.4.8.tgz#d61034bf89234d157e05253460e7a56cb0b3c6d5"
+  integrity sha512-iLm76obS/0BYyHbqXnSKZXl++6/iX+DXi5BwT3Lm5Po/NGInfxtiIliT+N9P9a0C5gtMA7kZek5QtKM4k967Dw==
   dependencies:
     csstype latest
     lodash latest
