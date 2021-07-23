@@ -25,7 +25,7 @@ export declare const BarChart: import("./vueproxy.types").VueProxy<{
         readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
     };
     readonly plugins: {
-        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
         readonly default: () => never[];
     };
     readonly chartData: {
@@ -74,7 +74,7 @@ export declare const DoughnutChart: import("./vueproxy.types").VueProxy<{
         readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
     };
     readonly plugins: {
-        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
         readonly default: () => never[];
     };
     readonly chartData: {
@@ -123,7 +123,7 @@ export declare const LineChart: import("./vueproxy.types").VueProxy<{
         readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
     };
     readonly plugins: {
-        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
         readonly default: () => never[];
     };
     readonly chartData: {
@@ -172,7 +172,7 @@ export declare const PieChart: import("./vueproxy.types").VueProxy<{
         readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
     };
     readonly plugins: {
-        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
         readonly default: () => never[];
     };
     readonly chartData: {
@@ -221,7 +221,7 @@ export declare const PolarAreaChart: import("./vueproxy.types").VueProxy<{
         readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
     };
     readonly plugins: {
-        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
         readonly default: () => never[];
     };
     readonly chartData: {
@@ -270,7 +270,7 @@ export declare const RadarChart: import("./vueproxy.types").VueProxy<{
         readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
     };
     readonly plugins: {
-        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
         readonly default: () => never[];
     };
     readonly chartData: {
@@ -319,7 +319,7 @@ export declare const BubbleChart: import("./vueproxy.types").VueProxy<{
         readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
     };
     readonly plugins: {
-        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
         readonly default: () => never[];
     };
     readonly chartData: {
@@ -368,7 +368,7 @@ export declare const ScatterChart: import("./vueproxy.types").VueProxy<{
         readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
     };
     readonly plugins: {
-        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+        readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
         readonly default: () => never[];
     };
     readonly chartData: {
@@ -418,7 +418,7 @@ declare const _default: {
             readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
         };
         readonly plugins: {
-            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
             readonly default: () => never[];
         };
         readonly chartData: {
@@ -467,7 +467,7 @@ declare const _default: {
             readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
         };
         readonly plugins: {
-            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
             readonly default: () => never[];
         };
         readonly chartData: {
@@ -516,7 +516,7 @@ declare const _default: {
             readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
         };
         readonly plugins: {
-            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
             readonly default: () => never[];
         };
         readonly chartData: {
@@ -565,7 +565,7 @@ declare const _default: {
             readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
         };
         readonly plugins: {
-            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
             readonly default: () => never[];
         };
         readonly chartData: {
@@ -614,7 +614,7 @@ declare const _default: {
             readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
         };
         readonly plugins: {
-            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
             readonly default: () => never[];
         };
         readonly chartData: {
@@ -663,7 +663,7 @@ declare const _default: {
             readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
         };
         readonly plugins: {
-            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
             readonly default: () => never[];
         };
         readonly chartData: {
@@ -712,7 +712,7 @@ declare const _default: {
             readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
         };
         readonly plugins: {
-            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
             readonly default: () => never[];
         };
         readonly chartData: {
@@ -761,7 +761,7 @@ declare const _default: {
             readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
         };
         readonly plugins: {
-            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
             readonly default: () => never[];
         };
         readonly chartData: {
@@ -785,7 +785,7 @@ declare const _default: {
         renderChart: () => void;
         chartInstance: import("chart.js").Chart<"scatter", (number | import("chart.js").ScatterDataPoint | null)[], unknown> | null;
     }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
-    defineChartComponent: <TType extends "bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar" = "bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar">(chartId: string, chartType: TType) => import("./vueproxy.types").VueProxy<{
+    defineChartComponent: <TType extends keyof import("chart.js").ChartTypeRegistry = keyof import("chart.js").ChartTypeRegistry>(chartId: string, chartType: TType) => import("./vueproxy.types").VueProxy<{
         readonly options: {
             readonly type: import("@vue/composition-api").PropType<import("chart.js/types/utils").DeepPartial<import("chart.js").CoreChartOptions<TType> & import("chart.js").ElementChartOptions<TType> & import("chart.js").PluginChartOptions<TType> & import("chart.js").DatasetChartOptions<TType> & import("chart.js").ScaleChartOptions<TType> & import("chart.js").ChartTypeRegistry[TType]["chartOptions"]>>;
             readonly required: false;
@@ -810,29 +810,29 @@ declare const _default: {
             readonly type: import("@vue/composition-api").PropType<import("./vueproxy.types").StyleValue>;
         };
         readonly plugins: {
-            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<"bar" | "line" | "scatter" | "bubble" | "pie" | "doughnut" | "polarArea" | "radar", Record<string, unknown>>[]>;
+            readonly type: import("@vue/composition-api").PropType<import("chart.js").Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[]>;
             readonly default: () => never[];
         };
         readonly chartData: {
-            readonly type: import("@vue/composition-api").PropType<import("chart.js").ChartData<TType, import("chart.js").ChartTypeRegistry[TType]["defaultDataPoint"][], unknown>>;
+            readonly type: import("@vue/composition-api").PropType<import("chart.js").ChartData<TType, import("chart.js/types/utils").DistributiveArray<import("chart.js").ChartTypeRegistry[TType]["defaultDataPoint"]>, unknown>>;
             readonly required: true;
         };
         readonly onLabelsUpdate: {
             readonly type: import("@vue/composition-api").PropType<() => void>;
         };
         readonly onChartUpdate: {
-            readonly type: import("@vue/composition-api").PropType<(chartInstance: import("chart.js").Chart<TType, import("chart.js").ChartTypeRegistry[TType]["defaultDataPoint"][], unknown>) => void>;
+            readonly type: import("@vue/composition-api").PropType<(chartInstance: import("chart.js").Chart<TType, import("chart.js/types/utils").DistributiveArray<import("chart.js").ChartTypeRegistry[TType]["defaultDataPoint"]>, unknown>) => void>;
         };
         readonly onChartDestroy: {
             readonly type: import("@vue/composition-api").PropType<() => void>;
         };
         readonly onChartRender: {
-            readonly type: import("@vue/composition-api").PropType<(chartInstance: import("chart.js").Chart<TType, import("chart.js").ChartTypeRegistry[TType]["defaultDataPoint"][], unknown>) => void>;
+            readonly type: import("@vue/composition-api").PropType<(chartInstance: import("chart.js").Chart<TType, import("chart.js/types/utils").DistributiveArray<import("chart.js").ChartTypeRegistry[TType]["defaultDataPoint"]>, unknown>) => void>;
         };
     }, {
         canvasRef: import("@vue/composition-api").Ref<HTMLCanvasElement | undefined>;
         renderChart: () => void;
-        chartInstance: import("chart.js").Chart<TType, import("chart.js").ChartTypeRegistry[TType]["defaultDataPoint"][], unknown> | null;
+        chartInstance: import("chart.js").Chart<TType, import("chart.js/types/utils").DistributiveArray<import("chart.js").ChartTypeRegistry[TType]["defaultDataPoint"]>, unknown> | null;
     }, import("vue/types/options").DefaultData<import("vue/types/umd")>, import("vue/types/options").DefaultComputed, import("vue/types/options").DefaultMethods<import("vue/types/umd")>>;
 };
 export default _default;

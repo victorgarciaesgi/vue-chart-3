@@ -11,6 +11,7 @@
     "debug:vue2": "cd debug/vue2 && yarn serve",
     "debug:vue3": "cd debug/vue3 && yarn serve",
     "deploy": "lerna run build && lerna publish",
+    "deploy:next": "lerna run build && lerna publish --dist-tag next",
     "test": "karma start"
   },
   "devDependencies": {
