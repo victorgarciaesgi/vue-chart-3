@@ -9,8 +9,6 @@ declare type ChartHookReturnType<TType extends ChartType> = {
     [K in DumbTypescript as `${TType}ChartRef`]: Ref<ExtractComponentData<VueProxy<any, ComponentData<TType>>>>;
 } & {
     [K in DumbTypescript as `${TType}ChartProps`]: Ref<ExtractComponentProps<VueProxy<ChartPropsOptions<TType>, ComponentData<TType>>>>;
-} & {
-    chartInstance: Ref<Chart<TType> | null>;
 };
 export declare const useDoughnutChart: (params: {
     chartData: MaybeRef<ChartData<"doughnut", number[], unknown>>;

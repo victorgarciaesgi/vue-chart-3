@@ -2,6 +2,7 @@
   <div id="app" style="width: 400px">
     <button @click="shuffleData">Shuffle</button>
     <BarChart v-bind="barChartProps" />
+    <img v-if="imgData" :src="imgData" />
   </div>
 </template>
 
@@ -16,15 +17,13 @@ Chart.register(...registerables);
 
 export default defineComponent({
   name: 'App',
-  props: {
-    test: { type: String },
-  },
   components: {
     BarChart,
   },
   setup() {
     const data = ref([30, 40, 60, 70, 5]);
     const legendTop = ref(true);
+    const imgData = ref(null);
 
     const options = computed(() => ({
       scales: {
@@ -44,7 +43,7 @@ export default defineComponent({
       ],
     }));
 
-    const { barChartProps, chartInstance } = useBarChart({
+    const { barChartProps, barChartRef } = useBarChart({
       chartData: testData,
       options,
     });
@@ -52,10 +51,10 @@ export default defineComponent({
     function shuffleData() {
       data.value = shuffle(data.value);
       legendTop.value = !legendTop.value;
-      console.log(chartInstance.value);
+      imgData.value = barChartRef.value.chartInstance.toBase64Image();
     }
 
-    return { data, shuffleData, barChartProps, options, testData };
+    return { data, shuffleData, barChartProps, options, testData, barChartRef, imgData };
   },
 });
 </script>
