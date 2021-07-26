@@ -2453,6 +2453,14 @@
     "@vue/reactivity" "3.1.5"
     "@vue/shared" "3.1.5"
 
+"@vue/runtime-core@latest":
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.1.5.tgz#a545b7f146092929cb5e833e85439150f17ac87b"
+  integrity sha512-YQbG5cBktN1RowQDKA22itmvQ+b40f0WgQ6CXK4VYoYICAiAfu6Cc14777ve8zp1rJRGtk5oIeS149TOculrTg==
+  dependencies:
+    "@vue/reactivity" "3.1.5"
+    "@vue/shared" "3.1.5"
+
 "@vue/runtime-dom@^3.1.4":
   version "3.1.5"
   resolved "https://registry.npmjs.org/@vue/runtime-dom/-/runtime-dom-3.1.5.tgz"
@@ -10062,10 +10070,10 @@ vue-codemod@^0.0.5:
     source-map "^0.6.1"
     yargs "^16.2.0"
 
-vue-demi@^0.10.1:
-  version "0.10.1"
-  resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.10.1.tgz"
-  integrity sha512-L6Oi+BvmMv6YXvqv5rJNCFHEKSVu7llpWWJczqmAQYOdmPPw5PNYoz1KKS//Fxhi+4QP64dsPjtmvnYGo1jemA==
+vue-demi@latest:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.11.2.tgz#faa06da53887c493a695b997f4fcb4784a667990"
+  integrity sha512-J+X8Au6BhQdcej6LY4O986634hZLu55L0ewU2j8my7WIKlu8cK0dqmdUxqVHHMd/cMrKKZ9SywB/id6aLhwCtA==
 
 vue-template-compiler@^2.6.14:
   version "2.6.14"

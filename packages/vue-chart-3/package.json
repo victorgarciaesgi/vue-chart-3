@@ -59,7 +59,8 @@
   "dependencies": {
     "csstype": "latest",
     "lodash": "latest",
-    "vue-demi": "^0.10.1"
+    "vue-demi": "latest",
+    "@vue/runtime-core": "latest"
   },
   "repository": {
     "type": "git",
