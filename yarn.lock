@@ -2431,10 +2431,10 @@
     "@vue/compiler-core" "3.1.5"
     "@vue/shared" "3.1.5"
 
-"@vue/composition-api@^1.0.0":
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/@vue/composition-api/-/composition-api-1.0.3.tgz"
-  integrity sha512-t9nBQSm1i1yB1UCCAuZlwbDfu+87X4FVj2keRYcj76YabwRmwcwkwX4A+nbg6TBLzJLoZ3Cf58lniPmIeQklkg==
+"@vue/composition-api@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-1.0.4.tgz#6162b3ba306a8995afdce969a66e168e6743718d"
+  integrity sha512-3OzvW8RS7/7kxE+SDXm8zSLZRy9GtCYwyLYdnGtIsqXRSt5nWkA7zu80Cw8Vg+67jglrpMdVBBy7AUXAB34ZSw==
   dependencies:
     tslib "^2.3.0"
 
@@ -2445,15 +2445,7 @@
   dependencies:
     "@vue/shared" "3.1.5"
 
-"@vue/runtime-core@3.1.5":
-  version "3.1.5"
-  resolved "https://registry.npmjs.org/@vue/runtime-core/-/runtime-core-3.1.5.tgz"
-  integrity sha512-YQbG5cBktN1RowQDKA22itmvQ+b40f0WgQ6CXK4VYoYICAiAfu6Cc14777ve8zp1rJRGtk5oIeS149TOculrTg==
-  dependencies:
-    "@vue/reactivity" "3.1.5"
-    "@vue/shared" "3.1.5"
-
-"@vue/runtime-core@latest":
+"@vue/runtime-core@3.1.5", "@vue/runtime-core@latest":
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.1.5.tgz#a545b7f146092929cb5e833e85439150f17ac87b"
   integrity sha512-YQbG5cBktN1RowQDKA22itmvQ+b40f0WgQ6CXK4VYoYICAiAfu6Cc14777ve8zp1rJRGtk5oIeS149TOculrTg==
@@ -2461,9 +2453,9 @@
     "@vue/reactivity" "3.1.5"
     "@vue/shared" "3.1.5"
 
-"@vue/runtime-dom@^3.1.4":
+"@vue/runtime-dom@latest":
   version "3.1.5"
-  resolved "https://registry.npmjs.org/@vue/runtime-dom/-/runtime-dom-3.1.5.tgz"
+  resolved "https://registry.yarnpkg.com/@vue/runtime-dom/-/runtime-dom-3.1.5.tgz#4fa28947d408aa368fa17ea0edc1beb9af1472a1"
   integrity sha512-tNcf3JhVR0RfW0kw1p8xZgv30nvX8Y9rsz7eiQ0dHe273sfoCngAG0y4GvMaY4Xd8FsjUwFedd4suQ8Lu8meXg==
   dependencies:
     "@vue/runtime-core" "3.1.5"
