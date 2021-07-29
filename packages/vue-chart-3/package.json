@@ -20,7 +20,8 @@
     "clean": "rimraf dist && rimraf types",
     "compile": "tsc --pretty && cp -r ./dist ../../debug/vue2/src && cp -r ./dist ../../debug/vue3/src",
     "dev": "tsc --pretty --watch",
-    "build": "yarn run clean && yarn run compile "
+    "build": "yarn run clean && yarn run compile",
+    "postinstall": ""
   },
   "author": {
     "name": "Victor Garcia",
@@ -60,7 +61,7 @@
     "@vue/runtime-dom": "latest",
     "csstype": "latest",
     "lodash": "latest",
-    "vue-demi": "latest"
+    "vue-demi": "^0.10.1"
   },
   "repository": {
     "type": "git",

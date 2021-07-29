@@ -30,7 +30,7 @@ pnpm i vue-chart-3
 This package works with version 2.x and 3.x of Vue.
 
 - Vue 3 works out-of-the-box
-- Vue 2 requires `@vue/composition-api` package to also be installed, to provide Vue 3's [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html) features like `ref, defineComponent, computed, reactive`.
+- Vue 2 requires `@vue/composition-api` package to also be installed, to provide Vue 3's [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html) features like `ref, defineComponent, computed, reactive`. Vue composition-api plugin will install itself so no need to register it!
 
 ## Chart.js (v3)
 

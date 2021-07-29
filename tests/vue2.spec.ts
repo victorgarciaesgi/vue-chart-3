@@ -4,18 +4,6 @@ import { Chart, DoughnutController, ArcElement, Legend, Title, Tooltip } from 'c
 
 Chart.register(DoughnutController, ArcElement, Legend, Title, Tooltip);
 
-class ResizeObserver {
-  observe() {
-    // do nothing
-  }
-  unobserve() {
-    // do nothing
-  }
-  disconnect() {}
-}
-
-window.ResizeObserver = ResizeObserver as any;
-
 describe('Vue 2 - Doughtnut chart', () => {
   const { vm } = mount(DoughnutChart, {
     propsData: {
