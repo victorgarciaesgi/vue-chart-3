@@ -1,6 +1,6 @@
 import { Chart, ChartType } from 'chart.js';
 import { Ref } from 'vue-demi';
-import type { VueProxy } from './vueproxy.types';
+import { VueProxy } from './vueproxy.types';
 import { ChartPropsOptions } from './types';
 export declare type ComponentData<T extends ChartType> = {
     canvasRef: Ref<HTMLCanvasElement | undefined>;

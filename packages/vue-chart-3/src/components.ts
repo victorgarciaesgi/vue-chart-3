@@ -19,9 +19,9 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 
 // Weird bug with karma importing cjs files
-const { nanoid } = require('nanoid/index');
+import { nanoid } from 'nanoid/index.js';
 
-import type { StyleValue, VueProxy } from './vueproxy.types';
+import { StyleValue, VueProxy } from './vueproxy.types';
 import { ChartPropsOptions } from './types';
 
 install();
@@ -56,7 +56,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
   const componentName = pascalCase(chartId);
 
-  return defineComponent({
+  return (defineComponent({
     name: componentName,
     props: propsDefs,
     emits: {
@@ -95,11 +95,11 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
           let chart = chartInstance.value;
 
           // Get new and old DataSet Labels
-          let newDatasetLabels = newData.datasets.map((dataset) => {
+          let newDatasetLabels = newData.datasets.map(dataset => {
             return dataset.label;
           });
 
-          let oldDatasetLabels = oldData.datasets.map((dataset) => {
+          let oldDatasetLabels = oldData.datasets.map(dataset => {
             return dataset.label;
           });
 
@@ -119,12 +119,12 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
               const newDatasetKeys = Object.keys(dataset);
 
               // Get keys that aren't present in the new data
-              const deletionKeys = oldDatasetKeys.filter((key) => {
+              const deletionKeys = oldDatasetKeys.filter(key => {
                 return key !== '_meta' && newDatasetKeys.indexOf(key) === -1;
               });
 
               // Remove outdated key-value pairs
-              deletionKeys.forEach((deletionKey) => {
+              deletionKeys.forEach(deletionKey => {
                 if (chart?.data.datasets[i]) {
                   delete chart.data.datasets[i][deletionKey as keyof ChartDataset];
                 }
@@ -242,5 +242,5 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         ]
       );
     },
-  }) as unknown as VueProxy<typeof propsDefs, ComponentData<TType>>;
+  }) as unknown) as VueProxy<typeof propsDefs, ComponentData<TType>>;
 };
