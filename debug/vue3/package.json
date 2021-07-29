@@ -11,13 +11,12 @@
     "chart.js": "^3.4.1",
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
-    "vue-chart-3": "^0.3.8"
+    "vue-chart-3": "^0.4.8"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",

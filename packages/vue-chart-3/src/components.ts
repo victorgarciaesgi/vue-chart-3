@@ -18,23 +18,28 @@ import camelCase from 'lodash/camelCase';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 
-import { StyleValue, VueProxy } from './vueproxy.types';
+// Weird bug with karma importing cjs files
+const { nanoid } = require('nanoid/index');
+
+import type { StyleValue, VueProxy } from './vueproxy.types';
+import { ChartPropsOptions } from './types';
 
 install();
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
-type ComponentData<T extends ChartType> = {
+export type ComponentData<T extends ChartType> = {
   canvasRef: Ref<HTMLCanvasElement | undefined>;
   renderChart: () => void;
   chartInstance: Chart<T> | null;
+  canvasId: string;
 };
 
 export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartId: string,
   chartType: TType
 ) => {
-  const propsDefs = {
+  const propsDefs: ChartPropsOptions<TType> = {
     options: { type: Object as PropType<ChartOptions<TType>>, required: false },
     chartId: { default: chartId, type: String },
     width: { default: 400, type: Number },
@@ -47,7 +52,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     onChartUpdate: { type: Function as PropType<(chartInstance: Chart<TType>) => void> },
     onChartDestroy: { type: Function as PropType<() => void> },
     onChartRender: { type: Function as PropType<(chartInstance: Chart<TType>) => void> },
-  } as const;
+  };
 
   const componentName = pascalCase(chartId);
 
@@ -62,6 +67,8 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     },
     setup(props, { emit }) {
       const canvasRef = ref<HTMLCanvasElement>();
+
+      const canvasId = `${chartId}-${nanoid(6)}`;
 
       let chartInstance = shallowRef<Chart<TType> | null>(null);
 
@@ -204,7 +211,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         }
       });
 
-      return { canvasRef, renderChart, chartInstance };
+      return { canvasRef, renderChart, chartInstance, canvasId };
     },
     render() {
       return h(
@@ -220,13 +227,13 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
           h('canvas', {
             ...(isVue2 && {
               attrs: {
-                id: this.chartId,
+                id: this.canvasId,
                 width: this.width,
                 height: this.height,
               },
             }),
             ...(isVue3 && {
-              id: this.chartId,
+              id: this.canvasId,
               width: this.width,
               height: this.height,
             }),

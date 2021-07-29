@@ -12,13 +12,16 @@
     "debug:vue3": "cd debug/vue3 && yarn serve",
     "deploy": "lerna run build && lerna publish",
     "deploy:next": "lerna run build && lerna publish --dist-tag next",
-    "test": "karma start"
+    "test": "karma start",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "devDependencies": {
     "@testing-library/vue": "^5.8.1",
     "@types/jasmine": "^3.8.1",
     "@types/karma": "^6.3.1",
     "@types/node": "^15.12.5",
+    "@vue/composition-api": "^1.0.3",
     "@vue/test-utils": "^1.2.1",
     "canvas": "^2.8.0",
     "chart.js": "^3.4.1",
@@ -29,10 +32,13 @@
     "karma-coverage": "^2.0.3",
     "karma-jasmine": "^4.0.1",
     "karma-typescript": "^5.5.1",
+    "karma-typescript-es6-transform": "^5.5.1",
     "lerna": "^4.0.0",
+    "nanoid": "^3.1.23",
     "resize-observer-polyfill": "^1.5.1",
     "vue": "2.6.14",
-    "vue-chart-3": "^0.4.11",
-    "vue-template-compiler": "^2.6.14"
+    "vue-chart-3": "^0.4.1",
+    "vue-template-compiler": "^2.6.14",
+    "vuepress": "^1.8.2"
   }
 }

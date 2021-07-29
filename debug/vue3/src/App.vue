@@ -1,13 +1,14 @@
 <template>
   <div id="app" style="width: 400px">
     <button @click="shuffleData">Shuffle</button>
-    <DoughnutChart :width="400" ref="doughnutRef" :chartData="testData" :options="options" />
+    <BarChart v-bind="barChartProps" />
   </div>
 </template>
 
 <script lang="ts">
 import { Chart, ChartData, registerables } from 'chart.js';
-import { DoughnutChart, ExtractComponentData } from './dist';
+import { BarChart, ExtractComponentData } from './dist';
+import { useBarChart } from './dist/hooks.js';
 import { ref, computed, defineComponent } from 'vue';
 import { shuffle } from 'lodash';
 
@@ -19,14 +20,13 @@ export default defineComponent({
     test: { type: String },
   },
   components: {
-    DoughnutChart,
+    BarChart,
   },
   setup() {
     const data = ref([30, 40, 60, 70, 5]);
-    const doughnutRef = ref<ExtractComponentData<typeof DoughnutChart>>();
     const legendTop = ref(true);
 
-    const options = ref({
+    const options = computed(() => ({
       scales: {
         myScale: {
           type: 'logarithmic',
@@ -42,9 +42,9 @@ export default defineComponent({
           text: 'Chart.js Doughnut Chart',
         },
       },
-    });
+    }));
 
-    const testData = computed<ChartData<'doughnut'>>(() => ({
+    const testData = computed<ChartData<'bar'>>(() => ({
       labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
       datasets: [
         {
@@ -54,17 +54,18 @@ export default defineComponent({
       ],
     }));
 
-    function handleChartRender() {
-      doughnutRef.value.canvasRef;
-    }
+    const { barChartProps, chartInstance } = useBarChart({
+      chartData: testData,
+      options: options,
+    });
 
     function shuffleData() {
       data.value = shuffle(data.value);
       legendTop.value = !legendTop.value;
-      console.log(doughnutRef.value.chartInstance);
+      console.log(chartInstance.value);
     }
 
-    return { data, testData, shuffleData, doughnutRef, options, handleChartRender };
+    return { data, shuffleData, barChartProps };
   },
 });
 </script>
