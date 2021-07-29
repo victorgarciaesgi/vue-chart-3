@@ -20,7 +20,8 @@
     "clean": "rimraf dist && rimraf types",
     "compile": "tsc --pretty && cp -r ./dist ../../debug/vue2/src && cp -r ./dist ../../debug/vue3/src",
     "dev": "tsc --pretty --watch",
-    "build": "yarn run clean && yarn run compile "
+    "build": "yarn run clean && yarn run compile",
+    "postinstall": ""
   },
   "author": {
     "name": "Victor Garcia",
@@ -34,7 +35,7 @@
   "typings": "types/index.d.ts",
   "license": "MIT",
   "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.9",
+    "@vue/composition-api": "^1.0.4",
     "chart.js": "^3.1.0",
     "vue": "^2.0.0 || >=3.0.0-rc.0"
   },
@@ -48,8 +49,7 @@
     "@types/lodash": "^4.14.171",
     "@types/node": "^15.12.5",
     "@vue/cli": "^4.5.13",
-    "@vue/composition-api": "^1.0.0",
-    "@vue/runtime-dom": "^3.1.4",
+    "@vue/composition-api": "^1.0.4",
     "chart.js": "^3.4.1",
     "copyfiles": "^2.4.1",
     "rimraf": "^3.0.2",

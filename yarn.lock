@@ -2814,14 +2814,14 @@
 
 "@vue/reactivity@3.1.5":
   version "3.1.5"
-  resolved "https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.1.5.tgz"
+  resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.1.5.tgz#dbec4d9557f7c8f25c2635db1e23a78a729eb991"
   integrity sha512-1tdfLmNjWG6t/CsPldh+foumYFo3cpyCHgBYQ34ylaMsJ+SNHQ1kApMIa8jN+i593zQuaw3AdWH0nJTARzCFhg==
   dependencies:
     "@vue/shared" "3.1.5"
 
-"@vue/runtime-core@3.1.5":
+"@vue/runtime-core@3.1.5", "@vue/runtime-core@latest":
   version "3.1.5"
-  resolved "https://registry.npmjs.org/@vue/runtime-core/-/runtime-core-3.1.5.tgz"
+  resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.1.5.tgz#a545b7f146092929cb5e833e85439150f17ac87b"
   integrity sha512-YQbG5cBktN1RowQDKA22itmvQ+b40f0WgQ6CXK4VYoYICAiAfu6Cc14777ve8zp1rJRGtk5oIeS149TOculrTg==
   dependencies:
     "@vue/reactivity" "3.1.5"
@@ -5341,7 +5341,7 @@ csso@^4.0.2:
 
 csstype@^2.6.8:
   version "2.6.17"
-  resolved "https://registry.npmjs.org/csstype/-/csstype-2.6.17.tgz"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.17.tgz#4cf30eb87e1d1a005d8b6510f95292413f6a1c0e"
   integrity sha512-u1wmTI1jJGzCJzWndZo8mk4wnPTZd1eOIYTYvuEyOQGfmDl3TrabCCfKnOC86FZwW/9djqTl933UF/cS425i9A==
 
 csstype@latest:
@@ -13557,7 +13557,7 @@ vue-codemod@^0.0.5:
 
 vue-demi@^0.10.1:
   version "0.10.1"
-  resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.10.1.tgz"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.10.1.tgz#229b81395510f02f4ee255344557a12cc0120930"
   integrity sha512-L6Oi+BvmMv6YXvqv5rJNCFHEKSVu7llpWWJczqmAQYOdmPPw5PNYoz1KKS//Fxhi+4QP64dsPjtmvnYGo1jemA==
 
 vue-hot-reload-api@^2.3.0:
