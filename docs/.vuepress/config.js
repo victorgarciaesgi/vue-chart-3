@@ -88,7 +88,7 @@ module.exports = {
           '/components/': [
             '',
             {
-              title: 'Chart hooks',
+              title: 'Chart hooks (alpha)',
               collapsable: false,
               children: ['/components/hooks/', '/components/hooks/exemple'],
             },
