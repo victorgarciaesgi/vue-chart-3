@@ -3,7 +3,7 @@
 ## Guide
 
 ::: warning
-Hooks are still in alpha and accessible in the `next` versions (`0.5.0-alpha-x`)
+Hooks are still in alpha
 :::
 
 `vue-chart-3` also provides fully typed hooks compatible with Vue 2 and Vue 3 using `vue-demi`.
