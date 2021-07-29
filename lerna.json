@@ -2,7 +2,7 @@
   "packages": [
     "packages/vue-chart-3"
   ],
-  "version": "0.5.1",
+  "version": "0.5.2",
   "useWorkspaces": true,
   "npmClient": "yarn"
 }
