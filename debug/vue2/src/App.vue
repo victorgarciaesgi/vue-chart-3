@@ -54,7 +54,7 @@ export default defineComponent({
       imgData.value = barChartRef.value.chartInstance.toBase64Image();
     }
 
-    return { data, shuffleData, barChartProps, options, testData, barChartRef, imgData };
+    return { data, shuffleData, barChartProps, options, barChartRef, imgData };
   },
 });
 </script>
