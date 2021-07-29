@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "0.5.0-alpha.6",
+  "version": "0.5.0",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "workspaces": [
     "test/*"
@@ -57,8 +57,8 @@
     "vue": "^2.6.14"
   },
   "dependencies": {
-    "@vue/runtime-dom": "latest",
     "@vue/runtime-core": "latest",
+    "@vue/runtime-dom": "latest",
     "csstype": "latest",
     "lodash": "latest",
     "nanoid": "latest",
