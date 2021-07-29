@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
-// @ts-ignore
-import { DoughnutChart, BarChart, useBarChart } from '../dist';
+import { DoughnutChart, BarChart, useBarChart } from '../packages/vue-chart-3/src';
 import { Chart, DoughnutController, ArcElement, Legend, Title, Tooltip } from 'chart.js';
 import Vue from 'vue';
 import VueCompositionApi, { defineComponent, ref, computed } from '@vue/composition-api';

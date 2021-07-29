@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "module": "es2015",
     "target": "es2018",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
