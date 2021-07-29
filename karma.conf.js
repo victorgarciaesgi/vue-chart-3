@@ -1,15 +1,15 @@
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', 'karma-typescript'],
     files: [
-      { pattern: 'packages/vue-chart-3/**/*.+(ts|mjs)' },
-      { pattern: 'tests/**/*.+(ts|mjs)' },
+      // { pattern: 'packages/vue-chart-3/**/*.+(ts|mjs)' },
+      { pattern: 'tests/**/*.+(ts|js)' },
     ],
     exclude: [],
     preprocessors: {
-      'packages/vue-chart-3/**/*.+(ts|mjs)': ['karma-typescript', 'coverage'],
-      'tests/**/*.+(ts|mjs)': ['karma-typescript'],
+      // 'packages/vue-chart-3/**/*.+(ts|mjs)': ['karma-typescript', 'coverage'],
+      'tests/**/*.+(ts|js)': ['karma-typescript'],
     },
     karmaTypescriptConfig: {
       tsconfig: './tsconfig.json',

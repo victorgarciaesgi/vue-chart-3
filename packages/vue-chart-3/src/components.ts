@@ -19,7 +19,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 
 // Weird bug with karma importing cjs files
-import { nanoid } from 'nanoid/index.js';
+import { nanoid } from 'nanoid';
 
 import { StyleValue, VueProxy } from './vueproxy.types';
 import { ChartPropsOptions } from './types';

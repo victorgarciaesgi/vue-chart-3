@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf types",
-    "compile": "tsc --pretty && cp -r ./dist ../../debug/vue2/src && cp -r ./dist ../../debug/vue3/src",
+    "compile": "tsc --pretty && cp -r ./dist ../../debug/vue2/src && cp -r ./dist ../../debug/vue3/src && cp -r ./dist ../../",
     "dev": "tsc --pretty --watch",
     "build": "yarn run clean && yarn run compile",
     "postinstall": ""

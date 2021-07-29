@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es2018",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,

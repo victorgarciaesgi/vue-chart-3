@@ -12,7 +12,7 @@
     "debug:vue3": "cd debug/vue3 && yarn serve",
     "deploy": "lerna run build && lerna publish",
     "deploy:next": "lerna run build && lerna publish --dist-tag next",
-    "test": "karma start",
+    "test": "yarn build && karma start",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
