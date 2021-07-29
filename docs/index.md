@@ -2,7 +2,7 @@
 home: true
 heroImage: /assets/logo.svg
 actionText: Get Started →
-actionLink: /getting-started/
+actionLink: /guide/
 footer: MIT Licensed | Copyright © 2021-present Victor Garcia
 ---
 

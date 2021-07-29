@@ -67,34 +67,44 @@ module.exports = {
         selectText: 'Languages',
         editLinkText: 'Edit this page on GitHub',
         sidebar: {
-          '/': getMainSidebar(),
+          '/guide/': [
+            '',
+            {
+              title: 'Configuration',
+              collapsable: false,
+              children: ['/guide/configuration/', '/guide/configuration/plugins'],
+            },
+            {
+              title: 'Usage',
+              collapsable: false,
+              children: [
+                '/guide/usage/',
+                '/guide/usage/chart-instance',
+                '/guide/usage/dynamic-data',
+                '/guide/usage/typescript',
+              ],
+            },
+          ],
+          '/components/': [
+            '',
+            {
+              title: 'Chart hooks',
+              collapsable: false,
+              children: ['/components/hooks/', '/components/hooks/exemple'],
+            },
+          ],
         },
         nav: [
           {
             text: 'Guide',
-            link: '/getting-started/',
+            link: '/guide/',
           },
           {
-            text: 'Api',
-            link: '/api/',
+            text: 'Components',
+            link: '/components/',
           },
         ],
       },
     },
   },
 };
-
-function getMainSidebar() {
-  return [
-    {
-      title: 'Getting started',
-      collapsable: false,
-      children: ['/getting-started/'],
-    },
-    {
-      title: 'Configuration',
-      collapsable: false,
-      children: ['/configuration/', '/configuration/config', '/configuration/runtime'],
-    },
-  ];
-}

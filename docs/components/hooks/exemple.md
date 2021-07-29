@@ -1,15 +1,16 @@
+## Full Exemple
+
+```vue
 <template>
   <div id="app" style="width: 400px">
     <button @click="shuffleData">Shuffle</button>
     <BarChart v-bind="barChartProps" />
-    <img v-if="imgData" :src="imgData" />
   </div>
 </template>
 
 <script>
 import { Chart, registerables } from 'chart.js';
-import { BarChart } from './dist';
-import { useBarChart } from './dist/hooks.js';
+import { BarChart, useBarChart } from 'vue-chart-3';
 import { ref, computed, defineComponent } from '@vue/composition-api';
 import { shuffle } from 'lodash';
 
@@ -22,16 +23,6 @@ export default defineComponent({
   },
   setup() {
     const data = ref([30, 40, 60, 70, 5]);
-    const legendTop = ref(true);
-    const imgData = ref(null);
-
-    const options = computed(() => ({
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    }));
 
     const chartData = computed(() => ({
       labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
@@ -45,16 +36,13 @@ export default defineComponent({
 
     const { barChartProps, barChartRef } = useBarChart({
       chartData,
-      options,
     });
 
     function shuffleData() {
       data.value = shuffle(data.value);
-      legendTop.value = !legendTop.value;
-      imgData.value = barChartRef.value.chartInstance.toBase64Image();
     }
 
-    return { data, shuffleData, barChartProps, options, testData, barChartRef, imgData };
+    return { shuffleData, barChartProps, barChartRef };
   },
 });
 </script>
@@ -69,3 +57,4 @@ export default defineComponent({
   margin-top: 60px;
 }
 </style>
+```
