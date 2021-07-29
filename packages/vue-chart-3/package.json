@@ -68,6 +68,6 @@
     "type": "git",
     "url": "git+https://github.com/victorgarciaesgi/vue-chart-3.git"
   },
-  "homepage": "https://github.com/victorgarciaesgi/vue-chart-3#readme",
+  "homepage": "https://vue-chart-3.netlify.app/",
   "gitHead": "a4bfebae9b7ab6a1275a59d1874ab8a70f68f1c9"
 }
