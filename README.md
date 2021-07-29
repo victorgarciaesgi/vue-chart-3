@@ -29,7 +29,9 @@ yarn add vue-chart-3
 pnpm i vue-chart-3
 ```
 
-# Documentation
+# [Documentation](https://vue-chart-3.netlify.app/)
+
+[Full documentation](https://vue-chart-3.netlify.app/)
 
 # Important notes
 
