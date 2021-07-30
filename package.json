@@ -14,7 +14,8 @@
     "deploy:next": "lerna run build && lerna publish --dist-tag next",
     "test": "yarn build && karma start",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "postinstall": "echo \\$contentClass = \\'.content__default\\' > node_modules/@vuepress/theme-default/styles/config.styl"
   },
   "devDependencies": {
     "@testing-library/vue": "^5.8.1",
