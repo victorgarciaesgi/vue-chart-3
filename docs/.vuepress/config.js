@@ -1,6 +1,8 @@
 const packageJson = require('../../packages/vue-chart-3/package.json');
 
 module.exports = {
+  base: '/',
+  serviceWorker: true,
   locales: {
     '/': {
       lang: 'en-US',
@@ -16,6 +18,15 @@ module.exports = {
       },
     ],
     'tabs',
+    ('@vuepress/pwa': {
+      serviceWorker: true,
+      updatePopup: {
+        '/': {
+          message: 'New content is available.',
+          buttonText: 'Refresh',
+        },
+      },
+    }),
   ],
   head: [
     [
