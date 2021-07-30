@@ -5,7 +5,6 @@
   "workspaces": [
     "test/*"
   ],
-  "type": "module",
   "keywords": [
     "vue chartjs 3",
     "vue chart.js 3",
