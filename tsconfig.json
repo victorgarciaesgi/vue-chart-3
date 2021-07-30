@@ -16,7 +16,7 @@
     "sourceMap": false,
     "downlevelIteration": true,
     "skipLibCheck": true,
-    "types": ["node", "jasmine"],
+    "types": ["node", "jasmine", "karma-typescript"],
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "include": ["tests/**/*.ts", "packages/vue-chart-3/**/*.ts"],

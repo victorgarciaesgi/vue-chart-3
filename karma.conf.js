@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = config => {
   config.set({
     basePath: '',
     frameworks: ['jasmine', 'karma-typescript'],
@@ -15,6 +15,12 @@ module.exports = function(config) {
       tsconfig: './tsconfig.json',
       bundlerOptions: {
         transforms: [require('karma-typescript-es6-transform')()],
+        resolve: {
+          alias: {
+            nanoid: 'node_modules/nanoid/index.browser.js',
+          },
+          extensions: ['.js'],
+        },
       },
     },
     reporters: ['progress', 'coverage', 'karma-typescript'],
