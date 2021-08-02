@@ -96,6 +96,7 @@ module.exports = {
                 '/guide/usage/chart-instance',
                 '/guide/usage/dynamic-data',
                 '/guide/usage/typescript',
+                '/guide/usage/actions',
               ],
             },
             {
