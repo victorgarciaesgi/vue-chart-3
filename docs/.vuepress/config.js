@@ -98,6 +98,11 @@ module.exports = {
                 '/guide/usage/typescript',
               ],
             },
+            {
+              title: 'Exemples',
+              collapsable: false,
+              children: ['/guide/exemples/vue2', '/guide/exemples/vue3'],
+            },
           ],
           '/components/': [
             '',
