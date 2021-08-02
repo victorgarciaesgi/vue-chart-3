@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href='https://sgts.netlify.com/'>
-    <img width='100' src="./media/logo.svg" alt="sgts logo">
+    <img width='100' src="https://raw.githubusercontent.com/victorgarciaesgi/vue-chart-3/main/media/logo.svg" alt="sgts logo">
   </a>
 </p>
 
