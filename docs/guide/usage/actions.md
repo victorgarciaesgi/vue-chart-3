@@ -5,10 +5,10 @@ Charts.js Programmatic events are a way to call plugin actions.
 
 In `vue-chart-3`, it works the same way by accessing the `chartInstance` in the template ref.
 
-Exemple with a plugin like (chartjs-plugin-zoom)[https://www.chartjs.org/chartjs-plugin-zoom/]
+Exemple with a plugin like [chartjs-plugin-zoom](https://www.chartjs.org/chartjs-plugin-zoom/)
 
 ```ts
 barChartRef.value.chartInstance.resetZoom();
 ```
 
-Exemple in (Vue 2 demo)[https://vue-chart-3.netlify.app]
+Exemple in [Vue 2 demo](https://vue-chart-3.netlify.app)
