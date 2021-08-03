@@ -2,8 +2,7 @@
 
 ## Introduction
 
-vue-chart-3 is a simple wrapper around [Chart.js](https://www.chartjs.org/) 3 for Vue 2 & 3
-This is a rewrite of `vue-chartjs` for Chart.js 3, but written in Typescript with vue-demi and Vue Composition API.
+vue-chart-3 is rewrite of `vue-chartjs` for [Chart.js 3](https://www.chartjs.org/) for Vue 2 & 3, but written in Typescript with vue-demi and Vue Composition API.
 
 ## Installation
 
