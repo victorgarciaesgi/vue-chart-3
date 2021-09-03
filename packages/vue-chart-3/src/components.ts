@@ -220,11 +220,16 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
           style: {
             maxWidth: '100%',
             ...(this.styles as any),
+            position: 'relative',
           },
           class: this.cssClasses,
         },
         [
           h('canvas', {
+            style: {
+              maxWidth: '100%',
+              maxHeight: '100%',
+            },
             ...(isVue2 && {
               attrs: {
                 id: this.canvasId,
