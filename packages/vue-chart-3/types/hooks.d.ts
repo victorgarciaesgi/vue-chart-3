@@ -1,4 +1,4 @@
-import { Chart, ChartData, ChartType } from 'chart.js';
+import { Chart, ChartData, ChartType, Plugin } from 'chart.js';
 import { Ref } from 'vue-demi';
 import { ComponentData } from './components';
 import { ChartPropsOptions } from './types';
