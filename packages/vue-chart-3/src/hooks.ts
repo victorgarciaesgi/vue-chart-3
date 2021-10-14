@@ -1,4 +1,4 @@
-import { Chart, ChartData, ChartOptions, ChartType } from 'chart.js';
+import { Chart, ChartData, ChartOptions, ChartType, Plugin } from 'chart.js';
 import {
   computed,
   onBeforeMount,
