@@ -2,7 +2,7 @@
 
 Each component props is properly typed and should be throwing errors if you are using [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
-## Code exemple
+## Code example
 
 ```vue
 <template>

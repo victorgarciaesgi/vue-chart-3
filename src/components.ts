@@ -18,13 +18,13 @@ import camelCase from 'lodash/camelCase';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 
+install();
+
 // Weird bug with karma importing cjs files
 import { nanoid } from 'nanoid';
 
 import { StyleValue, VueProxy } from './vueproxy.types';
 import { ChartPropsOptions } from './types';
-
-install();
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 

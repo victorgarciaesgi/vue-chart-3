@@ -2,7 +2,7 @@
 
 You can use `defineChartComponent` to create ChartJs plugins components
 
-Exemple:
+Example:
 
 ```ts
 import { defineChartComponent } from 'vue-chart-3';
@@ -18,7 +18,7 @@ If you are using Typescript, you have to augment the interface `ChartTypeRegistr
 
 The plugins for Chart.js are usually typed, but if they aren't you can do it manually
 
-(Exemple taken from [chartjs-chart-matrix](https://github.com/kurkle/chartjs-chart-matrix/blob/next/types/index.esm.d.ts))
+(Example taken from [chartjs-chart-matrix](https://github.com/kurkle/chartjs-chart-matrix/blob/next/types/index.esm.d.ts))
 
 ```ts
 declare module 'chart.js' {

@@ -2,14 +2,11 @@ module.exports = config => {
   config.set({
     basePath: '',
     frameworks: ['jasmine', 'karma-typescript'],
-    files: [
-      { pattern: 'packages/vue-chart-3/**/*.+(ts|mjs)' },
-      { pattern: 'tests/**/*.+(ts|mjs)' },
-    ],
+    files: [{ pattern: 'src/**/*.+(ts|cjs)' }, { pattern: 'tests/**/*.+(ts|cjs)' }],
     exclude: [],
     preprocessors: {
-      'packages/vue-chart-3/**/*.+(ts|mjs)': ['karma-typescript', 'coverage'],
-      'tests/**/*.+(ts|mjs)': ['karma-typescript'],
+      'src/**/*.+(ts|cjs)': ['karma-typescript', 'coverage'],
+      'tests/**/*.+(ts|cjs)': ['karma-typescript'],
     },
     karmaTypescriptConfig: {
       tsconfig: './tsconfig.json',

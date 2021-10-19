@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es2018",
+    "target": "es2019",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
@@ -13,12 +13,13 @@
     "strictNullChecks": true,
     "strict": true,
     "pretty": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "downlevelIteration": true,
     "skipLibCheck": true,
+    "outDir": "dist",
     "types": ["node", "jasmine", "karma-typescript"],
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    "lib": ["esnext", "es2019", "dom", "dom.iterable", "scripthost"]
   },
-  "include": ["tests/**/*.ts", "packages/vue-chart-3/**/*.ts"],
+  "include": ["src/**/*", "tests/**/*"],
   "exclude": ["node_modules"]
 }

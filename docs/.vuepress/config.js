@@ -100,9 +100,9 @@ module.exports = {
               ],
             },
             {
-              title: 'Exemples',
+              title: 'Examples',
               collapsable: false,
-              children: ['/guide/exemples/vue2', '/guide/exemples/vue3'],
+              children: ['/guide/examples/vue2', '/guide/examples/vue3'],
             },
           ],
           '/components/': [
@@ -110,7 +110,7 @@ module.exports = {
             {
               title: 'Chart hooks (alpha)',
               collapsable: false,
-              children: ['/components/hooks/', '/components/hooks/exemple'],
+              children: ['/components/hooks/', '/components/hooks/example'],
             },
           ],
         },

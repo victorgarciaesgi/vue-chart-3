@@ -1,45 +1,94 @@
 {
-  "private": true,
-  "workspaces": [
-    "packages/*"
+  "name": "vue-chart-3",
+  "version": "0.5.8",
+  "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
+  "keywords": [
+    "vue chartjs 3",
+    "vue chart.js 3",
+    "chartjs 3",
+    "vue chartjs",
+    "chartjs vue",
+    "chartjs 3 vue",
+    "chartjs vue3",
+    "chartjs vue 3",
+    "vue chart.js"
   ],
   "scripts": {
-    "clean": "cd ./packages/vue-chart-3/ && yarn run clean",
-    "compile": "cd ./packages/vue-chart-3/ && yarn run compile",
-    "dev": "cd ./packages/vue-chart-3/ && yarn run dev",
+    "clean": "rimraf dist && rimraf types",
+    "compile": "tsc --pretty -p tsconfig.build.json && cp -r ./dist ./debug/vue2/src && cp -r ./dist ./debug/vue3/src",
+    "dev": "tsc --pretty --watch",
     "build": "yarn run clean && yarn run compile",
     "debug:vue2": "cd debug/vue2 && yarn serve",
     "debug:vue3": "cd debug/vue3 && yarn serve",
-    "deploy": "lerna run build && lerna publish",
-    "deploy:next": "lerna run build && lerna publish --dist-tag next",
-    "test": "yarn build && karma start",
+    "test": "vue-demi-switch 2 && karma start",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "postinstall": "echo \\$contentClass = \\'.content__default\\' > node_modules/@vuepress/theme-default/styles/config.styl"
   },
-  "devDependencies": {
-    "@testing-library/vue": "^5.8.1",
-    "@types/jasmine": "^3.8.1",
-    "@types/karma": "^6.3.1",
-    "@types/node": "^15.12.5",
+  "author": {
+    "name": "Victor Garcia",
+    "url": "https://github.com/victorgarciaesgi"
+  },
+  "files": [
+    "dist",
+    "types"
+  ],
+  "main": "dist/index.js",
+  "typings": "types/index.d.ts",
+  "type": "commonjs",
+  "license": "MIT",
+  "peerDependencies": {
     "@vue/composition-api": "^1.0.4",
-    "@vue/test-utils": "^1.2.1",
+    "chart.js": "^3.1.0",
+    "vue": "^2.0.0 || >=3.0.0-rc.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@vue/runtime-core": "3.2.20",
+    "@vue/runtime-dom": "3.2.20",
+    "csstype": "3.0.9",
+    "lodash": "latest",
+    "nanoid": "3.1.30",
+    "vue-demi": "^0.11.4"
+  },
+  "devDependencies": {
+    "@testing-library/vue": "^5.8.2",
+    "@types/chart.js": "^2.9.34",
+    "@types/jasmine": "^3.10.0",
+    "@types/karma": "^6.3.1",
+    "@types/lodash": "^4.14.175",
+    "@types/node": "^14.0.27",
+    "@vue/cli": "^4.5.14",
+    "@vue/composition-api": "^1.2.4",
+    "@vue/test-utils": "^1.2.2",
     "canvas": "^2.8.0",
-    "chart.js": "^3.4.1",
-    "chartjs-test-utils": "^0.3.0",
-    "jasmine-core": "^3.8.0",
+    "chart.js": "^3.5.1",
+    "chartjs-test-utils": "^0.3.1",
+    "copyfiles": "^2.4.1",
+    "jasmine-core": "^3.10.0",
     "karma": "^6.3.4",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage": "^2.0.3",
     "karma-jasmine": "^4.0.1",
-    "karma-typescript": "^5.5.1",
-    "karma-typescript-es6-transform": "^5.5.1",
+    "karma-typescript": "^5.5.2",
+    "karma-typescript-es6-transform": "^5.5.2",
     "lerna": "^4.0.0",
-    "nanoid": "^3.1.23",
     "resize-observer-polyfill": "^1.5.1",
-    "vue": "2.6.14",
-    "vue-chart-3": "^0.4.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.4.4",
+    "vue": "^2.6.14",
+    "vue-chart-3": "^0.5.8",
     "vue-template-compiler": "^2.6.14",
     "vuepress": "^1.8.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorgarciaesgi/vue-chart-3.git"
+  },
+  "homepage": "https://vue-chart-3.netlify.app/",
+  "gitHead": "b17a8646d048947e3ec54865873ff0ff1ab19e78"
 }

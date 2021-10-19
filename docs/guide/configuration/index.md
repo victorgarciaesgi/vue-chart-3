@@ -27,4 +27,5 @@ export default {
 
 ## Nuxt 3
 
-Waiting for release 🙄
+Nuxt 3 beta just came out, still processing what's the best way to do it, but since the plugin system looks the same as Nuxt 2, you can follow Nuxt 2 instruction for now.
+Any bug report with Nuxt 3 or Vite.js is welcome
