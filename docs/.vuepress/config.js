@@ -1,4 +1,4 @@
-const packageJson = require('../../packages/vue-chart-3/package.json');
+const packageJson = require('../../package.json');
 
 module.exports = {
   base: '/',
