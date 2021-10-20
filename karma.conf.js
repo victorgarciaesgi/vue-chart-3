@@ -15,8 +15,10 @@ module.exports = config => {
         resolve: {
           alias: {
             nanoid: 'node_modules/nanoid/index.browser.js',
+            '@vue/composition-api/dist/vue-composition-api.esm.js':
+              'node_modules/@vue/composition-api/dist/vue-composition-api.mjs',
           },
-          extensions: ['.js'],
+          extensions: ['.js', 'mjs', 'cjs'],
         },
       },
     },
