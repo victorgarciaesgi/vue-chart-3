@@ -1,4 +1,4 @@
-import { Chart, ChartData, ChartType } from 'chart.js';
+import { Chart, ChartData, ChartType, Plugin } from 'chart.js';
 import { Ref } from 'vue-demi';
 import { ComponentData } from './components';
 import { ChartPropsOptions } from './types';
@@ -17,7 +17,7 @@ export declare const useDoughnutChart: (params: {
     height?: number | undefined;
     cssClasses?: string | undefined;
     styles?: StyleValue | undefined;
-    plugins?: Plugin[] | undefined;
+    plugins?: Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"doughnut", number[], unknown>) => void) | undefined;
     onChartDestroy?: (() => void) | undefined;
@@ -30,7 +30,7 @@ export declare const useBarChart: (params: {
     height?: number | undefined;
     cssClasses?: string | undefined;
     styles?: StyleValue | undefined;
-    plugins?: Plugin[] | undefined;
+    plugins?: Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"bar", number[], unknown>) => void) | undefined;
     onChartDestroy?: (() => void) | undefined;
@@ -43,7 +43,7 @@ export declare const useLineChart: (params: {
     height?: number | undefined;
     cssClasses?: string | undefined;
     styles?: StyleValue | undefined;
-    plugins?: Plugin[] | undefined;
+    plugins?: Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"line", (number | import("chart.js").ScatterDataPoint | null)[], unknown>) => void) | undefined;
     onChartDestroy?: (() => void) | undefined;
@@ -56,7 +56,7 @@ export declare const usePieChart: (params: {
     height?: number | undefined;
     cssClasses?: string | undefined;
     styles?: StyleValue | undefined;
-    plugins?: Plugin[] | undefined;
+    plugins?: Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"pie", number[], unknown>) => void) | undefined;
     onChartDestroy?: (() => void) | undefined;
@@ -69,7 +69,7 @@ export declare const usePolarAreaChart: (params: {
     height?: number | undefined;
     cssClasses?: string | undefined;
     styles?: StyleValue | undefined;
-    plugins?: Plugin[] | undefined;
+    plugins?: Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"polarArea", number[], unknown>) => void) | undefined;
     onChartDestroy?: (() => void) | undefined;
@@ -82,7 +82,7 @@ export declare const useRadarChart: (params: {
     height?: number | undefined;
     cssClasses?: string | undefined;
     styles?: StyleValue | undefined;
-    plugins?: Plugin[] | undefined;
+    plugins?: Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"radar", (number | null)[], unknown>) => void) | undefined;
     onChartDestroy?: (() => void) | undefined;
@@ -95,7 +95,7 @@ export declare const useBubbleChart: (params: {
     height?: number | undefined;
     cssClasses?: string | undefined;
     styles?: StyleValue | undefined;
-    plugins?: Plugin[] | undefined;
+    plugins?: Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"bubble", import("chart.js").BubbleDataPoint[], unknown>) => void) | undefined;
     onChartDestroy?: (() => void) | undefined;
@@ -108,7 +108,7 @@ export declare const useScatterChart: (params: {
     height?: number | undefined;
     cssClasses?: string | undefined;
     styles?: StyleValue | undefined;
-    plugins?: Plugin[] | undefined;
+    plugins?: Plugin<keyof import("chart.js").ChartTypeRegistry, import("chart.js/types/basic").AnyObject>[] | undefined;
     onLabelsUpdate?: (() => void) | undefined;
     onChartUpdate?: ((chartInstance: Chart<"scatter", (number | import("chart.js").ScatterDataPoint | null)[], unknown>) => void) | undefined;
     onChartDestroy?: (() => void) | undefined;

@@ -1,12 +1,9 @@
-import { Chart, ChartData, ChartOptions, ChartType } from 'chart.js';
+import { Chart, ChartData, ChartOptions, ChartType, Plugin } from 'chart.js';
 import {
   computed,
-  onBeforeMount,
-  onBeforeUnmount,
   reactive,
   Ref,
   ref,
-  shallowRef,
   toRefs,
   unref,
 } from 'vue-demi';

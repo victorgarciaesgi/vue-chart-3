@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.9 (2021-10-25)
+
+- Fix `Plugin` types in hooks
+
 # 0.4.7 (2021-07-18)
 
 - `chartInstance` is now accessible by reference to the component!
