@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "0.5.9",
+  "version": "0.5.10",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",
@@ -22,8 +22,8 @@
     "debug:vue3": "cd debug/vue3 && yarn serve",
     "test": "vue-demi-switch 2 && karma start",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "postinstall": "echo \\$contentClass = \\'.content__default\\' > node_modules/@vuepress/theme-default/styles/config.styl",
+    "docs:build": "yarn run post:docs && vuepress build docs",
+    "post:docs": "echo \\$contentClass = \\'.content__default\\' > ./node_modules/@vuepress/theme-default/styles/config.styl",
     "patch": "npm version patch --no-git-tag-version",
     "minor": "npm version minor --no-git-tag-version",
     "major": "npm version major --no-git-tag-version"
