@@ -1,6 +1,7 @@
-import type { Chart, ChartData, ChartOptions, Plugin, ChartType } from 'chart.js';
+import { Chart, ChartData, Plugin, ChartType, ChartOptions } from 'chart.js';
+import { DeepPartial } from 'chart.js/types/utils';
 import { PropType } from 'vue-demi';
-import type { StyleValue } from './vueproxy.types';
+import { StyleValue } from './vue.types';
 
 export type ChartPropsOptions<TType extends ChartType> = {
   options: { type: PropType<ChartOptions<TType>>; required: false };
@@ -15,4 +16,19 @@ export type ChartPropsOptions<TType extends ChartType> = {
   onChartUpdate: { type: PropType<(chartInstance: Chart<TType>) => void> };
   onChartDestroy: { type: PropType<() => void> };
   onChartRender: { type: PropType<(chartInstance: Chart<TType>) => void> };
+};
+
+export type ChartProps<TType extends ChartType> = {
+  options?: Record<any, any>;
+  chartId?: string;
+  width?: number;
+  height?: number;
+  cssClasses?: string;
+  styles?: StyleValue;
+  plugins?: Plugin[];
+  chartData?: ChartData<TType>;
+  onLabelsUpdate?: () => void;
+  onChartUpdate?: (chartInstance: Chart<TType>) => void;
+  onChartDestroy?: () => void;
+  onChartRender?: (chartInstance: Chart<TType>) => void;
 };

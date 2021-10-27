@@ -23,8 +23,9 @@ install();
 // Weird bug with karma importing cjs files
 import { nanoid } from 'nanoid';
 
-import { StyleValue, VueProxy } from './vueproxy.types';
-import { ChartPropsOptions } from './types';
+import { StyleValue } from './vue.types';
+import { ChartProps, ChartPropsOptions } from './types';
+import { DefineComponent } from '@vue/runtime-core';
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
@@ -38,7 +39,7 @@ export type ComponentData<T extends ChartType> = {
 export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartId: string,
   chartType: TType
-) => {
+): DefineComponent<ChartProps<TType>, ComponentData<TType>> => {
   const propsDefs: ChartPropsOptions<TType> = {
     options: { type: Object as PropType<ChartOptions<TType>>, required: false },
     chartId: { default: chartId, type: String },
@@ -56,7 +57,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
   const componentName = pascalCase(chartId);
 
-  return (defineComponent({
+  return defineComponent({
     name: componentName,
     props: propsDefs,
     emits: {
@@ -247,5 +248,5 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         ]
       );
     },
-  }) as unknown) as VueProxy<typeof propsDefs, ComponentData<TType>>;
+  }) as any;
 };

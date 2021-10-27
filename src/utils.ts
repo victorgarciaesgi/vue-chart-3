@@ -4,7 +4,8 @@ import type {
   ComponentPublicInstance,
 } from '@vue/runtime-core';
 import * as CSS from 'csstype';
-import type { ComputedOptions, ComputedRef, MethodOptions, PropType, Ref } from 'vue-demi';
+import { ComputedOptions, ComputedRef, MethodOptions, PropType, Ref } from 'vue-demi';
+import Vue from 'vue';
 
 export type StyleValue = string | CSS.Properties | Array<StyleValue>;
 
