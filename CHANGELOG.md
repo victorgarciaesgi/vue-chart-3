@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.10 (2021-10-27)
+
+- Fixed types for Vue 3 imports
+
+# 0.5.10 (2021-10-25)
+
+- Fix `postinstall` bugs with npm update
+
+# 0.5.9 (2021-10-25)
+
+- Fix `Plugin` types in hooks
+
 # 0.4.7 (2021-07-18)
 
 - `chartInstance` is now accessible by reference to the component!
@@ -31,8 +43,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # 0.4.0-alpha.1 (2021-07-15)
 
-- Prepare 0.4.0
-
-### Features
-
-- only import lodash functions that are being used ([6dacf7c](https://github.com/victorgarciaesgi/vue-chartjs-3/commit/6dacf7c0d59a8991c0a9cd8a3fcc1a3ebe008190))
+**Note:** Version bump only for package vue-chart-3

@@ -1,6 +1,8 @@
-const packageJson = require('../../packages/vue-chart-3/package.json');
+const packageJson = require('../../package.json');
 
 module.exports = {
+  base: '/',
+  serviceWorker: true,
   locales: {
     '/': {
       lang: 'en-US',
@@ -16,6 +18,18 @@ module.exports = {
       },
     ],
     'tabs',
+    [
+      '@vuepress/pwa',
+      {
+        serviceWorker: true,
+        updatePopup: {
+          '/': {
+            message: 'New content is available.',
+            buttonText: 'Refresh',
+          },
+        },
+      },
+    ],
   ],
   head: [
     [
@@ -82,7 +96,13 @@ module.exports = {
                 '/guide/usage/chart-instance',
                 '/guide/usage/dynamic-data',
                 '/guide/usage/typescript',
+                '/guide/usage/actions',
               ],
+            },
+            {
+              title: 'Examples',
+              collapsable: false,
+              children: ['/guide/examples/vue2', '/guide/examples/vue3'],
             },
           ],
           '/components/': [
@@ -90,7 +110,7 @@ module.exports = {
             {
               title: 'Chart hooks (alpha)',
               collapsable: false,
-              children: ['/components/hooks/', '/components/hooks/exemple'],
+              children: ['/components/hooks/', '/components/hooks/example'],
             },
           ],
         },

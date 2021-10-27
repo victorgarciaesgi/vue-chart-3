@@ -2,7 +2,7 @@
 
 You just have to import the corresponding component matching the type of chart you want, the list of components can be found [here](/components)
 
-Here is an exemple with static data
+Here is an example with static data
 
 ```vue
 <template>

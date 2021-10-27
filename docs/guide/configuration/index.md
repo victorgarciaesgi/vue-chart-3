@@ -8,7 +8,7 @@ You need to have `@vue/composition-api` installed. It will registered itself so 
 
 Nothing required, it works out of the box!
 
-## Nuxt 2 (SSR)
+## Nuxt 2 and SSR
 
 - Create a plugin in `<srcDir>/plugins/chartjs.js`
 
@@ -25,8 +25,7 @@ export default {
 };
 ```
 
-Just it case, wrap your component inside `<client-only>`.
-
 ## Nuxt 3
 
-Waiting for release 🙄
+Nuxt 3 beta just came out, still processing what's the best way to do it, but since the plugin system looks the same as Nuxt 2, you can follow Nuxt 2 instruction for now.
+Any bug report with Nuxt 3 or Vite.js is welcome

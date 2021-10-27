@@ -1,20 +1,25 @@
-module.exports = function (config) {
+module.exports = config => {
   config.set({
     basePath: '',
     frameworks: ['jasmine', 'karma-typescript'],
-    files: [
-      { pattern: 'packages/vue-chart-3/**/*.+(ts|mjs)' },
-      { pattern: 'tests/**/*.+(ts|mjs)' },
-    ],
+    files: [{ pattern: 'src/**/*.+(ts|cjs)' }, { pattern: 'tests/**/*.+(ts|cjs)' }],
     exclude: [],
     preprocessors: {
-      'packages/vue-chart-3/**/*.+(ts|mjs)': ['karma-typescript', 'coverage'],
-      'tests/**/*.+(ts|mjs)': ['karma-typescript'],
+      'src/**/*.+(ts|cjs)': ['karma-typescript', 'coverage'],
+      'tests/**/*.+(ts|cjs)': ['karma-typescript'],
     },
     karmaTypescriptConfig: {
       tsconfig: './tsconfig.json',
       bundlerOptions: {
         transforms: [require('karma-typescript-es6-transform')()],
+        resolve: {
+          alias: {
+            nanoid: 'node_modules/nanoid/index.browser.js',
+            '@vue/composition-api/dist/vue-composition-api.esm.js':
+              'node_modules/@vue/composition-api/dist/vue-composition-api.mjs',
+          },
+          extensions: ['.js', 'mjs', 'cjs'],
+        },
       },
     },
     reporters: ['progress', 'coverage', 'karma-typescript'],
