@@ -1,11 +1,11 @@
-import {
-  ComponentRenderProxy,
-  ExtractDefaultPropTypes,
-  ExtractPropTypes,
-} from '@vue/composition-api';
+import { ComponentRenderProxy, ExtractDefaultPropTypes, ExtractPropTypes } from 'vue-demi';
 import { ComputedOptions, CSSProperties, MethodOptions, ShallowUnwrapRef } from '@vue/runtime-dom';
-import { ComponentOptions, VueConstructor } from 'vue';
-import { DefaultComputed, DefaultData, DefaultMethods } from 'vue/types/options';
+import Vue, { ComponentOptions, VueConstructor } from 'vue';
+
+type DefaultData<V> = object | ((this: V) => object);
+type DefaultProps = Record<string, any>;
+type DefaultMethods<V> = { [key: string]: (this: V, ...args: any[]) => any };
+type DefaultComputed = { [key: string]: any };
 
 export type VueProxy<
   PropsOptions,

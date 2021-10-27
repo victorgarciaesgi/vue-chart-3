@@ -3,10 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.10 (2021-10-27)
+
+- Fixed types for Vue 3 imports
 
 # 0.5.10 (2021-10-25)
 
 - Fix `postinstall` bugs with npm update
+
 # 0.5.9 (2021-10-25)
 
 - Fix `Plugin` types in hooks
