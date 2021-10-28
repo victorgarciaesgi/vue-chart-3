@@ -19,18 +19,18 @@ import {
 import Vue from 'vue';
 import VueCompositionApi, { defineComponent, ref, computed } from '@vue/composition-api';
 
-Vue.use(VueCompositionApi);
-Chart.register(DoughnutController, ArcElement, Legend, Title, Tooltip);
-
 type TestExtractData = ExtractComponentData<typeof DoughnutChart>;
-declare const testAssignData: TestExtractData;
-const canvas: Chart | null = testAssignData.chartInstance;
+let testAssignData: TestExtractData = {} as TestExtractData;
+const canvas: Chart | null = testAssignData?.chartInstance;
 // Expect no error
 
 type TestExtractProps = ExtractComponentProps<typeof DoughnutChart>;
-declare const testAssignProps: TestExtractProps;
-const chartData: ChartData<ChartType> = testAssignProps.chartData;
+let testAssignProps: TestExtractProps = {} as TestExtractProps;
+const chartData: ChartData<ChartType> = testAssignProps?.chartData;
 // Expect no error
+
+Vue.use(VueCompositionApi);
+Chart.register(DoughnutController, ArcElement, Legend, Title, Tooltip);
 
 describe('Vue 2 - Doughtnut chart', () => {
   beforeEach(() => {
