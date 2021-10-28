@@ -39,7 +39,7 @@ export type ComponentData<T extends ChartType> = {
 export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartId: string,
   chartType: TType
-): DefineComponent<ChartProps<TType>, ComponentData<TType>> => {
+) => {
   const propsDefs: ChartPropsOptions<TType> = {
     options: { type: Object as PropType<ChartOptions<TType>>, required: false },
     chartId: { default: chartId, type: String },
@@ -212,7 +212,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         }
       });
 
-      return { canvasRef, renderChart, chartInstance, canvasId };
+      return { canvasRef, renderChart, chartInstance, canvasId } as const;
     },
     render() {
       return h(
@@ -248,5 +248,5 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         ]
       );
     },
-  }) as any;
+  });
 };

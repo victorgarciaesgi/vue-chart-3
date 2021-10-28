@@ -1,11 +1,36 @@
 import { mount } from '@vue/test-utils';
-import { DoughnutChart, BarChart, useBarChart } from '../src';
-import { Chart, DoughnutController, ArcElement, Legend, Title, Tooltip } from 'chart.js';
+import {
+  DoughnutChart,
+  BarChart,
+  useBarChart,
+  ExtractComponentData,
+  ExtractComponentProps,
+} from '../src';
+import {
+  Chart,
+  DoughnutController,
+  ArcElement,
+  Legend,
+  Title,
+  Tooltip,
+  ChartType,
+  ChartData,
+} from 'chart.js';
 import Vue from 'vue';
 import VueCompositionApi, { defineComponent, ref, computed } from '@vue/composition-api';
 
 Vue.use(VueCompositionApi);
 Chart.register(DoughnutController, ArcElement, Legend, Title, Tooltip);
+
+type TestExtractData = ExtractComponentData<typeof DoughnutChart>;
+declare const testAssignData: TestExtractData;
+const canvas: Chart | null = testAssignData.chartInstance;
+// Expect no error
+
+type TestExtractProps = ExtractComponentProps<typeof DoughnutChart>;
+declare const testAssignProps: TestExtractProps;
+const chartData: ChartData<ChartType> = testAssignProps.chartData;
+// Expect no error
 
 describe('Vue 2 - Doughtnut chart', () => {
   beforeEach(() => {

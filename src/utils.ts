@@ -1,11 +1,8 @@
-import type {
-  ComponentOptions,
-  ShallowUnwrapRef,
-  ComponentPublicInstance,
-} from '@vue/runtime-core';
+import { ComponentOptions, ShallowUnwrapRef, ComponentPublicInstance } from '@vue/runtime-core';
 import * as CSS from 'csstype';
 import { ComputedOptions, ComputedRef, MethodOptions, PropType, Ref } from 'vue-demi';
 import Vue from 'vue';
+import { ComponentData } from './components';
 
 export type StyleValue = string | CSS.Properties | Array<StyleValue>;
 
@@ -33,10 +30,12 @@ export type ExtractComponentProps<T> = T extends ComponentPublicInstanceConstruc
   ? T
   : never;
 
-export type ExtractComponentData<T> = T extends ComponentPublicInstanceConstructor<infer TI>
-  ? ShallowUnwrapRef<TI>
+export type ExtractComponentData<T> = T extends ComponentPublicInstanceConstructor<
+  ComponentPublicInstance<any, infer T2>
+>
+  ? T2 & ComponentData<any>
   : T extends ComponentOptions<any, infer TData2, any, any, any, any>
   ? TData2 extends ShallowUnwrapRef<infer K>
-    ? K & Vue
-    : TData2 & Vue
+    ? K & ComponentPublicInstance
+    : TData2 & ComponentPublicInstance
   : never;
