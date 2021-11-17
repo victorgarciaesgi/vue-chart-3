@@ -16,7 +16,7 @@ import {
   ChartType,
   ChartData,
 } from 'chart.js';
-import Vue, { defineComponent, ref, computed } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 
 type TestExtractData = ExtractComponentData<typeof DoughnutChart>;
 let testAssignData: TestExtractData = {} as TestExtractData;
@@ -35,13 +35,15 @@ describe('Vue 3 - Doughtnut chart', () => {
     jest.spyOn(console, 'error');
   });
 
+  const dataset = [30, 40, 60, 70, 5];
+
   const { vm } = mount(DoughnutChart, {
     props: {
       chartData: {
         labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
         datasets: [
           {
-            data: [30, 40, 60, 70, 5],
+            data: dataset,
             backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
           },
         ],
@@ -78,6 +80,17 @@ describe('Vue 3 - Doughtnut chart', () => {
   it('should not have any console errors', () => {
     expect(console.error).not.toHaveBeenCalled();
   });
+
+  it('should have Chart constructed', function() {
+    var meta = vm.chartInstance?.getDatasetMeta(0)!;
+    expect(meta.type).toBe('doughnut');
+    expect(meta.controller).not.toBe(undefined);
+    expect(meta.controller.index).toBe(0);
+    expect(meta.data).toEqual(dataset);
+
+    meta.controller.updateIndex(1);
+    expect(meta.controller.index).toBe(1);
+  });
 });
 
 const TestHooksComponent = defineComponent({
@@ -112,12 +125,12 @@ const TestHooksComponent = defineComponent({
       ],
     }));
 
-    const { barChartProps, barChartRef } = useBarChart({
+    const { barChartProps, chartInstance, chartTemplateRef } = useBarChart({
       chartData: testData,
       options: options,
     });
 
-    return { data, barChartProps, barChartRef };
+    return { data, barChartProps, chartTemplateRef };
   },
 });
 
@@ -135,7 +148,7 @@ describe('Vue 3 - with hooks', () => {
   });
   it('should have barChartRef variable instance of Vue', () => {
     expect(vm).toBeDefined();
-    expect(vm.barChartRef).toBeDefined();
+    expect(vm.chartTemplateRef).toBeDefined();
   });
   it('should not have any console errors', () => {
     expect(console.error).not.toHaveBeenCalled();

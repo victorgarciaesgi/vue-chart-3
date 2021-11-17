@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { Chart, ChartData, registerables } from 'chart.js';
-import { BarChart, ExtractComponentData } from './dist';
+import { BarChart } from './dist';
 import { useBarChart } from './dist/hooks.js';
 import { ref, computed, defineComponent } from 'vue';
 import { shuffle } from 'lodash';
@@ -63,9 +63,10 @@ export default defineComponent({
       data.value = shuffle(data.value);
       legendTop.value = !legendTop.value;
       console.log(chartInstance.value);
+      console.log(barChartProps.value);
     }
 
-    return { data, shuffleData, barChartProps };
+    return { shuffleData, barChartProps };
   },
 });
 </script>

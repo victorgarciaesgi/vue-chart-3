@@ -7,6 +7,8 @@ import {
   ref,
   toRefs,
   unref,
+  watch,
+  shallowRef
 } from 'vue';
 import { ComponentData } from './components';
 import { ChartPropsOptions } from './types';
@@ -14,17 +16,20 @@ import { ExtractComponentData, ExtractComponentProps, MaybeRef } from './utils';
 import { StyleValue } from './vue.types';
 
 type DumbTypescript = 0;
+type TemplateRefType<TType extends ChartType> = ExtractComponentData<DefineComponent<any, ComponentData<TType>>>
 
-type ChartHookReturnType<TType extends ChartType> = {
-  [K in DumbTypescript as `${TType}ChartRef`]: Ref<
-    ExtractComponentData<DefineComponent<any, ComponentData<TType>>>
-  >;
-} &
+type ChartHookReturnType<TType extends ChartType> = 
   {
     [K in DumbTypescript as `${TType}ChartProps`]: Ref<
       ExtractComponentProps<DefineComponent<ChartPropsOptions<TType>, ComponentData<TType>>>
     >;
+  } & {
+    chartInstance: Ref<Chart<TType> | null>,
+    chartTemplateRef: Ref<
+    TemplateRefType<TType>
+  >;
   };
+
 
 const defineChartHook = <TType extends ChartType = ChartType>(chartType: TType) => {
   return (params: {
@@ -40,21 +45,36 @@ const defineChartHook = <TType extends ChartType = ChartType>(chartType: TType) 
     onChartDestroy?: () => void;
     onChartRender?: (chartInstance: Chart<TType>) => void;
   }): ChartHookReturnType<TType> => {
+
     const reactiveProps = computed(() => ({
       ...params,
-      ref: `${chartType}ChartRef`,
+      ref: 'chartTemplateRef',
       chartData: unref(params.chartData),
       options: unref(params.options),
+      chartTemplateRef: chartTemplateRef.value
     }));
+
+    const chartInstance = shallowRef<Chart<TType> | null>(null)
+    const chartTemplateRef = ref<TemplateRefType<TType> | null>(null);
+    
 
     const chartProps = reactive({
       [`${chartType}ChartProps`]: reactiveProps,
     });
 
+    watch(chartTemplateRef, (value) => {
+      if (value?.chartInstance) {
+        chartInstance.value = value.chartInstance as Chart<TType>
+      }
+    },{
+      flush: 'post'
+    })
+
     return {
       ...toRefs(chartProps),
-      [`${chartType}ChartRef`]: ref<ExtractComponentData<DefineComponent<any, ComponentData<TType>>>>(),
-    };
+      chartInstance,
+      chartTemplateRef: chartTemplateRef as any 
+    }
   };
 };
 
