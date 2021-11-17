@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "0.6.0-alpha.8",
+  "version": "1.0.0-alpha.0",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",
@@ -15,12 +15,12 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf types",
-    "compile": "tsc --pretty -p tsconfig.build.json && cp -r ./dist ./debug/vue2/src && cp -r ./dist ./debug/vue3/src",
+    "compile": "tsc --pretty -p tsconfig.build.json && cp -r ./dist ./debug/vue3/src",
     "dev": "tsc --pretty --watch",
     "build": "yarn run clean && yarn run compile",
-    "debug:vue2": "cd debug/vue2 && yarn serve",
-    "debug:vue3": "cd debug/vue3 && yarn serve",
-    "test": "vue-demi-switch 2 && karma start",
+    "debug": "cd debug/vue3 && yarn serve",
+    "test": "jest",
+    "publish:alpha": "npm publish --tag next",
     "docs:dev": "vuepress dev docs",
     "docs:build": "yarn run post:docs && vuepress build docs",
     "post:docs": "echo \\$contentClass = \\'.content__default\\' > ./node_modules/@vuepress/theme-default/styles/config.styl",
@@ -41,51 +41,35 @@
   "type": "commonjs",
   "license": "MIT",
   "peerDependencies": {
-    "@vue/composition-api": "^1.0.4",
-    "chart.js": "^3.1.0",
-    "vue": "^2.0.0 || >=3.0.0-rc.0"
-  },
-  "peerDependenciesMeta": {
-    "@vue/composition-api": {
-      "optional": true
-    }
+    "chart.js": "^3.1.0"
   },
   "dependencies": {
-    "@vue/runtime-core": "3.2.20",
-    "@vue/runtime-dom": "3.2.20",
-    "csstype": "3.0.9",
+    "@vue/runtime-core": "latest",
+    "@vue/runtime-dom": "latest",
+    "csstype": "3.0.10",
     "lodash": "latest",
-    "nanoid": "3.1.30",
-    "vue-demi": "^0.10.1"
+    "nanoid": "3.1.30"
   },
   "devDependencies": {
-    "@testing-library/vue": "^5.8.2",
     "@types/chart.js": "^2.9.34",
-    "@types/jasmine": "^3.10.0",
-    "@types/karma": "^6.3.1",
-    "@types/lodash": "^4.14.175",
+    "@types/jest": "^27.0.2",
+    "@types/lodash": "^4.14.177",
     "@types/node": "^14.0.27",
-    "@vue/cli": "^4.5.14",
-    "@vue/composition-api": "^1.0.4",
-    "@vue/test-utils": "^1.2.2",
+    "@vue/cli": "^4.5.15",
+    "@vue/test-utils": "^2.0.0-rc.16",
     "canvas": "^2.8.0",
-    "chart.js": "^3.5.1",
+    "chart.js": "^3.6.0",
     "chartjs-test-utils": "^0.3.1",
     "copyfiles": "^2.4.1",
-    "jasmine-core": "^3.10.0",
-    "karma": "^6.3.4",
-    "karma-chrome-launcher": "^3.1.0",
-    "karma-coverage": "^2.0.3",
-    "karma-jasmine": "^4.0.1",
-    "karma-typescript": "^5.5.2",
-    "karma-typescript-es6-transform": "^5.5.2",
+    "jest": "^27.3.1",
     "lerna": "^4.0.0",
+    "regenerator-runtime": "^0.13.9",
     "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.7",
     "typescript": "^4.4.4",
-    "vue": "^2.6.14",
+    "vue": "^3.2.22",
     "vue-chart-3": "^0.5.11",
-    "vue-template-compiler": "^2.6.14",
     "vuepress": "^1.8.2"
   },
   "repository": {

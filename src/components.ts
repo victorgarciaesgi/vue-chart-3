@@ -7,25 +7,20 @@ import {
   onBeforeUnmount,
   watch,
   Ref,
-  isVue2,
-  isVue3,
-  install,
   defineComponent,
   shallowRef,
-} from 'vue-demi';
+  DefineComponent,
+} from 'vue';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
-
-install();
 
 // Weird bug with karma importing cjs files
 import { nanoid } from 'nanoid';
 
 import { StyleValue } from './vue.types';
 import { ChartProps, ChartPropsOptions } from './types';
-import { DefineComponent } from '@vue/runtime-core';
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
@@ -41,7 +36,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartType: TType
 ) => {
   const propsDefs: ChartPropsOptions<TType> = {
-    options: { type: Object as PropType<ChartOptions<TType>>, required: false },
+    options: { type: Object as PropType<Record<string, any>>, required: false },
     chartId: { default: chartId, type: String },
     width: { default: 400, type: Number },
     height: { default: 400, type: Number },
@@ -63,8 +58,8 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     emits: {
       'labels:update': () => true,
       'chart:update': (chartInstance: Chart<TType>) => true,
-      'chart:destroy': (chartInstance: Chart<TType>) => true,
-      'chart:render': () => true,
+      'chart:destroy': () => true,
+      'chart:render': (chartInstance: Chart<TType>) => true,
     },
     setup(props, { emit }) {
       const canvasRef = ref<HTMLCanvasElement>();
@@ -231,22 +226,13 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
               maxWidth: '100%',
               maxHeight: '100%',
             },
-            ...(isVue2 && {
-              attrs: {
-                id: this.canvasId,
-                width: this.width,
-                height: this.height,
-              },
-            }),
-            ...(isVue3 && {
-              id: this.canvasId,
-              width: this.width,
-              height: this.height,
-            }),
+            id: this.canvasId,
+            width: this.width,
+            height: this.height,
             ref: 'canvasRef',
           }),
         ]
       );
     },
-  });
+  }) as DefineComponent<ChartPropsOptions<TType>, ComponentData<TType>>;
 };

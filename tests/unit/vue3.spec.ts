@@ -5,7 +5,7 @@ import {
   useBarChart,
   ExtractComponentData,
   ExtractComponentProps,
-} from '../src';
+} from '../../src';
 import {
   Chart,
   DoughnutController,
@@ -16,29 +16,27 @@ import {
   ChartType,
   ChartData,
 } from 'chart.js';
-import Vue from 'vue';
-import VueCompositionApi, { defineComponent, ref, computed } from '@vue/composition-api';
+import Vue, { defineComponent, ref, computed } from 'vue';
 
 type TestExtractData = ExtractComponentData<typeof DoughnutChart>;
 let testAssignData: TestExtractData = {} as TestExtractData;
-const canvas: Chart | null = testAssignData?.chartInstance;
-// Expect no error
+const canvas: Chart<'doughnut'> | null = testAssignData?.chartInstance;
+// Expect no type error
 
 type TestExtractProps = ExtractComponentProps<typeof DoughnutChart>;
 let testAssignProps: TestExtractProps = {} as TestExtractProps;
-const chartData: ChartData<ChartType> = testAssignProps?.chartData;
-// Expect no error
+const chartData: ChartData<'doughnut'> = testAssignProps?.chartData;
+// Expect no type error
 
-Vue.use(VueCompositionApi);
 Chart.register(DoughnutController, ArcElement, Legend, Title, Tooltip);
 
-describe('Vue 2 - Doughtnut chart', () => {
+describe('Vue 3 - Doughtnut chart', () => {
   beforeEach(() => {
-    spyOn(console, 'error');
+    jest.spyOn(console, 'error');
   });
 
   const { vm } = mount(DoughnutChart, {
-    propsData: {
+    props: {
       chartData: {
         labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
         datasets: [
@@ -75,7 +73,7 @@ describe('Vue 2 - Doughtnut chart', () => {
   });
   it('should have chartInstance variable instance of Chart.js', () => {
     expect(vm).toBeDefined();
-    expect(vm.$data.chartInstance).toBeInstanceOf(Chart);
+    expect(vm.chartInstance).toBeInstanceOf(Chart);
   });
   it('should not have any console errors', () => {
     expect(console.error).not.toHaveBeenCalled();
@@ -123,9 +121,9 @@ const TestHooksComponent = defineComponent({
   },
 });
 
-describe('Vue 2 - with hooks', () => {
+describe('Vue 3 - with hooks', () => {
   beforeEach(() => {
-    spyOn(console, 'error');
+    jest.spyOn(console, 'error');
   });
 
   const { vm } = mount(TestHooksComponent);
@@ -137,7 +135,7 @@ describe('Vue 2 - with hooks', () => {
   });
   it('should have barChartRef variable instance of Vue', () => {
     expect(vm).toBeDefined();
-    expect(vm.$data.barChartRef).toBeInstanceOf(Vue);
+    expect(vm.barChartRef).toBeDefined();
   });
   it('should not have any console errors', () => {
     expect(console.error).not.toHaveBeenCalled();

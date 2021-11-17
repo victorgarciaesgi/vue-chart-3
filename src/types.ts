@@ -1,10 +1,9 @@
 import { Chart, ChartData, Plugin, ChartType, ChartOptions } from 'chart.js';
-import { DeepPartial } from 'chart.js/types/utils';
-import { PropType } from 'vue-demi';
+import { PropType } from 'vue';
 import { StyleValue } from './vue.types';
 
 export type ChartPropsOptions<TType extends ChartType> = {
-  options: { type: PropType<ChartOptions<TType>>; required: false };
+  options: { type: PropType<Record<string, any>>; required: false };
   chartId: { default: string; type: StringConstructor };
   width: { default: 400; type: NumberConstructor };
   height: { default: 400; type: NumberConstructor };
