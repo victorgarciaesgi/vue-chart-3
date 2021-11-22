@@ -2,9 +2,21 @@
 
 ## Introduction
 
-vue-chart-3 is rewrite of `vue-chartjs` for [Chart.js 3](https://www.chartjs.org/) for Vue 2 & 3, but written in Typescript with vue-demi and Vue Composition API.
+vue-chart-3 is rewrite of `vue-chartjs` for [Chart.js 3](https://www.chartjs.org/) for Vue 2 & 3, but written in Typescript and Vue Composition API.
 
-## Installation
+# ⚠️ Breaking changes and new versions numbers
+
+In previous versions, `vue-demi` was used. It worked really well, but as the project advanced, they were a lot of problems with vue-related typescript definitions, tests and conflict between dependencies.
+
+This new system will keep `vue-chart-3` working for both Vue 2 & 3 with designated versions (`2.x` and `3.x` respectively), but each one designed for their specific Vue version.
+
+The usage of components of hooks is unchanged for both versions.
+
+Code wise, there is not big breaking changes. But the Vue 3 version will have improved type checking for components template (with Volar extension).
+
+# Installation
+
+## For Vue 3
 
 ```bash
 npm i vue-chart-3
@@ -14,11 +26,23 @@ yarn add vue-chart-3
 pnpm i vue-chart-3
 ```
 
+## For Vue 2
+
+```bash
+npm i vue-chart-3@2
+#or
+yarn add vue-chart-3@2
+#or
+pnpm i vue-chart-3@2
+```
+
 ## Important notes
 
 ### Using with Vue 3 or Vue 2
 
 This package works with version 2.x and 3.x of Vue.
+
+For Vue 2 users, you will have to keep `2.x` version of `vue-chart-3`
 
 - Vue 3 works out-of-the-box
 - Vue 2 requires `@vue/composition-api` package to also be installed, to provide Vue 3's [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html) features like `ref, defineComponent, computed, reactive`.
