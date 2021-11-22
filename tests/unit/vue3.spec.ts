@@ -28,6 +28,9 @@ let testAssignProps: TestExtractProps = {} as TestExtractProps;
 const chartData: ChartData<'doughnut'> = testAssignProps?.chartData;
 // Expect no type error
 
+// @ts-expect-error
+const expectError: ChartData<'doughnut'> = testAssignProps?.blebleble;
+
 Chart.register(DoughnutController, ArcElement, Legend, Title, Tooltip);
 
 describe('Vue 3 - Doughtnut chart', () => {
@@ -125,12 +128,12 @@ const TestHooksComponent = defineComponent({
       ],
     }));
 
-    const { barChartProps, chartInstance, chartTemplateRef } = useBarChart({
+    const { barChartProps, barChartRef } = useBarChart({
       chartData: testData,
       options: options,
     });
 
-    return { data, barChartProps, chartTemplateRef };
+    return { data, barChartProps, barChartRef };
   },
 });
 
@@ -148,7 +151,7 @@ describe('Vue 3 - with hooks', () => {
   });
   it('should have barChartRef variable instance of Vue', () => {
     expect(vm).toBeDefined();
-    expect(vm.chartTemplateRef).toBeDefined();
+    expect(vm.barChartRef).toBeDefined();
   });
   it('should not have any console errors', () => {
     expect(console.error).not.toHaveBeenCalled();

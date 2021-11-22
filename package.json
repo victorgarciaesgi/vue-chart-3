@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "1.0.0-alpha.0",
+  "version": "3.0.0-alpha.0",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",
@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf types",
-    "compile": "tsc --pretty -p tsconfig.build.json && cp -r ./dist ./debug/vue3/src",
+    "compile": "tsc --pretty -p tsconfig.build.json && cp -r ./dist ./debug/vue3/node_modules/vue-chart-3 && cp -r ./types ./debug/vue3/node_modules/vue-chart-3",
     "dev": "tsc --pretty --watch",
     "build": "yarn run clean && yarn run compile",
     "debug": "cd debug/vue3 && yarn serve",
@@ -41,7 +41,8 @@
   "type": "commonjs",
   "license": "MIT",
   "peerDependencies": {
-    "chart.js": "^3.1.0"
+    "chart.js": "=> ^3.1.0",
+    "vue": ">= 3"
   },
   "dependencies": {
     "@vue/runtime-core": "latest",
@@ -52,7 +53,7 @@
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.34",
-    "@types/jest": "^27.0.2",
+    "@types/jest": "^27.0.3",
     "@types/lodash": "^4.14.177",
     "@types/node": "^14.0.27",
     "@vue/cli": "^4.5.15",
@@ -67,7 +68,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.7",
-    "typescript": "^4.4.4",
+    "typescript": "^4.5.2",
     "vue": "^3.2.22",
     "vue-chart-3": "^0.5.11",
     "vuepress": "^1.8.2"

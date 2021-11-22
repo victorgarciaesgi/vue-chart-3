@@ -2,13 +2,11 @@ import { DefineComponent } from '@vue/runtime-core';
 import { Chart, ChartData, ChartOptions, ChartType, Plugin } from 'chart.js';
 import {
   computed,
-  reactive,
   Ref,
   ref,
-  toRefs,
   unref,
-  watch,
-  shallowRef
+  ComponentPublicInstance,
+  ExtractPropTypes
 } from 'vue';
 import { ComponentData } from './components';
 import { ChartPropsOptions } from './types';
@@ -16,25 +14,23 @@ import { ExtractComponentData, ExtractComponentProps, MaybeRef } from './utils';
 import { StyleValue } from './vue.types';
 
 type DumbTypescript = 0;
-type TemplateRefType<TType extends ChartType> = ExtractComponentData<DefineComponent<any, ComponentData<TType>>>
 
-type ChartHookReturnType<TType extends ChartType> = 
+type ChartHookReturnType<TType extends ChartType> = {
+  [K in DumbTypescript as `${TType}ChartRef`]: Ref<
+  ComponentPublicInstance<ChartPropsOptions<TType>, ComponentData<TType>>
+  >;
+} &
   {
     [K in DumbTypescript as `${TType}ChartProps`]: Ref<
-      ExtractComponentProps<DefineComponent<ChartPropsOptions<TType>, ComponentData<TType>>>
+    ExtractPropTypes<ChartPropsOptions<TType>>
     >;
-  } & {
-    chartInstance: Ref<Chart<TType> | null>,
-    chartTemplateRef: Ref<
-    TemplateRefType<TType>
-  >;
   };
 
 
 const defineChartHook = <TType extends ChartType = ChartType>(chartType: TType) => {
   return (params: {
     chartData: MaybeRef<ChartData<TType>>;
-    options?: MaybeRef<ChartOptions<TType>>;
+    options?: MaybeRef<Record<string, any>>;
     width?: number;
     height?: number;
     cssClasses?: string;
@@ -45,36 +41,19 @@ const defineChartHook = <TType extends ChartType = ChartType>(chartType: TType) 
     onChartDestroy?: () => void;
     onChartRender?: (chartInstance: Chart<TType>) => void;
   }): ChartHookReturnType<TType> => {
-
+    
     const reactiveProps = computed(() => ({
       ...params,
-      ref: 'chartTemplateRef',
+      ref: `${chartType}ChartRef`,
       chartData: unref(params.chartData),
       options: unref(params.options),
-      chartTemplateRef: chartTemplateRef.value
     }));
 
-    const chartInstance = shallowRef<Chart<TType> | null>(null)
-    const chartTemplateRef = ref<TemplateRefType<TType> | null>(null);
-    
-
-    const chartProps = reactive({
-      [`${chartType}ChartProps`]: reactiveProps,
-    });
-
-    watch(chartTemplateRef, (value) => {
-      if (value?.chartInstance) {
-        chartInstance.value = value.chartInstance as Chart<TType>
-      }
-    },{
-      flush: 'post'
-    })
 
     return {
-      ...toRefs(chartProps),
-      chartInstance,
-      chartTemplateRef: chartTemplateRef as any 
-    }
+      [`${chartType}ChartProps`]: reactiveProps,
+      [`${chartType}ChartRef`]: ref(),
+    };
   };
 };
 

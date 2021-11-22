@@ -7,8 +7,7 @@
 
 <script lang="ts">
 import { Chart, ChartData, registerables } from 'chart.js';
-import { BarChart } from './dist';
-import { useBarChart } from './dist/hooks.js';
+import { BarChart, useBarChart } from 'vue-chart-3';
 import { ref, computed, defineComponent } from 'vue';
 import { shuffle } from 'lodash';
 
@@ -54,7 +53,7 @@ export default defineComponent({
       ],
     }));
 
-    const { barChartProps, chartInstance } = useBarChart({
+    const { barChartProps, barChartRef } = useBarChart({
       chartData: testData,
       options: options,
     });
@@ -62,8 +61,8 @@ export default defineComponent({
     function shuffleData() {
       data.value = shuffle(data.value);
       legendTop.value = !legendTop.value;
-      console.log(chartInstance.value);
-      console.log(barChartProps.value);
+      console.log(barChartRef);
+      console.log(barChartRef.value.chartInstance.getDatasetMeta(0));
     }
 
     return { shuffleData, barChartProps };

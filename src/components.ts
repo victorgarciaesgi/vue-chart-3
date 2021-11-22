@@ -36,6 +36,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartType: TType
 ) => {
   const propsDefs: ChartPropsOptions<TType> = {
+    chartData: { type: Object as PropType<ChartData<TType>>, required: true },
     options: { type: Object as PropType<Record<string, any>>, required: false },
     chartId: { default: chartId, type: String },
     width: { default: 400, type: Number },
@@ -43,7 +44,6 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     cssClasses: { type: String, default: '' },
     styles: { type: Object as PropType<StyleValue> },
     plugins: { type: Array as PropType<Plugin[]>, default: () => [] },
-    chartData: { type: Object as PropType<ChartData<TType>>, required: true },
     onLabelsUpdate: { type: Function as PropType<() => void> },
     onChartUpdate: { type: Function as PropType<(chartInstance: Chart<TType>) => void> },
     onChartDestroy: { type: Function as PropType<() => void> },
