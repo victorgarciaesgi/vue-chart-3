@@ -52,7 +52,7 @@ const defineChartHook = <TType extends ChartType = ChartType>(chartType: TType) 
 
     return {
       [`${chartType}ChartProps`]: reactiveProps,
-      [`${chartType}ChartRef`]: ref(),
+      [`${chartType}ChartRef`]: ref(null),
     };
   };
 };

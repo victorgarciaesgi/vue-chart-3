@@ -65,7 +65,7 @@ export default defineComponent({
       console.log(barChartRef.value.chartInstance.getDatasetMeta(0));
     }
 
-    return { shuffleData, barChartProps };
+    return { shuffleData, barChartProps, barChartRef };
   },
 });
 </script>
