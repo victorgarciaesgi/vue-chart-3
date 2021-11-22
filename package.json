@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "0.6.0",
+  "version": "2.0.0-alpha-2",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",
@@ -19,7 +19,7 @@
     "dev": "tsc --pretty --watch",
     "build": "yarn run clean && yarn run compile",
     "debug": "cd debug/vue2 && yarn serve",
-    "publish:next": "npm publish --tag next",
+    "publish": "npm publish --tag legacy",
     "test": "karma start",
     "patch": "npm version patch --no-git-tag-version",
     "minor": "npm version minor --no-git-tag-version",

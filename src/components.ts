@@ -1,5 +1,5 @@
 import { Chart, ChartData, ChartOptions, ChartType, Plugin, ChartDataset } from 'chart.js';
-import {
+import VueComp, {
   ref,
   PropType,
   onMounted,
@@ -20,6 +20,10 @@ import { nanoid } from 'nanoid';
 
 import { StyleValue, VueProxy } from './vue.types';
 import { ChartPropsOptions } from './types';
+
+import Vue from 'vue';
+
+Vue.use(VueComp);
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
