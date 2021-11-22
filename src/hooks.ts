@@ -7,7 +7,7 @@ import {
   ref,
   toRefs,
   unref,
-} from 'vue-demi';
+} from '@vue/composition-api';
 import { ComponentData } from './components';
 import { ChartPropsOptions } from './types';
 import { ExtractComponentData, ExtractComponentProps, MaybeRef } from './utils';

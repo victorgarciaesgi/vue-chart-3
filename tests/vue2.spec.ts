@@ -21,12 +21,12 @@ import VueCompositionApi, { defineComponent, ref, computed } from '@vue/composit
 
 type TestExtractData = ExtractComponentData<typeof DoughnutChart>;
 let testAssignData: TestExtractData = {} as TestExtractData;
-const canvas: Chart | null = testAssignData?.chartInstance;
+const canvas: Chart<'doughnut'> | null = testAssignData?.chartInstance;
 // Expect no error
 
 type TestExtractProps = ExtractComponentProps<typeof DoughnutChart>;
 let testAssignProps: TestExtractProps = {} as TestExtractProps;
-const chartData: ChartData<ChartType> = testAssignProps?.chartData;
+const chartData: ChartData<'doughnut'> = testAssignProps?.chartData;
 // Expect no error
 
 Vue.use(VueCompositionApi);

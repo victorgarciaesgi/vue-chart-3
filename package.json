@@ -15,10 +15,11 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf types",
-    "compile": "tsc --pretty -p tsconfig.build.json && cp -r ./dist ./debug/vue2/src && cp -r ./dist ./debug/vue3/src",
+    "compile": "tsc --pretty -p tsconfig.build.json && cp -r ./dist ./debug/vue2/node_modules/vue-chart-3 && cp -r ./types ./debug/vue2/node_modules/vue-chart-3",
     "dev": "tsc --pretty --watch",
     "build": "yarn run clean && yarn run compile",
-    "debug:vue2": "cd debug/vue2 && yarn serve",
+    "debug": "cd debug/vue2 && yarn serve",
+    "publish:next": "npm publish --tag next",
     "test": "karma start",
     "patch": "npm version patch --no-git-tag-version",
     "minor": "npm version minor --no-git-tag-version",

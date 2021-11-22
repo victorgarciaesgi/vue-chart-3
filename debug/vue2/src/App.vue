@@ -8,8 +8,7 @@
 
 <script>
 import { Chart, registerables } from 'chart.js';
-import { BarChart } from './dist';
-import { useBarChart } from './dist/hooks.js';
+import { BarChart, useBarChart } from 'vue-chart-3';
 import { ref, computed, defineComponent } from '@vue/composition-api';
 import { shuffle } from 'lodash';
 
@@ -54,7 +53,7 @@ export default defineComponent({
       imgData.value = barChartRef.value.chartInstance.toBase64Image();
     }
 
-    return { data, shuffleData, barChartProps, options, barChartRef, imgData };
+    return { shuffleData, barChartProps, barChartRef, imgData };
   },
 });
 </script>

@@ -7,25 +7,19 @@ import {
   onBeforeUnmount,
   watch,
   Ref,
-  isVue2,
-  isVue3,
-  install,
   defineComponent,
   shallowRef,
-} from 'vue-demi';
+} from '@vue/composition-api';
 import startCase from 'lodash/startCase';
 import camelCase from 'lodash/camelCase';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 
-install();
-
 // Weird bug with karma importing cjs files
 import { nanoid } from 'nanoid';
 
-import { StyleValue } from './vue.types';
-import { ChartProps, ChartPropsOptions } from './types';
-import { DefineComponent } from '@vue/runtime-core';
+import { StyleValue, VueProxy } from './vue.types';
+import { ChartPropsOptions } from './types';
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
@@ -41,7 +35,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartType: TType
 ) => {
   const propsDefs: ChartPropsOptions<TType> = {
-    options: { type: Object as PropType<ChartOptions<TType>>, required: false },
+    options: { type: Object, required: false },
     chartId: { default: chartId, type: String },
     width: { default: 400, type: Number },
     height: { default: 400, type: Number },
@@ -96,11 +90,11 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
           let chart = chartInstance.value;
 
           // Get new and old DataSet Labels
-          let newDatasetLabels = newData.datasets.map(dataset => {
+          let newDatasetLabels = newData.datasets.map((dataset) => {
             return dataset.label;
           });
 
-          let oldDatasetLabels = oldData.datasets.map(dataset => {
+          let oldDatasetLabels = oldData.datasets.map((dataset) => {
             return dataset.label;
           });
 
@@ -120,12 +114,12 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
               const newDatasetKeys = Object.keys(dataset);
 
               // Get keys that aren't present in the new data
-              const deletionKeys = oldDatasetKeys.filter(key => {
+              const deletionKeys = oldDatasetKeys.filter((key) => {
                 return key !== '_meta' && newDatasetKeys.indexOf(key) === -1;
               });
 
               // Remove outdated key-value pairs
-              deletionKeys.forEach(deletionKey => {
+              deletionKeys.forEach((deletionKey) => {
                 if (chart?.data.datasets[i]) {
                   delete chart.data.datasets[i][deletionKey as keyof ChartDataset];
                 }
@@ -231,22 +225,15 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
               maxWidth: '100%',
               maxHeight: '100%',
             },
-            ...(isVue2 && {
-              attrs: {
-                id: this.canvasId,
-                width: this.width,
-                height: this.height,
-              },
-            }),
-            ...(isVue3 && {
+            attrs: {
               id: this.canvasId,
               width: this.width,
               height: this.height,
-            }),
+            },
             ref: 'canvasRef',
           }),
         ]
       );
     },
-  });
+  }) as VueProxy<ChartPropsOptions<TType>, ComponentData<TType>>;
 };
