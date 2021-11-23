@@ -19,6 +19,10 @@
 
 This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-chartjs) for Chart.js 3, but written in Typescript with Vue 3 composition api in mind.
 
+# [Documentation](https://vue-chart-3.netlify.app/)
+
+[Full documentation](https://vue-chart-3.netlify.app/)
+
 # ⚠️ Breaking changes and new versions numbers
 
 In previous versions, `vue-demi` was used. It worked really well, but as the project advanced, they were a lot of problems with vue-related typescript definitions, tests and conflict between dependencies.
@@ -52,9 +56,7 @@ yarn add vue-chart-3@2
 pnpm i vue-chart-3@2
 ```
 
-# [Documentation](https://vue-chart-3.netlify.app/)
 
-[Full documentation](https://vue-chart-3.netlify.app/)
 
 # Important notes
 
