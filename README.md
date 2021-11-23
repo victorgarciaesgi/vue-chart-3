@@ -70,4 +70,4 @@ This package works with version 2.x and 3.x of Vue.
 # Demos
 
 - Vue 3: [CodeSandbox demo Vue 3](https://codesandbox.io/s/demo-vue-chart-3-ugynm?file=/src/App.vue)
-- Vue 2: [CodeSandbox demo Vue 2](https://codesandbox.io/s/vue-chart-3-vue-2-mrtej)
+- Vue 2: [CodeSandbox demo Vue 2](https://codesandbox.io/s/vue-chart-3-vue-2-mw54f?file=/src/App.vue)
