@@ -1,4 +1,4 @@
-## Full Example
+# Full Example
 
 ```vue
 <template>

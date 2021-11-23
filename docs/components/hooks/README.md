@@ -21,9 +21,18 @@ Declaring it give you access to `xxxChartProps` and `xxxChartRef`.
 For `BarChart` you can import `useBarChart` from `vue-chart-3` and use it like this
 
 ```ts
-const { barChartProps, barChartRef } = useBarChart({
-  chartData: {}, //...
-});
+export default defineComponent({
+  ...,
+  setup() {
+    const { barChartProps, barChartRef } = useBarChart({
+      chartData: {}, //...
+      plugins: []
+    });
+
+    return { barChartProps, barChartRef }
+  }
+})
+
 ```
 
 Then you can use the `barChartProps` to fill the props of the component
