@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "3.0.0-alpha.0",
+  "version": "3.0.0-alpha-1",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",
@@ -22,7 +22,7 @@
     "test": "jest",
     "publish:alpha": "npm publish --tag next",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "yarn run post:docs && vuepress build docs",
+    "docs:build": " vuepress build docs",
     "post:docs": "echo \\$contentClass = \\'.content__default\\' > ./node_modules/@vuepress/theme-default/styles/config.styl",
     "patch": "npm version patch --no-git-tag-version",
     "minor": "npm version minor --no-git-tag-version",
@@ -58,20 +58,18 @@
     "@types/node": "^14.0.27",
     "@vue/cli": "^4.5.15",
     "@vue/test-utils": "^2.0.0-rc.16",
-    "canvas": "^2.8.0",
+    "@vuepress/plugin-docsearch": "^2.0.0-beta.27",
+    "@vuepress/plugin-palette": "^2.0.0-beta.27",
     "chart.js": "^3.6.0",
     "chartjs-test-utils": "^0.3.1",
-    "copyfiles": "^2.4.1",
     "jest": "^27.3.1",
-    "lerna": "^4.0.0",
-    "regenerator-runtime": "^0.13.9",
-    "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.7",
     "typescript": "^4.5.2",
     "vue": "^3.2.22",
     "vue-chart-3": "^0.5.11",
-    "vuepress": "^1.8.2"
+    "vuepress": "^2.0.0-beta.27",
+    "vuepress-vite": "^2.0.0-beta.27"
   },
   "repository": {
     "type": "git",

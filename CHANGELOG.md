@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.0.0 and 2.0.0 (2021-11-23)
+
+- Breaking changes and new versions numbers
+
+In previous versions, `vue-demi` was used. It worked really well, but as the project advanced, they were a lot of problems with vue-related typescript definitions, tests and conflict between dependencies.
+
+This new system will keep `vue-chart-3` working for both Vue 2 & 3 with designated versions (`2.x` and `3.x` respectively), but each one designed for their specific Vue version.
+
+The usage of components of hooks is unchanged for both versions.
+
+Code wise, there is not big breaking changes. But the Vue 3 version will have improved type checking for components template (with Volar extension).
+
+- New docs using vuepress next!
+
 # 0.5.10 (2021-10-27)
 
 - Fixed types for Vue 3 imports

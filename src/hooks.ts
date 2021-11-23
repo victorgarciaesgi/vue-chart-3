@@ -10,14 +10,14 @@ import {
 } from 'vue';
 import { ComponentData } from './components';
 import { ChartPropsOptions } from './types';
-import { ExtractComponentData, ExtractComponentProps, MaybeRef } from './utils';
+import { MaybeRef } from './utils';
 import { StyleValue } from './vue.types';
 
 type DumbTypescript = 0;
 
 type ChartHookReturnType<TType extends ChartType> = {
   [K in DumbTypescript as `${TType}ChartRef`]: Ref<
-  ComponentPublicInstance<ChartPropsOptions<TType>, ComponentData<TType>>
+  ComponentPublicInstance<ChartPropsOptions<TType>, ComponentData<TType>> | null
   >;
 } &
   {
@@ -52,7 +52,7 @@ const defineChartHook = <TType extends ChartType = ChartType>(chartType: TType) 
 
     return {
       [`${chartType}ChartProps`]: reactiveProps,
-      [`${chartType}ChartRef`]: ref(),
+      [`${chartType}ChartRef`]: ref(null),
     };
   };
 };

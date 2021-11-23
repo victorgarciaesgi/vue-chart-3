@@ -17,9 +17,26 @@
 [npm-total-downloads-src]: https://img.shields.io/npm/dt/vue-chart-3.svg
 [npm-downloads-href]: https://www.npmjs.com/package/vue-chart-3
 
-This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-chartjs) for Chart.js 3, but written in Typescript with [vue-demi](https://github.com/vueuse/vue-demi) and Vue Composition API.
+This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-chartjs) for Chart.js 3, but written in Typescript with Vue 3 composition api in mind.
+
+# [Documentation](https://vue-chart-3.netlify.app/)
+
+[Full documentation](https://vue-chart-3.netlify.app/)
+
+# ⚠️ Breaking changes and new versions numbers
+
+In previous versions, `vue-demi` was used. It worked really well, but as the project advanced, they were a lot of problems with vue-related typescript definitions, tests and conflict between dependencies.
+
+This new system will keep `vue-chart-3` working for both Vue 2 & 3 with designated versions (`2.x` and `3.x` respectively), but each one designed for their specific Vue version.
+
+Code wise, there is not big breaking changes. But the Vue 3 version will have improved type checking for components template (with Volar extension).
+
+For Vue 3 users, nothing changes.
+For Vue 2 users, you will have to keep `2.x` version of `vue-chart-3`
 
 # Installation
+
+## For Vue 3
 
 ```bash
 npm i vue-chart-3
@@ -29,9 +46,17 @@ yarn add vue-chart-3
 pnpm i vue-chart-3
 ```
 
-# [Documentation](https://vue-chart-3.netlify.app/)
+## For Vue 2
 
-[Full documentation](https://vue-chart-3.netlify.app/)
+```bash
+npm i vue-chart-3@2
+#or
+yarn add vue-chart-3@2
+#or
+pnpm i vue-chart-3@2
+```
+
+
 
 # Important notes
 
