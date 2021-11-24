@@ -1,6 +1,5 @@
-import { DefineComponent } from '@vue/runtime-core';
-import { Chart, ChartData, ChartOptions, ChartType, Plugin } from 'chart.js';
-import { computed, Ref, ref, unref, ComponentPublicInstance } from 'vue';
+import { Chart, ChartData, ChartType, Plugin } from 'chart.js';
+import { ComponentPublicInstance, computed, Ref, ref, unref } from 'vue';
 import { ComponentData } from './components';
 import { ChartPropsOptions } from './types';
 import { ExtractPropTypes, MaybeRef } from './utils';

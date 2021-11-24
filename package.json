@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",
@@ -15,10 +15,11 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf types",
-    "compile": "tsc --pretty -p tsconfig.build.json && cp -r ./dist ./debug/vue3/node_modules/vue-chart-3 && cp -r ./types ./debug/vue3/node_modules/vue-chart-3",
+    "compile": "tsc --pretty -p tsconfig.build.json",
+    "build:debug": "npm run compile && cp -r ./dist ./debug/vue3/node_modules/vue-chart-3 && cp -r ./types ./debug/vue3/node_modules/vue-chart-3",
     "dev": "tsc --pretty --watch",
-    "build": "yarn run clean && yarn run compile",
-    "debug": "cd debug/vue3 && yarn serve",
+    "build": "npm run  clean && npm run compile",
+    "debug": "cd debug/vue3 && npm run serve",
     "test": "jest",
     "publish:alpha": "npm publish --tag next",
     "docs:dev": "vuepress dev docs",

@@ -49,14 +49,12 @@ pnpm i vue-chart-3
 ## For Vue 2
 
 ```bash
-npm i vue-chart-3@2
+npm i vue-chart-3@legacy
 #or
-yarn add vue-chart-3@2
+yarn add vue-chart-3@legacy
 #or
-pnpm i vue-chart-3@2
+pnpm i vue-chart-3@legacy
 ```
-
-
 
 # Important notes
 

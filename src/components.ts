@@ -1,28 +1,22 @@
-import { Chart, ChartData, ChartOptions, ChartType, Plugin, ChartDataset } from 'chart.js';
-import {
-  ref,
-  PropType,
-  onMounted,
-  h,
-  onBeforeUnmount,
-  watch,
-  Ref,
-  defineComponent,
-  shallowRef,
-  DefineComponent,
-} from 'vue';
-import startCase from 'lodash/startCase';
-import camelCase from 'lodash/camelCase';
+import { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
-
-// Weird bug with karma importing cjs files
 import { nanoid } from 'nanoid';
-
+import {
+  defineComponent,
+  DefineComponent,
+  h,
+  onBeforeUnmount,
+  onMounted,
+  PropType,
+  ref,
+  Ref,
+  shallowRef,
+  watch,
+} from 'vue';
+import { ChartPropsOptions } from './types';
+import { pascalCase } from './utils';
 import { StyleValue } from './vue.types';
-import { ChartProps, ChartPropsOptions } from './types';
-
-const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
 export type ComponentData<T extends ChartType> = {
   canvasRef: Ref<HTMLCanvasElement | undefined>;

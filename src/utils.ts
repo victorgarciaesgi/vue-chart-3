@@ -1,6 +1,11 @@
 import { ComponentPropsOptions } from '@vue/runtime-core';
 import * as CSS from 'csstype';
+import camelCase from 'lodash/camelcase';
+import startCase from 'lodash/startcase';
+
 import { ComputedRef, DefineComponent, Prop, Ref } from 'vue';
+
+export const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
 export type StyleValue = string | CSS.Properties | Array<StyleValue>;
 
@@ -80,7 +85,7 @@ type InferPropType<T> = [T] extends [null]
 
 type OptionalKeys<T> = Exclude<keyof T, RequiredKeys<T>>;
 
-export declare type ExtractPropTypes<O> = O extends object
+export type ExtractPropTypes<O> = O extends object
   ? {
       [K in RequiredKeys<O>]: InferPropType<O[K]>;
     } & {
