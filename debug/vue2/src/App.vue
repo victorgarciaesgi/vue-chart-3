@@ -1,38 +1,44 @@
-<template>
-  <div id="app" style="width: 400px">
-    <button @click="shuffleData">Shuffle</button>
-    <BarChart v-bind="barChartProps" />
-    <img v-if="imgData" :src="imgData" />
-  </div>
-</template>
-
-<script>
-import { Chart, registerables } from 'chart.js';
+<script lang="tsx">
+import { Chart, ChartData, registerables } from 'chart.js';
 import { BarChart, useBarChart } from 'vue-chart-3';
 import { ref, computed, defineComponent } from '@vue/composition-api';
 import { shuffle } from 'lodash';
+import Test from './components/test.vue';
 
 Chart.register(...registerables);
 
 export default defineComponent({
   name: 'App',
+  props: {
+    test: { type: String },
+  },
   components: {
     BarChart,
+    Test,
   },
   setup() {
     const data = ref([30, 40, 60, 70, 5]);
     const legendTop = ref(true);
-    const imgData = ref(null);
 
     const options = computed(() => ({
       scales: {
-        y: {
-          beginAtZero: true,
+        myScale: {
+          type: 'logarithmic',
+          position: legendTop.value ? 'left' : 'right',
+        },
+      },
+      plugins: {
+        legend: {
+          position: legendTop.value ? 'top' : 'bottom',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Doughnut Chart',
         },
       },
     }));
 
-    const chartData = computed(() => ({
+    const testData = computed<ChartData<'bar'>>(() => ({
       labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
       datasets: [
         {
@@ -43,17 +49,31 @@ export default defineComponent({
     }));
 
     const { barChartProps, barChartRef } = useBarChart({
-      chartData,
-      options,
+      chartData: testData,
+      options: options,
     });
 
     function shuffleData() {
       data.value = shuffle(data.value);
       legendTop.value = !legendTop.value;
-      imgData.value = barChartRef.value.chartInstance.toBase64Image();
+      console.log(barChartRef);
+      console.log(barChartRef.value.chartInstance?.getDatasetMeta(0));
     }
 
-    return { shuffleData, barChartProps, barChartRef, imgData };
+    return {
+      shuffleData,
+      barChartProps,
+      barChartRef,
+    };
+  },
+  render(h) {
+    return (
+      <div id="app" style={{ width: '400px' }}>
+        <button onClick={shuffleData}>Shuffle</button>
+        <BarChart {...{ attrs: this.barChartProps.value }} />
+        <Foo />
+      </div>
+    );
   },
 });
 </script>

@@ -9,6 +9,7 @@ import {
 } from '@vue/composition-api';
 import { ComponentData } from './components';
 import { VueProxy } from './vue.types';
+import { DoughnutChart } from '.';
 
 export type StyleValue = string | CSS.Properties | Array<StyleValue>;
 
@@ -26,6 +27,8 @@ export type ExtractComponentProps<T> = T extends VueProxy<
 >
   ? ExtractPropTypes<TProps>
   : never;
+
+// type test = ExtractComponentProps<typeof DoughnutChart>;
 
 export type ExtractComponentData<T> = T extends VueProxy<
   any,

@@ -1,35 +1,26 @@
-import { DefineComponent } from '@vue/runtime-core';
 import { Chart, ChartData, ChartOptions, ChartType, Plugin } from 'chart.js';
-import {
-  computed,
-  reactive,
-  Ref,
-  ref,
-  toRefs,
-  unref,
-} from '@vue/composition-api';
+import { computed, reactive, Ref, ref, toRefs, unref } from '@vue/composition-api';
 import { ComponentData } from './components';
 import { ChartPropsOptions } from './types';
 import { ExtractComponentData, ExtractComponentProps, MaybeRef } from './utils';
-import { StyleValue } from './vue.types';
+import { StyleValue, VueProxy } from './vue.types';
 
 type DumbTypescript = 0;
 
 type ChartHookReturnType<TType extends ChartType> = {
   [K in DumbTypescript as `${TType}ChartRef`]: Ref<
-    ExtractComponentData<DefineComponent<any, ComponentData<TType>>>
+    ExtractComponentData<VueProxy<any, ComponentData<TType>>>
   >;
-} &
-  {
-    [K in DumbTypescript as `${TType}ChartProps`]: Ref<
-      ExtractComponentProps<DefineComponent<ChartPropsOptions<TType>, ComponentData<TType>>>
-    >;
-  };
+} & {
+  [K in DumbTypescript as `${TType}ChartProps`]: Ref<
+    ExtractComponentProps<VueProxy<ChartPropsOptions<TType>, ComponentData<TType>>>
+  >;
+};
 
 const defineChartHook = <TType extends ChartType = ChartType>(chartType: TType) => {
   return (params: {
     chartData: MaybeRef<ChartData<TType>>;
-    options?: MaybeRef<ChartOptions<TType>>;
+    options?: MaybeRef<Record<string, any>>;
     width?: number;
     height?: number;
     cssClasses?: string;
@@ -47,13 +38,9 @@ const defineChartHook = <TType extends ChartType = ChartType>(chartType: TType) 
       options: unref(params.options),
     }));
 
-    const chartProps = reactive({
-      [`${chartType}ChartProps`]: reactiveProps,
-    });
-
     return {
-      ...toRefs(chartProps),
-      [`${chartType}ChartRef`]: ref<ExtractComponentData<DefineComponent<any, ComponentData<TType>>>>(),
+      [`${chartType}ChartProps`]: reactiveProps,
+      [`${chartType}ChartRef`]: ref(null),
     };
   };
 };
