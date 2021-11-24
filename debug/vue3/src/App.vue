@@ -1,11 +1,4 @@
-<template>
-  <div id="app" style="width: 400px">
-    <button @click="shuffleData">Shuffle</button>
-    <BarChart v-bind="barChartProps" />
-  </div>
-</template>
-
-<script lang="ts">
+<script lang="tsx">
 import { Chart, ChartData, registerables } from 'chart.js';
 import { BarChart, useBarChart } from 'vue-chart-3';
 import { ref, computed, defineComponent } from 'vue';
@@ -65,7 +58,12 @@ export default defineComponent({
       console.log(barChartRef.value.chartInstance.getDatasetMeta(0));
     }
 
-    return { shuffleData, barChartProps, barChartRef };
+    return () => (
+      <div id="app" style={{ width: '400px' }}>
+        <button onClick={shuffleData}>Shuffle</button>
+        <BarChart {...barChartProps.value} class="test" />
+      </div>
+    );
   },
 });
 </script>

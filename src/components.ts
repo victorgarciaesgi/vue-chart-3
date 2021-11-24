@@ -34,7 +34,7 @@ export type ComponentData<T extends ChartType> = {
 export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartId: string,
   chartType: TType
-) => {
+): DefineComponent<ChartPropsOptions<TType>, ComponentData<TType>> => {
   const propsDefs: ChartPropsOptions<TType> = {
     chartData: { type: Object as PropType<ChartData<TType>>, required: true },
     options: { type: Object as PropType<Record<string, any>>, required: false },
@@ -91,11 +91,11 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
           let chart = chartInstance.value;
 
           // Get new and old DataSet Labels
-          let newDatasetLabels = newData.datasets.map(dataset => {
+          let newDatasetLabels = newData.datasets.map((dataset) => {
             return dataset.label;
           });
 
-          let oldDatasetLabels = oldData.datasets.map(dataset => {
+          let oldDatasetLabels = oldData.datasets.map((dataset) => {
             return dataset.label;
           });
 
@@ -115,12 +115,12 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
               const newDatasetKeys = Object.keys(dataset);
 
               // Get keys that aren't present in the new data
-              const deletionKeys = oldDatasetKeys.filter(key => {
+              const deletionKeys = oldDatasetKeys.filter((key) => {
                 return key !== '_meta' && newDatasetKeys.indexOf(key) === -1;
               });
 
               // Remove outdated key-value pairs
-              deletionKeys.forEach(deletionKey => {
+              deletionKeys.forEach((deletionKey) => {
                 if (chart?.data.datasets[i]) {
                   delete chart.data.datasets[i][deletionKey as keyof ChartDataset];
                 }

@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",
@@ -60,6 +60,7 @@
     "@vue/test-utils": "^2.0.0-rc.16",
     "@vuepress/plugin-docsearch": "^2.0.0-beta.27",
     "@vuepress/plugin-palette": "^2.0.0-beta.27",
+    "canvas": "^2.8.0",
     "chart.js": "^3.6.0",
     "chartjs-test-utils": "^0.3.1",
     "jest": "^27.3.1",
@@ -67,7 +68,7 @@
     "ts-jest": "^27.0.7",
     "typescript": "^4.5.2",
     "vue": "^3.2.22",
-    "vue-chart-3": "^0.5.11",
+    "vue-chart-3": "^3.0.1",
     "vuepress": "^2.0.0-beta.27",
     "vuepress-vite": "^2.0.0-beta.27"
   },

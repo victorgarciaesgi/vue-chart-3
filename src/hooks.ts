@@ -1,31 +1,21 @@
 import { DefineComponent } from '@vue/runtime-core';
 import { Chart, ChartData, ChartOptions, ChartType, Plugin } from 'chart.js';
-import {
-  computed,
-  Ref,
-  ref,
-  unref,
-  ComponentPublicInstance,
-  ExtractPropTypes
-} from 'vue';
+import { computed, Ref, ref, unref, ComponentPublicInstance } from 'vue';
 import { ComponentData } from './components';
 import { ChartPropsOptions } from './types';
-import { MaybeRef } from './utils';
+import { ExtractPropTypes, MaybeRef } from './utils';
 import { StyleValue } from './vue.types';
 
 type DumbTypescript = 0;
 
 type ChartHookReturnType<TType extends ChartType> = {
-  [K in DumbTypescript as `${TType}ChartRef`]: Ref<
-  ComponentPublicInstance<ChartPropsOptions<TType>, ComponentData<TType>> | null
-  >;
-} &
-  {
-    [K in DumbTypescript as `${TType}ChartProps`]: Ref<
-    ExtractPropTypes<ChartPropsOptions<TType>>
-    >;
-  };
-
+  [K in DumbTypescript as `${TType}ChartRef`]: Ref<ComponentPublicInstance<
+    ChartPropsOptions<TType>,
+    ComponentData<TType>
+  > | null>;
+} & {
+  [K in DumbTypescript as `${TType}ChartProps`]: Ref<ExtractPropTypes<ChartPropsOptions<TType>>>;
+};
 
 const defineChartHook = <TType extends ChartType = ChartType>(chartType: TType) => {
   return (params: {
@@ -41,14 +31,12 @@ const defineChartHook = <TType extends ChartType = ChartType>(chartType: TType) 
     onChartDestroy?: () => void;
     onChartRender?: (chartInstance: Chart<TType>) => void;
   }): ChartHookReturnType<TType> => {
-    
     const reactiveProps = computed(() => ({
       ...params,
       ref: `${chartType}ChartRef`,
       chartData: unref(params.chartData),
       options: unref(params.options),
     }));
-
 
     return {
       [`${chartType}ChartProps`]: reactiveProps,

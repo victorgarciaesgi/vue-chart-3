@@ -2572,10 +2572,10 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-chart.js@^3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.4.1.tgz#ff3b2b2a04a37b83618b4a6399a5f87ccc0f1e8a"
-  integrity sha512-0R4mL7WiBcYoazIhrzSYnWcOw6RmrRn7Q4nKZNsBQZCBrlkZKodQbfeojCCo8eETPRCs1ZNTsAcZhIfyhyP61g==
+chart.js@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.6.0.tgz#a87fce8431d4e7c5523d721f487f53aada1e42fe"
+  integrity sha512-iOzzDKePL+bj+ccIsVAgWQehCXv8xOKGbaU2fO/myivH736zcx535PGJzQGanvcSGVOqX6yuLZsN3ygcQ35UgQ==
 
 check-types@^8.0.3:
   version "8.0.3"
@@ -2962,6 +2962,11 @@ core-js-compat@^3.14.0, core-js-compat@^3.15.0, core-js-compat@^3.6.5:
   dependencies:
     browserslist "^4.16.6"
     semver "7.0.0"
+
+core-js@^3.19.1:
+  version "3.19.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.19.1.tgz#f6f173cae23e73a7d88fa23b6e9da329276c6641"
+  integrity sha512-Tnc7E9iKd/b/ff7GFbhwPVzJzPztGrChB8X8GLqoYGdEOG8IpLnK1xPyo3ZoO3HsK6TodJS58VGPOxA+hLHQMg==
 
 core-js@^3.6.5:
   version "3.15.2"
@@ -8466,10 +8471,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@~4.1.5:
-  version "4.1.6"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.6.tgz#1becd85d77567c3c741172339e93ce2e69932138"
-  integrity sha512-pxnwLxeb/Z5SP80JDRzVjh58KsM6jZHRAOtTpS7sXLS4ogXNKC9ANxHHZqLLeVHZN35jCtI4JdmLLbLiC1kBow==
+typescript@^4.5.2:
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.2.tgz#8ac1fba9f52256fdb06fb89e4122fa6a346c2998"
+  integrity sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==
 
 uglify-js@3.4.x:
   version "3.4.10"
@@ -8715,10 +8720,10 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vue-chart-3@^3.0.0-alpha-0:
-  version "3.0.0-alpha-0"
-  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-3.0.0-alpha-0.tgz#d56cf6fc7d17c118f9ca81756c2c2289439a9cb4"
-  integrity sha512-x8jFCpajC/XUygxmiW7ugoazU8pEmIVFujg9P8vyMPL0hHEZQT7po1DHjB9ZSm3bwpSSSKdX6uXgGlGApODroQ==
+vue-chart-3@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-3.0.1.tgz#db735c4a0a1de172e427466be43067ac51d123a1"
+  integrity sha512-kmhZFFuyZRWkxi5yBqEYBvG6FaPXtM6Wv5EuKB0QxWybd+t4oBP0syJFPO0IV6akwCVHz4eRpDOtqS860E+cxA==
   dependencies:
     "@vue/runtime-core" latest
     "@vue/runtime-dom" latest
