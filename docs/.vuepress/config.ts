@@ -14,16 +14,15 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
   },
   plugins: [
-    // [
-    //   '@vuepress/plugin-docsearch',
-    //   {
-    //     apiKey: '3a539aab83105f01761a137c61004d85',
-    //     indexName: 'vuepress',
-    //     searchParameters: {
-    //       facetFilters: ['tags:v2'],
-    //     },
-    //   },
-    // ],
+    [
+      '@vuepress/plugin-docsearch',
+      {
+        appId: 'BH4D9OD16A',
+        apiKey: 'f8206c1e05cedf8dcf7769bb3b87ada3',
+        indexName: 'vue-chart-3',
+        searchParameters: { facetFilters: ['lang:en-US'] },
+      },
+    ],
   ],
   themeConfig: {
     repo: 'victorgarciaesgi/vue-chart-3',
