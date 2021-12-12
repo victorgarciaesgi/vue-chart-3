@@ -1,15 +1,6 @@
-import { ComponentOptions, ShallowUnwrapRef, ComponentPublicInstance } from '@vue/runtime-core';
+import { ComputedRef, ExtractPropTypes, Ref } from '@vue/composition-api';
 import * as CSS from 'csstype';
-import {
-  ComputedOptions,
-  ComputedRef,
-  MethodOptions,
-  Ref,
-  ExtractPropTypes,
-} from '@vue/composition-api';
-import { ComponentData } from './components';
 import { VueProxy } from './vue.types';
-import { DoughnutChart } from '.';
 
 export type StyleValue = string | CSS.Properties | Array<StyleValue>;
 

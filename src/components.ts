@@ -21,9 +21,9 @@ import { nanoid } from 'nanoid';
 import { StyleValue, VueProxy } from './vue.types';
 import { ChartPropsOptions } from './types';
 
-import Vue from 'vue';
-
-Vue.use(VueComp);
+console.warn(
+  'Starting v2.0.3, vue-chart-3 will not register Vue Composition Api manually. Please update your project to register it in your configuration! (This message will be removed next update)'
+);
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 

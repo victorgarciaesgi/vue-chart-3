@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.3 (2021-12-12)
+
+- Removed automatic Vue composition Api registration
+
 # 0.5.10 (2021-10-27)
 
 - Fixed types for Vue 3 imports

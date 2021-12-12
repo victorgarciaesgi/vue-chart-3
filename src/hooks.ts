@@ -1,5 +1,5 @@
-import { Chart, ChartData, ChartOptions, ChartType, Plugin } from 'chart.js';
-import { computed, reactive, Ref, ref, toRefs, unref } from '@vue/composition-api';
+import { computed, Ref, ref, unref } from '@vue/composition-api';
+import { Chart, ChartData, ChartType, Plugin } from 'chart.js';
 import { ComponentData } from './components';
 import { ChartPropsOptions } from './types';
 import { ExtractComponentData, ExtractComponentProps, MaybeRef } from './utils';
