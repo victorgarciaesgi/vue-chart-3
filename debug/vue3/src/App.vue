@@ -1,6 +1,6 @@
 <script lang="tsx">
 import { Chart, ChartData, registerables } from 'chart.js';
-import { BarChart, useBarChart } from 'vue-chart-3';
+import { BarChart, defineChartComponent, useBarChart } from 'vue-chart-3';
 import { ref, computed, defineComponent } from 'vue';
 import { shuffle } from 'lodash';
 
