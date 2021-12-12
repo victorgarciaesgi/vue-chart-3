@@ -2,7 +2,11 @@
 
 ## Vue 2
 
-You need to have `@vue/composition-api` installed. It will registered itself so no need to call `Vue.use(VueCompositionApi)`
+You need to have `@vue/composition-api` installed and registered.
+
+::: warning
+Since `2.0.3`, Vue composition api will not register itself. Update your project if you didn't do it manually!
+:::
 
 ## Vue 3
 
