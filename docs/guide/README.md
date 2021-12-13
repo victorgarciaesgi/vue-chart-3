@@ -51,6 +51,8 @@ For Vue 2 users, you will have to keep `2.x` version of `vue-chart-3`
 - Vue 3 works out-of-the-box
 - Vue 2 requires `@vue/composition-api` package to also be installed and registered, to provide Vue 3's [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html) features like `ref, defineComponent, computed, reactive`.
 
+⚠️ Since `2.0.3` (for Vue 2 users), Vue composition api will not register itself. Update your project if you didn't do it manually!
+
 ### Chart.js (v3)
 
 Chart.js v3 is now tree-shakable, so make sure to import and register the chart components you need. See [Chart.js API](https://www.chartjs.org/docs/master/api/) for all available imports.
