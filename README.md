@@ -70,4 +70,6 @@ This package works with version 2.x and 3.x of Vue.
 # Demos
 
 - Vue 3: [CodeSandbox demo Vue 3](https://codesandbox.io/s/demo-vue-chart-3-ugynm?file=/src/App.vue)
-- Vue 2: [CodeSandbox demo Vue 2](https://codesandbox.io/s/vue-chart-3-vue-2-mw54f?file=/src/App.vue)
+- Vue 2 + composition API: [CodeSandbox demo Vue 2 + composition](https://codesandbox.io/s/vue-chart-3-vue-2-mw54f?file=/src/App.vue)
+- Vue 2 + Typescript + class API [CodeSandox demo Vue 2 + class](https://codesandbox.io/s/vue-chart-3-vue-2-class-api-f7gv1?file=/src/App.vue)
+- Nuxt 2 + SSR [CodeSandbox demo Nuxt 2 + SSR](https://codesandbox.io/s/vue-chart-3-nuxt-2-mrtej?file=/pages/index.vue)

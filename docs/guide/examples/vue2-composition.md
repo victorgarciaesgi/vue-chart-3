@@ -1,4 +1,4 @@
-# Vue 2 and plugins
+# Vue 2 + composition API + plugins
 
 <iframe src="https://codesandbox.io/embed/vue-chart-3-vue-2-mw54f?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"

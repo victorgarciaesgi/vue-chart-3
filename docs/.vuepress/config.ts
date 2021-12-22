@@ -54,7 +54,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             },
             {
               text: 'Examples',
-              children: ['/guide/examples/vue2', '/guide/examples/vue3'],
+              children: ['/guide/examples/vue3', '/guide/examples/vue2-composition','/guide/examples/vue2-class', '/guide/examples/nuxt2'],
             },
           ],
           '/components/': [

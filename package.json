@@ -43,7 +43,8 @@
   "license": "MIT",
   "peerDependencies": {
     "chart.js": "=> ^3.1.0",
-    "vue": ">= 3"
+    "vue": ">= 3",
+    "@vue/composition-api": ">= ^1.4.1"
   },
   "dependencies": {
     "@vue/runtime-core": "latest",
