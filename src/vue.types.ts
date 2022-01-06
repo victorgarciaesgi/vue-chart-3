@@ -1,4 +1,3 @@
-import { CSSProperties } from '@vue/runtime-dom';
 import { DefaultComputed, DefaultData, DefaultMethods } from 'vue/types/options';
 import Vue, { VueConstructor } from 'vue';
 import {
@@ -10,6 +9,12 @@ import {
   ShallowUnwrapRef,
 } from '@vue/composition-api';
 import { ComponentOptions } from 'vue/types/umd';
+import CSS from 'csstype';
+
+interface CSSProperties
+  extends CSS.Properties<string | number>,
+    CSS.PropertiesHyphen<string | number> {
+}
 
 export type VueInputEvent = Event & { target: HTMLInputElement };
 
