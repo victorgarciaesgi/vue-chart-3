@@ -5,10 +5,11 @@ You can use `defineChartComponent` to create ChartJs plugins components
 Example:
 
 ```ts
+import { Chart, registerables } from 'chart.js';
 import { defineChartComponent } from 'vue-chart-3';
 import { MatrixController, MatrixElement } from 'chartjs-chart-matrix';
 
-Chart.register(MatrixController, MatrixElement);
+Chart.register(MatrixController, MatrixElement, ...registerables);
 
 const Matrix = defineChartComponent('MatrixChart', 'matrix');
 // You can now use this component anywhere
