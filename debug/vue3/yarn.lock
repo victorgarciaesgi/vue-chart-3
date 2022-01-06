@@ -8720,10 +8720,10 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vue-chart-3@3.1.0-beta-0:
-  version "3.1.0-beta-0"
-  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-3.1.0-beta-0.tgz#4d55caa8f68b47e3d9491d35492c79b4843cf3c1"
-  integrity sha512-PXBo2VF7XRKrJDQd2neVyRf91iO4U5H2iryIqjymHF+gA6l28EKvL1EPwavrqqIm58qGKSdqDBDbNH4JFioG7g==
+vue-chart-3@3.1.0-beta-4:
+  version "3.1.0-beta-4"
+  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-3.1.0-beta-4.tgz#2df6d9955cdddb70390741edf6262f62eb770fd6"
+  integrity sha512-0PHNJ2yCLW42A7nUAY6dOFTFbhLqAqnWjFheQo6cYfdNLRJ5VwwyArMUkbT5oH49VUcEEMOtmAkbcwh+yHb+1g==
   dependencies:
     "@vue/runtime-core" "3.2.26"
     "@vue/runtime-dom" "3.2.26"

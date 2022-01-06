@@ -94,3 +94,5 @@ export type ExtractPropTypes<O> = O extends object
   : {
       [K in string]: any;
     };
+
+export default () => {};

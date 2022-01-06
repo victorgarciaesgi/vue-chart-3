@@ -1,7 +1,7 @@
 import { defineChartComponent } from './components';
 
 export { defineChartComponent } from './components';
-export { ExtractComponentData, ExtractComponentProps } from './utils';
+export type { ExtractComponentData, ExtractComponentProps } from './utils';
 
 export * from './hooks';
 

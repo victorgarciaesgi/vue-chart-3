@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "3.0.5",
+  "version": "3.1.0-beta-4",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",
@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf types",
-    "compile": "tsc --pretty -p tsconfig.build.json",
+    "compile": "unbuild",
     "build:debug": "npm run compile && cp -r ./dist ./debug/vue3/node_modules/vue-chart-3 && cp -r ./types ./debug/vue3/node_modules/vue-chart-3",
     "dev": "tsc --pretty --watch",
     "build": "npm run  clean && npm run compile",
@@ -33,13 +33,21 @@
     "name": "Victor Garcia",
     "url": "https://github.com/victorgarciaesgi"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./dist/*": "./dist/*"
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "types"
+    "dist/*.js",
+    "dist/*.cjs",
+    "dist/*.mjs",
+    "dist/*.d.ts"
   ],
-  "main": "dist/index.js",
-  "typings": "types/index.d.ts",
-  "type": "commonjs",
   "license": "MIT",
   "peerDependencies": {
     "@vue/composition-api": ">= ^1.4.1",
@@ -54,6 +62,8 @@
     "nanoid": "3.1.30"
   },
   "devDependencies": {
+    "@nuxt/kit": "^0.8.1-edge",
+    "@nuxt/types": "^2.15.8",
     "@types/chart.js": "^2.9.35",
     "@types/jest": "^27.4.0",
     "@types/lodash": "^4.14.178",
@@ -69,6 +79,7 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^27.1.2",
     "typescript": "^4.5.4",
+    "unbuild": "^0.6.7",
     "vue": "^3.2.22",
     "vue-chart-3": "^3.0.4",
     "vuepress": "^2.0.0-beta.27",

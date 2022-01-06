@@ -84,21 +84,8 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         if (oldData && chartInstance.value) {
           let chart = chartInstance.value;
 
-          // Get new and old DataSet Labels
-          let newDatasetLabels = newData.datasets.map(({ label }) => label);
-
-          let oldDatasetLabels = oldData.datasets.map(({ label }) => label);
-
-          // Stringify 'em for easier compare
-          const oldLabels = JSON.stringify(oldDatasetLabels);
-          const newLabels = JSON.stringify(newDatasetLabels);
-
           // Check if Labels are equal and if dataset length is equal
-          if (
-            newLabels === oldLabels &&
-            oldData.datasets.length === newData.datasets.length &&
-            chart
-          ) {
+          if (!isEqual(newData, oldData) && oldData.datasets.length === newData.datasets.length) {
             newData.datasets.forEach((dataset, i) => {
               // Get new and old dataset keys
               const oldDatasetKeys = Object.keys(oldData.datasets[i]);
@@ -111,7 +98,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
               // Remove outdated key-value pairs
               deletionKeys.forEach((deletionKey) => {
-                if (chart?.data.datasets[i]) {
+                if (chart.data.datasets[i]) {
                   delete chart.data.datasets[i][deletionKey as keyof ChartDataset];
                 }
               });
@@ -160,13 +147,13 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       function handleLabelsUpdate() {
         emit('labels:update');
-        props.onLabelsUpdate?.();
+        props.onLabelsUpdate && props.onLabelsUpdate();
       }
 
       function handleChartRender() {
         if (chartInstance.value) {
           emit('chart:render', chartInstance.value);
-          props.onChartRender?.(chartInstance.value);
+          props.onChartRender && props.onChartRender(chartInstance.value);
         }
       }
 
@@ -174,14 +161,14 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         if (chartInstance.value) {
           chartInstance.value.update();
           emit('chart:render', chartInstance.value);
-          props.onChartRender?.(chartInstance.value);
+          props.onChartRender && props.onChartRender(chartInstance.value);
         }
       }
 
       function handleChartDestroy() {
-        chartInstance.value?.destroy();
+        chartInstance.value && chartInstance.value.destroy();
         emit('chart:destroy');
-        props.onChartDestroy?.();
+        props.onChartDestroy && props.onChartDestroy();
       }
 
       //- Hooks
@@ -190,7 +177,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       onBeforeUnmount(() => {
         if (chartInstance.value) {
-          chartInstance.value?.destroy();
+          chartInstance.value.destroy();
         }
       });
 
