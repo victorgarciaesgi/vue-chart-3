@@ -11,7 +11,7 @@
     "chart.js": "^3.6.0",
     "core-js": "^3.19.1",
     "vue": "^3.0.0",
-    "vue-chart-3": "^3.0.1"
+    "vue-chart-3": "3.1.0-beta-0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.18.0",

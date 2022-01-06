@@ -1,6 +1,8 @@
 <script lang="tsx">
 import { Chart, ChartData, registerables } from 'chart.js';
-import { BarChart, defineChartComponent, useBarChart } from 'vue-chart-3';
+import { BarChart, useBarChart } from 'vue-chart-3';
+// import { BarChart, defineChartComponent, useBarChart } from '../../../dist';
+
 import { ref, computed, defineComponent } from 'vue';
 import { shuffle } from 'lodash';
 
@@ -17,6 +19,7 @@ export default defineComponent({
   setup() {
     const data = ref([30, 40, 60, 70, 5]);
     const legendTop = ref(true);
+    const toggleHidden = ref(false);
 
     const options = computed(() => ({
       scales: {
@@ -41,6 +44,7 @@ export default defineComponent({
       datasets: [
         {
           data: data.value,
+          hidden: toggleHidden.value,
           backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
         },
       ],
@@ -53,9 +57,10 @@ export default defineComponent({
 
     function shuffleData() {
       data.value = shuffle(data.value);
-      legendTop.value = !legendTop.value;
+      // legendTop.value = !legendTop.value;
+      toggleHidden.value = !toggleHidden.value;
       console.log(barChartRef);
-      console.log(barChartRef.value.chartInstance.getDatasetMeta(0));
+      // console.log(barChartRef.value.chartInstance.getDatasetMeta(0));
     }
 
     return () => (
