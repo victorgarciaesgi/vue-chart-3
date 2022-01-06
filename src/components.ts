@@ -89,18 +89,14 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       );
 
       /** Picked from vue-chartjs */
-      function watchHandler(newData: ChartData, oldData: ChartData) {
-        if (oldData) {
+      function watchHandler(newData: ChartData<TType>, oldData: ChartData<TType>) {
+        if (oldData && chartInstance.value) {
           let chart = chartInstance.value;
 
           // Get new and old DataSet Labels
-          let newDatasetLabels = newData.datasets.map((dataset) => {
-            return dataset.label;
-          });
+          let newDatasetLabels = newData.datasets.map(({ label }) => label);
 
-          let oldDatasetLabels = oldData.datasets.map((dataset) => {
-            return dataset.label;
-          });
+          let oldDatasetLabels = oldData.datasets.map(({ label }) => label);
 
           // Stringify 'em for easier compare
           const oldLabels = JSON.stringify(oldDatasetLabels);
@@ -132,24 +128,21 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
               // Update attributes individually to avoid re-rendering the entire chart
               for (const attribute in dataset) {
                 const attrValue = dataset[attribute as keyof ChartDataset];
-                if (dataset.hasOwnProperty(attribute) && attrValue && chart) {
+                if (dataset.hasOwnProperty(attribute) && attrValue != null && chart) {
                   (chart.data as any).datasets[i][attribute] = attrValue;
                 }
               }
             });
 
-            if (newData.hasOwnProperty('labels')) {
+            if (newData.labels) {
               chart.data.labels = newData.labels;
               handleLabelsUpdate();
             }
-
-            handleChartUpdate();
           } else {
-            if (chart) {
-              handleChartDestroy();
-            }
-            renderChart();
+            chart.data.datasets = newData.datasets;
           }
+
+          handleChartUpdate();
         } else {
           if (chartInstance.value) {
             handleChartDestroy();
