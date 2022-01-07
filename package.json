@@ -50,7 +50,6 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@vue/composition-api": ">= ^1.4.1",
     "chart.js": "=> ^3.1.0",
     "vue": ">= 3"
   },
