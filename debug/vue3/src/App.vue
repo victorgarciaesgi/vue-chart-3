@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { Chart, ChartData, registerables } from 'chart.js';
+import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
 import { BarChart, useBarChart } from 'vue-chart-3';
 // import { BarChart, defineChartComponent, useBarChart } from '../../../dist';
 
@@ -21,7 +21,7 @@ export default defineComponent({
     const legendTop = ref(true);
     const toggleHidden = ref(false);
 
-    const options = computed(() => ({
+    const options = computed<ChartOptions<'bar'>>(() => ({
       scales: {
         myScale: {
           type: 'logarithmic',
