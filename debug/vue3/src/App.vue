@@ -37,6 +37,9 @@ export default defineComponent({
           text: 'Chart.js Doughnut Chart',
         },
       },
+      hover: {
+        mode: null,
+      },
     }));
 
     const testData = computed<ChartData<'bar'>>(() => ({
