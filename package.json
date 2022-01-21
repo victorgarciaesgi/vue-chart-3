@@ -50,7 +50,7 @@
     "@vue/runtime-dom": "latest",
     "csstype": "3.0.10",
     "lodash": "latest",
-    "nanoid": "3.1.30"
+    "nanoid": "3.1.31"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.35",
