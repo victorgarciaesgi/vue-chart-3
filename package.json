@@ -46,7 +46,7 @@
     "@vue/composition-api": "^1.4.1",
     "csstype": "3.0.10",
     "lodash": "latest",
-    "nanoid": "3.1.30"
+    "nanoid": "3.1.31"
   },
   "devDependencies": {
     "@testing-library/vue": "^5.8.2",
