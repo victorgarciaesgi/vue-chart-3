@@ -20,7 +20,7 @@
     "outDir": "dist",
     "declaration": true,
     "declarationDir": "types",
-    "types": ["node", "jasmine", "karma-typescript"],
+    "types": ["node", "jest"],
     "lib": ["esnext", "es2019", "dom", "dom.iterable", "scripthost"]
   },
   "include": ["src/**/*", "tests/**/*"],

@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "keywords": [
     "vue chartjs 3",
@@ -20,7 +20,7 @@
     "build": "yarn run clean && yarn run compile",
     "debug": "cd debug/vue2 && yarn serve",
     "publish:legacy": "npm publish --tag legacy",
-    "test": "karma start",
+    "test": "jest",
     "patch": "npm version patch --no-git-tag-version",
     "minor": "npm version minor --no-git-tag-version",
     "major": "npm version major --no-git-tag-version"
@@ -52,6 +52,7 @@
     "@testing-library/vue": "^5.8.2",
     "@types/chart.js": "^2.9.34",
     "@types/jasmine": "^3.10.2",
+    "@types/jest": "^27.4.0",
     "@types/karma": "^6.3.1",
     "@types/lodash": "^4.14.178",
     "@types/node": "^16.11.12",
@@ -63,6 +64,7 @@
     "chartjs-test-utils": "^0.3.1",
     "copyfiles": "^2.4.1",
     "jasmine-core": "^3.10.1",
+    "jest": "^27.4.7",
     "karma": "^6.3.9",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage": "^2.1.0",
@@ -71,6 +73,7 @@
     "karma-typescript-es6-transform": "^5.5.2",
     "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.2",
+    "ts-jest": "^27.1.3",
     "typescript": "^4.5.3",
     "vue": "^2.6.14",
     "vue-template-compiler": "^2.6.14"
