@@ -2735,7 +2735,7 @@
     estree-walker "^2.0.2"
     magic-string "^0.25.7"
 
-"@vue/runtime-core@3.2.22", "@vue/runtime-core@latest":
+"@vue/runtime-core@3.2.22":
   version "3.2.22"
   resolved "https://registry.yarnpkg.com/@vue/runtime-core/-/runtime-core-3.2.22.tgz#111f1bc97f20249e05ca2189856d99c82d72de32"
   integrity sha512-e7WOC55wmHPvmoVUk9VBe/Z9k5bJfWJfVIlkUkiADJn0bOgQD29oh/GS14Kb3aEJXIHLI17Em6+HxNut1sIh7Q==
@@ -2751,7 +2751,7 @@
     "@vue/reactivity" "3.2.26"
     "@vue/shared" "3.2.26"
 
-"@vue/runtime-dom@3.2.22", "@vue/runtime-dom@latest":
+"@vue/runtime-dom@3.2.22":
   version "3.2.22"
   resolved "https://registry.yarnpkg.com/@vue/runtime-dom/-/runtime-dom-3.2.22.tgz#c11d75dd51375ee4c74e339f6523ca05e37faa37"
   integrity sha512-w7VHYJoliLRTLc5beN77wxuOjla4v9wr2FF22xpZFYBmH4U1V7HkYhoHc1BTuNghI15CXT1tNIMhibI1nrQgdw==
@@ -11516,13 +11516,13 @@ void-elements@^2.0.0:
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
   integrity sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=
 
-vue-chart-3@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-3.0.4.tgz#ccccf91d58ea62d4ce6c39f2f73a0f2d454586c7"
-  integrity sha512-9tkvHCxnNrPoW20dDVWwfpt8asUmTNTVf2ggLszXx8J1UJOvU+2qhUoOMGSju89BpJK4wRP2lh71awuOrToFCg==
+vue-chart-3@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/vue-chart-3/-/vue-chart-3-3.0.7.tgz#7094bc9d11f279c812f81a59e7a4f8531076aa72"
+  integrity sha512-k+yB2WE5BofHlLgi5oTgILbSFpNBydH+RUxvyxyf4q0+XX3IpYG2GLujRd1foZtK7FrGlKv93lthkQ7fwrQykQ==
   dependencies:
-    "@vue/runtime-core" latest
-    "@vue/runtime-dom" latest
+    "@vue/runtime-core" "3.2.26"
+    "@vue/runtime-dom" "3.2.26"
     csstype "3.0.10"
     lodash latest
     nanoid "3.1.30"

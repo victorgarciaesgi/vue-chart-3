@@ -13,15 +13,3 @@ export const PolarAreaChart = defineChartComponent('polar-chart', 'polarArea');
 export const RadarChart = defineChartComponent('radar-chart', 'radar');
 export const BubbleChart = defineChartComponent('bubble-chart', 'bubble');
 export const ScatterChart = defineChartComponent('scatter-chart', 'scatter');
-
-export default {
-  BarChart,
-  DoughnutChart,
-  LineChart,
-  PieChart,
-  PolarAreaChart,
-  RadarChart,
-  BubbleChart,
-  ScatterChart,
-  defineChartComponent,
-};

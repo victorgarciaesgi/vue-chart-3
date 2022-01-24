@@ -7,5 +7,5 @@ export default defineBuildConfig({
     cjsBridge: true,
   },
   entries: ['src/index'],
-  externals: ['vue', 'chart.js'],
+  externals: ['vue', 'chart.js', 'lodash', 'nanoid'],
 });
