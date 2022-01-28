@@ -1,13 +1,16 @@
 ---
-name: 🐞 Bug report 
+name: "\U0001F41E Bug report"
 about: Create a report to help us improve
 title: ''
 labels: ''
 assignees: ''
 
 ---
+
 ## Describe the bug
 *A clear and concise description of what the bug is.*
+
+# Remember, `vue-chart-3` is only an *adapter* to use `chart.js` with Vue easily. So any `chart.js` related issue or question will be dismissed
 
 ## To Reproduce
 
