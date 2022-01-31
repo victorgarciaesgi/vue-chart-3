@@ -18,7 +18,7 @@
     "compile": "tsc --pretty -p tsconfig.build.json",
     "build:debug": "npm run compile && cp -r ./dist ./debug/vue3/node_modules/vue-chart-3 && cp -r ./types ./debug/vue3/node_modules/vue-chart-3",
     "dev": "tsc --pretty --watch",
-    "build": "npm run  clean && npm run compile",
+    "build": "npm run clean && npm run compile",
     "debug": "cd debug/vue3 && npm run serve",
     "test": "jest",
     "publish:alpha": "npm publish --tag next",
@@ -46,11 +46,11 @@
     "vue": ">= 3"
   },
   "dependencies": {
-    "@vue/runtime-core": "latest",
-    "@vue/runtime-dom": "latest",
+    "@vue/runtime-core": "3.2.29",
+    "@vue/runtime-dom": "3.2.29",
     "csstype": "3.0.10",
     "lodash": "latest",
-    "nanoid": "3.1.31"
+    "nanoid": "3.2.0"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.35",
@@ -66,10 +66,10 @@
     "chartjs-test-utils": "^0.3.1",
     "jest": "^27.4.7",
     "rimraf": "^3.0.2",
-    "ts-jest": "^27.1.2",
-    "typescript": "^4.5.4",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.5.5",
     "vue": "^3.2.22",
-    "vue-chart-3": "^3.0.4",
+    "vue-chart-3": "^3.0.9",
     "vuepress": "^2.0.0-beta.27",
     "vuepress-vite": "^2.0.0-beta.27"
   },
