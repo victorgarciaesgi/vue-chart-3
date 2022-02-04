@@ -34,7 +34,7 @@ Chart.register(DoughnutController, ArcElement, Legend, Title, Tooltip);
 
 describe('Vue 2 - Doughtnut chart', () => {
   beforeEach(() => {
-    spyOn(console, 'error');
+    vi.spyOn(console, 'error');
   });
 
   const { vm } = mount(DoughnutChart, {
@@ -125,7 +125,7 @@ const TestHooksComponent = defineComponent({
 
 describe('Vue 2 - with hooks', () => {
   beforeEach(() => {
-    spyOn(console, 'error');
+    vi.spyOn(console, 'error');
   });
 
   const { vm } = mount(TestHooksComponent);

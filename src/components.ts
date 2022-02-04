@@ -10,20 +10,16 @@ import VueComp, {
   defineComponent,
   shallowRef,
 } from '@vue/composition-api';
-import startCase from 'lodash/startCase';
-import camelCase from 'lodash/camelCase';
-import cloneDeep from 'lodash/cloneDeep';
-import isEqual from 'lodash/isEqual';
+import startCase from 'lodash-es/startCase';
+import camelCase from 'lodash-es/camelCase';
+import cloneDeep from 'lodash-es/cloneDeep';
+import isEqual from 'lodash-es/isEqual';
 
 // Weird bug with karma importing cjs files
 import { nanoid } from 'nanoid';
 
 import { StyleValue, VueProxy } from './vue.types';
 import { ChartPropsOptions } from './types';
-
-console.warn(
-  'Starting v2.0.3, vue-chart-3 will not register Vue Composition Api manually. Please update your project to register it in your configuration! (This message will be removed next update)'
-);
 
 const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
 
@@ -61,8 +57,8 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     emits: {
       'labels:update': () => true,
       'chart:update': (chartInstance: Chart<TType>) => true,
-      'chart:destroy': (chartInstance: Chart<TType>) => true,
-      'chart:render': () => true,
+      'chart:destroy': () => true,
+      'chart:render': (chartInstance: Chart<TType>) => true,
     },
     setup(props, { emit }) {
       const canvasRef = ref<HTMLCanvasElement>();
