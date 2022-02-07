@@ -13,7 +13,7 @@ Each component props is properly typed and should be throwing errors if you are 
 </template>
 
 <script lang="ts">
-import { shuffle } from 'lodash';
+import { shuffle } from 'lodash-es';
 import { computed, defineComponent, ref } from 'vue';
 import { DoughnutChart, ExtractComponentData } from 'vue-chart-3';
 

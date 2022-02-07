@@ -1,7 +1,7 @@
 import { ComponentPropsOptions } from '@vue/runtime-core';
 import * as CSS from 'csstype';
-import camelCase from 'lodash/camelCase';
-import startCase from 'lodash/startCase';
+import { camelCase } from 'lodash-es';
+import { startCase } from 'lodash-es';
 
 import { ComputedRef, DefineComponent, Prop, Ref } from 'vue';
 

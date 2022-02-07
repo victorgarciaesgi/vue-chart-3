@@ -49,13 +49,13 @@
     "@vue/runtime-core": "3.2.29",
     "@vue/runtime-dom": "3.2.29",
     "csstype": "3.0.10",
-    "lodash": "latest",
+    "lodash-es": "^4.17.21",
     "nanoid": "3.2.0"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.35",
     "@types/jest": "^27.4.0",
-    "@types/lodash": "^4.14.178",
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "^14.0.27",
     "@vue/cli": "^4.5.15",
     "@vue/test-utils": "^2.0.0-rc.16",

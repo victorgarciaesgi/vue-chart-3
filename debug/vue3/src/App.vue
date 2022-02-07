@@ -4,7 +4,7 @@ import { BarChart, useBarChart } from 'vue-chart-3';
 // import { BarChart, defineChartComponent, useBarChart } from '../../../dist';
 
 import { ref, computed, defineComponent } from 'vue';
-import { shuffle } from 'lodash';
+import { shuffle } from 'lodash-es';
 
 Chart.register(...registerables);
 

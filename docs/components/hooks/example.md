@@ -12,7 +12,7 @@
 import { Chart, registerables } from 'chart.js';
 import { BarChart, useBarChart } from 'vue-chart-3';
 import { ref, computed, defineComponent } from '@vue/composition-api';
-import { shuffle } from 'lodash';
+import { shuffle } from 'lodash-es';
 
 Chart.register(...registerables);
 

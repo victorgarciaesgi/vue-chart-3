@@ -9,7 +9,7 @@ It is also passed in events (`chart-render` and `chart-update`)
 </template>
 
 <script>
-import { shuffle } from 'lodash';
+import { shuffle } from 'lodash-es';
 import { computed, defineComponent, ref, onMounted } from 'vue';
 import { DoughnutChart } from 'vue-chart-3';
 

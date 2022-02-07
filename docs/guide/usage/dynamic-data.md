@@ -11,7 +11,7 @@ Each component will trigger an update on the chart when the data passed thought 
 </template>
 
 <script>
-import { shuffle } from 'lodash';
+import { shuffle } from 'lodash-es';
 import { computed, defineComponent, ref } from 'vue';
 import { DoughnutChart } from 'vue-chart-3';
 

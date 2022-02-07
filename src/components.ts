@@ -1,6 +1,6 @@
 import { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
-import cloneDeep from 'lodash/cloneDeep';
-import isEqual from 'lodash/isEqual';
+import { cloneDeep } from 'lodash-es';
+import { isEqual } from 'lodash-es';
 import { nanoid } from 'nanoid';
 import {
   defineComponent,
