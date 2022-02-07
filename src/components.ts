@@ -1,6 +1,8 @@
-import { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
-import cloneDeep from 'lodash/cloneDeep';
-import isEqual from 'lodash/isEqual';
+import type { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
+import Chartjs from 'chart.js';
+
+import cloneDeep from 'lodash-es/cloneDeep';
+import isEqual from 'lodash-es/isEqual';
 import { nanoid } from 'nanoid';
 import {
   defineComponent,
@@ -13,6 +15,7 @@ import {
   Ref,
   shallowRef,
   watch,
+  ShallowRef,
 } from 'vue';
 import { ChartPropsOptions } from './types';
 import { pascalCase } from './utils';
@@ -21,18 +24,18 @@ import { StyleValue } from './vue.types';
 export type ComponentData<T extends ChartType> = {
   canvasRef: Ref<HTMLCanvasElement | undefined>;
   renderChart: () => void;
-  chartInstance: Chart<T> | null;
+  chartInstance: ShallowRef<Chart<T> | null>;
   canvasId: string;
 };
 
 export const defineChartComponent = <TType extends ChartType = ChartType>(
-  chartId: string,
+  chartName: string,
   chartType: TType
 ): DefineComponent<ChartPropsOptions<TType>, ComponentData<TType>> => {
   const propsDefs: ChartPropsOptions<TType> = {
     chartData: { type: Object as PropType<ChartData<TType>>, required: true },
     options: { type: Object as PropType<Record<string, any>>, required: false },
-    chartId: { default: chartId, type: String },
+    chartId: { default: chartName, type: String },
     width: { default: 400, type: Number },
     height: { default: 400, type: Number },
     cssClasses: { type: String, default: '' },
@@ -44,7 +47,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     onChartRender: { type: Function as PropType<(chartInstance: Chart<TType>) => void> },
   };
 
-  const componentName = pascalCase(chartId);
+  const componentName = pascalCase(chartName);
 
   return defineComponent({
     name: componentName,
@@ -58,7 +61,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     setup(props, { emit }) {
       const canvasRef = ref<HTMLCanvasElement>();
 
-      const canvasId = `${chartId}-${nanoid(6)}`;
+      const canvasId = `${props.chartId}`;
 
       let chartInstance = shallowRef<Chart<TType> | null>(null);
 
@@ -131,7 +134,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       function renderChart() {
         if (canvasRef.value) {
-          chartInstance.value = new Chart(canvasRef.value, {
+          chartInstance.value = new Chartjs.Chart(canvasRef.value, {
             data: props.chartData,
             type: chartType,
             options: cloneDeep(props.options) as ChartOptions<TType>, // Types won't work with props type
@@ -203,7 +206,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
             id: this.canvasId,
             width: this.width,
             height: this.height,
-            ref: 'canvasRef',
+            ref: this.canvasRef as any,
           }),
         ]
       );

@@ -1,7 +1,7 @@
 <script lang="tsx">
 import { Chart, ChartData, registerables } from 'chart.js';
 import { BarChart, useBarChart } from 'vue-chart-3';
-// import { BarChart, defineChartComponent, useBarChart } from '../../../dist';
+// import { BarChart, useBarChart } from '../../../dist/index.cjs';
 
 import { ref, computed, defineComponent } from 'vue';
 import { shuffle } from 'lodash';
@@ -63,10 +63,16 @@ export default defineComponent({
       // console.log(barChartRef.value.chartInstance.getDatasetMeta(0));
     }
 
+    // return {
+    //   barChartProps,
+    //   barChartRef,
+    //   shuffleData,
+    // };
+
     return () => (
       <div id="app" style={{ width: '400px' }}>
         <button onClick={shuffleData}>Shuffle</button>
-        <BarChart {...barChartProps.value} class="test" />
+        <BarChart {...barChartProps.value} ref={barChartRef} class="test" />
       </div>
     );
   },

@@ -18,7 +18,7 @@ import {
 } from 'chart.js';
 import { defineComponent, ref, computed, nextTick } from 'vue';
 
-const timeout = (count: number) => new Promise(resolve => setTimeout(resolve, count));
+const timeout = (count: number) => new Promise((resolve) => setTimeout(resolve, count));
 
 type TestExtractData = ExtractComponentData<typeof DoughnutChart>;
 let testAssignData: TestExtractData = {} as TestExtractData;
@@ -37,7 +37,7 @@ Chart.register(DoughnutController, ArcElement, Legend, Title, Tooltip);
 
 describe('Vue 3 - Doughtnut chart', () => {
   beforeEach(() => {
-    jest.spyOn(console, 'error');
+    vi.spyOn(console, 'error');
   });
 
   const dataset = [30, 40, 60, 70, 5];
@@ -143,7 +143,7 @@ const TestHooksComponent = defineComponent({
 
 describe('Vue 3 - with hooks', () => {
   beforeEach(() => {
-    jest.spyOn(console, 'error');
+    vi.spyOn(console, 'error');
   });
 
   const { vm } = mount(TestHooksComponent);

@@ -19,6 +19,8 @@
 
 This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-chartjs) for Chart.js 3, but written in Typescript with Vue 3 composition api in mind.
 
+- `Vite.js` and `Nuxt 3` compatible 💯.
+
 # [Documentation](https://vue-chart-3.netlify.app/)
 
 [Full documentation](https://vue-chart-3.netlify.app/)

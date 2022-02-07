@@ -1,5 +1,5 @@
 import { Chart, ChartData, Plugin, ChartType, ChartOptions } from 'chart.js';
-import { PropType } from 'vue';
+import { PropType, Ref } from 'vue';
 import { StyleValue } from './vue.types';
 
 export type ChartPropsOptions<TType extends ChartType> = {
@@ -16,6 +16,11 @@ export type ChartPropsOptions<TType extends ChartType> = {
   onChartDestroy: { type: PropType<() => void> };
   onChartRender: { type: PropType<(chartInstance: Chart<TType>) => void> };
 };
+
+export interface HookOptions<TType extends ChartType, TJSX = false>
+  extends ChartPropsOptions<TType> {
+  ref?: TJSX extends true ? Ref<any> : string;
+}
 
 export type ChartProps<TType extends ChartType> = {
   options?: Record<any, any>;
