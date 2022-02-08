@@ -7,14 +7,16 @@
 
 <script setup lang="tsx">
 import type { ChartData } from 'chart.js';
-import { BarChart, useBarChart } from 'vue-chart-3';
-// import { BarChart, defineChartComponent, useBarChart } from '../../dist';
+// import { BarChart, useBarChart } from 'vue-chart-3';
+import { BarChart, defineChartComponent, useBarChart } from '../../dist';
 
 import { ref, computed } from 'vue';
 import { shuffle } from 'lodash-es';
 
 const data = ref([30, 40, 60, 70, 5]);
 const legendTop = ref(true);
+
+// const barChartRef = ref(null);
 
 const options = computed(() => ({
   scales: {
@@ -51,7 +53,7 @@ const { barChartProps, barChartRef } = useBarChart({
 
 function shuffleData() {
   data.value = shuffle(data.value);
-  console.log(barChartRef);
+  console.log(barChartRef.value);
 }
 </script>
 

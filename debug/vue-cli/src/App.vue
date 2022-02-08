@@ -21,6 +21,8 @@ export default defineComponent({
     const legendTop = ref(true);
     const toggleHidden = ref(false);
 
+    const barChartRef = ref(null);
+
     const options = computed(() => ({
       scales: {
         myScale: {
@@ -50,7 +52,7 @@ export default defineComponent({
       ],
     }));
 
-    const { barChartProps, barChartRef } = useBarChart({
+    const { barChartProps } = useBarChart({
       chartData: testData,
       options: options,
     });
@@ -59,7 +61,7 @@ export default defineComponent({
       data.value = shuffle(data.value);
       // legendTop.value = !legendTop.value;
       toggleHidden.value = !toggleHidden.value;
-      console.log(barChartRef);
+      console.log(barChartRef.value.chartInstance);
       // console.log(barChartRef.value.chartInstance.getDatasetMeta(0));
     }
 
@@ -72,7 +74,7 @@ export default defineComponent({
     return () => (
       <div id="app" style={{ width: '400px' }}>
         <button onClick={shuffleData}>Shuffle</button>
-        <BarChart {...barChartProps.value} ref={barChartRef} class="test" />
+        <BarChart chartData={testData.value} ref={barChartRef.value} class="test" />
       </div>
     );
   },

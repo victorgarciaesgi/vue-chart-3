@@ -31,22 +31,20 @@ const defineChartHook = <TType extends ChartType = ChartType, TJSX = false>(char
     onChartRender?: (chartInstance: Chart<TType>) => void;
     jsx?: TJSX;
   }): ChartHookReturnType<TType, TJSX> => {
-    const jsxRef = ref(null);
+    const CHART_REF_NAME = `${chartType}ChartRef`;
+    const jsxRef = {
+      [CHART_REF_NAME]: ref(null),
+    };
     const reactiveProps = computed(() => ({
       ...params,
-      ...(!params.jsx && {
-        ref: `${chartType}ChartRef`,
-      }),
-      ...(!params.jsx && {
-        ref: jsxRef,
-      }),
+      ref: CHART_REF_NAME,
       chartData: unref(params.chartData),
       options: unref(params.options),
     }));
 
     return {
       [`${chartType}ChartProps`]: reactiveProps,
-      [`${chartType}ChartRef`]: params.jsx ? jsxRef : ref(null),
+      [CHART_REF_NAME]: ref(null),
     };
   };
 };

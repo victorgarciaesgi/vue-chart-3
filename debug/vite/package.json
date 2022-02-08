@@ -10,7 +10,8 @@
     "@types/lodash-es": "^4.17.5",
     "chart.js": "^3.7.0",
     "lodash-es": "^4.17.21",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-chart-3": "^3.0.9"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",

@@ -10,7 +10,7 @@ specifiers:
   '@vue/test-utils': ^2.0.0-rc.16
   '@vuepress/plugin-docsearch': ^2.0.0-alpha.1
   '@vuepress/plugin-palette': ^2.0.0-alpha.26
-  canvas: ^2.8.0
+  canvas: ^2.9.0
   chart.js: ^3.7.0
   chartjs-test-utils: ^0.3.1
   csstype: latest

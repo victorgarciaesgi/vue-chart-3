@@ -1,9 +1,8 @@
 import type { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
-import Chartjs from 'chart.js';
+import * as Chartjs from 'chart.js';
 
 import cloneDeep from 'lodash-es/cloneDeep';
 import isEqual from 'lodash-es/isEqual';
-import { nanoid } from 'nanoid';
 import {
   defineComponent,
   DefineComponent,
@@ -59,7 +58,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       'chart:render': (chartInstance: Chart<TType>) => true,
     },
     setup(props, { emit }) {
-      const canvasRef = ref<HTMLCanvasElement>();
+      const canvasRef = ref<HTMLCanvasElement | null>(null);
 
       const canvasId = `${props.chartId}`;
 
@@ -206,7 +205,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
             id: this.canvasId,
             width: this.width,
             height: this.height,
-            ref: this.canvasRef as any,
+            ref: 'canvasRef',
           }),
         ]
       );

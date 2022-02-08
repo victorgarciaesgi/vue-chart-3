@@ -17,13 +17,13 @@ specifiers:
   prettier: ^2.2.1
   typescript: ^4.5.2
   vue: ^3.2.25
-  vue-chart-3: 3.1.0-beta-5
+  vue-chart-3: 3.1.0-beta-9
 
 dependencies:
   chart.js: 3.7.0
   core-js: 3.21.0
   vue: 3.2.29
-  vue-chart-3: 3.1.0-beta-5_chart.js@3.7.0+vue@3.2.29
+  vue-chart-3: 3.1.0-beta-9_chart.js@3.7.0+vue@3.2.29
 
 devDependencies:
   '@typescript-eslint/eslint-plugin': 5.10.2_2595c2126aec4d4b6e944b931dabb4c2
@@ -5974,6 +5974,7 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: true
 
   /log-symbols/2.2.0:
     resolution: {integrity: sha512-VeIAFslyIerEJLXHziedo2basKbMKtTw3vfn5IzG0XTjhAVEJyNHnL2p7vc+wBDSdQuUpNw3M2u6xb9QsAY5Eg==}
@@ -8827,8 +8828,8 @@ packages:
     resolution: {integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==}
     dev: true
 
-  /vue-chart-3/3.1.0-beta-5_chart.js@3.7.0+vue@3.2.29:
-    resolution: {integrity: sha512-DZGBndYvfJaIixB6MGW1LR8ZC7p9morxlVzNUmCJgWyctUID55FLrayVxA2sq23aBnuyEAVkgSevFHiqFq25hA==}
+  /vue-chart-3/3.1.0-beta-9_chart.js@3.7.0+vue@3.2.29:
+    resolution: {integrity: sha512-zdwmTCSZO38lhZlK7/pwWoUwQLvdSRniSI77mIaAkCL06dQkKFNMFJ/CBQYc/72SnZa1/Ct5nBThzn77UzrzLA==}
     peerDependencies:
       '@vue/runtime-core': '> 3'
       '@vue/runtime-dom': '> 3'
@@ -8837,7 +8838,6 @@ packages:
     dependencies:
       chart.js: 3.7.0
       csstype: 3.0.10
-      lodash: 4.17.21
       nanoid: 3.2.0
       vue: 3.2.29
     dev: false
