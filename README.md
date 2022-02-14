@@ -25,17 +25,6 @@ This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-c
 
 [Full documentation](https://vue-chart-3.netlify.app/)
 
-# ⚠️ Breaking changes and new versions numbers
-
-In previous versions, `vue-demi` was used. It worked really well, but as the project advanced, they were a lot of problems with vue-related typescript definitions, tests and conflict between dependencies.
-
-This new system will keep `vue-chart-3` working for both Vue 2 & 3 with designated versions (`2.x` and `3.x` respectively), but each one designed for their specific Vue version.
-
-Code wise, there is not big breaking changes. But the Vue 3 version will have improved type checking for components template (with Volar extension).
-
-For Vue 3 users, nothing changes.
-For Vue 2 users, you will have to keep `2.x` version of `vue-chart-3`
-
 # Installation
 
 ## For Vue 3

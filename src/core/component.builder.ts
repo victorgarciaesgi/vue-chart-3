@@ -1,6 +1,5 @@
 import type { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
 import * as Chartjs from 'chart.js';
-
 import cloneDeep from 'lodash-es/cloneDeep';
 import isEqual from 'lodash-es/isEqual';
 import {
@@ -11,22 +10,24 @@ import {
   onMounted,
   PropType,
   ref,
-  Ref,
   shallowRef,
   watch,
-  ShallowRef,
 } from 'vue';
-import { ChartPropsOptions } from './types';
-import { pascalCase } from './utils';
-import { StyleValue } from './vue.types';
+import type { StyleValue } from '../misc';
+import { pascalCase } from '../utils';
+import type { ChartPropsOptions, ComponentData } from './component.types';
 
-export type ComponentData<T extends ChartType> = {
-  canvasRef: Ref<HTMLCanvasElement | undefined>;
-  renderChart: () => void;
-  chartInstance: ShallowRef<Chart<T> | null>;
-  canvasId: string;
-};
-
+/** Builder method to create a component based on Chart.js chart type
+ *
+ * @param chartName the id of the chart component
+ * @param chartType the Chart.js chart type to use
+ *
+ * @example
+ *
+ * ```ts
+ *  const MatrixChart = defineChartComponent('matrix-chart', 'matrix');
+ * ```
+ */
 export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartName: string,
   chartType: TType

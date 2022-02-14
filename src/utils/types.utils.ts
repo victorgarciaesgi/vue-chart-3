@@ -1,11 +1,6 @@
-import { ComponentPropsOptions } from '@vue/runtime-core';
+import type { ComponentPropsOptions } from '@vue/runtime-core';
 import * as CSS from 'csstype';
-import camelCase from 'lodash-es/camelCase';
-import startCase from 'lodash-es/startCase';
-
-import { ComputedRef, DefineComponent, Prop, Ref } from 'vue';
-
-export const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
+import type { ComputedRef, DefineComponent, Prop, Ref } from 'vue';
 
 export type StyleValue = string | CSS.Properties | Array<StyleValue>;
 
@@ -94,5 +89,3 @@ export type ExtractPropTypes<O> = O extends object
   : {
       [K in string]: any;
     };
-
-export default () => {};

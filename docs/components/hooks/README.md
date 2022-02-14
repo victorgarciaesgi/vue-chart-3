@@ -40,3 +40,30 @@ Then you can use the `barChartProps` to fill the props of the component
 ```html
 <BarChart v-bind="barChartProps" />
 ```
+
+## Custom hook
+
+If you have created a custom Chart component, you can also create your custom hook
+
+```ts
+import {defineChartComponent, defineChartHook} from 'vue-chart-3';
+
+const MatrixChart = defineChartComponent('matrix-chart', 'matrix');
+const useMatrixChart = defineChartHook('matrix');
+
+export default defineComponent({
+  ...,
+  components: {
+    MatrixChart
+  },
+  setup() {
+    const { matrixChartProps, matrixChartRef } = useMatrixChart({
+      chartData: {}, //...
+      plugins: []
+    });
+
+    return { matrixChartProps, matrixChartRef }
+  }
+})
+
+```
