@@ -21,8 +21,6 @@ export default defineComponent({
     const legendTop = ref(true);
     const toggleHidden = ref(false);
 
-    const barChartRef = ref(null);
-
     const options = computed(() => ({
       scales: {
         myScale: {
@@ -52,7 +50,7 @@ export default defineComponent({
       ],
     }));
 
-    const { barChartProps } = useBarChart({
+    const { barChartProps, barChartRef } = useBarChart({
       chartData: testData,
       options: options,
     });
@@ -74,7 +72,7 @@ export default defineComponent({
     return () => (
       <div id="app" style={{ width: '400px' }}>
         <button onClick={shuffleData}>Shuffle</button>
-        <BarChart chartData={testData.value} ref={barChartRef.value} class="test" />
+        <BarChart chartData={testData.value} ref={barChartRef} class="test" />
       </div>
     );
   },

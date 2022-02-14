@@ -8,7 +8,7 @@ specifiers:
   typescript: ^4.4.4
   vite: ^2.7.2
   vue: ^3.2.25
-  vue-chart-3: ^3.0.9
+  vue-chart-3: ^3.1.0-beta-11
   vue-tsc: ^0.29.8
 
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
   chart.js: 3.7.0
   lodash-es: 4.17.21
   vue: 3.2.29
-  vue-chart-3: 3.0.9_chart.js@3.7.0+vue@3.2.29
+  vue-chart-3: 3.1.0-beta-9_chart.js@3.7.0+vue@3.2.29
 
 devDependencies:
   '@vitejs/plugin-vue': 2.1.0_vite@2.7.13+vue@3.2.29
@@ -192,12 +192,6 @@ packages:
     dependencies:
       '@vue/shared': 3.2.29
 
-  /@vue/reactivity/3.2.30:
-    resolution: {integrity: sha512-qlNKbkRn2JiGxVUEdoXbLAy+vcuHUCcq+YH2uXWz0BNMvXY2plmz+oqsw+694llwmYLkke5lbdYF4DIupisIkg==}
-    dependencies:
-      '@vue/shared': 3.2.30
-    dev: false
-
   /@vue/runtime-core/3.2.29:
     resolution: {integrity: sha512-VMvQuLdzoTGmCwIKTKVwKmIL0qcODIqe74JtK1pVr5lnaE0l25hopodmPag3RcnIcIXe+Ye3B2olRCn7fTCgig==}
     dependencies:
@@ -205,26 +199,11 @@ packages:
       '@vue/shared': 3.2.29
     dev: false
 
-  /@vue/runtime-core/3.2.30:
-    resolution: {integrity: sha512-RTi7xH0Ht/6wfbo2WFBMJTEiyWFTqGhrksJm8lz6E+auO6lXZ6Eq3gPNfLt47GDWCm4xyrv+rs5R4UbarPEQ1Q==}
-    dependencies:
-      '@vue/reactivity': 3.2.30
-      '@vue/shared': 3.2.30
-    dev: false
-
   /@vue/runtime-dom/3.2.29:
     resolution: {integrity: sha512-YJgLQLwr+SQyORzTsBQLL5TT/5UiV83tEotqjL7F9aFDIQdFBTCwpkCFvX9jqwHoyi9sJqM9XtTrMcc8z/OjPA==}
     dependencies:
       '@vue/runtime-core': 3.2.29
       '@vue/shared': 3.2.29
-      csstype: 2.6.19
-    dev: false
-
-  /@vue/runtime-dom/3.2.30:
-    resolution: {integrity: sha512-a3+jrncDvEFQmB+v9k0VyT4/Y3XO6OAueCroXXY4yLyr6PJeyxljweV5TzvW0rvVzH9sZO0QAvG76Lo+6C92Qw==}
-    dependencies:
-      '@vue/runtime-core': 3.2.30
-      '@vue/shared': 3.2.30
       csstype: 2.6.19
     dev: false
 
@@ -240,10 +219,6 @@ packages:
 
   /@vue/shared/3.2.29:
     resolution: {integrity: sha512-BjNpU8OK6Z0LVzGUppEk0CMYm/hKDnZfYdjSmPOs0N+TR1cLKJAkDwW8ASZUvaaSLEi6d3hVM7jnWnX+6yWnHw==}
-
-  /@vue/shared/3.2.30:
-    resolution: {integrity: sha512-B3HouBtUxcfu2w2d+VhdLcVBXKYYhXiFMAfQ+hoe8NUhKkPRkWDIqhpuehCZxVQ3S2dN1P1WfKGlxGC+pfmxGg==}
-    dev: false
 
   /acorn/7.4.1:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
@@ -604,10 +579,6 @@ packages:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: false
 
-  /lodash/4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: false
-
   /lru-cache/6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
@@ -619,12 +590,6 @@ packages:
     resolution: {integrity: sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==}
     dependencies:
       sourcemap-codec: 1.4.8
-    dev: false
-
-  /nanoid/3.1.31:
-    resolution: {integrity: sha512-ZivnJm0o9bb13p2Ot5CpgC2rQdzB9Uxm/mFZweqm5eMViqOJe3PV6LU2E30SiLgheesmcPrjquqraoolONSA0A==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
-    hasBin: true
     dev: false
 
   /nanoid/3.2.0:
@@ -960,18 +925,17 @@ packages:
       vscode-typescript-languageservice: 0.29.8
     dev: true
 
-  /vue-chart-3/3.0.9_chart.js@3.7.0+vue@3.2.29:
-    resolution: {integrity: sha512-RyVaOhSem0v4v645zAkdi1mgZjuD3KMQr11KrEZGFupoHzV2qn/sBpEDvplR9i57YnRxZ3KDnKqw/1rx2CkOZA==}
+  /vue-chart-3/3.1.0-beta-9_chart.js@3.7.0+vue@3.2.29:
+    resolution: {integrity: sha512-zdwmTCSZO38lhZlK7/pwWoUwQLvdSRniSI77mIaAkCL06dQkKFNMFJ/CBQYc/72SnZa1/Ct5nBThzn77UzrzLA==}
     peerDependencies:
+      '@vue/runtime-core': '> 3'
+      '@vue/runtime-dom': '> 3'
       chart.js: '=> ^3.1.0'
       vue: '>= 3'
     dependencies:
-      '@vue/runtime-core': 3.2.30
-      '@vue/runtime-dom': 3.2.30
       chart.js: 3.7.0
       csstype: 3.0.10
-      lodash: 4.17.21
-      nanoid: 3.1.31
+      nanoid: 3.2.0
       vue: 3.2.29
     dev: false
 
