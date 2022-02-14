@@ -24,7 +24,7 @@ For `BarChart` you can import `useBarChart` from `vue-chart-3` and use it like t
 export default defineComponent({
   ...,
   setup() {
-    const { barChartProps, barChartRef } = useBarChart({
+    const { barChartProps, barChartRef, update } = useBarChart({
       chartData: {}, //...
       plugins: []
     });
@@ -39,6 +39,14 @@ Then you can use the `barChartProps` to fill the props of the component
 
 ```html
 <BarChart v-bind="barChartProps" />
+```
+
+## Manual update
+
+This hook also returns a helper function to manually update the ChartInstance
+
+```ts
+const { barChartProps, barChartRef, update } = useBarChart({...})
 ```
 
 ## Custom hook

@@ -7,8 +7,8 @@
 
 <script setup lang="tsx">
 import type { ChartData } from 'chart.js';
-// import { BarChart, useBarChart } from 'vue-chart-3';
-import { BarChart, defineChartComponent, useBarChart } from '../../dist';
+import { BarChart, useBarChart } from 'vue-chart-3';
+// import { BarChart, defineChartComponent, useBarChart } from '../../dist';
 
 import { ref, computed } from 'vue';
 import { shuffle } from 'lodash-es';
@@ -53,7 +53,7 @@ const { barChartProps, barChartRef } = useBarChart({
 
 function shuffleData() {
   data.value = shuffle(data.value);
-  console.log(barChartRef.value);
+  console.log(barChartRef.value.chartInstance.update());
 }
 </script>
 

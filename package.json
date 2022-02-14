@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "3.1.0-beta-11",
+  "version": "3.1.0-rc.0",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "license": "MIT",
   "scripts": {
@@ -43,33 +43,33 @@
     "vue": ">= 3"
   },
   "dependencies": {
+    "@vue/runtime-core": "^3.2.31",
+    "@vue/runtime-dom": "^3.2.31",
     "csstype": "latest",
-    "lodash-es": "^4.17.21",
-    "@vue/runtime-core": "latest",
-    "@vue/runtime-dom": "latest"
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.35",
-    "@types/lodash-es": "^4.17.5",
-    "@types/node": "^14.0.27",
+    "@types/lodash-es": "^4.17.6",
+    "@types/node": "^17.0.17",
     "@vue/cli": "^4.5.15",
     "@vue/runtime-core": "^3.2.29",
     "@vue/runtime-dom": "^3.2.29",
-    "@vue/test-utils": "^2.0.0-rc.16",
-    "@vuepress/plugin-docsearch": "^2.0.0-alpha.1",
-    "@vuepress/plugin-palette": "^2.0.0-alpha.26",
+    "@vue/test-utils": "^2.0.0-rc.17",
+    "@vuepress/plugin-docsearch": "^2.0.0-beta.30",
+    "@vuepress/plugin-palette": "^2.0.0-beta.30",
     "canvas": "^2.9.0",
-    "chart.js": "^3.7.0",
-    "chartjs-test-utils": "^0.3.1",
-    "happy-dom": "^2.31.1",
+    "chart.js": "^3.7.1",
+    "chartjs-test-utils": "^0.4.0",
+    "jsdom": "^19.0.0",
     "tsup": "^5.11.13",
     "typescript": "^4.5.5",
-    "vite": "^2.7.13",
-    "vitest": "^0.2.7",
-    "vue": "^3.2.22",
-    "vue-chart-3": "^3.0.7",
-    "vuepress": "^2.0.0-beta.35",
-    "vuepress-vite": "^2.0.0-beta.35"
+    "vite": "^2.8.2",
+    "vitest": "^0.3.5",
+    "vue": "^3.2.31",
+    "vue-chart-3": "latest",
+    "vuepress": "^2.0.0-beta.30",
+    "vuepress-vite": "^2.0.0-beta.30"
   },
   "repository": {
     "type": "git",

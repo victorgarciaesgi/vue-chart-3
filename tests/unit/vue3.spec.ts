@@ -1,41 +1,30 @@
 import { mount } from '@vue/test-utils';
+import * as Chartjs from 'chart.js/auto';
+import { defineComponent, ref, computed, nextTick } from 'vue';
 import {
   DoughnutChart,
-  BarChart,
-  useBarChart,
   ExtractComponentData,
   ExtractComponentProps,
+  BarChart,
+  useBarChart,
 } from '../../src';
-import {
-  Chart,
-  DoughnutController,
-  ArcElement,
-  Legend,
-  Title,
-  Tooltip,
-  ChartType,
-  ChartData,
-} from 'chart.js';
-import { defineComponent, ref, computed, nextTick } from 'vue';
 
 const timeout = (count: number) => new Promise((resolve) => setTimeout(resolve, count));
 
 type TestExtractData = ExtractComponentData<typeof DoughnutChart>;
 let testAssignData: TestExtractData = {} as TestExtractData;
-const canvas: Chart<'doughnut'> | null = testAssignData?.chartInstance?.value;
+const canvas: Chartjs.Chart<'doughnut'> | null = testAssignData?.chartInstance?.value;
 // Expect no type error
 
 type TestExtractProps = ExtractComponentProps<typeof DoughnutChart>;
 let testAssignProps: TestExtractProps = {} as TestExtractProps;
-const chartData: ChartData<'doughnut'> = testAssignProps?.chartData;
+const chartData: Chartjs.ChartData<'doughnut'> = testAssignProps?.chartData;
 // Expect no type error
 
 // @ts-expect-error
 const expectError: ChartData<'doughnut'> = testAssignProps?.blebleble;
 
-Chart.register(DoughnutController, ArcElement, Legend, Title, Tooltip);
-
-describe('Vue 3 - Doughtnut chart', () => {
+describe('Vue 3 - Doughtnut chart', async () => {
   beforeEach(() => {
     vi.spyOn(console, 'error');
   });
@@ -72,15 +61,16 @@ describe('Vue 3 - Doughtnut chart', () => {
       },
     },
   });
-
-  const canvas = vm.$el.getElementsByTagName('canvas');
+  await nextTick();
+  const canvas = vm.canvasRef;
 
   it('should have canvas registered', () => {
+    expect(canvas).not.toBeNull();
     expect(canvas).toBeDefined();
   });
   it('should have chartInstance variable instance of Chart.js', () => {
     expect(vm).toBeDefined();
-    expect(vm.chartInstance).toBeInstanceOf(Chart);
+    expect(vm.chartInstance).toBeInstanceOf(Chartjs.Chart);
   });
   it('should not have any console errors', () => {
     expect(console.error).not.toHaveBeenCalled();
@@ -151,6 +141,7 @@ describe('Vue 3 - with hooks', () => {
   const canvas = vm.$el.getElementsByTagName('canvas');
 
   it('should have canvas registered', () => {
+    expect(canvas).not.to.toBeNull();
     expect(canvas).toBeDefined();
   });
   it('should have barChartRef variable instance of Vue', () => {

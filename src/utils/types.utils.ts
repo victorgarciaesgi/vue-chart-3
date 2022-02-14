@@ -6,13 +6,33 @@ export type StyleValue = string | CSS.Properties | Array<StyleValue>;
 
 export type MaybeRef<T> = T | Ref<T> | ComputedRef<T>;
 
-export type ExtractComponentProps<T> = T extends DefineComponent<infer TProps>
+export type ExtractComponentProps<T> = T extends DefineComponent<
+  infer TProps,
+  any,
+  any,
+  any,
+  any,
+  any,
+  any,
+  any
+>
   ? TProps extends ComponentPropsOptions
     ? ExtractPropTypes<TProps>
     : TProps
   : never;
 
-export type ExtractComponentData<T> = T extends DefineComponent<any, infer TData> ? TData : never;
+export type ExtractComponentData<T> = T extends DefineComponent<
+  any,
+  infer TData,
+  any,
+  any,
+  any,
+  any,
+  any,
+  any
+>
+  ? TData
+  : never;
 
 type RequiredKeys<T> = {
   [K in keyof T]: T[K] extends

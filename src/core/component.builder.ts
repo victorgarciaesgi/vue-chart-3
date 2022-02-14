@@ -3,9 +3,12 @@ import * as Chartjs from 'chart.js';
 import cloneDeep from 'lodash-es/cloneDeep';
 import isEqual from 'lodash-es/isEqual';
 import {
+  ComponentOptionsMixin,
+  ComputedOptions,
   defineComponent,
   DefineComponent,
   h,
+  MethodOptions,
   onBeforeUnmount,
   onMounted,
   PropType,
@@ -13,6 +16,7 @@ import {
   shallowRef,
   watch,
 } from 'vue';
+import { ChartComponentEmits } from '.';
 import type { StyleValue } from '../misc';
 import { pascalCase } from '../utils';
 import type { ChartPropsOptions, ComponentData } from './component.types';
@@ -31,7 +35,16 @@ import type { ChartPropsOptions, ComponentData } from './component.types';
 export const defineChartComponent = <TType extends ChartType = ChartType>(
   chartName: string,
   chartType: TType
-): DefineComponent<ChartPropsOptions<TType>, ComponentData<TType>> => {
+): DefineComponent<
+  ChartPropsOptions<TType>,
+  ComponentData<TType>,
+  unknown,
+  ComputedOptions,
+  MethodOptions,
+  ComponentOptionsMixin,
+  ComponentOptionsMixin,
+  ChartComponentEmits<TType>
+> => {
   const propsDefs: ChartPropsOptions<TType> = {
     chartData: { type: Object as PropType<ChartData<TType>>, required: true },
     options: { type: Object as PropType<Record<string, any>>, required: false },
@@ -140,6 +153,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
             options: cloneDeep(props.options) as ChartOptions<TType>, // Types won't work with props type
             plugins: props.plugins,
           });
+
           handleChartRender();
         } else {
           console.error(
@@ -184,7 +198,13 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         }
       });
 
-      return { canvasRef, renderChart, chartInstance, canvasId } as const;
+      return {
+        canvasRef,
+        renderChart,
+        chartInstance,
+        canvasId,
+        update: handleChartUpdate,
+      } as const;
     },
     render() {
       return h(
@@ -211,5 +231,5 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         ]
       );
     },
-  }) as DefineComponent<ChartPropsOptions<TType>, ComponentData<TType>>;
+  }) as any;
 };
