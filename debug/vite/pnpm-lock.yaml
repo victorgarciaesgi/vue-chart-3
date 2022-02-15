@@ -8,7 +8,7 @@ specifiers:
   typescript: ^4.4.4
   vite: ^2.7.2
   vue: ^3.2.25
-  vue-chart-3: ^3.1.0-beta-11
+  vue-chart-3: ^3.1.0-rc.8
   vue-tsc: ^0.29.8
 
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
   chart.js: 3.7.0
   lodash-es: 4.17.21
   vue: 3.2.29
-  vue-chart-3: 3.1.0-beta-9_chart.js@3.7.0+vue@3.2.29
+  vue-chart-3: 3.1.0-rc.8_chart.js@3.7.0+vue@3.2.29
 
 devDependencies:
   '@vitejs/plugin-vue': 2.1.0_vite@2.7.13+vue@3.2.29
@@ -126,7 +126,7 @@ packages:
       '@volar/source-map': 0.29.8
       '@vue/compiler-core': 3.2.29
       '@vue/compiler-dom': 3.2.29
-      '@vue/shared': 3.2.29
+      '@vue/shared': 3.2.31
       upath: 2.0.1
     dev: true
 
@@ -192,6 +192,12 @@ packages:
     dependencies:
       '@vue/shared': 3.2.29
 
+  /@vue/reactivity/3.2.31:
+    resolution: {integrity: sha512-HVr0l211gbhpEKYr2hYe7hRsV91uIVGFYNHj73njbARVGHQvIojkImKMaZNDdoDZOIkMsBc9a1sMqR+WZwfSCw==}
+    dependencies:
+      '@vue/shared': 3.2.31
+    dev: false
+
   /@vue/runtime-core/3.2.29:
     resolution: {integrity: sha512-VMvQuLdzoTGmCwIKTKVwKmIL0qcODIqe74JtK1pVr5lnaE0l25hopodmPag3RcnIcIXe+Ye3B2olRCn7fTCgig==}
     dependencies:
@@ -199,11 +205,26 @@ packages:
       '@vue/shared': 3.2.29
     dev: false
 
+  /@vue/runtime-core/3.2.31:
+    resolution: {integrity: sha512-Kcog5XmSY7VHFEMuk4+Gap8gUssYMZ2+w+cmGI6OpZWYOEIcbE0TPzzPHi+8XTzAgx1w/ZxDFcXhZeXN5eKWsA==}
+    dependencies:
+      '@vue/reactivity': 3.2.31
+      '@vue/shared': 3.2.31
+    dev: false
+
   /@vue/runtime-dom/3.2.29:
     resolution: {integrity: sha512-YJgLQLwr+SQyORzTsBQLL5TT/5UiV83tEotqjL7F9aFDIQdFBTCwpkCFvX9jqwHoyi9sJqM9XtTrMcc8z/OjPA==}
     dependencies:
       '@vue/runtime-core': 3.2.29
       '@vue/shared': 3.2.29
+      csstype: 2.6.19
+    dev: false
+
+  /@vue/runtime-dom/3.2.31:
+    resolution: {integrity: sha512-N+o0sICVLScUjfLG7u9u5XCjvmsexAiPt17GNnaWHJUfsKed5e85/A3SWgKxzlxx2SW/Hw7RQxzxbXez9PtY3g==}
+    dependencies:
+      '@vue/runtime-core': 3.2.31
+      '@vue/shared': 3.2.31
       csstype: 2.6.19
     dev: false
 
@@ -219,6 +240,9 @@ packages:
 
   /@vue/shared/3.2.29:
     resolution: {integrity: sha512-BjNpU8OK6Z0LVzGUppEk0CMYm/hKDnZfYdjSmPOs0N+TR1cLKJAkDwW8ASZUvaaSLEi6d3hVM7jnWnX+6yWnHw==}
+
+  /@vue/shared/3.2.31:
+    resolution: {integrity: sha512-ymN2pj6zEjiKJZbrf98UM2pfDd6F2H7ksKw7NDt/ZZ1fh5Ei39X5tABugtT03ZRlWd9imccoK0hE8hpjpU7irQ==}
 
   /acorn/7.4.1:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
@@ -602,6 +626,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /pascalcase/0.1.1:
+    resolution: {integrity: sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ=}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
   /path-parse/1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
     dev: true
@@ -925,17 +954,18 @@ packages:
       vscode-typescript-languageservice: 0.29.8
     dev: true
 
-  /vue-chart-3/3.1.0-beta-9_chart.js@3.7.0+vue@3.2.29:
-    resolution: {integrity: sha512-zdwmTCSZO38lhZlK7/pwWoUwQLvdSRniSI77mIaAkCL06dQkKFNMFJ/CBQYc/72SnZa1/Ct5nBThzn77UzrzLA==}
+  /vue-chart-3/3.1.0-rc.8_chart.js@3.7.0+vue@3.2.29:
+    resolution: {integrity: sha512-ywtZ2pe3LXXiLADSfO3dSGWrBRcj6LfYefs9NUDLOvIhlWeVup1Ac+nLJ2RTBzmlIja5cSSCCtbQ+8UBrZLq9w==}
     peerDependencies:
-      '@vue/runtime-core': '> 3'
-      '@vue/runtime-dom': '> 3'
       chart.js: '=> ^3.1.0'
       vue: '>= 3'
     dependencies:
+      '@vue/runtime-core': 3.2.31
+      '@vue/runtime-dom': 3.2.31
       chart.js: 3.7.0
       csstype: 3.0.10
-      nanoid: 3.2.0
+      lodash-es: 4.17.21
+      pascalcase: 0.1.1
       vue: 3.2.29
     dev: false
 

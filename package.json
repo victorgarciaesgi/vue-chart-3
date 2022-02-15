@@ -1,24 +1,17 @@
 {
   "name": "vue-chart-3",
-  "version": "3.1.0-rc.0",
+  "version": "3.1.0-rc.8",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "license": "MIT",
   "scripts": {
     "dev": "npm run prepack -- --watch",
     "prepack": "tsup",
     "debug": "cd debug/vue3 && npm run serve",
-    "cp:cli": "cp -r ./dist ./debug/vue-cli/node_modules/vue-chart-3",
-    "cp:vite": "cp -r ./dist ./debug/vue-cli/node_modules/vue-chart-3",
-    "cp:nuxt": "cp -r ./dist ./debug/vue-cli/node_modules/vue-chart-3",
     "test": "vitest run",
     "test:watch": "vitest",
     "publish:alpha": "npm publish --tag next",
     "docs:dev": "vuepress dev docs",
-    "docs:build": " vuepress build docs",
-    "post:docs": "echo \\$contentClass = \\'.content__default\\' > ./node_modules/@vuepress/theme-default/styles/config.styl",
-    "patch": "npm version patch --no-git-tag-version",
-    "minor": "npm version minor --no-git-tag-version",
-    "major": "npm version major --no-git-tag-version"
+    "docs:build": " vuepress build docs"
   },
   "author": {
     "name": "Victor Garcia",
@@ -46,12 +39,14 @@
     "@vue/runtime-core": "^3.2.31",
     "@vue/runtime-dom": "^3.2.31",
     "csstype": "latest",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "pascalcase": "0.1.1"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.35",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^17.0.17",
+    "@types/pascalcase": "^1.0.1",
     "@vue/cli": "^4.5.15",
     "@vue/runtime-core": "^3.2.29",
     "@vue/runtime-dom": "^3.2.29",

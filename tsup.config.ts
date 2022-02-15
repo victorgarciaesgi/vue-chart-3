@@ -5,5 +5,5 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   dts: true,
   clean: true,
-  external: ['chart.js'],
+  external: ['chart.js', 'lodash-es'],
 });

@@ -53,7 +53,7 @@ const { barChartProps, barChartRef } = useBarChart({
 
 function shuffleData() {
   data.value = shuffle(data.value);
-  console.log(barChartRef.value.chartInstance.update());
+  console.log(barChartRef.value.chartInstance);
 }
 </script>
 

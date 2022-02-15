@@ -11,7 +11,7 @@
     "chart.js": "^3.7.0",
     "lodash-es": "^4.17.21",
     "vue": "^3.2.25",
-    "vue-chart-3": "^3.1.0-beta-11"
+    "vue-chart-3": "^3.1.0-rc.8"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",

@@ -66,11 +66,33 @@ export default defineComponent({
   },
   setup() {
     const { matrixChartProps, matrixChartRef } = useMatrixChart({
-      chartData: {}, //...
+      chartData: {},
       plugins: []
     });
 
     return { matrixChartProps, matrixChartRef }
+  }
+})
+
+```
+
+## Usage with render function
+
+Usage with render function is supported, with just a parameter. The reason is that in templates, Vue needs a `string` ref (ex: ref='inputRef'), but in render functions, it needs the ref accessor (ex: ref={inputRef})
+
+```ts
+export default defineComponent({
+  ...,
+  setup() {
+    const { barChartProps, barChartRef } = useBarChart({
+      chartData: {},
+      plugins: [],
+      jsx: true // <----
+    });
+
+    return () => (
+      <BarChart {...barChartProps.value} />
+    )
   }
 })
 

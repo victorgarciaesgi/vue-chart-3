@@ -4,6 +4,7 @@ specifiers:
   '@types/chart.js': ^2.9.35
   '@types/lodash-es': ^4.17.6
   '@types/node': ^17.0.17
+  '@types/pascalcase': ^1.0.1
   '@vue/cli': ^4.5.15
   '@vue/runtime-core': ^3.2.31
   '@vue/runtime-dom': ^3.2.31
@@ -16,6 +17,7 @@ specifiers:
   csstype: latest
   jsdom: ^19.0.0
   lodash-es: ^4.17.21
+  pascalcase: 0.1.1
   tsup: ^5.11.13
   typescript: ^4.5.5
   vite: ^2.8.2
@@ -30,11 +32,13 @@ dependencies:
   '@vue/runtime-dom': 3.2.31
   csstype: 3.0.10
   lodash-es: 4.17.21
+  pascalcase: 0.1.1
 
 devDependencies:
   '@types/chart.js': 2.9.35
   '@types/lodash-es': 4.17.6
   '@types/node': 17.0.17
+  '@types/pascalcase': 1.0.1
   '@vue/cli': 4.5.15
   '@vue/test-utils': 2.0.0-rc.18_vue@3.2.31
   '@vuepress/plugin-docsearch': 2.0.0-beta.35
@@ -1832,6 +1836,10 @@ packages:
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
+    dev: true
+
+  /@types/pascalcase/1.0.1:
+    resolution: {integrity: sha512-JYPox1hbKw66Sv9HtvTp0r5jJkaz6k+V8XjEnZUb7B+4ffIoS+3sjiAtwkX6IMO68UQtQWe9QcAjugn9VR4GJg==}
     dev: true
 
   /@types/prop-types/15.7.4:
@@ -6940,7 +6948,6 @@ packages:
   /pascalcase/0.1.1:
     resolution: {integrity: sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ=}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /path-dirname/1.0.2:
     resolution: {integrity: sha1-zDPSTVJeCZpTiMAzbG4yuRYGCeA=}

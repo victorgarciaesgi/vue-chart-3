@@ -1,7 +1,6 @@
 import type { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
 import * as Chartjs from 'chart.js';
-import cloneDeep from 'lodash-es/cloneDeep';
-import isEqual from 'lodash-es/isEqual';
+import { cloneDeep, isEqual } from 'lodash-es';
 import {
   ComponentOptionsMixin,
   ComputedOptions,
@@ -18,7 +17,7 @@ import {
 } from 'vue';
 import { ChartComponentEmits } from '.';
 import type { StyleValue } from '../misc';
-import { pascalCase } from '../utils';
+import pascalCase from 'pascalcase';
 import type { ChartPropsOptions, ComponentData } from './component.types';
 
 /** Builder method to create a component based on Chart.js chart type
@@ -71,7 +70,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       'chart:destroy': () => true,
       'chart:render': (chartInstance: Chart<TType>) => true,
     },
-    setup(props, { emit }) {
+    setup(props, { emit, expose }) {
       const canvasRef = ref<HTMLCanvasElement | null>(null);
 
       const canvasId = `${props.chartId}`;
@@ -147,13 +146,12 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       function renderChart() {
         if (canvasRef.value) {
-          chartInstance.value = new Chartjs.Chart(canvasRef.value, {
+          chartInstance.value = new Chartjs.Chart(canvasRef.value as HTMLCanvasElement, {
             data: props.chartData,
             type: chartType,
             options: cloneDeep(props.options) as ChartOptions<TType>, // Types won't work with props type
             plugins: props.plugins,
           });
-
           handleChartRender();
         } else {
           console.error(
@@ -198,38 +196,38 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         }
       });
 
-      return {
+      expose({
         canvasRef,
         renderChart,
         chartInstance,
         canvasId,
         update: handleChartUpdate,
-      } as const;
-    },
-    render() {
-      return h(
-        'div',
-        {
-          style: {
-            maxWidth: '100%',
-            ...(this.styles as any),
-            position: 'relative',
-          },
-          class: this.cssClasses,
-        },
-        [
-          h('canvas', {
+      } as const);
+
+      return () =>
+        h(
+          'div',
+          {
             style: {
               maxWidth: '100%',
-              maxHeight: '100%',
+              ...(props.styles as any),
+              position: 'relative',
             },
-            id: this.canvasId,
-            width: this.width,
-            height: this.height,
-            ref: 'canvasRef',
-          }),
-        ]
-      );
+            class: props.cssClasses,
+          },
+          [
+            h('canvas', {
+              style: {
+                maxWidth: '100%',
+                maxHeight: '100%',
+              },
+              id: canvasId,
+              width: props.width,
+              height: props.height,
+              ref: canvasRef,
+            }),
+          ]
+        );
     },
   }) as any;
 };

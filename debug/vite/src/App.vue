@@ -8,8 +8,8 @@
 <script setup lang="tsx">
 import { Chart, registerables } from 'chart.js';
 import type { ChartData } from 'chart.js';
-// import { BarChart, useBarChart } from 'vue-chart-3';
-import { BarChart, defineChartComponent, useBarChart } from '../../../dist';
+import { BarChart, useBarChart } from 'vue-chart-3';
+// import { BarChart, defineChartComponent, useBarChart } from '../../../dist';
 
 import { ref, computed } from 'vue';
 import { shuffle } from 'lodash-es';

@@ -53,6 +53,7 @@ export default defineComponent({
     const { barChartProps, barChartRef } = useBarChart({
       chartData: testData,
       options: options,
+      jsx: true,
     });
 
     function shuffleData() {
@@ -72,7 +73,7 @@ export default defineComponent({
     return () => (
       <div id="app" style={{ width: '400px' }}>
         <button onClick={shuffleData}>Shuffle</button>
-        <BarChart chartData={testData.value} ref={barChartRef} class="test" />
+        <BarChart {...barChartProps.value} class="test" />
       </div>
     );
   },
