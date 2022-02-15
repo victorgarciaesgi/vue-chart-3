@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "npm run prepack -- --watch",
     "prepack": "tsup",
-    "debug": "cd debug/vue3 && npm run serve",
     "test": "vitest run",
     "test:watch": "vitest",
     "publish:alpha": "npm publish --tag next",
