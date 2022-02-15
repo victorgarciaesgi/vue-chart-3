@@ -9,8 +9,8 @@ specifiers:
   '@vue/runtime-core': ^3.2.31
   '@vue/runtime-dom': ^3.2.31
   '@vue/test-utils': ^2.0.0-rc.17
-  '@vuepress/plugin-docsearch': ^2.0.0-beta.30
-  '@vuepress/plugin-palette': ^2.0.0-beta.30
+  '@vuepress/plugin-docsearch': ^2.0.0-beta.31
+  '@vuepress/plugin-palette': ^2.0.0-beta.31
   canvas: ^2.9.0
   chart.js: ^3.7.1
   chartjs-test-utils: ^0.4.0
@@ -24,8 +24,8 @@ specifiers:
   vitest: ^0.3.5
   vue: ^3.2.31
   vue-chart-3: latest
-  vuepress: ^2.0.0-beta.30
-  vuepress-vite: ^2.0.0-beta.30
+  vuepress: ^2.0.0-beta.31
+  vuepress-vite: ^2.0.0-beta.31
 
 dependencies:
   '@vue/runtime-core': 3.2.31
@@ -52,7 +52,7 @@ devDependencies:
   vite: 2.8.2
   vitest: 0.3.5_jsdom@19.0.0
   vue: 3.2.31
-  vue-chart-3: 3.0.9_chart.js@3.7.1+vue@3.2.31
+  vue-chart-3: 3.1.0_chart.js@3.7.1+vue@3.2.31
   vuepress: 2.0.0-beta.35
   vuepress-vite: 2.0.0-beta.35
 
@@ -6189,7 +6189,6 @@ packages:
 
   /lodash-es/4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: false
 
   /lodash.clonedeep/4.5.0:
     resolution: {integrity: sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=}
@@ -6535,12 +6534,6 @@ packages:
 
   /nanoid/2.1.11:
     resolution: {integrity: sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==}
-    dev: true
-
-  /nanoid/3.1.31:
-    resolution: {integrity: sha512-ZivnJm0o9bb13p2Ot5CpgC2rQdzB9Uxm/mFZweqm5eMViqOJe3PV6LU2E30SiLgheesmcPrjquqraoolONSA0A==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
-    hasBin: true
     dev: true
 
   /nanoid/3.2.0:
@@ -8582,8 +8575,8 @@ packages:
       - stylus
     dev: true
 
-  /vue-chart-3/3.0.9_chart.js@3.7.1+vue@3.2.31:
-    resolution: {integrity: sha512-RyVaOhSem0v4v645zAkdi1mgZjuD3KMQr11KrEZGFupoHzV2qn/sBpEDvplR9i57YnRxZ3KDnKqw/1rx2CkOZA==}
+  /vue-chart-3/3.1.0_chart.js@3.7.1+vue@3.2.31:
+    resolution: {integrity: sha512-3PUTW5cV5OLFdnRjFtfAFl9Suen/vAolqAG7KLfeNyG4ZduV9xqxZXRboeNqeruoyR4aRTHC/9yfkiDZM58cvA==}
     peerDependencies:
       chart.js: '=> ^3.1.0'
       vue: '>= 3'
@@ -8592,8 +8585,8 @@ packages:
       '@vue/runtime-dom': 3.2.31
       chart.js: 3.7.1
       csstype: 3.0.10
-      lodash: 4.17.21
-      nanoid: 3.1.31
+      lodash-es: 4.17.21
+      pascalcase: 0.1.1
       vue: 3.2.31
     dev: true
 
