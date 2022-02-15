@@ -37,7 +37,6 @@ export default defineUserConfig<DefaultThemeOptions>({
         editLinkText: 'Edit this page on GitHub',
         sidebar: {
           '/guide/': [
-            '',
             {
               text: 'Configuration',
               children: ['/guide/configuration/', '/guide/configuration/plugins'],
@@ -48,19 +47,24 @@ export default defineUserConfig<DefaultThemeOptions>({
                 '/guide/usage/',
                 '/guide/usage/chart-instance',
                 '/guide/usage/dynamic-data',
+                '/guide/usage/munual-update',
                 '/guide/usage/typescript',
                 '/guide/usage/actions',
               ],
             },
             {
               text: 'Examples',
-              children: ['/guide/examples/vue3', '/guide/examples/vue2-composition','/guide/examples/vue2-class', '/guide/examples/nuxt2'],
+              children: [
+                '/guide/examples/vue3',
+                '/guide/examples/vue2-composition',
+                '/guide/examples/vue2-class',
+                '/guide/examples/nuxt2',
+              ],
             },
           ],
-          '/components/': [
-            '',
+          '/components': [
             {
-              text: 'Chart hooks (alpha)',
+              text: 'Chart hooks (beta)',
               children: ['/components/hooks/', '/components/hooks/example'],
             },
           ],

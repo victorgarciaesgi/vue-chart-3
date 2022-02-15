@@ -1,11 +1,9 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2019",
+    "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "removeComments": true,
     "noImplicitAny": true,
@@ -16,13 +14,10 @@
     "pretty": true,
     "sourceMap": true,
     "downlevelIteration": true,
+    "noEmit": true,
     "skipLibCheck": true,
-    "outDir": "dist",
-    "declaration": true,
-    "declarationDir": "types",
-    "types": ["node", "jest"],
-    "lib": ["esnext", "es2019", "dom", "dom.iterable", "scripthost"]
+    "types": ["vitest/globals"]
   },
-  "include": ["src/**/*", "tests/**/*"],
+  "include": ["./src/**/*.ts", "./tests/**/*.spec.ts"],
   "exclude": ["node_modules"]
 }

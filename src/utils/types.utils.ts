@@ -1,23 +1,38 @@
-import { ComponentPropsOptions } from '@vue/runtime-core';
+import type { ComponentPropsOptions } from '@vue/runtime-core';
 import * as CSS from 'csstype';
-import camelCase from 'lodash/camelCase';
-import startCase from 'lodash/startCase';
-
-import { ComputedRef, DefineComponent, Prop, Ref } from 'vue';
-
-export const pascalCase = (str: string) => startCase(camelCase(str)).replace(/ /g, '');
+import type { ComputedRef, DefineComponent, Prop, Ref } from 'vue';
 
 export type StyleValue = string | CSS.Properties | Array<StyleValue>;
 
 export type MaybeRef<T> = T | Ref<T> | ComputedRef<T>;
 
-export type ExtractComponentProps<T> = T extends DefineComponent<infer TProps>
+export type ExtractComponentProps<T> = T extends DefineComponent<
+  infer TProps,
+  any,
+  any,
+  any,
+  any,
+  any,
+  any,
+  any
+>
   ? TProps extends ComponentPropsOptions
     ? ExtractPropTypes<TProps>
     : TProps
   : never;
 
-export type ExtractComponentData<T> = T extends DefineComponent<any, infer TData> ? TData : never;
+export type ExtractComponentData<T> = T extends DefineComponent<
+  any,
+  infer TData,
+  any,
+  any,
+  any,
+  any,
+  any,
+  any
+>
+  ? TData
+  : never;
 
 type RequiredKeys<T> = {
   [K in keyof T]: T[K] extends

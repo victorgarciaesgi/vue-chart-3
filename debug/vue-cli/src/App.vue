@@ -1,7 +1,7 @@
 <script lang="tsx">
 import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
 import { BarChart, useBarChart } from 'vue-chart-3';
-// import { BarChart, defineChartComponent, useBarChart } from '../../../dist';
+// import { BarChart, useBarChart } from '../../../dist/index.cjs';
 
 import { ref, computed, defineComponent } from 'vue';
 import { shuffle } from 'lodash';
@@ -56,15 +56,22 @@ export default defineComponent({
     const { barChartProps, barChartRef } = useBarChart({
       chartData: testData,
       options: options,
+      jsx: true,
     });
 
     function shuffleData() {
       data.value = shuffle(data.value);
       // legendTop.value = !legendTop.value;
       toggleHidden.value = !toggleHidden.value;
-      console.log(barChartRef);
+      console.log(barChartRef.value.chartInstance);
       // console.log(barChartRef.value.chartInstance.getDatasetMeta(0));
     }
+
+    // return {
+    //   barChartProps,
+    //   barChartRef,
+    //   shuffleData,
+    // };
 
     return () => (
       <div id="app" style={{ width: '400px' }}>

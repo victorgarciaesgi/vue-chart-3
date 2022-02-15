@@ -1,38 +1,53 @@
-import { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
-import cloneDeep from 'lodash/cloneDeep';
-import isEqual from 'lodash/isEqual';
-import { nanoid } from 'nanoid';
+import type { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
+import * as Chartjs from 'chart.js';
+import { cloneDeep, isEqual } from 'lodash-es';
 import {
+  ComponentOptionsMixin,
+  ComputedOptions,
   defineComponent,
   DefineComponent,
   h,
+  MethodOptions,
   onBeforeUnmount,
   onMounted,
   PropType,
   ref,
-  Ref,
   shallowRef,
   watch,
 } from 'vue';
-import { ChartPropsOptions } from './types';
-import { pascalCase } from './utils';
-import { StyleValue } from './vue.types';
+import { ChartComponentEmits } from '.';
+import type { StyleValue } from '../misc';
+import pascalCase from 'pascalcase';
+import type { ChartPropsOptions, ComponentData } from './component.types';
 
-export type ComponentData<T extends ChartType> = {
-  canvasRef: Ref<HTMLCanvasElement | undefined>;
-  renderChart: () => void;
-  chartInstance: Chart<T> | null;
-  canvasId: string;
-};
-
+/** Builder method to create a component based on Chart.js chart type
+ *
+ * @param chartName the id of the chart component
+ * @param chartType the Chart.js chart type to use
+ *
+ * @example
+ *
+ * ```ts
+ *  const MatrixChart = defineChartComponent('matrix-chart', 'matrix');
+ * ```
+ */
 export const defineChartComponent = <TType extends ChartType = ChartType>(
-  chartId: string,
+  chartName: string,
   chartType: TType
-): DefineComponent<ChartPropsOptions<TType>, ComponentData<TType>> => {
+): DefineComponent<
+  ChartPropsOptions<TType>,
+  ComponentData<TType>,
+  unknown,
+  ComputedOptions,
+  MethodOptions,
+  ComponentOptionsMixin,
+  ComponentOptionsMixin,
+  ChartComponentEmits<TType>
+> => {
   const propsDefs: ChartPropsOptions<TType> = {
     chartData: { type: Object as PropType<ChartData<TType>>, required: true },
     options: { type: Object as PropType<Record<string, any>>, required: false },
-    chartId: { default: chartId, type: String },
+    chartId: { default: chartName, type: String },
     width: { default: 400, type: Number },
     height: { default: 400, type: Number },
     cssClasses: { type: String, default: '' },
@@ -44,7 +59,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
     onChartRender: { type: Function as PropType<(chartInstance: Chart<TType>) => void> },
   };
 
-  const componentName = pascalCase(chartId);
+  const componentName = pascalCase(chartName);
 
   return defineComponent({
     name: componentName,
@@ -55,10 +70,10 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       'chart:destroy': () => true,
       'chart:render': (chartInstance: Chart<TType>) => true,
     },
-    setup(props, { emit }) {
-      const canvasRef = ref<HTMLCanvasElement>();
+    setup(props, { emit, expose }) {
+      const canvasRef = ref<HTMLCanvasElement | null>(null);
 
-      const canvasId = `${chartId}-${nanoid(6)}`;
+      const canvasId = `${props.chartId}`;
 
       let chartInstance = shallowRef<Chart<TType> | null>(null);
 
@@ -84,21 +99,8 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         if (oldData && chartInstance.value) {
           let chart = chartInstance.value;
 
-          // Get new and old DataSet Labels
-          let newDatasetLabels = newData.datasets.map(({ label }) => label);
-
-          let oldDatasetLabels = oldData.datasets.map(({ label }) => label);
-
-          // Stringify 'em for easier compare
-          const oldLabels = JSON.stringify(oldDatasetLabels);
-          const newLabels = JSON.stringify(newDatasetLabels);
-
           // Check if Labels are equal and if dataset length is equal
-          if (
-            newLabels === oldLabels &&
-            oldData.datasets.length === newData.datasets.length &&
-            chart
-          ) {
+          if (!isEqual(newData, oldData) && oldData.datasets.length === newData.datasets.length) {
             newData.datasets.forEach((dataset, i) => {
               // Get new and old dataset keys
               const oldDatasetKeys = Object.keys(oldData.datasets[i]);
@@ -111,7 +113,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
               // Remove outdated key-value pairs
               deletionKeys.forEach((deletionKey) => {
-                if (chart?.data.datasets[i]) {
+                if (chart.data.datasets[i]) {
                   delete chart.data.datasets[i][deletionKey as keyof ChartDataset];
                 }
               });
@@ -144,7 +146,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       function renderChart() {
         if (canvasRef.value) {
-          chartInstance.value = new Chart(canvasRef.value, {
+          chartInstance.value = new Chartjs.Chart(canvasRef.value as HTMLCanvasElement, {
             data: props.chartData,
             type: chartType,
             options: cloneDeep(props.options) as ChartOptions<TType>, // Types won't work with props type
@@ -160,13 +162,13 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       function handleLabelsUpdate() {
         emit('labels:update');
-        props.onLabelsUpdate?.();
+        props.onLabelsUpdate && props.onLabelsUpdate();
       }
 
       function handleChartRender() {
         if (chartInstance.value) {
           emit('chart:render', chartInstance.value);
-          props.onChartRender?.(chartInstance.value);
+          props.onChartRender && props.onChartRender(chartInstance.value);
         }
       }
 
@@ -174,14 +176,14 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         if (chartInstance.value) {
           chartInstance.value.update();
           emit('chart:render', chartInstance.value);
-          props.onChartRender?.(chartInstance.value);
+          props.onChartRender && props.onChartRender(chartInstance.value);
         }
       }
 
       function handleChartDestroy() {
-        chartInstance.value?.destroy();
+        chartInstance.value && chartInstance.value.destroy();
         emit('chart:destroy');
-        props.onChartDestroy?.();
+        props.onChartDestroy && props.onChartDestroy();
       }
 
       //- Hooks
@@ -190,36 +192,42 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       onBeforeUnmount(() => {
         if (chartInstance.value) {
-          chartInstance.value?.destroy();
+          chartInstance.value.destroy();
         }
       });
 
-      return { canvasRef, renderChart, chartInstance, canvasId } as const;
-    },
-    render() {
-      return h(
-        'div',
-        {
-          style: {
-            maxWidth: '100%',
-            ...(this.styles as any),
-            position: 'relative',
-          },
-          class: this.cssClasses,
-        },
-        [
-          h('canvas', {
+      expose({
+        canvasRef,
+        renderChart,
+        chartInstance,
+        canvasId,
+        update: handleChartUpdate,
+      } as const);
+
+      return () =>
+        h(
+          'div',
+          {
             style: {
               maxWidth: '100%',
-              maxHeight: '100%',
+              ...(props.styles as any),
+              position: 'relative',
             },
-            id: this.canvasId,
-            width: this.width,
-            height: this.height,
-            ref: 'canvasRef',
-          }),
-        ]
-      );
+            class: props.cssClasses,
+          },
+          [
+            h('canvas', {
+              style: {
+                maxWidth: '100%',
+                maxHeight: '100%',
+              },
+              id: canvasId,
+              width: props.width,
+              height: props.height,
+              ref: canvasRef,
+            }),
+          ]
+        );
     },
-  }) as DefineComponent<ChartPropsOptions<TType>, ComponentData<TType>>;
+  }) as any;
 };

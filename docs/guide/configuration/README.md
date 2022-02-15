@@ -8,7 +8,7 @@ You need to have `@vue/composition-api` installed and registered.
 Since `2.0.3`, Vue composition api will not register itself. Update your project if you didn't do it manually!
 :::
 
-## Vue 3
+## Vite.js and Vue 3
 
 Nothing required, it works out of the box!
 
@@ -31,5 +31,18 @@ export default {
 
 ## Nuxt 3
 
-Nuxt 3 beta just came out, still processing what's the best way to do it, but since the plugin system looks the same as Nuxt 2, you can follow Nuxt 2 instruction for now.
-Any bug report with Nuxt 3 or Vite.js is welcome
+Create a plugin in `<srcDir>/plugins/chartjs.client.ts`
+
+```ts
+import { defineNuxtPlugin } from '#app';
+
+// Workaround because chart.js doesn't provide an default export
+import * as ChartJs from 'chart.js';
+const { Chart, registerables } = ChartJs;
+
+export default defineNuxtPlugin(() => {
+  Chart.register(...registerables);
+});
+```
+
+Nuxt 3 will register the plugins itself thanks to the `**.client.ts`, it knows that it needs to be call only client-side

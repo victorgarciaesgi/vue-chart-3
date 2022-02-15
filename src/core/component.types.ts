@@ -1,6 +1,26 @@
-import { Chart, ChartData, Plugin, ChartType, ChartOptions } from 'chart.js';
-import { PropType } from 'vue';
-import { StyleValue } from './vue.types';
+import { Chart, ChartData, ChartType, Plugin } from 'chart.js';
+import { DefineComponent, PropType, Ref, ShallowRef } from 'vue';
+import { StyleValue } from '../misc';
+
+export type ComponentData<T extends ChartType> = {
+  /** Access to the canvas via computed template ref */
+  canvasRef: Ref<HTMLCanvasElement | undefined>;
+  /** Force render the Chart */
+  renderChart: () => void;
+  /** The complete chart instance */
+  chartInstance: ShallowRef<Chart<T> | null>;
+  /** The id of the Chart.js canvas element */
+  canvasId: string;
+  /** Force update the Chart */
+  update: () => void;
+};
+
+export type ChartComponentEmits<TType extends ChartType> = {
+  'labels:update': () => void;
+  'chart:update': (chartInstance: Chart<TType>) => void;
+  'chart:destroy': () => void;
+  'chart:render': (chartInstance: Chart<TType>) => void;
+};
 
 export type ChartPropsOptions<TType extends ChartType> = {
   options: { type: PropType<Record<string, any>>; required: false };

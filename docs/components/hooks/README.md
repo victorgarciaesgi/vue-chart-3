@@ -24,7 +24,7 @@ For `BarChart` you can import `useBarChart` from `vue-chart-3` and use it like t
 export default defineComponent({
   ...,
   setup() {
-    const { barChartProps, barChartRef } = useBarChart({
+    const { barChartProps, barChartRef, update } = useBarChart({
       chartData: {}, //...
       plugins: []
     });
@@ -39,4 +39,61 @@ Then you can use the `barChartProps` to fill the props of the component
 
 ```html
 <BarChart v-bind="barChartProps" />
+```
+
+## Manual update
+
+This hook also returns a helper function to manually update the ChartInstance
+
+```ts
+const { barChartProps, barChartRef, update } = useBarChart({...})
+```
+
+## Custom hook
+
+If you have created a custom Chart component, you can also create your custom hook
+
+```ts
+import {defineChartComponent, defineChartHook} from 'vue-chart-3';
+
+const MatrixChart = defineChartComponent('matrix-chart', 'matrix');
+const useMatrixChart = defineChartHook('matrix');
+
+export default defineComponent({
+  ...,
+  components: {
+    MatrixChart
+  },
+  setup() {
+    const { matrixChartProps, matrixChartRef } = useMatrixChart({
+      chartData: {},
+      plugins: []
+    });
+
+    return { matrixChartProps, matrixChartRef }
+  }
+})
+
+```
+
+## Usage with render function
+
+Usage with render function is supported, with just a parameter. The reason is that in templates, Vue needs a `string` ref (ex: ref='inputRef'), but in render functions, it needs the ref accessor (ex: ref={inputRef})
+
+```ts
+export default defineComponent({
+  ...,
+  setup() {
+    const { barChartProps, barChartRef } = useBarChart({
+      chartData: {},
+      plugins: [],
+      jsx: true // <----
+    });
+
+    return () => (
+      <BarChart {...barChartProps.value} />
+    )
+  }
+})
+
 ```
