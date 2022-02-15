@@ -47,7 +47,7 @@ export default defineUserConfig<DefaultThemeOptions>({
                 '/guide/usage/',
                 '/guide/usage/chart-instance',
                 '/guide/usage/dynamic-data',
-                '/guide/usage/munual-update',
+                '/guide/usage/manual-update',
                 '/guide/usage/typescript',
                 '/guide/usage/actions',
               ],
