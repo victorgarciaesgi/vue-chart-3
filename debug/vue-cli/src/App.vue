@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { Chart, ChartData, registerables } from 'chart.js';
+import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
 import { BarChart, useBarChart } from 'vue-chart-3';
 // import { BarChart, useBarChart } from '../../../dist/index.cjs';
 
@@ -21,7 +21,7 @@ export default defineComponent({
     const legendTop = ref(true);
     const toggleHidden = ref(false);
 
-    const options = computed(() => ({
+    const options = computed<ChartOptions<'bar'>>(() => ({
       scales: {
         myScale: {
           type: 'logarithmic',
@@ -36,6 +36,9 @@ export default defineComponent({
           display: true,
           text: 'Chart.js Doughnut Chart',
         },
+      },
+      hover: {
+        mode: null,
       },
     }));
 

@@ -3,6 +3,8 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.0.9 (2022-02-21)
+
 # 3.0.0 and 2.0.0 (2021-11-23)
 
 - Breaking changes and new versions numbers
