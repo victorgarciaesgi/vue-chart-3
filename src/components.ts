@@ -9,6 +9,7 @@ import VueComp, {
   Ref,
   defineComponent,
   shallowRef,
+  set,
 } from '@vue/composition-api';
 import startCase from 'lodash-es/startCase';
 import camelCase from 'lodash-es/camelCase';
@@ -135,7 +136,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
               handleLabelsUpdate();
             }
           } else {
-            chart.data.datasets = newData.datasets;
+            set(chart.data, 'datasets', newData.datasets);
           }
 
           handleChartUpdate();
