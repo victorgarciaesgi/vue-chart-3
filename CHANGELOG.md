@@ -3,7 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# 3.0.9 (2022-02-21)
+# 3.1.0 (2022-02-15)
+
+- Refactored the project to add esm and cjs builds
+- Compatible with Vite.js and Nuxt 3
+- Changed Jest to Vitest ⚡️
+- Fixed docs
+- Added useful JSdocs
+- more
+
+# 3.0.9 (2022-01-21)
 
 # 3.0.0 and 2.0.0 (2021-11-23)
 
