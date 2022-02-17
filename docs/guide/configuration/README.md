@@ -4,15 +4,11 @@
 
 You need to have `@vue/composition-api` installed and registered.
 
-::: warning
-Since `2.0.3`, Vue composition api will not register itself. Update your project if you didn't do it manually!
-:::
-
-## Vite.js and Vue 3
+## Vite.js + Vue 3
 
 Nothing required, it works out of the box!
 
-## Nuxt 2
+## Nuxt 2 / Nuxt bridge
 
 - Create a plugin in `<srcDir>/plugins/chartjs.js`
 
@@ -26,22 +22,14 @@ Chart.register(...registerables);
 ```js
 export default {
   plugins: [{ src: '~/plugins/chartjs.js', ssr: false }],
-};
-```
-
-## Nuxt bridge
-
-Same as above, but you may need to add some additional config in your `nuxt.config`.
-Thanks to [@mirkopoloni](https://github.com/mirkopoloni);
-
-```js
-export default {
   build: {
-    // Transpile ESM modules because Nuxt 2 uses CommonJS for building server.
-    transpile: ['vue-chart-3', 'lodash-es'],
+    // Transpile ESM modules because Nuxt 2 uses CommonJS for building server and `vue-chart-3` uses `lodash-es` internaly
+    transpile: ['lodash-es'],
   },
 };
 ```
+
+(Thanks to [@mirkopoloni](https://github.com/mirkopoloni) for additional Nuxt tips)
 
 ## Nuxt 3
 
