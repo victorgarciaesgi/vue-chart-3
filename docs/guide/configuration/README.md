@@ -24,7 +24,7 @@ export default {
   plugins: [{ src: '~/plugins/chartjs.js', ssr: false }],
   build: {
     // Transpile ESM modules because Nuxt 2 uses CommonJS for building server and `vue-chart-3` uses `lodash-es` internaly
-    transpile: ['lodash-es'],
+    transpile: ['lodash-es', 'vue-chart-3'],
   },
 };
 ```
