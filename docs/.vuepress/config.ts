@@ -37,6 +37,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         editLinkText: 'Edit this page on GitHub',
         sidebar: {
           '/guide/': [
+            '/guide/README.md',
             {
               text: 'Configuration',
               children: ['/guide/configuration/', '/guide/configuration/plugins'],
@@ -63,6 +64,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             },
           ],
           '/components': [
+            '/components/README.md',
             {
               text: 'Chart hooks (beta)',
               children: ['/components/hooks/', '/components/hooks/example'],
