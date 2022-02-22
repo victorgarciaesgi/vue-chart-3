@@ -1,12 +1,32 @@
 import type { ChartType } from 'chart.js';
-import type { ComponentPublicInstance, DefineComponent, Ref } from 'vue';
-import type { ChartPropsOptions, ComponentData } from '../core';
+import type {
+  ComponentPublicInstance,
+  DefineComponent,
+  Ref,
+  ComputedOptions,
+  MethodOptions,
+  ComponentOptionsMixin,
+  VNodeProps,
+  AllowedComponentProps,
+  ComponentCustomProps,
+} from 'vue';
+import type { ChartComponentEmits, ChartPropsOptions, ComponentData } from '../core';
 import { ExtractPropTypes } from '../utils';
 
 export type VueChartComponent<TType extends ChartType> = DefineComponent<
   ChartPropsOptions<TType>,
-  ComponentData<TType>
+  ComponentData<TType>,
+  unknown,
+  ComputedOptions,
+  MethodOptions,
+  ComponentOptionsMixin,
+  ComponentOptionsMixin,
+  ChartComponentEmits<TType>,
+  string,
+  PublicProps
 >;
+
+type PublicProps = VNodeProps & AllowedComponentProps & ComponentCustomProps;
 
 export interface HookOptions<TType extends ChartType, TJSX = false>
   extends ChartPropsOptions<TType> {

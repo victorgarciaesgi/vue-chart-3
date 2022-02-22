@@ -1,6 +1,6 @@
 {
   "name": "vue-chart-3",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
   "license": "MIT",
   "scripts": {
@@ -9,6 +9,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "publish:alpha": "npm publish --tag next",
+    "deploy": "npm run test && npm publish",
     "docs:dev": "vuepress dev docs",
     "docs:build": " vuepress build docs"
   },
@@ -29,41 +30,40 @@
     "dist"
   ],
   "peerDependencies": {
-    "@vue/runtime-core": "> 3",
-    "@vue/runtime-dom": "> 3",
     "chart.js": "=> ^3.1.0",
     "vue": ">= 3"
   },
   "dependencies": {
-    "@vue/runtime-core": "^3.2.31",
-    "@vue/runtime-dom": "^3.2.31",
+    "@vue/runtime-core": "latest",
+    "@vue/runtime-dom": "latest",
     "csstype": "latest",
-    "lodash-es": "^4.17.21",
-    "pascalcase": "0.1.1"
+    "lodash-es": "latest",
+    "pascalcase": "^2.0.0"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.35",
     "@types/lodash-es": "^4.17.6",
-    "@types/node": "^17.0.17",
+    "@types/node": "^17.0.19",
     "@types/pascalcase": "^1.0.1",
-    "@vue/cli": "^4.5.15",
-    "@vue/runtime-core": "^3.2.29",
-    "@vue/runtime-dom": "^3.2.29",
+    "@vue/cli": "^5.0.1",
+    "@vue/runtime-core": "^3.2.31",
+    "@vue/runtime-dom": "^3.2.31",
     "@vue/test-utils": "^2.0.0-rc.17",
-    "@vuepress/plugin-docsearch": "^2.0.0-beta.31",
-    "@vuepress/plugin-palette": "^2.0.0-beta.31",
-    "canvas": "^2.9.0",
+    "@vuepress/plugin-docsearch": "^2.0.0-beta.35",
+    "@vuepress/plugin-palette": "^2.0.0-beta.35",
     "chart.js": "^3.7.1",
     "chartjs-test-utils": "^0.4.0",
+    "happy-dom": "^2.40.0",
+    "jest-canvas-mock": "^2.3.1",
     "jsdom": "^19.0.0",
     "tsup": "^5.11.13",
     "typescript": "^4.5.5",
-    "vite": "^2.8.2",
-    "vitest": "^0.3.5",
+    "vite": "^2.8.4",
+    "vitest": "^0.5.1",
     "vue": "^3.2.31",
     "vue-chart-3": "latest",
-    "vuepress": "^2.0.0-beta.31",
-    "vuepress-vite": "^2.0.0-beta.31"
+    "vuepress": "^2.0.0-beta.35",
+    "vuepress-vite": "^2.0.0-beta.35"
   },
   "repository": {
     "type": "git",

@@ -69,7 +69,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       'chart:update': (chartInstance: Chart<TType>) => true,
       'chart:destroy': () => true,
       'chart:render': (chartInstance: Chart<TType>) => true,
-    },
+    } as ChartComponentEmits<TType>,
     setup(props, { emit, expose }) {
       const canvasRef = ref<HTMLCanvasElement | null>(null);
 

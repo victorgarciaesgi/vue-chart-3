@@ -9,8 +9,6 @@ import {
   useBarChart,
 } from '../../src';
 
-const timeout = (count: number) => new Promise((resolve) => setTimeout(resolve, count));
-
 type TestExtractData = ExtractComponentData<typeof DoughnutChart>;
 let testAssignData: TestExtractData = {} as TestExtractData;
 const canvas: Chartjs.Chart<'doughnut'> | null = testAssignData?.chartInstance?.value;

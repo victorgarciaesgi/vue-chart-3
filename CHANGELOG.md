@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.1.1 (2022-02-22)
+
+- Fixed @vue/runtime-[core|dom] peer deps
+- Refacto unit tests
+
 # 3.1.0 (2022-02-15)
 
 - Refactored the project to add esm and cjs builds
