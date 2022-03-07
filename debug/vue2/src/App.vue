@@ -1,44 +1,51 @@
-<script lang="tsx">
-import { Chart, ChartData, registerables } from 'chart.js';
+<template>
+  <div id="app" style="width: 400px">
+    <div>
+      <button @click="shuffleData">Shuffle</button>
+      <button @click="zoom">Zoom</button>
+    </div>
+    <BarChart v-bind="barChartProps" />
+    <img style="width: 300px" v-if="imgData" :src="imgData" />
+  </div>
+</template>
+
+<script>
 import { BarChart, useBarChart } from 'vue-chart-3';
 import { ref, computed, defineComponent } from '@vue/composition-api';
-import { shuffle } from 'lodash';
-import Test from './components/test.vue';
-
-Chart.register(...registerables);
+import { shuffle } from 'lodash-es';
 
 export default defineComponent({
   name: 'App',
-  props: {
-    test: { type: String },
-  },
   components: {
     BarChart,
-    Test,
   },
   setup() {
     const data = ref([30, 40, 60, 70, 5]);
     const legendTop = ref(true);
+    const imgData = ref(null);
 
     const options = computed(() => ({
       scales: {
-        myScale: {
-          type: 'logarithmic',
-          position: legendTop.value ? 'left' : 'right',
+        y: {
+          beginAtZero: true,
         },
       },
       plugins: {
-        legend: {
-          position: legendTop.value ? 'top' : 'bottom',
-        },
-        title: {
-          display: true,
-          text: 'Chart.js Doughnut Chart',
+        zoom: {
+          zoom: {
+            wheel: {
+              enabled: true,
+            },
+            pinch: {
+              enabled: true,
+            },
+            mode: 'xy',
+          },
         },
       },
     }));
 
-    const testData = computed<ChartData<'bar'>>(() => ({
+    const chartData = computed(() => ({
       labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
       datasets: [
         {
@@ -49,31 +56,22 @@ export default defineComponent({
     }));
 
     const { barChartProps, barChartRef } = useBarChart({
-      chartData: testData,
-      options: options,
+      chartData,
+      options,
     });
 
     function shuffleData() {
       data.value = shuffle(data.value);
       legendTop.value = !legendTop.value;
-      console.log(barChartRef);
-      console.log(barChartRef.value.chartInstance?.getDatasetMeta(0));
+      imgData.value = barChartRef.value.chartInstance.toBase64Image();
+      barChartRef.value.chartInstance.resetZoom();
     }
 
-    return {
-      shuffleData,
-      barChartProps,
-      barChartRef,
-    };
-  },
-  render(h) {
-    return (
-      <div id="app" style={{ width: '400px' }}>
-        <button onClick={shuffleData}>Shuffle</button>
-        <BarChart {...{ attrs: this.barChartProps.value }} />
-        <Foo />
-      </div>
-    );
+    function zoom() {
+      barChartRef.value.chartInstance.zoom(1.01);
+    }
+
+    return { shuffleData, barChartProps, barChartRef, imgData, zoom };
   },
 });
 </script>

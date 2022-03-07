@@ -11,10 +11,10 @@ import VueComp, {
   shallowRef,
   set,
 } from '@vue/composition-api';
-import startCase from 'lodash-es/startCase';
-import camelCase from 'lodash-es/camelCase';
-import cloneDeep from 'lodash-es/cloneDeep';
-import isEqual from 'lodash-es/isEqual';
+import startCase from 'lodash-es/startCase.js';
+import camelCase from 'lodash-es/camelCase.js';
+import cloneDeep from 'lodash-es/cloneDeep.js';
+import isEqual from 'lodash-es/isEqual.js';
 
 // Weird bug with karma importing cjs files
 import { nanoid } from 'nanoid';
