@@ -4,7 +4,7 @@ When accessing to the template ref, you can call the helper function `update`, w
 
 ```vue
 <template>
-  <DoughnutChart ref="doughtnutRef" :chartData="testData" @chart:render="handleChartRender" />
+  <DoughnutChart ref="doughnutRef" :chartData="testData" @chart:render="handleChartRender" />
 </template>
 
 <script>
@@ -16,13 +16,13 @@ export default defineComponent({
   name: 'Home',
   components: { DoughnutChart },
   setup() {
-    const doughtnutRef = ref();
+    const doughnutRef = ref();
     // ....
     onMounted(() => {
-      doughtnutRef.value.update();
+      doughnutRef.value.update();
     });
 
-    return { shuffleData, doughtnutRef, handleChartRender };
+    return { shuffleData, doughnutRef, handleChartRender };
   },
 });
 </script>

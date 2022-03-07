@@ -5,7 +5,7 @@ It is also passed in events (`chart-render` and `chart-update`)
 
 ```vue
 <template>
-  <DoughnutChart ref="doughtnutRef" :chartData="testData" @chart:render="handleChartRender" />
+  <DoughnutChart ref="doughnutRef" :chartData="testData" @chart:render="handleChartRender" />
 </template>
 
 <script>
@@ -17,11 +17,11 @@ export default defineComponent({
   name: 'Home',
   components: { DoughnutChart },
   setup() {
-    const doughtnutRef = ref();
+    const doughnutRef = ref();
     // ....
     onMounted(() => {
-      console.log(doughtnutRef.value.chartInstance);
-      doughtnutRef.value.chartInstance.toBase64Image();
+      console.log(doughnutRef.value.chartInstance);
+      doughnutRef.value.chartInstance.toBase64Image();
     });
 
     // Chart instance is accessible on events too
@@ -29,7 +29,7 @@ export default defineComponent({
       console.log(chart);
     }
 
-    return { shuffleData, testData, doughtnutRef, handleChartRender };
+    return { shuffleData, testData, doughnutRef, handleChartRender };
   },
 });
 </script>

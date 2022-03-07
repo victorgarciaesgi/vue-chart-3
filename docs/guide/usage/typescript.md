@@ -67,10 +67,10 @@ Ex:
 
 ```ts
 setup() {
-  const doughtnutRef = ref<ExtractComponentData<typeof DoughtnutChart>>()
+  const doughnutRef = ref<ExtractComponentData<typeof doughnutChart>>()
 
   foo() {
-    doughtnutRef.value?.chartInstance.toBase64Image();
+    doughnutRef.value?.chartInstance.toBase64Image();
   }
 }
 ```
