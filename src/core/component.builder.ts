@@ -1,6 +1,7 @@
 import type { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
 import * as Chartjs from 'chart.js';
 import { cloneDeep, isEqual } from 'lodash-es';
+import { pascalCase } from '../utils';
 import {
   ComponentOptionsMixin,
   ComputedOptions,
@@ -17,7 +18,6 @@ import {
 } from 'vue';
 import { ChartComponentEmits } from '.';
 import type { StyleValue } from '../misc';
-import pascalCase from 'pascalcase';
 import type { ChartPropsOptions, ComponentData } from './component.types';
 
 /** Builder method to create a component based on Chart.js chart type

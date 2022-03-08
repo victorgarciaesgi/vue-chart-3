@@ -16,8 +16,7 @@
     "downlevelIteration": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "types": ["vitest/globals"],
-    "baseUrl": "."
+    "types": ["vitest/globals"]
   },
   "include": ["./src/**/*.ts", "./tests/**/*.ts"],
   "exclude": ["node_modules"]

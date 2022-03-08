@@ -1,5 +1,5 @@
 import { Chart, ChartData, ChartType, Plugin } from 'chart.js';
-import pascalcase from 'pascalcase';
+import { pascalCase } from '../utils';
 import { computed, ref, unref } from 'vue';
 import { VueChartComponent } from '.';
 import type { StyleValue } from '../misc';
@@ -45,7 +45,7 @@ export const defineChartHook = <TType extends ChartType = ChartType, TJSX = fals
       if (chartComponentRef) {
         chartComponentRef?.chartInstance.value?.update();
       } else {
-        console.warn(`No chartInstance to update (use${pascalcase(chartType)}Chart)`);
+        console.warn(`No chartInstance to update (use${pascalCase(chartType)}Chart)`);
       }
     }
 
