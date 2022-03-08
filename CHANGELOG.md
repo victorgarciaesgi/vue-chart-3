@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.1.3 (2022-03-08)
+
+- Fixed array mutation call stack loop #58
+- Fixed animations for array mutations
+
+# 3.1.2 (2022-02-23)
+
+- Fixed pascalCase
+
 # 3.1.1 (2022-02-22)
 
 - Fixed @vue/runtime-[core|dom] peer deps
