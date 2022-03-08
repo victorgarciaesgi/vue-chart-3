@@ -11,4 +11,8 @@ describe('Bar chart renders and update correctly', async () => {
       },
     ],
   });
+
+  it('should be true', () => {
+    expect(true).toBe(true);
+  });
 });

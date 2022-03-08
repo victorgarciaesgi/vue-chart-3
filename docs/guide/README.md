@@ -9,21 +9,21 @@ vue-chart-3 is rewrite of `vue-chartjs` for [Chart.js 3](https://www.chartjs.org
 ## For Vue 3
 
 ```bash
-npm i vue-chart-3
+npm i vue-chart-3 chart.js
 #or
-yarn add vue-chart-3
+yarn add vue-chart-3 chart.js
 #or
-pnpm i vue-chart-3
+pnpm i vue-chart-3 chart.js
 ```
 
 ## For Vue 2
 
 ```bash
-npm i vue-chart-3@legacy
+npm i vue-chart-3@legacy chart.js
 #or
-yarn add vue-chart-3@legacy
+yarn add vue-chart-3@legacy chart.js
 #or
-pnpm i vue-chart-3@legacy
+pnpm i vue-chart-3@legacy chart.js
 ```
 
 ## Important notes

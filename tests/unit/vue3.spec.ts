@@ -22,7 +22,7 @@ const chartData: Chartjs.ChartData<'doughnut'> = testAssignProps?.chartData;
 // @ts-expect-error
 const expectError: ChartData<'doughnut'> = testAssignProps?.blebleble;
 
-describe('Vue 3 - Doughtnut chart', async () => {
+describe('Vue 3 - Doughnut chart', async () => {
   beforeEach(() => {
     vi.spyOn(console, 'error');
   });
