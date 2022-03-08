@@ -132,7 +132,20 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
               handleLabelsUpdate();
             }
           } else {
-            chart.data.datasets = newData.datasets;
+            chart.data.datasets.forEach((val, index) => {
+              if (chart.data.datasets[index].data.length === newData.datasets[index].data.length) {
+                chart.data.datasets[index] = cloneDeep(newData.datasets[index]);
+              } else {
+                const baseData = chart.data.datasets[index].data;
+                const { data, ...rest } = newData.datasets[index];
+                chart.data.datasets[index].data.push(20);
+                if (baseData.length > data.length) {
+                  baseData.splice(data.length - 1, baseData.length - data.length);
+                } else {
+                  baseData.push(...data.slice(baseData.length - 1, data.length - baseData.length));
+                }
+              }
+            });
           }
 
           handleChartUpdate();
@@ -147,7 +160,7 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       function renderChart() {
         if (canvasRef.value) {
           chartInstance.value = new Chartjs.Chart(canvasRef.value as HTMLCanvasElement, {
-            data: props.chartData,
+            data: cloneDeep(props.chartData),
             type: chartType,
             options: cloneDeep(props.options) as ChartOptions<TType>, // Types won't work with props type
             plugins: props.plugins,
@@ -175,8 +188,8 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       function handleChartUpdate() {
         if (chartInstance.value) {
           chartInstance.value.update();
-          emit('chart:render', chartInstance.value);
-          props.onChartRender && props.onChartRender(chartInstance.value);
+          emit('chart:update', chartInstance.value);
+          props.onChartUpdate && props.onChartUpdate(chartInstance.value);
         }
       }
 

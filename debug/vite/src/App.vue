@@ -1,15 +1,15 @@
 <template>
   <div id="app" :style="{ width: '400px' }">
     <button @click="shuffleData">Shuffle</button>
-    <BarChart v-bind="barChartProps" class="test" />
+    <DoughnutChart v-bind="doughnutChartProps" />
   </div>
 </template>
 
 <script setup lang="tsx">
-import { Chart, registerables } from 'chart.js';
+import { Chart, ChartOptions, registerables } from 'chart.js';
 import type { ChartData } from 'chart.js';
-import { BarChart, useBarChart } from 'vue-chart-3';
-// import { BarChart, defineChartComponent, useBarChart } from '../../../dist';
+// import { BarChart, useBarChart } from 'vue-chart-3';
+import { DoughnutChart, defineChartComponent, useDoughnutChart } from '../../../dist';
 
 import { ref, computed } from 'vue';
 import { shuffle } from 'lodash-es';
@@ -19,7 +19,7 @@ Chart.register(...registerables);
 const data = ref([30, 40, 60, 70, 5]);
 const legendTop = ref(true);
 
-const options = computed(() => ({
+const options = computed<ChartOptions<'doughnut'>>(() => ({
   scales: {
     myScale: {
       type: 'logarithmic',
@@ -37,7 +37,7 @@ const options = computed(() => ({
   },
 }));
 
-const testData = computed<ChartData<'bar'>>(() => ({
+const testData = computed<ChartData<'doughnut'>>(() => ({
   labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
   datasets: [
     {
@@ -47,14 +47,17 @@ const testData = computed<ChartData<'bar'>>(() => ({
   ],
 }));
 
-const { barChartProps, barChartRef } = useBarChart({
+const { doughnutChartProps, doughnutChartRef } = useDoughnutChart({
   chartData: testData,
   options: options,
 });
 
+let index = 20;
+
 function shuffleData() {
-  data.value = shuffle(data.value);
-  console.log(barChartRef);
+  // dataValues.value = shuffle(dataValues.value);
+  data.value.pop();
+  console.log(doughnutChartRef.value?.chartInstance);
 }
 </script>
 
