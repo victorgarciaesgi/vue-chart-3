@@ -132,13 +132,16 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
               handleLabelsUpdate();
             }
           } else {
-            chart.data.datasets.forEach((val, index) => {
+            newData.datasets.forEach((val, index) => {
               if (chart.data.datasets[index].data.length === newData.datasets[index].data.length) {
-                chart.data.datasets[index] = cloneDeep(newData.datasets[index]);
+                chart.data.datasets[index] = { ...newData.datasets[index] };
               } else {
                 const baseData = chart.data.datasets[index].data;
                 const { data, ...rest } = newData.datasets[index];
-                chart.data.datasets[index].data.push(20);
+                Object.entries(rest).forEach(([key, value]) => {
+                  (chart.data.datasets[index] as any)[key] = value;
+                });
+
                 if (baseData.length > data.length) {
                   baseData.splice(data.length - 1, baseData.length - data.length);
                 } else {

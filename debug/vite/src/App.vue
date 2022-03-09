@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script setup lang="tsx">
+<script setup lang="ts">
 import { Chart, ChartOptions, registerables } from 'chart.js';
 import type { ChartData } from 'chart.js';
 // import { BarChart, useBarChart } from 'vue-chart-3';
@@ -23,13 +23,9 @@ const options = computed<ChartOptions<'doughnut'>>(() => ({
   scales: {
     myScale: {
       type: 'logarithmic',
-      position: legendTop.value ? 'left' : 'right',
     },
   },
   plugins: {
-    legend: {
-      position: legendTop.value ? 'top' : 'bottom',
-    },
     title: {
       display: true,
       text: 'Chart.js Doughnut Chart',
@@ -55,9 +51,8 @@ const { doughnutChartProps, doughnutChartRef } = useDoughnutChart({
 let index = 20;
 
 function shuffleData() {
-  // dataValues.value = shuffle(dataValues.value);
-  data.value.pop();
-  console.log(doughnutChartRef.value?.chartInstance);
+  // data.value = shuffle(data.value);
+  data.value.push(4);
 }
 </script>
 
