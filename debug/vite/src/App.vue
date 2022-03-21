@@ -1,6 +1,7 @@
 <template>
   <div id="app" :style="{ width: '400px' }">
     <button @click="shuffleData">Shuffle</button>
+    <button type="button" @click="switchLegend">Swicth legends</button>
     <DoughnutChart v-bind="doughnutChartProps" />
     {{ data }} {{ labels }} {{ index }}
   </div>
@@ -27,6 +28,9 @@ const options = computed<ChartOptions<'doughnut'>>(() => ({
     },
   },
   plugins: {
+    legend: {
+      position: legendTop.value ? 'top' : 'bottom',
+    },
     title: {
       display: true,
       text: 'Chart.js Doughnut Chart',
@@ -56,6 +60,10 @@ function shuffleData() {
   data.value.push(index.value);
   labels.value.push('Autre' + index.value);
   index.value++;
+}
+
+function switchLegend() {
+  legendTop.value = !legendTop.value;
 }
 </script>
 
