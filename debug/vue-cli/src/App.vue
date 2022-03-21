@@ -1,28 +1,94 @@
 <template>
-  <button type="button" @click="add">Add</button>
-  <div>{{ data }}</div>
-  <BarChart :chart-data="chartData" />
+  <div style="width: 400px">
+    <div style="display: flex; justify-content: center">
+      <button type="button" @click="shuffleData">Shuffle</button>
+      <button type="button" @click="switchLegend">Swicth legends</button>
+    </div>
+    <!-- <DoughnutChart v-bind="doughnutChartProps" /> -->
+  </div>
 </template>
 
-<script setup lang="ts">
-import { computed, ref } from 'vue';
-import { BarChart } from 'vue-chart-3-test';
-import { Chart, ChartData, registerables } from 'chart.js';
+<script lang="ts">
+import { computed, defineComponent, ref } from 'vue';
+import { shuffle } from 'lodash';
+import { DoughnutChart, useDoughnutChart } from 'vue-chart-3-test';
+import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
+
 Chart.register(...registerables);
+export default defineComponent({
+  name: 'App',
+  components: { DoughnutChart },
+  setup() {
+    const dataValues = ref([30, 40, 60, 70, 5]);
+    const dataLabels = ref(['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre']);
+    const toggleLegend = ref(true);
 
-const data = ref([20, 30]);
+    const testData = computed<ChartData<'doughnut'>>(() => ({
+      labels: dataLabels.value,
+      datasets: [
+        {
+          data: dataValues.value,
+          backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
+        },
+      ],
+    }));
 
-const chartData = computed<ChartData<'bar'>>(() => ({
-  labels: ['Bla', 'bla', 'bla'],
-  datasets: [
-    {
-      data: data.value,
-      backgroundColor: ['red', 'blue'],
-    },
-  ],
-}));
+    const options = computed<ChartOptions<'doughnut'>>(() => ({
+      scales: {
+        myScale: {
+          type: 'logarithmic',
+          position: toggleLegend.value ? 'left' : 'right',
+        },
+      },
+      plugins: {
+        legend: {
+          position: toggleLegend.value ? 'top' : 'bottom',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Doughnut Chart',
+        },
+      },
+    }));
 
-function add() {
-  data.value.pop();
-}
+    const { doughnutChartProps, doughnutChartRef } = useDoughnutChart({
+      chartData: testData,
+      options,
+    });
+
+    let index = 20;
+
+    function shuffleData() {
+      // dataValues.value = shuffle(dataValues.value);
+      dataValues.value.push(++index);
+      dataLabels.value.push('Autre' + index);
+      console.log(dataValues.value);
+      // console.log(doughnutChartRef.value.chartInstance);
+    }
+
+    function switchLegend() {
+      toggleLegend.value = !toggleLegend.value;
+    }
+
+    return {
+      shuffleData,
+      switchLegend,
+      testData,
+      options,
+      doughnutChartRef,
+      doughnutChartProps,
+    };
+  },
+});
 </script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

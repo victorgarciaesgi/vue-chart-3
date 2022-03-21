@@ -99,6 +99,10 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
         if (oldData && chartInstance.value) {
           let chart = chartInstance.value;
 
+          if (!isEqual(newData.labels, oldData.labels)) {
+            chart.data.labels = newData.labels;
+          }
+
           // Check if Labels are equal and if dataset length is equal
           if (!isEqual(newData, oldData) && oldData.datasets.length === newData.datasets.length) {
             newData.datasets.forEach((dataset, i) => {

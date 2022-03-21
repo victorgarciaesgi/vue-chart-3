@@ -17,13 +17,13 @@ specifiers:
   prettier: ^2.2.1
   typescript: ^4.5.2
   vue: ^3.2.31
-  vue-chart-3: ^3.1.3
+  vue-chart-3: ^3.1.4
 
 dependencies:
   chart.js: 3.7.1
   core-js: 3.21.0
   vue: 3.2.31
-  vue-chart-3: 3.1.3_chart.js@3.7.1+vue@3.2.31
+  vue-chart-3: 3.1.4_chart.js@3.7.1+vue@3.2.31
 
 devDependencies:
   '@typescript-eslint/eslint-plugin': 5.10.2_2595c2126aec4d4b6e944b931dabb4c2
@@ -8890,8 +8890,8 @@ packages:
     resolution: {integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==}
     dev: true
 
-  /vue-chart-3/3.1.3_chart.js@3.7.1+vue@3.2.31:
-    resolution: {integrity: sha512-iyTw6o4en0VgfAsZKHpH67rGiQMx7Efe9ppdKUon2NrMjxK+XlqPQQ0B/T+YPjLDo4S3hRY+U0YSTaO5mLrY1g==}
+  /vue-chart-3/3.1.4_chart.js@3.7.1+vue@3.2.31:
+    resolution: {integrity: sha512-6ynam+Lky6iUCC1Kr140HtnzrCwyy5CKuprWgDFiJCr5pzZ20L4ZE2fyz3z5zTSg+QUnsrujtZGw7TJKvseKoQ==}
     peerDependencies:
       chart.js: '=> ^3.1.0'
       vue: '>= 3'
