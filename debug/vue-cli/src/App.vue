@@ -4,20 +4,20 @@
       <button type="button" @click="shuffleData">Shuffle</button>
       <button type="button" @click="switchLegend">Swicth legends</button>
     </div>
+    {{ dataValues }}
     <!-- <DoughnutChart v-bind="doughnutChartProps" /> -->
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
-import { shuffle } from 'lodash';
-import { DoughnutChart, useDoughnutChart } from 'vue-chart-3-test';
+// import { DoughnutChart, useDoughnutChart } from 'vue-chart-3';
 import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
 
 Chart.register(...registerables);
 export default defineComponent({
   name: 'App',
-  components: { DoughnutChart },
+  // components: { DoughnutChart },
   setup() {
     const dataValues = ref([30, 40, 60, 70, 5]);
     const dataLabels = ref(['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre']);
@@ -51,17 +51,17 @@ export default defineComponent({
       },
     }));
 
-    const { doughnutChartProps, doughnutChartRef } = useDoughnutChart({
-      chartData: testData,
-      options,
-    });
+    // const { doughnutChartProps, doughnutChartRef } = useDoughnutChart({
+    //   chartData: testData,
+    //   options,
+    // });
 
-    let index = 20;
+    let index = ref(20);
 
     function shuffleData() {
       // dataValues.value = shuffle(dataValues.value);
-      dataValues.value.push(++index);
-      dataLabels.value.push('Autre' + index);
+      dataValues.value.push(++index.value);
+      dataLabels.value.push('Autre' + index.value);
       console.log(dataValues.value);
       // console.log(doughnutChartRef.value.chartInstance);
     }
@@ -75,8 +75,9 @@ export default defineComponent({
       switchLegend,
       testData,
       options,
-      doughnutChartRef,
-      doughnutChartProps,
+      dataValues,
+      // doughnutChartRef,
+      // doughnutChartProps,
     };
   },
 });

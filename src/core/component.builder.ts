@@ -4,6 +4,7 @@ import { cloneDeep, isEqual } from 'lodash-es';
 import { pascalCase } from '../utils';
 import {
   ComponentOptionsMixin,
+  computed,
   ComputedOptions,
   defineComponent,
   DefineComponent,
@@ -80,34 +81,34 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       watch(() => props.chartData, watchHandler, { deep: true });
       watch(
         () => props.options,
-        (newOptions, oldOptions) => {
+        (newOptions) => {
+          const deepNewOptions = cloneDeep(newOptions);
           if (
             chartInstance.value &&
             newOptions &&
-            !isEqual(chartInstance.value.options, oldOptions)
+            !isEqual(chartInstance.value.options, chartInstance.value.options)
           ) {
-            chartInstance.value.options = cloneDeep(newOptions) as any;
-            oldOptions = cloneDeep(newOptions) as any;
+            chartInstance.value.options = newOptions as any;
             handleChartUpdate();
           }
         },
         { deep: true }
       );
 
-      /** Picked from vue-chartjs */
-      function watchHandler(newData: ChartData<TType>, oldData: ChartData<TType>) {
-        if (oldData && chartInstance.value) {
+      function watchHandler(newData: ChartData<TType>) {
+        if (chartInstance.value) {
           let chart = chartInstance.value;
-
-          if (!isEqual(newData.labels, oldData.labels)) {
+          if (!isEqual(newData.labels, chartInstance.value.data.labels)) {
             chart.data.labels = newData.labels;
+            handleLabelsUpdate();
           }
 
-          // Check if Labels are equal and if dataset length is equal
-          if (!isEqual(newData, oldData) && oldData.datasets.length === newData.datasets.length) {
-            newData.datasets.forEach((dataset, i) => {
-              // Get new and old dataset keys
-              const oldDatasetKeys = Object.keys(oldData.datasets[i]);
+          // Check if datasets are equals
+          if (!isEqual(newData.datasets, chartInstance.value.data.datasets)) {
+            newData.datasets.forEach((dataset, index) => {
+              const oldData = cloneDeep(chart.data);
+
+              const oldDatasetKeys = Object.keys(oldData.datasets[index]);
               const newDatasetKeys = Object.keys(dataset);
 
               // Get keys that aren't present in the new data
@@ -117,39 +118,16 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
               // Remove outdated key-value pairs
               deletionKeys.forEach((deletionKey) => {
-                if (chart.data.datasets[i]) {
-                  delete chart.data.datasets[i][deletionKey as keyof ChartDataset];
+                if (chart.data.datasets[index]) {
+                  delete chart.data.datasets[index][deletionKey as keyof ChartDataset];
                 }
               });
 
               // Update attributes individually to avoid re-rendering the entire chart
               for (const attribute in dataset) {
-                const attrValue = dataset[attribute as keyof ChartDataset];
+                const attrValue = cloneDeep(dataset[attribute as keyof ChartDataset]);
                 if (dataset.hasOwnProperty(attribute) && attrValue != null && chart) {
-                  (chart.data as any).datasets[i][attribute] = attrValue;
-                }
-              }
-            });
-
-            if (newData.labels) {
-              chart.data.labels = newData.labels;
-              handleLabelsUpdate();
-            }
-          } else {
-            newData.datasets.forEach((val, index) => {
-              if (chart.data.datasets[index].data.length === newData.datasets[index].data.length) {
-                chart.data.datasets[index] = { ...newData.datasets[index] };
-              } else {
-                const baseData = chart.data.datasets[index].data;
-                const { data, ...rest } = newData.datasets[index];
-                Object.entries(rest).forEach(([key, value]) => {
-                  (chart.data.datasets[index] as any)[key] = value;
-                });
-
-                if (baseData.length > data.length) {
-                  baseData.splice(data.length - 1, baseData.length - data.length);
-                } else {
-                  baseData.push(...data.slice(baseData.length - 1, data.length - baseData.length));
+                  (chart.data as any).datasets[index][attribute] = attrValue;
                 }
               }
             });

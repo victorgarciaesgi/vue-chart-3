@@ -2,6 +2,7 @@
   <div id="app" :style="{ width: '400px' }">
     <button @click="shuffleData">Shuffle</button>
     <DoughnutChart v-bind="doughnutChartProps" />
+    {{ data }} {{ labels }} {{ index }}
   </div>
 </template>
 
@@ -12,11 +13,11 @@ import type { ChartData } from 'chart.js';
 import { DoughnutChart, defineChartComponent, useDoughnutChart } from '../../../dist';
 
 import { ref, computed } from 'vue';
-import { shuffle } from 'lodash-es';
 
 Chart.register(...registerables);
 
 const data = ref([30, 40, 60, 70, 5]);
+const labels = ref(['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre']);
 const legendTop = ref(true);
 
 const options = computed<ChartOptions<'doughnut'>>(() => ({
@@ -34,7 +35,7 @@ const options = computed<ChartOptions<'doughnut'>>(() => ({
 }));
 
 const testData = computed<ChartData<'doughnut'>>(() => ({
-  labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
+  labels: labels.value,
   datasets: [
     {
       data: data.value,
@@ -48,11 +49,13 @@ const { doughnutChartProps, doughnutChartRef } = useDoughnutChart({
   options: options,
 });
 
-let index = 20;
+let index = ref(20);
 
 function shuffleData() {
   // data.value = shuffle(data.value);
-  data.value.push(4);
+  data.value.push(index.value);
+  labels.value.push('Autre' + index.value);
+  index.value++;
 }
 </script>
 
