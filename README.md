@@ -8,10 +8,14 @@
   </a>
 </p>
 
+<div align='center'>
+
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![npm downloads][npm-total-downloads-src]][npm-downloads-href]
 <img src='https://img.shields.io/npm/l/vue-chart-3.svg'>
+
+</div>
 
 [npm-version-src]: https://img.shields.io/npm/v/vue-chart-3.svg
 [npm-version-href]: https://www.npmjs.com/package/vue-chart-3
@@ -24,11 +28,11 @@ This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-c
 # Installation
 
 ```bash
-npm i vue-chart-3@2
+npm i vue-chart-3@legacy chart.js
 #or
-yarn add vue-chart-3@2
+yarn add vue-chart-3@legacy chart.js
 #or
-pnpm i vue-chart-3@2
+pnpm i vue-chart-3@legacy chart.js
 ```
 
 # [Documentation](https://vue-chart-3.netlify.app/)

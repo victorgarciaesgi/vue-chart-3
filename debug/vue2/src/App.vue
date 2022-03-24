@@ -1,52 +1,49 @@
 <template>
-  <div id="app" style="width: 400px">
-    <div>
-      <button @click="shuffleData">Shuffle</button>
-      <button @click="zoom">Zoom</button>
-    </div>
-    <BarChart v-bind="barChartProps" />
-    <img style="width: 300px" v-if="imgData" :src="imgData" />
+  <div id="app" :style="{ width: '400px' }">
+    <button @click="shuffleData">Shuffle</button>
+    <button type="button" @click="switchLegend">Swicth legends</button>
+    <DoughnutChart v-bind="doughnutChartProps" />
+    {{ data }} {{ labels }} {{ index }}
   </div>
 </template>
 
-<script>
-import { BarChart, useBarChart } from 'vue-chart-3';
+<script lang="ts">
+import { Chart, ChartOptions, registerables } from 'chart.js';
+import type { ChartData } from 'chart.js';
+// import { BarChart, useBarChart } from 'vue-chart-3';
+import { DoughnutChart, defineChartComponent, useDoughnutChart } from './chart-debug';
+
 import { ref, computed, defineComponent } from '@vue/composition-api';
-import { shuffle } from 'lodash-es';
+
+Chart.register(...registerables);
 
 export default defineComponent({
   name: 'App',
-  components: {
-    BarChart,
-  },
+  components: { DoughnutChart },
   setup() {
     const data = ref([30, 40, 60, 70, 5]);
+    const labels = ref(['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre']);
     const legendTop = ref(true);
-    const imgData = ref(null);
 
-    const options = computed(() => ({
+    const options = computed<ChartOptions<'doughnut'>>(() => ({
       scales: {
-        y: {
-          beginAtZero: true,
+        myScale: {
+          type: 'logarithmic',
         },
       },
       plugins: {
-        zoom: {
-          zoom: {
-            wheel: {
-              enabled: true,
-            },
-            pinch: {
-              enabled: true,
-            },
-            mode: 'xy',
-          },
+        legend: {
+          position: legendTop.value ? 'top' : 'bottom',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Doughnut Chart',
         },
       },
     }));
 
-    const chartData = computed(() => ({
-      labels: ['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre'],
+    const testData = computed<ChartData<'doughnut'>>(() => ({
+      labels: labels.value,
       datasets: [
         {
           data: data.value,
@@ -55,23 +52,33 @@ export default defineComponent({
       ],
     }));
 
-    const { barChartProps, barChartRef } = useBarChart({
-      chartData,
-      options,
+    const { doughnutChartProps, doughnutChartRef } = useDoughnutChart({
+      chartData: testData,
+      options: options,
     });
 
+    let index = ref(20);
+
     function shuffleData() {
-      data.value = shuffle(data.value);
+      // data.value = shuffle(data.value);
+      data.value.push(index.value);
+      labels.value.push('Autre' + index.value);
+      index.value++;
+    }
+
+    function switchLegend() {
       legendTop.value = !legendTop.value;
-      imgData.value = barChartRef.value.chartInstance.toBase64Image();
-      barChartRef.value.chartInstance.resetZoom();
     }
 
-    function zoom() {
-      barChartRef.value.chartInstance.zoom(1.01);
-    }
-
-    return { shuffleData, barChartProps, barChartRef, imgData, zoom };
+    return {
+      shuffleData,
+      switchLegend,
+      doughnutChartProps,
+      doughnutChartRef,
+      data,
+      index,
+      labels,
+    };
   },
 });
 </script>

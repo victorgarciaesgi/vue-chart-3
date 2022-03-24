@@ -15,6 +15,7 @@ import startCase from 'lodash-es/startCase.js';
 import camelCase from 'lodash-es/camelCase.js';
 import cloneDeep from 'lodash-es/cloneDeep.js';
 import isEqual from 'lodash-es/isEqual.js';
+import isEmpty from 'lodash-es/isEmpty.js';
 
 // Weird bug with karma importing cjs files
 import { nanoid } from 'nanoid';
@@ -71,14 +72,9 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       watch(() => props.chartData, watchHandler, { deep: true });
       watch(
         () => props.options,
-        (newOptions, oldOptions) => {
-          if (
-            chartInstance.value &&
-            newOptions &&
-            !isEqual(chartInstance.value.options, oldOptions)
-          ) {
+        (newOptions) => {
+          if (chartInstance.value && newOptions) {
             chartInstance.value.options = cloneDeep(newOptions) as any;
-            oldOptions = cloneDeep(newOptions) as any;
             handleChartUpdate();
           }
         },
@@ -86,57 +82,50 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       );
 
       /** Picked from vue-chartjs */
-      function watchHandler(newData: ChartData<TType>, oldData: ChartData<TType>) {
-        if (oldData && chartInstance.value) {
+      function watchHandler(newData: ChartData<TType>) {
+        if (chartInstance.value) {
           let chart = chartInstance.value;
+          if (!isEqual(newData.labels, chartInstance.value.data.labels)) {
+            chart.data.labels = newData.labels;
+            handleLabelsUpdate();
+          }
 
-          // Get new and old DataSet Labels
-          let newDatasetLabels = newData.datasets.map(({ label }) => label);
+          // Check if datasets are equals
+          if (!isEqual(newData.datasets, chartInstance.value.data.datasets)) {
+            newData.datasets.forEach((dataset, index) => {
+              if (!isEmpty(dataset)) {
+                const oldData = cloneDeep(chart.data);
 
-          let oldDatasetLabels = oldData.datasets.map(({ label }) => label);
+                const oldDatasetKeys = Object.keys(oldData.datasets?.[index] ?? {});
+                const newDatasetKeys = Object.keys(dataset);
 
-          // Stringify 'em for easier compare
-          const oldLabels = JSON.stringify(oldDatasetLabels);
-          const newLabels = JSON.stringify(newDatasetLabels);
+                // Get keys that aren't present in the new data
+                const deletionKeys = oldDatasetKeys.filter((key) => {
+                  return key !== '_meta' && newDatasetKeys.indexOf(key) === -1;
+                });
 
-          // Check if Labels are equal and if dataset length is equal
-          if (
-            newLabels === oldLabels &&
-            oldData.datasets.length === newData.datasets.length &&
-            chart
-          ) {
-            newData.datasets.forEach((dataset, i) => {
-              // Get new and old dataset keys
-              const oldDatasetKeys = Object.keys(oldData.datasets[i]);
-              const newDatasetKeys = Object.keys(dataset);
+                // Remove outdated key-value pairs
+                deletionKeys.forEach((deletionKey) => {
+                  if (chart.data.datasets[index]) {
+                    delete chart.data.datasets[index][deletionKey as keyof ChartDataset];
+                  }
+                });
 
-              // Get keys that aren't present in the new data
-              const deletionKeys = oldDatasetKeys.filter((key) => {
-                return key !== '_meta' && newDatasetKeys.indexOf(key) === -1;
-              });
-
-              // Remove outdated key-value pairs
-              deletionKeys.forEach((deletionKey) => {
-                if (chart?.data.datasets[i]) {
-                  delete chart.data.datasets[i][deletionKey as keyof ChartDataset];
+                // Update attributes individually to avoid re-rendering the entire chart
+                for (const attribute in dataset) {
+                  const attrValue = cloneDeep(dataset[attribute as keyof ChartDataset]);
+                  let datasetItem = chart.data.datasets[index] as any;
+                  if (!datasetItem) {
+                    chart.data.datasets[index] = {} as any;
+                  }
+                  if (dataset.hasOwnProperty(attribute) && attrValue != null && chart) {
+                    (chart.data.datasets[index] as any)[attribute] = attrValue;
+                  }
                 }
-              });
-
-              // Update attributes individually to avoid re-rendering the entire chart
-              for (const attribute in dataset) {
-                const attrValue = dataset[attribute as keyof ChartDataset];
-                if (dataset.hasOwnProperty(attribute) && attrValue != null && chart) {
-                  (chart.data as any).datasets[i][attribute] = attrValue;
-                }
+              } else {
+                chart.data.datasets = [];
               }
             });
-
-            if (newData.labels) {
-              chart.data.labels = newData.labels;
-              handleLabelsUpdate();
-            }
-          } else {
-            set(chart.data, 'datasets', newData.datasets);
           }
 
           handleChartUpdate();
