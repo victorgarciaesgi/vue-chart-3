@@ -6,10 +6,14 @@
   </a>
 </p>
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![npm downloads][npm-total-downloads-src]][npm-downloads-href]
+<div align='center'>
+
+<a href=''>[![npm version][npm-version-src]][npm-version-href]</a>
+<a href=''>[![npm downloads][npm-downloads-src]][npm-downloads-href]</a>
+<a href=''>[![npm downloads][npm-total-downloads-src]][npm-downloads-href]</a>
 <img src='https://img.shields.io/npm/l/vue-chart-3.svg'>
+
+</div>
 
 [npm-version-src]: https://img.shields.io/npm/v/vue-chart-3.svg
 [npm-version-href]: https://www.npmjs.com/package/vue-chart-3
@@ -30,21 +34,21 @@ This package is a rewrite of [vue-chartjs](https://github.com/apertureless/vue-c
 ## For Vue 3
 
 ```bash
-npm i vue-chart-3
+npm i vue-chart-3 chart.js
 #or
-yarn add vue-chart-3
+yarn add vue-chart-3 chart.js
 #or
-pnpm i vue-chart-3
+pnpm i vue-chart-3 chart.js
 ```
 
 ## For Vue 2
 
 ```bash
-npm i vue-chart-3@legacy
+npm i vue-chart-3@legacy chart.js
 #or
-yarn add vue-chart-3@legacy
+yarn add vue-chart-3@legacy chart.js
 #or
-pnpm i vue-chart-3@legacy
+pnpm i vue-chart-3@legacy chart.js
 ```
 
 # Important notes

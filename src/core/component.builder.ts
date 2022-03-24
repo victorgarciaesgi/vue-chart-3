@@ -1,6 +1,6 @@
 import type { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
 import * as Chartjs from 'chart.js';
-import { cloneDeep, isEqual } from 'lodash-es';
+import { cloneDeep, isEmpty, isEqual, isObject } from 'lodash-es';
 import { pascalCase } from '../utils';
 import {
   ComponentOptionsMixin,
@@ -102,29 +102,37 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
           // Check if datasets are equals
           if (!isEqual(newData.datasets, chartInstance.value.data.datasets)) {
             newData.datasets.forEach((dataset, index) => {
-              const oldData = cloneDeep(chart.data);
+              if (!isEmpty(dataset)) {
+                const oldData = cloneDeep(chart.data);
 
-              const oldDatasetKeys = Object.keys(oldData.datasets[index]);
-              const newDatasetKeys = Object.keys(dataset);
+                const oldDatasetKeys = Object.keys(oldData.datasets?.[index] ?? {});
+                const newDatasetKeys = Object.keys(dataset);
 
-              // Get keys that aren't present in the new data
-              const deletionKeys = oldDatasetKeys.filter((key) => {
-                return key !== '_meta' && newDatasetKeys.indexOf(key) === -1;
-              });
+                // Get keys that aren't present in the new data
+                const deletionKeys = oldDatasetKeys.filter((key) => {
+                  return key !== '_meta' && newDatasetKeys.indexOf(key) === -1;
+                });
 
-              // Remove outdated key-value pairs
-              deletionKeys.forEach((deletionKey) => {
-                if (chart.data.datasets[index]) {
-                  delete chart.data.datasets[index][deletionKey as keyof ChartDataset];
+                // Remove outdated key-value pairs
+                deletionKeys.forEach((deletionKey) => {
+                  if (chart.data.datasets[index]) {
+                    delete chart.data.datasets[index][deletionKey as keyof ChartDataset];
+                  }
+                });
+
+                // Update attributes individually to avoid re-rendering the entire chart
+                for (const attribute in dataset) {
+                  const attrValue = cloneDeep(dataset[attribute as keyof ChartDataset]);
+                  let datasetItem = chart.data.datasets[index] as any;
+                  if (!datasetItem) {
+                    chart.data.datasets[index] = {} as any;
+                  }
+                  if (dataset.hasOwnProperty(attribute) && attrValue != null && chart) {
+                    (chart.data.datasets[index] as any)[attribute] = attrValue;
+                  }
                 }
-              });
-
-              // Update attributes individually to avoid re-rendering the entire chart
-              for (const attribute in dataset) {
-                const attrValue = cloneDeep(dataset[attribute as keyof ChartDataset]);
-                if (dataset.hasOwnProperty(attribute) && attrValue != null && chart) {
-                  (chart.data as any).datasets[index][attribute] = attrValue;
-                }
+              } else {
+                chart.data.datasets = [];
               }
             });
           }
