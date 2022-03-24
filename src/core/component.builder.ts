@@ -82,7 +82,6 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
       watch(
         () => props.options,
         (newOptions) => {
-          console.log(newOptions, chartInstance.value?.options, chartInstance.value?.options);
           if (chartInstance.value && newOptions) {
             chartInstance.value.options = cloneDeep(newOptions) as any;
             handleChartUpdate();
