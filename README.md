@@ -1,3 +1,5 @@
+## I'm joining [vue-chartjs](https://github.com/apertureless/vue-chartjs) as a core maintainer so this package will be kept just for those who already use it. I'm encouraging new users to use `vue-chartjs` instead
+
 # 📊 Chart.js 3 for Vue 2 and Vue 3
 
 <p align="center">
