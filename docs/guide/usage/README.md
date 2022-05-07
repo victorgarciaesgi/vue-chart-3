@@ -12,7 +12,7 @@ Here is an example with static data
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { DoughnutChart } from 'vue-chart-3';
-import { Chart, registerables } from "chart.js";
+import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
 
