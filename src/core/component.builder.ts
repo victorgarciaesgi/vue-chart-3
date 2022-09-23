@@ -1,6 +1,6 @@
 import type { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
 import * as Chartjs from 'chart.js';
-import { cloneDeep, isEmpty, isEqual, isObject } from 'lodash-es';
+import { cloneDeep, cloneDeepWith, isEmpty, isEqual, isObject, isArray } from 'lodash-es';
 import { pascalCase } from '../utils';
 import {
   ComponentOptionsMixin,
@@ -121,7 +121,14 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
                 // Update attributes individually to avoid re-rendering the entire chart
                 for (const attribute in dataset) {
-                  const attrValue = cloneDeep(dataset[attribute as keyof ChartDataset]);
+                  function keepInstancesIntactCloneCustomizer<T extends unknown>(value: T): T|undefined {
+                    if(!isObject(value)) return;
+                    if(value.constructor.name === 'Object') return;
+                    if(isArray(value)) return;
+                    return value;
+                  }
+
+                  const attrValue = cloneDeepWith(dataset[attribute as keyof ChartDataset], keepInstancesIntactCloneCustomizer);
                   let datasetItem = chart.data.datasets[index] as any;
                   if (!datasetItem) {
                     chart.data.datasets[index] = {} as any;
