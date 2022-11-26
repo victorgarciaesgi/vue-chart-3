@@ -36,11 +36,7 @@ export default {
 Create a plugin in `<srcDir>/plugins/chartjs.client.ts`
 
 ```ts
-import { defineNuxtPlugin } from '#app';
-
-// Workaround because chart.js doesn't provide an default export
-import * as ChartJs from 'chart.js';
-const { Chart, registerables } = ChartJs;
+import { Chart, registerables } from 'chart.js';
 
 export default defineNuxtPlugin(() => {
   Chart.register(...registerables);
