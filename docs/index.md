@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: vue-chart-3
-  text: Chart.js for Vue 2 & 3
-  tagline: A simple wrapper around Chart.js 3 for Vue 2 & 3
+  text: Chart.js for Vue 3
+  tagline: A simple wrapper around Chart.js 4 for Vue 3
   image:
     src: /images/logo.svg
     alt: vue-chart-3 logo
@@ -25,6 +25,6 @@ features:
     details: All props are linked to Chart.js types (with Volar)
   - icon: 🎯
     title: Versatile
-    details: Works with both Vue 2 and Vue 3 with the power of vue-demi
+    details: Works with Vue 3
 ---
 

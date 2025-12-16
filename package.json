@@ -1,7 +1,7 @@
 {
   "name": "vue-chart-3",
   "version": "3.1.8",
-  "description": "📊 A simple wrapper around Chart.js 4 for Vue 2 & 3",
+  "description": "📊 A simple wrapper around Chart.js 4 for Vue 3",
   "license": "MIT",
   "scripts": {
     "dev": "npm run prepack -- --watch",

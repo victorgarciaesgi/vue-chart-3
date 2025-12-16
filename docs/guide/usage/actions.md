@@ -11,4 +11,4 @@ Example with a plugin like [chartjs-plugin-zoom](https://www.chartjs.org/chartjs
 barChartRef.value.chartInstance.resetZoom();
 ```
 
-Example in [Vue 2 demo](https://vue-chart-3.netlify.app)
+Example in [Vue 3 demo](https://vue-chart-3.netlify.app)

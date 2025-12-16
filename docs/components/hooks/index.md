@@ -6,7 +6,7 @@
 Hooks are still in alpha
 :::
 
-`vue-chart-3` also provides fully typed hooks compatible with Vue 2 and Vue 3 using `vue-demi`.
+`vue-chart-3` also provides fully typed hooks for Vue 3.
 
 They are not mandatory, but they simplify the usage of chart components.
 

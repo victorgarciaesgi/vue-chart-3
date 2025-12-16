@@ -2,7 +2,7 @@
 
 ## Introduction
 
-vue-chart-3 is rewrite of `vue-chartjs` for [Chart.js 4](https://www.chartjs.org/) for Vue 2 & 3, but written in Typescript and Vue Composition API.
+vue-chart-3 is rewrite of `vue-chartjs` for [Chart.js 4](https://www.chartjs.org/) for Vue 3, but written in Typescript and Vue Composition API.
 
 # Installation
 
@@ -15,29 +15,6 @@ yarn add vue-chart-3 chart.js
 #or
 pnpm i vue-chart-3 chart.js
 ```
-
-## For Vue 2
-
-```bash
-npm i vue-chart-3@legacy chart.js
-#or
-yarn add vue-chart-3@legacy chart.js
-#or
-pnpm i vue-chart-3@legacy chart.js
-```
-
-## Important notes
-
-### Using with Vue 3 or Vue 2
-
-This package works with version 2.x and 3.x of Vue.
-
-For Vue 2 users, you will have to keep `2.x` version of `vue-chart-3`
-
-- Vue 3 works out-of-the-box
-- Vue 2 requires `@vue/composition-api` package to also be installed and registered, to provide Vue 3's [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html) features like `ref, defineComponent, computed, reactive`.
-
-⚠️ Since `2.0.3` (for Vue 2 users), Vue composition api will not register itself. Update your project if you didn't do it manually!
 
 ### Chart.js (v4)
 
