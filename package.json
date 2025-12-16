@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "npm run prepack -- --watch",
+    "build": "tsup",
     "prepack": "tsup",
     "test": "vitest run",
     "test:watch": "vitest",
