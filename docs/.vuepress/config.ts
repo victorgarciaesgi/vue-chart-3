@@ -130,5 +130,13 @@ export default defineUserConfig<DefaultThemeOptions>({
         content: meta.keywords.join(','),
       },
     ],
+    [
+      'script',
+      {
+        defer: '',
+        src: 'https://cloud.umami.is/script.js',
+        'data-website-id': 'c8b8b5f6-8a4d-4433-86c4-57a4e1af96e4',
+      },
+    ],
   ],
 });
