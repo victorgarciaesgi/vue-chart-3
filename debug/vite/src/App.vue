@@ -8,8 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import { Chart, ChartOptions, registerables } from 'chart.js';
-import type { ChartData } from 'chart.js';
+import { Chart, registerables } from 'chart.js';
+import type { ChartData, ChartOptions } from 'chart.js';
 // import { BarChart, useBarChart } from 'vue-chart-3';
 import { DoughnutChart, defineChartComponent, useDoughnutChart } from '../../../dist';
 

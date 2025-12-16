@@ -110,8 +110,8 @@ importers:
         specifier: ^3.5.13
         version: 3.5.25(typescript@5.9.3)
       vue-chart-3:
-        specifier: workspace:*
-        version: link:../..
+        specifier: 4.0.0
+        version: 4.0.0(chart.js@4.5.1)(vue@3.5.25(typescript@5.9.3))
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.2.1
@@ -9927,6 +9927,13 @@ packages:
       chart.js: '=> ^3.1.0'
       vue: '>= 3'
 
+  vue-chart-3@4.0.0:
+    resolution: {integrity: sha512-R7FzxW5ovKGcJS5ynu3OjVkYdtJKrc5x4cSw7kpjZ+C06q/d1iwNbk2eqBwwqDse6d+FbXYRCiEWR19m6afbSQ==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      chart.js: ^4.0.0
+      vue: '>= 3'
+
   vue-codemod@0.0.5:
     resolution: {integrity: sha512-DE+24W1d3oanGqq7yna4ddOKXmVzjECgku2ddMcm7OS9Bp9QOblMHT88PzKiCc7npGiHf5+mTfrEW1JVIBbA2A==}
     engines: {node: '>= 10.0'}
@@ -16484,10 +16491,6 @@ snapshots:
     dependencies:
       tabbable: 6.3.0
 
-  follow-redirects@1.15.11(debug@4.4.3(supports-color@6.1.0)):
-    optionalDependencies:
-      debug: 4.4.3(supports-color@6.1.0)
-
   follow-redirects@1.15.11(debug@4.4.3):
     optionalDependencies:
       debug: 4.4.3(supports-color@6.1.0)
@@ -17087,9 +17090,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  http-proxy-middleware@0.19.1(debug@4.4.3(supports-color@6.1.0))(supports-color@6.1.0):
+  http-proxy-middleware@0.19.1(debug@4.4.3)(supports-color@6.1.0):
     dependencies:
-      http-proxy: 1.18.1(debug@4.4.3(supports-color@6.1.0))
+      http-proxy: 1.18.1(debug@4.4.3)
       is-glob: 4.0.3
       lodash: 4.17.21
       micromatch: 3.1.10(supports-color@6.1.0)
@@ -17104,14 +17107,6 @@ snapshots:
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
       micromatch: 4.0.8
-    transitivePeerDependencies:
-      - debug
-
-  http-proxy@1.18.1(debug@4.4.3(supports-color@6.1.0)):
-    dependencies:
-      eventemitter3: 4.0.7
-      follow-redirects: 1.15.11(debug@4.4.3(supports-color@6.1.0))
-      requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
 
@@ -17803,7 +17798,7 @@ snapshots:
       dom-serialize: 2.2.1
       glob: 7.2.3
       graceful-fs: 4.2.11
-      http-proxy: 1.18.1(debug@4.4.3(supports-color@6.1.0))
+      http-proxy: 1.18.1(debug@4.4.3)
       isbinaryfile: 4.0.10
       lodash: 4.17.21
       log4js: 6.9.1
@@ -21747,6 +21742,15 @@ snapshots:
       lodash-es: 4.17.22
       vue: 3.5.25(typescript@5.9.3)
 
+  vue-chart-3@4.0.0(chart.js@4.5.1)(vue@3.5.25(typescript@5.9.3)):
+    dependencies:
+      '@vue/runtime-core': 3.5.25
+      '@vue/runtime-dom': 3.5.25
+      chart.js: 4.5.1
+      csstype: 3.2.3
+      lodash-es: 4.17.22
+      vue: 3.5.25(typescript@5.9.3)
+
   vue-codemod@0.0.5:
     dependencies:
       '@babel/core': 7.28.5
@@ -21986,7 +21990,7 @@ snapshots:
       del: 4.1.1
       express: 4.22.1(supports-color@6.1.0)
       html-entities: 1.4.0
-      http-proxy-middleware: 0.19.1(debug@4.4.3(supports-color@6.1.0))(supports-color@6.1.0)
+      http-proxy-middleware: 0.19.1(debug@4.4.3)(supports-color@6.1.0)
       import-local: 2.0.0
       internal-ip: 4.3.0
       ip: 1.1.9
