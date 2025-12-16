@@ -1,5 +1,6 @@
 {
-  "name": "vite",
+  "name": "@vue-chart-3/debug-vite",
+  "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -8,15 +9,15 @@
   },
   "dependencies": {
     "@types/lodash-es": "^4.17.5",
-    "chart.js": "^3.7.0",
+    "chart.js": "^4.4.0",
     "lodash-es": "^4.17.21",
-    "vue": "^3.2.31",
-    "vue-chart-3": "^3.1.3"
+    "vue": "^3.5.13",
+    "vue-chart-3": "workspace:*"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.0.0",
-    "typescript": "^4.4.4",
-    "vite": "^2.7.2",
-    "vue-tsc": "^0.29.8"
+    "@vitejs/plugin-vue": "^5.2.1",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0",
+    "vue-tsc": "^2.1.20"
   }
 }

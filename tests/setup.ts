@@ -1,6 +1,3 @@
-import { vi } from 'vitest';
-(global as any).jest = vi;
-
 // @ts-ignore
 import getCanvasWindow from 'jest-canvas-mock/lib/window';
 
@@ -19,7 +16,7 @@ const apis = [
 const canvasWindow = getCanvasWindow({ document: window.document });
 
 apis.forEach((api) => {
-  global[api] = canvasWindow[api];
-  global.window[api] = canvasWindow[api];
+  (globalThis as any)[api] = canvasWindow[api];
+  (globalThis as any).window[api] = canvasWindow[api];
   document.head.innerHTML = '<div id="konva-container"></div>';
 });

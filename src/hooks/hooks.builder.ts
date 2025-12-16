@@ -43,7 +43,11 @@ export const defineChartHook = <TType extends ChartType = ChartType, TJSX = fals
     function update() {
       const chartComponentRef = _struct[CHART_REF_NAME].value;
       if (chartComponentRef) {
-        chartComponentRef?.chartInstance.value?.update();
+        // Type assertion needed because ExtractComponentData may resolve to never in some contexts
+        const componentData = chartComponentRef as any;
+        if (componentData?.chartInstance?.value) {
+          componentData.chartInstance.value.update();
+        }
       } else {
         console.warn(`No chartInstance to update (use${pascalCase(chartType)}Chart)`);
       }
@@ -53,6 +57,6 @@ export const defineChartHook = <TType extends ChartType = ChartType, TJSX = fals
       [`${chartType}ChartProps`]: reactiveProps,
       [CHART_REF_NAME]: _struct[CHART_REF_NAME],
       update,
-    };
+    } as ChartHookReturnType<TType, TJSX>;
   };
 };

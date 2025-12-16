@@ -1,5 +1,5 @@
 {
-  "name": "vue3",
+  "name": "@vue-chart-3/debug-vue-cli",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,10 +8,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "chart.js": "^3.7.1",
+    "chart.js": "^4.4.0",
     "core-js": "^3.19.1",
-    "vue": "^3.2.31",
-    "vue-chart-3": "^3.1.4"
+    "vue": "^3.5.13",
+    "vue-chart-3": "workspace:*"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.10.2",
@@ -19,7 +19,7 @@
     "@vue/cli-plugin-babel": "~4.5.15",
     "@vue/cli-plugin-typescript": "~4.5.15",
     "@vue/cli-service": "~4.5.15",
-    "@vue/compiler-sfc": "^3.2.29",
+    "@vue/compiler-sfc": "^3.5.13",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^10.0.0",
     "eslint": "^8.8.0",

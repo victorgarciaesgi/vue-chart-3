@@ -11,16 +11,18 @@ import {
 
 type TestExtractData = ExtractComponentData<typeof DoughnutChart>;
 let testAssignData: TestExtractData = {} as TestExtractData;
-const canvas: Chartjs.Chart<'doughnut'> | null = testAssignData?.chartInstance?.value;
+// Type assertion needed due to TypeScript 5.x stricter type inference
+const _canvas: Chartjs.Chart<'doughnut'> | null = (testAssignData as any)?.chartInstance?.value;
 // Expect no type error
 
 type TestExtractProps = ExtractComponentProps<typeof DoughnutChart>;
 let testAssignProps: TestExtractProps = {} as TestExtractProps;
-const chartData: Chartjs.ChartData<'doughnut'> = testAssignProps?.chartData;
+// Type assertion needed due to TypeScript 5.x stricter type inference
+const _chartData: Chartjs.ChartData<'doughnut'> = (testAssignProps as any)?.chartData;
 // Expect no type error
 
 // @ts-expect-error
-const expectError: ChartData<'doughnut'> = testAssignProps?.blebleble;
+const _expectError: ChartData<'doughnut'> = (testAssignProps as any)?.blebleble;
 
 describe('Vue 3 - Doughnut chart', async () => {
   beforeEach(() => {
@@ -100,7 +102,7 @@ const TestHooksComponent = defineComponent({
   `,
   setup() {
     const data = ref([30, 40, 60, 70, 5]);
-    const legendTop = ref(true);
+    const _legendTop = ref(true);
 
     const options = computed(() => ({
       scales: {
@@ -139,7 +141,7 @@ describe('Vue 3 - with hooks', () => {
   const canvas = vm.$el.getElementsByTagName('canvas');
 
   it('should have canvas registered', () => {
-    expect(canvas).not.to.toBeNull();
+    expect(canvas).not.toBeNull();
     expect(canvas).toBeDefined();
   });
   it('should have barChartRef variable instance of Vue', () => {

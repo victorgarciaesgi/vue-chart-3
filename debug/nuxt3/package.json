@@ -1,4 +1,5 @@
 {
+  "name": "@vue-chart-3/debug-nuxt3",
   "private": true,
   "scripts": {
     "dev": "nuxi dev",
@@ -6,13 +7,13 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "nuxt3": "latest",
+    "nuxt": "^3.15.0",
     "unenv": "^0.4.3"
   },
   "dependencies": {
     "@types/lodash-es": "^4.17.5",
-    "chart.js": "^3.7.0",
+    "chart.js": "^4.4.0",
     "lodash-es": "^4.17.21",
-    "vue-chart-3": "^3.1.0-rc.8"
+    "vue-chart-3": "workspace:*"
   }
 }

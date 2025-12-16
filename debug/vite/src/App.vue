@@ -22,11 +22,6 @@ const labels = ref(['Paris', 'Nîmes', 'Toulon', 'Perpignan', 'Autre']);
 const legendTop = ref(true);
 
 const options = computed<ChartOptions<'doughnut'>>(() => ({
-  scales: {
-    myScale: {
-      type: 'logarithmic',
-    },
-  },
   plugins: {
     legend: {
       position: legendTop.value ? 'top' : 'bottom',

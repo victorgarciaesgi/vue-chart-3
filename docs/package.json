@@ -1,3 +1,6 @@
 {
-  "type": "commonjs"
+  "name": "@vue-chart-3/docs",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true
 }

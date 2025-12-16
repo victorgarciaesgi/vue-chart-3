@@ -1,7 +1,7 @@
 {
   "name": "vue-chart-3",
   "version": "3.1.8",
-  "description": "📊 A simple wrapper around Chart.js 3 for Vue 2 & 3",
+  "description": "📊 A simple wrapper around Chart.js 4 for Vue 2 & 3",
   "license": "MIT",
   "scripts": {
     "dev": "npm run prepack -- --watch",
@@ -10,59 +10,57 @@
     "test:watch": "vitest",
     "publish:alpha": "npm publish --tag next",
     "deploy": "npm run test && npm publish",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": " vuepress build docs"
+    "docs:dev": "vitepress dev docs",
+    "docs:build": " vitepress build docs"
   },
   "author": {
     "name": "Victor Garcia",
     "url": "https://github.com/victorgarciaesgi"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js"
     }
   },
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "peerDependencies": {
-    "chart.js": "=> ^3.1.0",
+    "chart.js": "^4.0.0",
     "vue": ">= 3"
   },
   "dependencies": {
-    "@vue/runtime-core": "latest",
-    "@vue/runtime-dom": "latest",
+    "@vue/runtime-core": "^3.5.13",
+    "@vue/runtime-dom": "^3.5.13",
     "csstype": "latest",
     "lodash-es": "latest"
   },
   "devDependencies": {
-    "@types/chart.js": "^2.9.35",
     "@types/lodash-es": "^4.17.6",
-    "@types/node": "^17.0.19",
+    "@types/node": "^22.10.2",
     "@types/pascalcase": "^1.0.1",
     "@vue/cli": "^5.0.1",
-    "@vue/runtime-core": "^3.2.31",
-    "@vue/runtime-dom": "^3.2.31",
-    "@vue/test-utils": "^2.0.0-rc.17",
-    "@vuepress/plugin-docsearch": "^2.0.0-beta.35",
-    "@vuepress/plugin-palette": "^2.0.0-beta.35",
-    "chart.js": "^3.7.1",
+    "@vue/runtime-core": "^3.5.13",
+    "@vue/runtime-dom": "^3.5.13",
+    "@vue/test-utils": "^2.4.6",
+    "chart.js": "^4.4.0",
     "chartjs-test-utils": "^0.4.0",
-    "happy-dom": "^2.40.0",
-    "jest-canvas-mock": "^2.3.1",
-    "jsdom": "^19.0.0",
-    "tsup": "^5.11.13",
-    "typescript": "^4.5.5",
-    "vite": "^2.8.4",
-    "vitest": "^0.5.1",
-    "vue": "^3.2.31",
+    "happy-dom": "^15.11.6",
+    "jest-canvas-mock": "^2.5.2",
+    "jsdom": "^25.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0",
+    "vitest": "^4.0.0",
+    "vue": "^3.5.13",
     "vue-chart-3": "latest",
-    "vuepress": "^2.0.0-beta.35",
-    "vuepress-vite": "^2.0.0-beta.35"
+    "vitepress": "^1.6.4"
   },
   "repository": {
     "type": "git",
@@ -71,12 +69,12 @@
   "homepage": "https://vue-chart-3.netlify.app/",
   "gitHead": "b17a8646d048947e3ec54865873ff0ff1ab19e78",
   "keywords": [
-    "vue chartjs 3",
-    "vue chart.js 3",
-    "chartjs 3",
+    "vue chartjs 4",
+    "vue chart.js 4",
+    "chartjs 4",
     "vue chartjs",
     "chartjs vue",
-    "chartjs 3 vue",
+    "chartjs 4 vue",
     "chartjs vue3",
     "chartjs vue 3",
     "vue chart.js"

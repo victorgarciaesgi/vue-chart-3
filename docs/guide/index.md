@@ -2,7 +2,7 @@
 
 ## Introduction
 
-vue-chart-3 is rewrite of `vue-chartjs` for [Chart.js 3](https://www.chartjs.org/) for Vue 2 & 3, but written in Typescript and Vue Composition API.
+vue-chart-3 is rewrite of `vue-chartjs` for [Chart.js 4](https://www.chartjs.org/) for Vue 2 & 3, but written in Typescript and Vue Composition API.
 
 # Installation
 
@@ -39,11 +39,11 @@ For Vue 2 users, you will have to keep `2.x` version of `vue-chart-3`
 
 ⚠️ Since `2.0.3` (for Vue 2 users), Vue composition api will not register itself. Update your project if you didn't do it manually!
 
-### Chart.js (v3)
+### Chart.js (v4)
 
-Chart.js v3 is now tree-shakable, so make sure to import and register the chart components you need. See [Chart.js API](https://www.chartjs.org/docs/master/api/) for all available imports.
+Chart.js v4 is tree-shakable, so make sure to import and register the chart components you need. See [Chart.js API](https://www.chartjs.org/docs/latest/api/) for all available imports.
 
-[Learn more about Chart.js tree-shaking](https://www.chartjs.org/docs/master/getting-started/integration.html#bundlers-webpack-rollup-etc)
+[Learn more about Chart.js tree-shaking](https://www.chartjs.org/docs/latest/getting-started/integration.html#bundlers-webpack-rollup-etc)
 
 For example, if you want to create a Doughnut chart and tree-shake the unused other components, it might look like this:
 

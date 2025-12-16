@@ -1,10 +1,8 @@
-import type { Chart, ChartData, ChartDataset, ChartOptions, ChartType, Plugin } from 'chart.js';
+import type { Chart, ChartData, ChartDataset, ChartType, Plugin } from 'chart.js';
 import * as Chartjs from 'chart.js';
-import { cloneDeep, isEmpty, isEqual, isObject } from 'lodash-es';
-import { pascalCase } from '../utils';
+import { cloneDeep, isEmpty, isEqual } from 'lodash-es';
 import {
   ComponentOptionsMixin,
-  computed,
   ComputedOptions,
   defineComponent,
   DefineComponent,
@@ -19,6 +17,7 @@ import {
 } from 'vue';
 import { ChartComponentEmits } from '.';
 import type { StyleValue } from '../misc';
+import { pascalCase } from '../utils';
 import type { ChartPropsOptions, ComponentData } from './component.types';
 
 /** Builder method to create a component based on Chart.js chart type
@@ -147,12 +146,13 @@ export const defineChartComponent = <TType extends ChartType = ChartType>(
 
       function renderChart() {
         if (canvasRef.value) {
+          // Chart.js 4 has stricter types, use type assertion for compatibility
           chartInstance.value = new Chartjs.Chart(canvasRef.value as HTMLCanvasElement, {
             data: cloneDeep(props.chartData),
             type: chartType,
-            options: cloneDeep(props.options) as ChartOptions<TType>, // Types won't work with props type
+            options: cloneDeep(props.options || {}) as any,
             plugins: props.plugins,
-          });
+          }) as Chart<TType>;
           handleChartRender();
         } else {
           console.error(
