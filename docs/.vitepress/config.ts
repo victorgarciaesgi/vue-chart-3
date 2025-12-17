@@ -9,7 +9,10 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', type: 'image/x-icon', sizes: '48x48', href: '/favicon.ico' }],
     ['meta', { property: 'og:image', content: 'https://vue-chart-3.netlify.com/assets/logo.png' }],
-    ['meta', { property: 'twitter:image', content: 'https://vue-chart-3.netlify.com/assets/logo.png' }],
+    [
+      'meta',
+      { property: 'twitter:image', content: 'https://vue-chart-3.netlify.com/assets/logo.png' },
+    ],
     ['meta', { property: 'og:description', content: meta.description }],
     ['meta', { name: 'description', content: meta.description }],
     ['meta', { name: 'keywords', content: meta.keywords.join(',') }],
@@ -21,6 +24,7 @@ export default defineConfig({
         'data-website-id': 'c8b8b5f6-8a4d-4433-86c4-57a4e1af96e4',
       },
     ],
+    ['script', { async: '', src: 'https://media.bitterbrains.com/main.js?from=REGLE&type=top' }],
   ],
 
   themeConfig: {
@@ -106,4 +110,3 @@ export default defineConfig({
     },
   },
 });
-
