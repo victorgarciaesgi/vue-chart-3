@@ -43,7 +43,7 @@ html {
   }
 }
 
-@media (min-width: 960px) {
+@media (max-width: 1280px) {
   html.has-bb-banner .VPContent {
     padding-top: 0;
   }
